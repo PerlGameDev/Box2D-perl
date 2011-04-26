@@ -1,0 +1,5 @@
+%file{Box2D.h};
+
+%module{Box2D};
+
+%name{Box2D::Dynamic::Body} class b2Body{ };
