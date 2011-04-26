@@ -35,6 +35,21 @@ b2Vec2::y()
 	OUTPUT:
 		RETVAL
 
+b2Vec*
+b2Vec2::Skew()
+	CODE:
+		b2Vec* ret = new b2Vec();
+		b2Vec copy = THIS->Skew();
+		ret->x = copy.x;
+		ret->y = copy.y;
+		RETVAL = ret;
+	OUTPUT:
+		RETVAL
+
+void
+b2Vec2::DESTROY()
+	CODE:
+		delete THIS; 
 %}
 	
 };
