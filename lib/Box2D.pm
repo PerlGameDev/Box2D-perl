@@ -12,4 +12,7 @@ Box2D - 2D Physics Library
 
 our $VERSION = '0.01';
 
+require XSLoader;
+XSLoader::load('Box2D', $VERSION);
+
 1; # End of Box2D
