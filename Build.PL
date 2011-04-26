@@ -14,6 +14,8 @@ my $builder = Module::Build::WithXSpp->new(
     add_to_cleanup      => [ 'Box2D-*' ],
 	extra_typemap_modules => { 
 		'ExtUtils::Typemap::ObjectMap' => '0',
+		'ExtUtils::Typemap::STL::String' => '0.04',
+    'ExtUtils::Typemap::Basic'       => '0.04',
 	},
 	extra_linker_flags => [qw(-lBox2D)]
 );

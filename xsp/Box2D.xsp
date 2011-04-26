@@ -1,18 +1,10 @@
-%file{Box2D.h};
-
-%typemap{float32}{simple};
 
 %module{Box2D};
+%package{Box2D};
 
-%name{Box2D::b2Vec2} class b2Vec2 { 
+%{
+#include <myinit.h>
+%}
 
-public: 
-
-b2Vec2();
-b2Vec2( float32 x, float32 y );
-void SetZero();
-void Set( float32 x_, float32 y_ );
-
-};
 
 
