@@ -1,5 +1,18 @@
 %file{Box2D.h};
 
+%typemap{float32}{simple};
+
 %module{Box2D};
 
-%name{Box2D::Dynamic::Body} class b2Body{ };
+%name{Box2D::b2Vec2} struct b2Vec2 { 
+
+public: 
+
+b2Vec2();
+b2Vec2( float32 x, float32 y );
+void SetZero();
+void Set( float32 x_, float32 y_ );
+
+}
+
+%name{Box2D::gravity} b2Vec2 gravity( float32 a, float32 b );
