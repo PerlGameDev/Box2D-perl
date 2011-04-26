@@ -2,7 +2,7 @@
 
 %typemap{float32}{simple};
 
-%module{Box2D};
+%module{Box2D::b2Vec2};
 
 %name{Box2D::b2Vec2} class b2Vec2 { 
 
