@@ -1,0 +1,25 @@
+%module{Box2D};
+
+%name{Box2D::b2World} class b2World 
+{ 
+
+%{
+
+b2World* 
+b2World::new( gravity, doSleep)
+	b2Vec2* gravity
+	bool doSleep
+	CODE:
+		RETVAL = new b2World( *gravity, doSleep );
+	OUTPUT:
+		RETVAL
+
+void
+b2World::DESTROY()
+	CODE:
+		delete (int*)THIS; 
+
+%}
+	
+};
+
