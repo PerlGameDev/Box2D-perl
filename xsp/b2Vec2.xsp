@@ -3,7 +3,39 @@
 %name{Box2D::b2Vec2} class b2Vec2 
 { 
 	b2Vec2( float32 x, float32 y );
+ 
+   	void SetZero();
 
+	void Set(float32 x_, float32 y_);
+
+	float32 Length();
+	
+	float32 LengthSquared();
+
+	float32 Normalize();
+
+    bool IsValid();
+
+
+%{
+
+float32 
+b2Vec2::x()
+	CODE:
+		float32 x = THIS->x;
+		RETVAL = x;
+	OUTPUT:
+		RETVAL
+
+float32 
+b2Vec2::y()
+	CODE:
+		float32 y = THIS->y;
+		RETVAL = y;
+	OUTPUT:
+		RETVAL
+
+%}
+	
 };
-
 

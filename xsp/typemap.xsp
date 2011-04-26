@@ -1,2 +1,3 @@
 %typemap{float32}{simple};
+%typemap{bool}{simple};
 
