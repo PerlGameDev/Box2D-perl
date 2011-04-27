@@ -1,0 +1,23 @@
+%module{Box2D};
+
+%name{Box2D::b2PolygonShape} class b2PolygonShape : public %name{Box2D::b2Shape} b2Shape  
+{ 
+
+void SetAsBox(float32 x, float32 y);
+
+~b2PolygonShape();
+
+%{
+
+b2PolygonShape*
+b2PolygonShape::new( )
+	CODE:
+		RETVAL= new b2PolygonShape();
+	OUTPUT:
+		RETVAL 
+
+
+%}
+	
+};
+

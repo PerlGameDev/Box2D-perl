@@ -4,6 +4,7 @@ b2Vec2 *				O_OBJECT
 b2World *			O_OBJECT
 b2Body *				O_OBJECT
 b2BodyDef * 			O_OBJECT
+b2Shape	*				O_OBJECT
 b2PolygonShape *		O_OBJECT
 b2FixtureDef *		O_OBEJCT
 

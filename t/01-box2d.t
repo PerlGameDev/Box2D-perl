@@ -8,11 +8,16 @@ my $world = Box2D::b2World->new($vec, 1);
 
 my $body_def = Box2D::b2BodyDef->new();
 
-	$body_def->position->Set(0.0, -10.0);
+$body_def->position->Set(0.0, -10.0);
 
-my $body = $world->CreateBody($body_def); 
+my $groundBody = $world->CreateBody($body_def); 
 
-isa_ok( $body, "Box2D::b2Body" );
+my $groundBox = Box2D::b2PolygonShape->new();
+
+$groundBox->SetAsBox(50.0, 10.0);
+
+$groundBody->CreateFixture( $groundBox, 0.0 ); 
+
 pass("Made stuff and survived");
 
 done_testing;
