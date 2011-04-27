@@ -1,0 +1,23 @@
+%{
+
+#include <Box2D/Box2D.h>
+
+%}
+
+
+%module{Box2D};
+
+%name{Box2D::b2Shape} class b2Shape 
+{ 
+
+%{
+
+void
+b2Shape::new( )
+	CODE:
+		croak("Abstract Datatype");
+
+%}
+	
+};
+

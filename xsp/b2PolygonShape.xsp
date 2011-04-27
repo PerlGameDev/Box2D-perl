@@ -9,7 +9,7 @@ void SetAsBox(float32 x, float32 y);
 
 %{
 
-b2PolygonShape*
+b2PolygonShape *
 b2PolygonShape::new( )
 	CODE:
 		RETVAL= new b2PolygonShape();
