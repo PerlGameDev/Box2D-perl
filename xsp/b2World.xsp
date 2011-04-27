@@ -4,6 +4,7 @@
 { 
 
 ~b2World();
+
 %{
 
 b2World* 
@@ -12,6 +13,16 @@ b2World::new( gravity, doSleep)
 	bool doSleep
 	CODE:
 		RETVAL = new b2World( *gravity, doSleep );
+	OUTPUT:
+		RETVAL
+
+b2Body*
+b2World::CreateBody( body_def )
+	b2BodyDef* body_def
+	PREINIT:
+		const char* CLASS = "Box2D::b2Body";
+	CODE:
+		RETVAL = THIS->CreateBody( body_def );
 	OUTPUT:
 		RETVAL
 

@@ -35,11 +35,6 @@ b2Vec2::y()
 	OUTPUT:
 		RETVAL
 
-void
-b2Vec2::DESTROY()
-	CODE:
-		delete (int*)THIS; 
-
 %}
 	
 };

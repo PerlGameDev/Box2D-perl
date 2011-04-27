@@ -1,0 +1,36 @@
+%module{Box2D};
+
+%name{Box2D::b2BodyDef} class b2BodyDef 
+{ 
+
+%{
+
+b2BodyDef*
+b2BodyDef::new( )
+	CODE:
+		RETVAL = new b2BodyDef();
+	OUTPUT:
+		RETVAL
+
+
+b2Vec2* 
+b2BodyDef::position()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = &(THIS->position);	
+	OUTPUT:
+		RETVAL
+
+float32
+b2BodyDef::angle()
+	CODE:
+		RETVAL = THIS->angle;
+	OUTPUT:
+		RETVAL
+
+
+%}
+	
+};
+

@@ -1,0 +1,15 @@
+%module{Box2D};
+
+%name{Box2D::b2Body} class b2Body 
+{ 
+
+%{
+
+void
+b2Body::new( )
+	CODE:
+		warn("Do nothing");
+%}
+	
+};
+
