@@ -2,6 +2,7 @@ use strict;
 use warnings;
 use Module::Build::WithXSpp;
 
+push @INC, "build";
 
 my $builder = Module::Build::WithXSpp->new(
     module_name         => 'Box2D',

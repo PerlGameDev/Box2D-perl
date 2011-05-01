@@ -6,6 +6,14 @@
 
 %module{Box2D};
 
+
+enum b2BodyType
+{
+	b2_staticBody = 0,
+	b2_kinematicBody,
+	b2_dynamicBody,
+};
+
 %name{Box2D::b2BodyDef} class b2BodyDef 
 { 
 
@@ -15,6 +23,19 @@ b2BodyDef*
 b2BodyDef::new( )
 	CODE:
 		RETVAL = new b2BodyDef();
+	OUTPUT:
+		RETVAL
+
+int
+b2BodyDef::type( ... )
+	CODE:
+		if( items > 1 )
+		{
+		
+			THIS->type = (b2BodyType)SvUV( ST(1) );
+
+		}	
+		RETVAL = (int)THIS->type;
 	OUTPUT:
 		RETVAL
 

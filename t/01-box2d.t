@@ -18,6 +18,11 @@ $groundBox->SetAsBox(50.0, 10.0);
 
 $groundBody->CreateFixture( $groundBox, 0.0 ); 
 
+my $bodyDef = Box2D::b2BodyDef->new();
+	$bodyDef->type(2);
+	is( $bodyDef->type(), 2, "returning enum" );
+	$bodyDef->position->Set(0.0, 4.0);
+
 pass("Made stuff and survived");
 
 done_testing;
