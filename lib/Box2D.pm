@@ -16,5 +16,13 @@ require XSLoader;
 XSLoader::load('Box2D', $VERSION);
 require Exporter;
 
+our @EXPORT_OK   = ();
+our %EXPORT_TAGS = ( );
+
+use constant {
+b2_staticBody => 0,
+b2_kinematicBody => 1,
+b2_dynamicBody => 2
+};
 
 1; # End of Box2D
