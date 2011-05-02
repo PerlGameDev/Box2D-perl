@@ -8,10 +8,13 @@
 
 %name{Box2D::b2World} class b2World 
 { 
+    void ClearForces();
+
 
 ~b2World();
 
 %{
+
 
 b2World* 
 b2World::new( gravity, doSleep)
@@ -22,6 +25,14 @@ b2World::new( gravity, doSleep)
 	OUTPUT:
 		RETVAL
 
+void
+b2World::Step( timeStep, velocityIterations, positionIterations )
+	float32 timeStep
+	int32 velocityIterations
+	int32 positionIterations
+	CODE:
+		THIS->Step( timeStep, velocityIterations, positionIterations );
+
 b2Body*
 b2World::CreateBody( body_def )
 	b2BodyDef* body_def
@@ -29,6 +40,8 @@ b2World::CreateBody( body_def )
 		const char* CLASS = "Box2D::b2Body";
 	CODE:
 		RETVAL = THIS->CreateBody( body_def );
+		warn("Made body %p", RETVAL);
+
 	OUTPUT:
 		RETVAL
 

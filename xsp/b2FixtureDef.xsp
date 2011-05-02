@@ -20,16 +20,14 @@ b2FixtureDef::new( )
 		RETVAL
 
 b2Shape *
-b2FixtureDef::shape( ... )
+b2FixtureDef::shape( shape )
+	b2Shape * shape
 	PREINIT:
 		const char* CLASS = "Box2D::b2Shape";
 	CODE:
-		if( items > 1 )
-		{
-		
-			THIS->shape = (const b2Shape*)SvRV( ST(1) );
+			THIS->shape = shape; 
+			warn( "Fixture got shape %p", shape );
 
-		}	
 		RETVAL = (b2Shape *)THIS->shape;
 	OUTPUT:
 		RETVAL

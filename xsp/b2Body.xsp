@@ -8,7 +8,7 @@
 %module{Box2D};
 
 %name{Box2D::b2Body} class b2Body 
-{ 
+{
 
 %{
 
@@ -17,12 +17,39 @@ b2Body::new( )
 	CODE:
 		warn("Do nothing");
 
+
+void
+b2Body::CreateFixtureDef(fixtureDef)
+	b2FixtureDef* fixtureDef
+	CODE:
+		warn ("Fixture %p", fixtureDef);
+		warn (" %f shape %p ", fixtureDef->density, fixtureDef->shape );
+		THIS->CreateFixture( (const b2FixtureDef*)fixtureDef );
+
 void
 b2Body::CreateFixture(shape, density)
 	b2Shape * shape
 	float32 density
 	CODE:
 		THIS->CreateFixture( (const b2Shape *) shape, density );
+
+b2Vec2 *
+b2Body::GetPosition()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = (b2Vec2 *)&(THIS->GetPosition());
+	OUTPUT:
+		RETVAL 
+
+float32
+b2Body::GetAngle()
+	CODE:
+		RETVAL = THIS->GetAngle();
+	OUTPUT:
+		RETVAL
+
+
 
 %}
 	

@@ -13,8 +13,17 @@ b2PolygonShape *
 b2PolygonShape::new( )
 	CODE:
 		RETVAL= new b2PolygonShape();
+		warn(" Made polygon shape %p", (b2Shape*)RETVAL);
 	OUTPUT:
 		RETVAL 
+
+void
+b2PolygonShape::check_p(...)
+	CODE:
+		warn("Polygon point %p", THIS);
+		if( items > 1)
+			warn( "Polygon arg %p", SvRV(ST(1)));
+
 
 
 %}

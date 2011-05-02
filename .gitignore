@@ -12,3 +12,4 @@ pod2htm*.tmp
 Box2D-*
 MYMETA.yml
 buildtmp
+*.swp
