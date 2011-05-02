@@ -5,14 +5,14 @@ use SDL;
 use SDL::Video;
 use SDLx::App;
 
-my $app = SDLx::App->new( width => 600, height => 600, flags => SDL_DOUBLEBUF | SDL_HWSURFACE, eoq => 1 );
+my $app = SDLx::App->new( width => 300, height => 300, flags => SDL_DOUBLEBUF | SDL_HWSURFACE, eoq => 1 );
 
 my $vec = Box2D::b2Vec2->new(2.5,-10);
 my $world = Box2D::b2World->new($vec, 1);
 
 my $body_def = Box2D::b2BodyDef->new();
 
-$body_def->position->Set(0.0, -10.0);
+$body_def->position->Set(0.0, -15.0);
 
 my $groundBody = $world->CreateBody($body_def); 
 
@@ -51,7 +51,7 @@ my $positionIterations = 2;
 
 $app->add_show_handler( sub 
 {
-	$app->draw_rect([0,0,600,600],[0,0,0,255]);
+	$app->draw_rect([0,0,300,300],[0,0,0,255]);
 	$app->draw_rect( [$pos->x(), 250-$pos->y(), 50, 10], [0,255,0,255] );
 
 	$world->Step( $timeStep, $velocityIterations, $positionIterations );

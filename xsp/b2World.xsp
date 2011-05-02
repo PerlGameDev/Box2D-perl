@@ -40,8 +40,6 @@ b2World::CreateBody( body_def )
 		const char* CLASS = "Box2D::b2Body";
 	CODE:
 		RETVAL = THIS->CreateBody( body_def );
-		warn("Made body %p", RETVAL);
-
 	OUTPUT:
 		RETVAL
 
