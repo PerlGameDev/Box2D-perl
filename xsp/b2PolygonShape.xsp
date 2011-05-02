@@ -13,7 +13,6 @@ b2PolygonShape *
 b2PolygonShape::new( )
 	CODE:
 		RETVAL= new b2PolygonShape();
-		warn(" Made polygon shape %p", (b2Shape*)RETVAL);
 	OUTPUT:
 		RETVAL 
 

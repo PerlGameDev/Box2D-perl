@@ -22,8 +22,6 @@ void
 b2Body::CreateFixtureDef(fixtureDef)
 	b2FixtureDef* fixtureDef
 	CODE:
-		warn ("Fixture %p", fixtureDef);
-		warn (" %f shape %p ", fixtureDef->density, fixtureDef->shape );
 		THIS->CreateFixture( (const b2FixtureDef*)fixtureDef );
 
 void

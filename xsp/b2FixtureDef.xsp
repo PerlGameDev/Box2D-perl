@@ -35,7 +35,6 @@ b2FixtureDef::shape( ... )
 				}
 
 		}
-					warn( "Fixture got shape %p", THIS->shape );
 
 		RETVAL = (b2Shape *)THIS->shape;
 	OUTPUT:
