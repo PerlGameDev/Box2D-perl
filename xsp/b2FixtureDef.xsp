@@ -20,18 +20,24 @@ b2FixtureDef::new( )
 		RETVAL
 
 b2Shape *
-b2FixtureDef::shape( shape )
-	b2Shape * shape
+b2FixtureDef::shape( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Shape";
 	CODE:
-			THIS->shape = shape; 
-			warn( "Fixture got shape %p", shape );
+		if( items > 1 )
+		{
+			SV* arg = ST(1);
+			b2Shape* var;
+			if( sv_isobject(arg) && (SvTYPE(SvRV(arg)) == SVt_PVMG) )
+				var = (b2Shape*)SvIV((SV*)SvRV( arg ));
+			THIS->shape = var; 
+
+		}
+					warn( "Fixture got shape %p", THIS->shape );
 
 		RETVAL = (b2Shape *)THIS->shape;
 	OUTPUT:
 		RETVAL
-
 
 float32
 b2FixtureDef::density( ... )
