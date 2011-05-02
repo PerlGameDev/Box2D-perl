@@ -29,8 +29,10 @@ b2FixtureDef::shape( ... )
 			SV* arg = ST(1);
 			b2Shape* var;
 			if( sv_isobject(arg) && (SvTYPE(SvRV(arg)) == SVt_PVMG) )
-				var = (b2Shape*)SvIV((SV*)SvRV( arg ));
-			THIS->shape = var; 
+				{
+					 var = (b2Shape*)SvIV((SV*)SvRV( arg ));
+					THIS->shape = var; 
+				}
 
 		}
 					warn( "Fixture got shape %p", THIS->shape );
