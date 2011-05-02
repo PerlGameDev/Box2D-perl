@@ -3,7 +3,7 @@ use warnings;
 use Box2D;
 use Test::More;
 
-my $vec = Box2D::b2Vec2->new(10,10);
+my $vec = Box2D::b2Vec2->new(0,-10);
 my $world = Box2D::b2World->new($vec, 1);
 
 my $body_def = Box2D::b2BodyDef->new();
@@ -38,7 +38,6 @@ $fixtureDef->density(1.0);
 $fixtureDef->friction(0.3);
 
 
-
 $body->CreateFixtureDef($fixtureDef);
 
 pass( "Create fixture Def" );
@@ -52,12 +51,13 @@ foreach ( 0.. 60 )
 	$world->Step( $timeStep, $velocityIterations, $positionIterations );
 	$world->ClearForces();
 
-	pass( "Run step and clear forces");
-
 	my $position = $body->GetPosition();
 	my $angle = $body->GetAngle();
-
+	warn( "Position ". $position->x(). ", ". $position->y() ."\n" );
+	warn( "Angle ".$angle."\n");
 }
+
+pass( "Run step and clear forces");
 
 pass("Made stuff and survived");
 
