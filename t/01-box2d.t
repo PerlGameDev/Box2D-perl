@@ -33,7 +33,7 @@ $dynamicBox->SetAsBox( 1.0, 1.0 );
 pass( "Create box" );
 
 my $fixtureDef = Box2D::b2FixtureDef->new();
-$fixtureDef->shape_e( $dynamicBox );
+$fixtureDef->shape( $dynamicBox );
 $fixtureDef->density(1.0);
 $fixtureDef->friction(0.3);
 
