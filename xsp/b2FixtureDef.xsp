@@ -1,0 +1,64 @@
+%{
+
+#include <Box2D/Box2D.h>
+
+%}
+
+%module{Box2D};
+
+
+%name{Box2D::b2FixtureDef} class b2FixtureDef 
+{ 
+
+%{
+
+b2FixtureDef*
+b2FixtureDef::new( )
+	CODE:
+		RETVAL = new b2FixtureDef();
+	OUTPUT:
+		RETVAL
+
+b2Shape *
+b2FixtureDef::shape( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Shape";
+	CODE:
+		if( items > 1 )
+		{
+		
+			THIS->shape = (const b2Shape*)SvRV( ST(1) );
+
+		}	
+		RETVAL = (b2Shape *)THIS->shape;
+	OUTPUT:
+		RETVAL
+
+
+float32
+b2FixtureDef::density( ... )
+	CODE:
+		if( items > 1 )
+		{
+			THIS->density = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->density;
+	OUTPUT:
+		RETVAL
+
+
+float32
+b2FixtureDef::friction( ... )
+	CODE:
+		if( items > 1 )
+		{
+			THIS->friction = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->friction;
+	OUTPUT:
+		RETVAL
+
+%}
+	
+};
+
