@@ -151,16 +151,29 @@ $app->add_show_handler(
                            }
 
                            # draw bodies
+                           my @nextbodies = ();
+                           my @deletebodies = ();
                            foreach my $body (@bodies) {
-                               my $position = $body->GetPosition();
+                               my $pos = $body->GetPosition();
+                               my ($x,$y) = ($pos->x(), $pos->y());
                                my $angle = $body->GetAngle();
                                # print join(" ",$position->x(),$position->y(),$angle,$/);
-                               $app->draw_rect( [$position->x() - $bodySize, 
-                                                 $HEIGHT-$position->y()-$bodySize, 
+                               $app->draw_rect( [$x - $bodySize, 
+                                                 $HEIGHT - $y - $bodySize, 
                                                  $bodySize*2, $bodySize*2], 
                                                 [255,255,0,255] );
-
+                               # arbitrary threshold before we delete an object;
+                               if ($y > -200) {
+                                   push @nextbodies, $body;
+                               }
                            }
+                           @bodies = @nextbodies;
+                           # DestroyBody is dangerous, you want to destroy it in perl pretty quickly too
+                           while (@deletebodies) {
+                               $world->DestroyBody(pop @deletebodies);
+                           }
+
+
                            $app->update();
                            
                        }

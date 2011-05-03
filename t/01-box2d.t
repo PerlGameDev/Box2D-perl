@@ -61,4 +61,8 @@ pass( "Run step and clear forces");
 
 pass("Made stuff and survived");
 
+$world->DestroyBody( $body );
+$body = undef;
+pass("Destroyed the body");
+
 done_testing;
