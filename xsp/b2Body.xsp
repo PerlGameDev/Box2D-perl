@@ -31,6 +31,7 @@ b2Body::CreateFixture(shape, density)
 	CODE:
 		THIS->CreateFixture( (const b2Shape *) shape, density );
 
+
 b2Vec2 *
 b2Body::GetPosition()
 	PREINIT:
