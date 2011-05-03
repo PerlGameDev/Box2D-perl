@@ -43,6 +43,13 @@ b2World::CreateBody( body_def )
 	OUTPUT:
 		RETVAL
 
+
+void
+b2World::DestroyBody( body )
+	b2Body* body
+	CODE:
+		THIS->DestroyBody( body );
+
 %}
 	
 };
