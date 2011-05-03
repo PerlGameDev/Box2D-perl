@@ -20,9 +20,9 @@ my $app = SDLx::App->new(
 );
 
 # Box sprite
-my $bodySurface = SDLx::Surface->new( width => 16, height => 16 ); 
+my $bodySurface = SDLx::Surface->new( width => 20, height => 20 ); 
 
-$bodySurface->draw_rect( [0,0,16,16], [255,255,0,255]);
+$bodySurface->draw_rect( [2,2,18,18], [255,255,0,255]);
 $bodySurface->update(); 
 
 
@@ -178,7 +178,7 @@ $app->add_show_handler(
 									$world->DestroyBody($body); 
 									delete $bodies{$body_n}; 
 								}
-								$bodySprite->rotation($angle);
+								$bodySprite->rotation($angle, 1);
 								$bodySprite->draw_xy( $app, $position->x() - $bodySize, 
                               						  $HEIGHT-$position->y()-$bodySize );
 
