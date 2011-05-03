@@ -37,6 +37,22 @@ b2Body::DestroyFixture( fixture )
 	CODE:
 		THIS->DestroyFixture( fixture );
 
+void
+b2Body::SetTransform( position, angle )
+	b2Vec2* position
+	float32 angle
+	CODE:
+		THIS->SetTransform( *position, angle );
+
+
+b2Transform*
+b2Body::GetTransform( )
+	CODE:
+		b2Transform bt = THIS->GetTransform();
+		RETVAL = &bt;
+	OUTPUT:
+		RETVAL
+
 
 b2Vec2 *
 b2Body::GetPosition()
