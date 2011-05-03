@@ -47,6 +47,8 @@ b2Body::SetTransform( position, angle )
 
 b2Transform*
 b2Body::GetTransform( )
+	PREINIT:
+		cont char* CLASS = "Box2D::b2Transform";
 	CODE:
 		b2Transform bt = THIS->GetTransform();
 		RETVAL = &bt;
