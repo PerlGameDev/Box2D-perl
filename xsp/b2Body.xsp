@@ -24,12 +24,18 @@ b2Body::CreateFixtureDef(fixtureDef)
 	CODE:
 		THIS->CreateFixture( (const b2FixtureDef*)fixtureDef );
 
-void
+b2Fixture *
 b2Body::CreateFixture(shape, density)
 	b2Shape * shape
 	float32 density
 	CODE:
 		THIS->CreateFixture( (const b2Shape *) shape, density );
+
+void
+b2Body::DestroyFixture( fixture )
+	b2Fixture* fixture
+	CODE:
+		THIS->DestroyFixture( fixture );
 
 
 b2Vec2 *

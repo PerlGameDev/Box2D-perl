@@ -7,5 +7,6 @@ b2BodyDef * 			O_OBJECT
 b2Shape	*				O_OBJECT
 b2PolygonShape *		O_OBJECT
 b2FixtureDef *		O_OBJECT
+b2Fixture * 		O_OBJECT
 
 

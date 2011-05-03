@@ -1,3 +1,5 @@
+#ifndef __HELPER_H__
+#define __HELPER_H__
 
 void * stack_to_object( SV* arg )
 {
@@ -24,4 +26,4 @@ SV* new_data( SV* thing )
 
 }
 
-
+#endif
