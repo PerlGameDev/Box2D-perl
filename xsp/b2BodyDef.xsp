@@ -31,9 +31,7 @@ b2BodyDef::type( ... )
 	CODE:
 		if( items > 1 )
 		{
-		
 			THIS->type = (b2BodyType)SvUV( ST(1) );
-
 		}	
 		RETVAL = (int)THIS->type;
 	OUTPUT:
@@ -50,8 +48,12 @@ b2BodyDef::position()
 		RETVAL
 
 float32
-b2BodyDef::angle()
+b2BodyDef::angle( ... )
 	CODE:
+		if( items > 1 )
+		{
+			THIS->type = (float32)SvNV( ST(1) );
+		}
 		RETVAL = THIS->angle;
 	OUTPUT:
 		RETVAL
