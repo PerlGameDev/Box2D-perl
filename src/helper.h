@@ -12,3 +12,16 @@ void * stack_to_object( SV* arg )
 	return var;
 
 }
+
+
+
+SV* new_data( SV* thing )
+{
+ if (  SvROK( thing ) ) 
+    return  newRV_inc(SvRV(thing ) );
+ else
+    return  SvREFCNT_inc(thing); 
+
+}
+
+
