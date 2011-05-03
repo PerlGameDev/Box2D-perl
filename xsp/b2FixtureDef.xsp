@@ -1,6 +1,7 @@
 %{
 
 #include <Box2D/Box2D.h>
+#include <helper.h>
 
 %}
 
@@ -26,13 +27,8 @@ b2FixtureDef::shape( ... )
 	CODE:
 		if( items > 1 )
 		{
-			SV* arg = ST(1);
-			b2Shape* var;
-			if( sv_isobject(arg) && (SvTYPE(SvRV(arg)) == SVt_PVMG) )
-				{
-					 var = (b2Shape*)SvIV((SV*)SvRV( arg ));
-					THIS->shape = var; 
-				}
+		
+			THIS->shape = (b2Shape *) stack_to_object( ST(1) );	
 
 		}
 

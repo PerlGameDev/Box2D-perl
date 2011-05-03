@@ -12,7 +12,7 @@ my $world = Box2D::b2World->new($vec, 1);
 
 my $body_def = Box2D::b2BodyDef->new();
 
-$body_def->position->Set(0.0, -15.0);
+$body_def->position->Set(0.0, -2.0);
 
 my $groundBody = $world->CreateBody($body_def); 
 
@@ -40,7 +40,7 @@ $dynamicBox->SetAsBox( 1.0, 1.0 );
 my $fixtureDef = Box2D::b2FixtureDef->new();
 $fixtureDef->shape( $dynamicBox );
 $fixtureDef->density(1.0);
-$fixtureDef->friction(0.3);
+$fixtureDef->friction(0.01);
 
 
 $body->CreateFixtureDef($fixtureDef);
@@ -48,18 +48,23 @@ $body->CreateFixtureDef($fixtureDef);
 my $timeStep = 1.0/60.0;
 my $velocityIterations = 6;
 my $positionIterations = 2;
+$app->add_move_handler(
+sub {
+
+	$world->Step( $timeStep, $velocityIterations, $positionIterations );
+	$world->ClearForces();
+
+
+}
+);
 
 $app->add_show_handler( sub 
 {
 	$app->draw_rect([0,0,300,300],[0,0,0,255]);
 	$app->draw_rect( [$pos->x(), 250-$pos->y(), 50, 10], [0,255,0,255] );
-
-	$world->Step( $timeStep, $velocityIterations, $positionIterations );
-	$world->ClearForces();
-
 	my $position = $body->GetPosition();
 	my $angle = $body->GetAngle();
-
+warn $angle;
 $app->draw_rect( [$position->x(), 250-$position->y(), 1*16, 1*16], [255,255,0,255] );
 $app->update();
 
