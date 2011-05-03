@@ -122,6 +122,48 @@ b2BodyDef::awake( ... )
 	OUTPUT:
 		RETVAL
 
+bool
+b2BodyDef::fixedRotation( ... )
+	CODE:
+		if( items > 1 )
+		{
+			THIS->fixedRotation = (bool)SvNV( ST(1) );
+		}
+		RETVAL = THIS->fixedRotation;
+	OUTPUT:
+		RETVAL
+
+bool
+b2BodyDef::bullet( ... )
+	CODE:
+		if( items > 1 )
+		{
+			THIS->bullet = (bool)SvNV( ST(1) );
+		}
+		RETVAL = THIS->bullet;
+	OUTPUT:
+		RETVAL
+
+bool
+b2BodyDef::active( ... )
+	CODE:
+		if( items > 1 )
+		{
+			THIS->active = (bool)SvNV( ST(1) );
+		}
+		RETVAL = THIS->active;
+	OUTPUT:
+		RETVAL
+
+SV*
+b2BodyDef::userData ( ... )
+	PPCODE: 
+		if ( items > 1)
+			THIS->userData = (void *)new_data( ST(1) ); 
+		 if (!THIS->userData)
+		  XSRETURN_EMPTY;
+		  ST(0) = (SV *)THIS->userData;
+		  XSRETURN(1);
 
 
 %}
