@@ -7,6 +7,8 @@ use SDLx::App;
 use SDLx::Sprite;
 use SDL::Events ':all';
 
+use Math::Trig 'rad2deg';
+
 my $WIDTH = 300;
 my $HEIGHT = 300;
 
@@ -39,7 +41,7 @@ $app->update();
 # this will store the falling bodies
 my %bodies = ();
 my $bodyCount = 0; 
-my $bodySize = 8.0;
+my $bodySize = 10.0;
 
 
 sub makeBody {
@@ -168,7 +170,7 @@ $app->add_show_handler(
 							   my $body_n = $_; 
 							   my $body = $bodies{$body_n};
                                my $position = $body->GetPosition();
-                               my $angle = $body->GetAngle();
+                               my $angle = rad2deg($body->GetAngle());
 							# Box sprite
 							my $bodySprite = SDLx::Sprite->new( surface => $bodySurface );
 
