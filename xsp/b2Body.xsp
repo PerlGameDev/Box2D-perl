@@ -1,6 +1,7 @@
 %{
 
 #include <Box2D/Box2D.h>
+#include <helper.h>
 
 %}
 
@@ -360,6 +361,44 @@ b2Body::IsFixedRotation()
 		RETVAL = THIS->IsFixedRotation();
 	OUTPUT:
 		RETVAL
+
+
+b2Body*
+b2Body::GetNext()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Body";
+	CODE:
+		RETVAL = THIS->GetNext();
+	OUTPUT:
+		RETVAL
+
+
+b2World*
+b2Body::GetWorld()
+	PREINIT:
+		const char* CLASS = "Box2D::b2World";
+	CODE:
+		RETVAL = THIS->GetWorld();
+	OUTPUT:
+		RETVAL
+
+
+SV*
+b2Body::GetUserData ( )
+	PPCODE: 
+		 void* userData = THIS->GetUserData();
+		 if (!userData)
+		  XSRETURN_EMPTY;
+		  ST(0) = (SV *)userData;
+		  XSRETURN(1);
+
+void
+b2Body::SetUserData ( ... )
+	PPCODE: 
+		if ( items > 1)
+			THIS->SetUserData( (void *)new_data( ST(1) ) );
+
+
 
 
 %}
