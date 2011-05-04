@@ -48,7 +48,7 @@ b2Body::SetTransform( position, angle )
 b2Transform*
 b2Body::GetTransform( )
 	PREINIT:
-		cont char* CLASS = "Box2D::b2Transform";
+		const char* CLASS = "Box2D::b2Transform";
 	CODE:
 		b2Transform bt = THIS->GetTransform();
 		RETVAL = &bt;
@@ -69,6 +69,102 @@ float32
 b2Body::GetAngle()
 	CODE:
 		RETVAL = THIS->GetAngle();
+	OUTPUT:
+		RETVAL
+
+b2Vec2 *
+b2Body::GetWorldCenter()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = (b2Vec2 *)&(THIS->GetWorldCenter());
+	OUTPUT:
+		RETVAL 
+
+b2Vec2 *
+b2Body::GetLocalCenter()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = (b2Vec2 *)&(THIS->GetLocalCenter());
+	OUTPUT:
+		RETVAL 
+
+
+void
+b2Body::SetLinearVelocity( v )
+	b2Vec2 * v
+	CODE:
+		THIS->SetLinearVelocity( *v );
+
+
+b2Vec2 *
+b2Body::GetLinearVelocity()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		b2Vec2 lv = THIS->GetLinearVelocity();
+		RETVAL =  &lv;
+	OUTPUT:
+		RETVAL 
+
+void 
+b2Body::SetAngularVelocity(omega)
+	float32 omega
+	CODE:
+		THIS->SetAngularVelocity( omega );
+
+float32 
+b2Body::GetAngularVelocity()
+	CODE:
+		RETVAL = THIS->GetAngularVelocity();
+	OUTPUT:
+		RETVAL
+
+
+void
+b2Body::ApplyForce( force, point )
+	b2Vec2 * force
+	b2Vec2 * point
+	CODE:
+		THIS->ApplyForce( *force, *point );
+
+
+
+void 
+b2Body::ApplyTorque(torque)
+	float32 torque
+	CODE:
+		THIS->ApplyTorque( torque );
+
+
+void
+b2Body::ApplyLinearImpulse( impulse, point )
+	b2Vec2 * impulse
+	b2Vec2 * point
+	CODE:
+		THIS->ApplyLinearImpulse( *impulse, *point );
+
+
+void 
+b2Body::ApplyAngularImpulse(impulse)
+	float32 impulse
+	CODE:
+		THIS->ApplyAngularImpulse( impulse );
+
+
+float32 
+b2Body::GetMass()
+	CODE:
+		RETVAL = THIS->GetMass();
+	OUTPUT:
+		RETVAL
+
+
+float32 
+b2Body::GetInertia()
+	CODE:
+		RETVAL = THIS->GetInertia();
 	OUTPUT:
 		RETVAL
 
