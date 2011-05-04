@@ -1,0 +1,148 @@
+
+%{
+
+#include <Box2D/Box2D.h>
+#include <helper.h>
+
+%}
+
+
+%module{Box2D};
+
+%name{Box2D::b2PerlContactListener} class PerlContactListener : public %name{Box2D::b2ContactListener} b2ContactListener
+{
+    %code{%
+        SV * beginContact;
+        SV * endContact;
+        SV * preSolve;
+        SV * postSolve;
+          %}
+          // ca n be called in Perl as My::Class->new( ... );
+    PerlContactListener( );
+    //beginContact(null),
+    //endContact(null),
+    //preSolve(null),
+    //postSolve(null) {}
+              
+          // standard DESTROY method
+          ~PerlContactListener();
+
+          %{
+          void
+           b2ContactListener::SetBeginContactSub(s)
+              SV *    s
+            CODE:
+              /* Take a copy of the callback */
+              if (beginContact == (SV*)NULL)
+                  /* First time, so create a new SV */
+                  beginContact = newSVsv(s) ;
+              else
+                  /* Been here before, so overwrite */
+                  SvSetSV(beginContact, s) ;
+
+
+          void
+              b2ContactListener::SetEndContactSub(s)
+              SV *    s
+            CODE:
+              /* Take a copy of the callback */
+              if (endContact == (SV*)NULL)
+                  /* First time, so create a new SV */
+                  endContact = newSVsv(s) ;
+              else
+                  /* Been here before, so overwrite */
+                  SvSetSV(endContact, s) ;
+
+          void
+              b2ContactListener::SetPreSolveSub(s)
+              SV *    s
+            CODE:
+              /* Take a copy of the callback */
+              if (preSolve == (SV*)NULL)
+                  /* First time, so create a new SV */
+                  preSolve = newSVsv(s) ;
+              else
+                  /* Been here before, so overwrite */
+                  SvSetSV(preSolve, s) ;
+
+          void
+              b2ContactListener::SetPostSolveSub(s)
+              SV *    s
+            CODE:
+              /* Take a copy of the callback */
+              if (postSolve == (SV*)NULL)
+                  /* First time, so create a new SV */
+                  postSolve = newSVsv(s) ;
+              else
+                  /* Been here before, so overwrite */
+                  SvSetSV(postSolve, s) ;
+
+b2Contact *
+b2Fixture::ourContact( c )
+        b2Contact * c
+	PREINIT:
+		const char* CLASS = "Box2D::b2Contact";
+	CODE:
+		RETVAL = c;
+	OUTPUT:
+		RETVAL
+
+b2Manifold *
+b2Fixture::ourManifold( c )
+        b2Manifold * c
+	PREINIT:
+		const char* CLASS = "Box2D::b2Manifold";
+	CODE:
+		RETVAL = c;
+	OUTPUT:
+		RETVAL
+
+b2ContactImpulse *
+b2Fixture::ourContactImpulse( c )
+        b2ContactImpulse * c
+	PREINIT:
+		const char* CLASS = "Box2D::b2ContactImpulse";
+	CODE:
+		RETVAL = c;
+	OUTPUT:
+		RETVAL
+
+
+          %}
+
+    %{
+          void BeginContact(b2Contact* contact)
+          { 
+              if (!beginContact) {
+                  PUSHMARK(sp); /* should we change contact? */
+                  perl_call_sv( beginContact, G_DISCARD, ourContact(contact) );
+              }
+          }
+
+          void EndContact(b2Contact* contact)
+          { 
+              if (!endContact) {
+                  PUSHMARK(sp); /* should we change contact? */
+                  perl_call_sv( endContact, G_DISCARD, ourContact(contact) );
+              }
+          }
+
+          void PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
+          { 
+              if (!preSolve) {
+                  PUSHMARK(sp); /* should we change contact? */
+                  perl_call_sv( preSolve, G_DISCARD, ourContact(contact), ourManifold(oldManifold) );
+              }
+          }
+
+
+          void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
+          { 
+              if (!postSolve) {
+                  PUSHMARK(sp); /* should we change contact? */
+                  perl_call_sv( postSolve, G_DISCARD, ourContact(contact), ourManifold(impulse) );
+              }
+          }
+          %}
+
+};

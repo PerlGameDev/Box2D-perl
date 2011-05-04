@@ -50,6 +50,12 @@ b2World::DestroyBody( body )
 	CODE:
 		THIS->DestroyBody( body );
 
+void 
+b2World::SetContactListener( listener )
+        b2ContactListener* listener  
+	CODE:
+		THIS->SetContactListener( listener );
+
 %}
 	
 };
