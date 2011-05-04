@@ -170,7 +170,201 @@ b2Body::GetInertia()
 
 
 
+b2Vec2 *
+b2Body::GetWorldPoint(localPoint)
+	b2Vec2* localPoint
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		b2Vec2 lv = THIS->GetWorldPoint(*localPoint);
+		RETVAL =  &lv;
+	OUTPUT:
+		RETVAL 
+
+
+b2Vec2 *
+b2Body::GetWorldVector(localVector)
+	b2Vec2* localVector
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		b2Vec2 lv = THIS->GetWorldVector(*localVector);
+		RETVAL =  &lv;
+	OUTPUT:
+		RETVAL 
+
+b2Vec2 *
+b2Body::GetLocalPoint(worldPoint)
+	b2Vec2* worldPoint
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		b2Vec2 lv = THIS->GetLocalPoint(*worldPoint);
+		RETVAL =  &lv;
+	OUTPUT:
+		RETVAL 
+
+
+b2Vec2 *
+b2Body::GetLocalVector(worldVector)
+	b2Vec2* worldVector
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		b2Vec2 lv = THIS->GetLocalVector(*worldVector);
+		RETVAL =  &lv;
+	OUTPUT:
+		RETVAL 
+
+b2Vec2 *
+b2Body::GetLinearVelocityFromWorldPoint(worldPoint)
+	b2Vec2* worldPoint
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		b2Vec2 lv = THIS->GetLinearVelocityFromWorldPoint(*worldPoint);
+		RETVAL =  &lv;
+	OUTPUT:
+		RETVAL 
+
+b2Vec2 *
+b2Body::GetLinearVelocityFromLocalPoint(localPoint)
+	b2Vec2* localPoint
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		b2Vec2 lv = THIS->GetLinearVelocityFromLocalPoint(*localPoint);
+		RETVAL =  &lv;
+	OUTPUT:
+		RETVAL 
+
+float32
+b2Body::GetLinearDamping()
+	CODE:
+		RETVAL = THIS->GetLinearDamping();
+	OUTPUT:
+		RETVAL
+
+
+void
+b2Body::SetLinearDamping( linearDamping )
+	float32 linearDamping 
+	CODE:
+		THIS->SetLinearDamping( linearDamping );
+
+float32
+b2Body::GetAngluarDamping()
+	CODE:
+		RETVAL = NULL; //THIS->GetAngluarDamping();
+	OUTPUT:
+		RETVAL
+
+
+void
+b2Body::SetAngluarDamping( angluarDamping )
+	float32 angluarDamping 
+	CODE:
+		 //THIS->SetAngluarDamping( angluarDamping );
+
+
+void
+b2Body::SetType(type)
+	int type 
+	CODE:
+		THIS->SetType( (b2BodyType)type );
+
+
+int
+b2Body::GetType()
+	CODE:
+		RETVAL = (int)THIS->GetType();
+	OUTPUT:
+		RETVAL
+
+
+void
+b2Body::SetBullet(flag)
+	bool flag 
+	CODE:
+		THIS->SetBullet( flag );
+
+
+
+bool
+b2Body::IsBullet()
+	CODE:
+		RETVAL = THIS->IsBullet();
+	OUTPUT:
+		RETVAL
+
+
+void
+b2Body::SetSleepingAllowed(flag)
+	bool flag 
+	CODE:
+		THIS->SetSleepingAllowed( flag );
+
+
+
+bool
+b2Body::IsSleepingAllowed()
+	CODE:
+		RETVAL = THIS->IsSleepingAllowed();
+	OUTPUT:
+		RETVAL
+
+
+void
+b2Body::SetAwake(flag)
+	bool flag 
+	CODE:
+		 THIS->SetAwake( flag );
+
+
+
+bool
+b2Body::IsAwake()
+	CODE:
+		RETVAL = THIS->IsAwake();
+	OUTPUT:
+		RETVAL
+
+
+void
+b2Body::SetActive(flag)
+	bool flag 
+	CODE:
+		THIS->SetActive( flag );
+
+
+
+bool
+b2Body::IsActive()
+	CODE:
+		RETVAL = THIS->IsActive();
+	OUTPUT:
+		RETVAL
+
+
+void
+b2Body::SetFixedRotation(flag)
+	bool flag 
+	CODE:
+		THIS->SetFixedRotation( flag );
+
+
+
+bool
+b2Body::IsFixedRotation()
+	CODE:
+		RETVAL = THIS->IsFixedRotation();
+	OUTPUT:
+		RETVAL
+
+
 %}
+
+void ResetMassData();
 	
 };
 
