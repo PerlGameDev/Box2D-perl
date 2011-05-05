@@ -168,7 +168,7 @@ class PerlContactListener : public b2ContactListener
       LEAVE;
       
     } else {
-      fprintf(stderr,"PostSolve: Didn't call our SV!\n"); 
+      //fprintf(stderr,"PostSolve: Didn't call our SV!\n"); 
     }
 
   }

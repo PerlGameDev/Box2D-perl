@@ -52,7 +52,18 @@ my $endContact = 0;
 my $preSolve = 0;
 my $postSolve = 0;
 
-$listener->SetBeginContactSub(sub { warn "BeginContact!"; warn @_; $beginContact++;  } );
+# if this runs at least callback fixtures work as well!
+$listener->SetBeginContactSub(sub { warn "BeginContact!"; warn @_; $beginContact++;  
+                                    my ($contact) = @_;
+                                    my $fixA = $contact->GetFixtureA();
+                                    my $fixB = $contact->GetFixtureB();
+                                    warn "$fixA $fixB";
+                                    my $posA = $fixA->GetBody()->GetPosition();
+                                    my $posB = $fixB->GetBody()->GetPosition();
+                                    warn $posA->x() . " " . $posA->y(). " ".$fixA->GetDensity();
+                                    warn $posB->x() . " " . $posB->y(). " ".$fixB->GetDensity();
+                                    
+} );
 $listener->SetEndContactSub(sub { warn "EndContact!"; warn @_; $endContact++;  } );
 $listener->SetPreSolveSub(sub { #warn "PreSolve!"; warn @_; 
     $preSolve++;  } );
