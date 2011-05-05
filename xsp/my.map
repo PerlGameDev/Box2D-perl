@@ -9,9 +9,8 @@ b2PolygonShape *		O_OBJECT
 b2FixtureDef *		O_OBJECT
 b2Fixture * 		O_OBJECT
 b2Transform *		O_OBJECT
-PerlContactListener *           O_OBJECT
-b2ContactListener *             O_OBJECT
-b2Manifold *                    O_OBJECT
-b2Contact *                     O_OBJECT
-b2ContactImpuse *               O_OBJECT
-b2ContactImpulse *              O_OBJECT
+b2Manifold  *		O_OBJECT
+PerlContactListener *		O_OBJECT
+b2ContactListener *		O_OBJECT
+b2Contact *		O_OBJECT
+b2ContactImpulse *		O_OBJECT

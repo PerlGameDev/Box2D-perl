@@ -69,11 +69,19 @@ class PerlContactListener : public b2ContactListener
     if (beginContact) {
       /* fprintf(stderr,"BeginContact:Going to call our SV!\n"); */
 
+      //ST(0) = sv_newmortal();
+      //sv_setref_pv( ST(0), CLASS, (void*)RETVAL );
+
+
       dSP;
       ENTER;
       SAVETMPS;
-      PUSHMARK(SP);
-      XPUSHs( sv_2mortal( newSVpv( "Begin",0 )));
+      PUSHMARK(SP);		
+      // make a b2Contact and put it there!
+      const char* CLASS = "Box2D::b2Contact";
+      SV * contactSV = sv_newmortal();
+      sv_setref_pv( contactSV, CLASS, (void*)contact );
+      XPUSHs( contactSV ); //sv_2mortal( newSVpv( "Begin",0 )));
       PUTBACK;
       call_sv( (SV*)beginContact, G_DISCARD );
       FREETMPS;
@@ -90,7 +98,11 @@ class PerlContactListener : public b2ContactListener
       ENTER;
       SAVETMPS;
       PUSHMARK(SP);
-      XPUSHs( sv_2mortal( newSVpv( "End",0)));//ourContact(contact), 0 )));
+      const char* CLASS = "Box2D::b2Contact";
+      SV * contactSV = sv_newmortal();
+      sv_setref_pv( contactSV, CLASS, (void*)contact );
+      XPUSHs( contactSV ); //sv_2mortal( newSVpv( "Begin",0 )));
+      //XPUSHs( sv_2mortal( newSVpv( "End",0)));//ourContact(contact), 0 )));
       PUTBACK;
       call_sv( (SV*)endContact, G_DISCARD );
       FREETMPS;
@@ -105,6 +117,17 @@ class PerlContactListener : public b2ContactListener
       ENTER;
       SAVETMPS;
       PUSHMARK(SP);
+
+      const char* CLASS1 = "Box2D::b2Contact";
+      SV * contactSV = sv_newmortal();
+      sv_setref_pv( contactSV, CLASS1, (void*)contact );
+      XPUSHs( contactSV ); //sv_2mortal( newSVpv( "Begin",0 )));
+
+      const char* CLASS2 = "Box2D::b2Manifold";
+      SV * manifoldSV = sv_newmortal();
+      sv_setref_pv( manifoldSV, CLASS2, (void*) oldManifold );
+      XPUSHs( manifoldSV ); //sv_2mortal( newSVpv( "Begin",0 )));
+
       XPUSHs( sv_2mortal( newSVpv( "preC",0)));//ourContact(contact), 0 )));
       XPUSHs( sv_2mortal( newSVpv( "preM",0)));//ourManifold(oldManifold), 0 )));
       PUTBACK;
@@ -115,15 +138,30 @@ class PerlContactListener : public b2ContactListener
     }
   }
 
-  virtual void PostSolve(b2Contact* contact, const b2Manifold* oldManifold)
-  { 
+
+  virtual void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse) 
+  {
     if (postSolve) {
       dSP;
       ENTER;
       SAVETMPS;
       PUSHMARK(SP);
-      XPUSHs( sv_2mortal( newSVpv( "postC",0)));//ourContact(contact), 0 )));
-      XPUSHs( sv_2mortal( newSVpv( "postM",0)));//ourManifold(oldManifold), 0 )));
+      //XPUSHs( sv_2mortal( newSVpv( "postC",0)));//ourContact(contact), 0 )));
+      //XPUSHs( sv_2mortal( newSVsv(ourContact(contact))));
+      //XPUSHs( sv_2mortal( newSVpv( "postM",0)));//ourManifold(oldManifold), 0 )));
+      //XPUSHs( sv_2mortal( newSVsv(oldManifold)));
+
+      const char* CLASS1 = "Box2D::b2Contact";
+      SV * contactSV = sv_newmortal();
+      sv_setref_pv( contactSV, CLASS1, (void*)contact );
+      XPUSHs( contactSV ); //sv_2mortal( newSVpv( "Begin",0 )));
+
+      const char* CLASS2 = "Box2D::b2ContactImpulse";
+      SV * impulseSV = sv_newmortal();
+      sv_setref_pv( impulseSV, CLASS2, (void*) impulse );
+      XPUSHs( impulseSV ); //sv_2mortal( newSVpv( "Begin",0 )));
+
+
       PUTBACK;
       call_sv( (SV*)postSolve, G_DISCARD );
       FREETMPS;
