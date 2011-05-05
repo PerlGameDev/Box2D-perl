@@ -1,0 +1,108 @@
+
+%{
+
+#include <PerlContactListener.h>
+#include <Box2D/Box2D.h>
+#include <helper.h>
+
+
+%}
+
+
+%module{Box2D};
+
+%name{Box2D::PerlContactListener} class PerlContactListener : public b2ContactListener
+{
+
+    PerlContactListener( );
+              
+    // standard DESTROY method
+        ~PerlContactListener();
+
+
+    %{
+    
+void
+PerlContactListener::setBeginContactSub(name)
+    SV *    name
+    CODE:
+        if (THIS->beginContact == (SV*)NULL)
+            /* First time, so create a new SV */
+            THIS->beginContact = (void*)newSVsv(name);
+        else
+            /* Been here before, so overwrite */
+            SvSetSV((SV*)(THIS->beginContact), name);
+
+void
+PerlContactListener::setEndContactSub(name)
+    SV *    name
+    CODE:
+        if (THIS->endContact == (SV*)NULL)
+            /* First time, so create a new SV */
+            THIS->endContact = (void*)newSVsv(name);
+        else
+            /* Been here before, so overwrite */
+            SvSetSV((SV*)(THIS->endContact), name);
+
+
+void
+PerlContactListener::setPreSolveSub(name)
+    SV *    name
+    CODE:
+        if (THIS->preSolve == (SV*)NULL)
+            /* First time, so create a new SV */
+            THIS->preSolve = (void*)newSVsv(name);
+        else
+            /* Been here before, so overwrite */
+            SvSetSV((SV*)(THIS->preSolve), name);
+
+void
+PerlContactListener::setPostSolveSub(name)
+    SV *    name
+    CODE:
+        if (THIS->postSolve == (SV*)NULL)
+            /* First time, so create a new SV */
+            THIS->postSolve = (void*)newSVsv(name);
+        else
+            /* Been here before, so overwrite */
+            SvSetSV((SV*)(THIS->postSolve), name);
+
+
+
+
+
+b2Contact *
+PerlContactListener::ourContact( c )
+        b2Contact * c
+	PREINIT:
+		const char* CLASS = "Box2D::b2Contact";
+	CODE:
+		RETVAL = c;
+	OUTPUT:
+		RETVAL
+
+b2Manifold *
+PerlContactListener::ourManifold( c )
+        b2Manifold * c
+	PREINIT:
+		const char* CLASS = "Box2D::b2Manifold";
+	CODE:
+		RETVAL = c;
+	OUTPUT:
+		RETVAL
+
+b2ContactImpulse *
+PerlContactListener::ourContactImpulse( c )
+        b2ContactImpulse * c
+	PREINIT:
+		const char* CLASS = "Box2D::b2ContactImpulse";
+	CODE:
+		RETVAL = c;
+	OUTPUT:
+		RETVAL
+
+
+          %}
+
+
+};
