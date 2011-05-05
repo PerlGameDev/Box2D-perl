@@ -7,10 +7,10 @@
 class PerlContactListener : public b2ContactListener
 {
   public:
-  void * beginContact;
-  void * endContact;
-  void * preSolve;
-  void * postSolve;
+  SV * beginContact;
+  SV * endContact;
+  SV * preSolve;
+  SV * postSolve;
   
   PerlContactListener( ):
     beginContact(NULL),
@@ -20,51 +20,55 @@ class PerlContactListener : public b2ContactListener
   
     ~PerlContactListener(){};
   
-//  void SetBeginContactSub( void * ourSub ) {
-//    /* Take a copy of the callback */
-//      if (beginContact == (SV*)NULL)
-//        /* First time, so create a new SV */
-//        beginContact = newSVsv( ourSub ) ;
-//      else
-//        /* Been here before, so overwrite */
-//        SvSetSV(beginContact,  ourSub ) ;
-//  }
-//  void SetEndContactSub( void * s) {
-//    /* Take a copy of the callback */
-//      if (endContact == (SV*)NULL)
-//        /* First time, so create a new SV */
-//        endContact = newSVsv(s) ;
-//      else
-//        /* Been here before, so overwrite */
-//        SvSetSV(endContact, s) ;
-//  }
-//  void SetPreSolveSub( void * s ) {
-//    /* Take a copy of the callback */
-//      if (preSolve == (SV*)NULL)
-//        /* First time, so create a new SV */
-//        preSolve = newSVsv(s) ;
-//      else
-//        /* Been here before, so overwrite */
-//        SvSetSV(preSolve, s) ;
-//  }
-//  void SetPostSolveSub( void * s) {
-//
-//      if (postSolve == (SV*)NULL)
-//        /* First time, so create a new SV */
-//        postSolve = newSVsv(s) ;
-//      else
-//        /* Been here before, so overwrite */
-//        SvSetSV(postSolve, s) ;
-//  }
+  void SetBeginContactSub( void * ourSub ) {
+    /* Take a copy of the callback */
+      if (beginContact == NULL) {
+        /* First time, so create a new SV */
+        /* fprintf(stderr,"Setting BeginContact!\n"); */
+        beginContact = newSVsv( (SV*)ourSub ) ;
+      } else {
+        /* Been here before, so overwrite */
+        SvSetSV(beginContact,  (SV*)ourSub ) ;
+      }
+  }
+  void SetEndContactSub( void * s) {
+    /* Take a copy of the callback */
+      if (endContact == (SV*)NULL)
+        /* First time, so create a new SV */
+        endContact = newSVsv( (SV*) s) ;
+      else
+        /* Been here before, so overwrite */
+        SvSetSV(endContact, (SV*) s) ;
+  }
+  void SetPreSolveSub( void * s ) {
+    /* Take a copy of the callback */
+      if (preSolve == (SV*)NULL)
+        /* First time, so create a new SV */
+        preSolve = newSVsv( (SV*)s) ;
+      else
+        /* Been here before, so overwrite */
+        SvSetSV(preSolve, (SV*)s) ;
+  }
+  void SetPostSolveSub( void * s) {
+
+      if (postSolve == (SV*)NULL)
+        /* First time, so create a new SV */
+        postSolve = newSVsv((SV*)s) ;
+      else
+        /* Been here before, so overwrite */
+        SvSetSV(postSolve, (SV*)s) ;
+  }
 
   b2Contact * ourContact( b2Contact * c );
   b2Manifold * ourManifold( b2Manifold * c );
   b2ContactImpulse * ourContactImpulse( b2ContactImpulse * c );
 
 
-  void BeginContact(b2Contact* contact)
+  virtual void BeginContact(b2Contact* contact)
   { 
-    if (!beginContact) {
+    if (beginContact) {
+      /* fprintf(stderr,"BeginContact:Going to call our SV!\n"); */
+
       dSP;
       ENTER;
       SAVETMPS;
@@ -74,12 +78,14 @@ class PerlContactListener : public b2ContactListener
       call_sv( (SV*)beginContact, G_DISCARD );
       FREETMPS;
       LEAVE;
+    } else {
+      /* fprintf(stderr,"BeginContact: Didn't call our SV!\n"); */
     }
   }
   
-  void EndContact(b2Contact* contact)
+  virtual void EndContact(b2Contact* contact)
   { 
-    if (!endContact) {
+    if (endContact) {
       dSP;
       ENTER;
       SAVETMPS;
@@ -92,9 +98,9 @@ class PerlContactListener : public b2ContactListener
     }
   }
   
-  void PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
+  virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
   { 
-    if (!preSolve) {
+    if (preSolve) {
       dSP;
       ENTER;
       SAVETMPS;
@@ -109,9 +115,9 @@ class PerlContactListener : public b2ContactListener
     }
   }
 
-  void PostSolve(b2Contact* contact, const b2Manifold* oldManifold)
+  virtual void PostSolve(b2Contact* contact, const b2Manifold* oldManifold)
   { 
-    if (!preSolve) {
+    if (postSolve) {
       dSP;
       ENTER;
       SAVETMPS;
@@ -123,9 +129,51 @@ class PerlContactListener : public b2ContactListener
       FREETMPS;
       LEAVE;
       
+    } else {
+      fprintf(stderr,"PostSolve: Didn't call our SV!\n"); 
     }
+
   }
 
 };
+
+// void
+// PerlContactListener::setEndContactSub(name)
+//     SV *    name
+//     CODE:
+//         THIS->setEndContactSub( name );
+// 
+//         if (THIS->endContact == (SV*)NULL)
+//             /* First time, so create a new SV */
+//             THIS->endContact = (void*)newSVsv(name);
+//         else
+//             /* Been here before, so overwrite */
+//             SvSetSV((SV*)(THIS->endContact), name);
+// 
+// 
+// void
+// PerlContactListener::setPreSolveSub(name)
+//     SV *    name
+//     CODE:
+//         if (THIS->preSolve == (SV*)NULL)
+//             /* First time, so create a new SV */
+//             THIS->preSolve = (void*)newSVsv(name);
+//         else
+//             /* Been here before, so overwrite */
+//             SvSetSV((SV*)(THIS->preSolve), name);
+// 
+// void
+// PerlContactListener::setPostSolveSub(name)
+//     SV *    name
+//     CODE:
+//         if (THIS->postSolve == (SV*)NULL)
+//             /* First time, so create a new SV */
+//             THIS->postSolve = (void*)newSVsv(name);
+//         else
+//             /* Been here before, so overwrite */
+//             SvSetSV((SV*)(THIS->postSolve), name);
+// 
+// 
+
 
 #endif

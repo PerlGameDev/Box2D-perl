@@ -54,6 +54,7 @@ void
 b2World::SetContactListener( listener )
         b2ContactListener* listener  
 	CODE:
+                /* fprintf(stderr,"Contact Listener Set!\n\n\n"); */
 		THIS->SetContactListener( listener );
 
 %}

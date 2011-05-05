@@ -146,6 +146,21 @@ $app->add_event_handler(
 );
 
 
+
+my $listener = Box2D::PerlContactListener->new();
+my $beginContact = 0;
+my $endContact = 0;
+my $preSolve = 0;
+my $postSolve = 0;
+
+$listener->setBeginContactSub(sub { warn "BeginContact!"; warn @_; $beginContact++;  } );
+$listener->setEndContactSub(sub { warn "EndContact!"; warn @_; $endContact++;  } );
+$listener->setPreSolveSub(sub { warn "PreSolve!"; warn @_; $preSolve++;  } );
+$listener->setPostSolveSub(sub { warn "PostSolve!"; warn @_; $postSolve++; });
+
+$world->SetContactListener( $listener );
+
+
 $app->add_show_handler( 
                        sub {
                            

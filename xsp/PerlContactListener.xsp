@@ -11,7 +11,7 @@
 
 %module{Box2D};
 
-%name{Box2D::PerlContactListener} class PerlContactListener : public b2ContactListener
+%name{Box2D::PerlContactListener} class PerlContactListener : public %name{Box2D::b2ContactListener} b2ContactListener
 {
 
     PerlContactListener( );
@@ -23,49 +23,30 @@
     %{
     
 void
-PerlContactListener::setBeginContactSub(name)
+PerlContactListener::SetBeginContactSub( name )
     SV *    name
     CODE:
-        if (THIS->beginContact == (SV*)NULL)
-            /* First time, so create a new SV */
-            THIS->beginContact = (void*)newSVsv(name);
-        else
-            /* Been here before, so overwrite */
-            SvSetSV((SV*)(THIS->beginContact), name);
-
-void
-PerlContactListener::setEndContactSub(name)
-    SV *    name
-    CODE:
-        if (THIS->endContact == (SV*)NULL)
-            /* First time, so create a new SV */
-            THIS->endContact = (void*)newSVsv(name);
-        else
-            /* Been here before, so overwrite */
-            SvSetSV((SV*)(THIS->endContact), name);
+        /* fprintf(stderr,"XS Code Begin Set!\n");*/
+        THIS->SetBeginContactSub( name );
 
 
 void
-PerlContactListener::setPreSolveSub(name)
+PerlContactListener::SetEndContactSub(name)
     SV *    name
     CODE:
-        if (THIS->preSolve == (SV*)NULL)
-            /* First time, so create a new SV */
-            THIS->preSolve = (void*)newSVsv(name);
-        else
-            /* Been here before, so overwrite */
-            SvSetSV((SV*)(THIS->preSolve), name);
+        THIS->SetEndContactSub( name );
 
 void
-PerlContactListener::setPostSolveSub(name)
+PerlContactListener::SetPreSolveSub(name)
     SV *    name
     CODE:
-        if (THIS->postSolve == (SV*)NULL)
-            /* First time, so create a new SV */
-            THIS->postSolve = (void*)newSVsv(name);
-        else
-            /* Been here before, so overwrite */
-            SvSetSV((SV*)(THIS->postSolve), name);
+        THIS->SetPreSolveSub( name );
+
+void
+PerlContactListener::SetPostSolveSub(name)
+    SV *    name
+    CODE:
+        THIS->SetPostSolveSub( name );
 
 
 
