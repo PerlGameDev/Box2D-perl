@@ -7,15 +7,27 @@
 
 %module{Box2D};
 
+	enum Type
+	{
+		e_unknown= -1,
+		e_circle = 0,
+		e_polygon = 1,
+		e_typeCount = 2,
+	};
+
+
 %name{Box2D::b2Shape} class b2Shape 
 { 
 
 %{
 
-void
-b2Shape::new( )
+int
+b2Shape::GetType( )
 	CODE:
-		croak("Abstract Datatype");
+		RETVAL=(int)THIS->GetType();
+	OUTPUT:
+		RETVAL
+
 
 %}
 	
