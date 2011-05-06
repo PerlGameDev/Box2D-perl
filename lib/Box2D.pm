@@ -33,4 +33,14 @@ e_typeCount => 2,
 
 };
 
+BEGIN {
+*Box2D::b2World::SetContactListener = sub{
+    if (UNIVERSAL::isa($_[1],"Box2D::b2ContactListener")) {
+        $_[0]->SetContactListenerXS( $_[1]->_getListener() );
+    } else {
+        $_[0]->SetContactListenerXS( $_[1] );
+    }
+};
+}
+
 1; # End of Box2D

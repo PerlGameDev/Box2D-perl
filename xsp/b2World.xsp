@@ -51,7 +51,7 @@ b2World::DestroyBody( body )
 		THIS->DestroyBody( body );
 
 void 
-b2World::SetContactListener( listener )
+b2World::SetContactListenerXS( listener )
         b2ContactListener* listener  
 	CODE:
                 /* fprintf(stderr,"Contact Listener Set!\n\n\n"); */

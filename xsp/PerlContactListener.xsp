@@ -11,7 +11,7 @@
 
 %module{Box2D};
 
-%name{Box2D::PerlContactListener} class PerlContactListener : public %name{Box2D::b2ContactListener} b2ContactListener
+%name{Box2D::PerlContactListener} class PerlContactListener 
 {
 
     PerlContactListener( );
