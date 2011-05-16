@@ -13,6 +13,7 @@ my $builder = Module::Build::WithXSpp->new(
     build_requires => {
         'Test::More' => 0,
 		'Alien::Box2D' => 0,
+        'ExtUtils::XSpp' => 0.14,
     },
     add_to_cleanup      => [ 'Box2D-*' ],
 	extra_typemap_modules => { 
