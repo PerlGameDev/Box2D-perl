@@ -254,18 +254,18 @@ b2Body::SetLinearDamping( linearDamping )
 		THIS->SetLinearDamping( linearDamping );
 
 float32
-b2Body::GetAngluarDamping()
+b2Body::GetAngularDamping()
 	CODE:
-		RETVAL = NULL; //THIS->GetAngluarDamping();
+		RETVAL = THIS->GetAngularDamping();
 	OUTPUT:
 		RETVAL
 
 
 void
-b2Body::SetAngluarDamping( angluarDamping )
-	float32 angluarDamping 
+b2Body::SetAngularDamping( angularDamping )
+	float32 angularDamping 
 	CODE:
-		 //THIS->SetAngluarDamping( angluarDamping );
+		THIS->SetAngularDamping( angularDamping );
 
 
 void
