@@ -1,5 +1,8 @@
 Revision history for Box2D
 
-0.01    Date/time
+0.01    19/05/2011 
         First version, released on an unsuspecting world.
+		Added basic set of classes
+		Added perl contact listeners
+		
 

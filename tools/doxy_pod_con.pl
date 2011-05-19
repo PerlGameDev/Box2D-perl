@@ -19,17 +19,26 @@ my $comments;
 my $function;
 foreach(@matches)
 {
-	if( $_ =~ /(\/\/\/)(.*)[^\n]/ )
+	chomp;
+	$_ =~ s/\\m//g;
+	print $_."\n";
+
+=pod
+	if( $_ =~ /(\/\/\/)(.*)/ )
 	{
 		$comments .= $2."\n";	
 	}
 	else
 	{
+		if( $comments )
+		{
 		$function = $_;
 
 		print "=head2 $function \n$comments \n";
 
 		$comments = '';
+		}
 
 	}
+=cut 
 }
