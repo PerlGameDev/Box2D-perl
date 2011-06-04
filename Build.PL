@@ -25,4 +25,7 @@ my $builder = Module::Build::WithXSpp->new(
 	extra_linker_flags => [ Alien::Box2D->config('libs') ]
 );
 
+# early_includes will be included right before perl.h in main.xs
+$builder->early_includes( [ qw( "sys/vnode.h" ) ] ) if $^O eq 'solaris';
+
 $builder->create_build_script();
