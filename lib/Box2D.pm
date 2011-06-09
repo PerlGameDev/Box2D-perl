@@ -19,6 +19,7 @@ Currently this module is a 1 to 1 binding. This is still a WIP and so far here a
 	b2FixtureDef
 	b2Manifold
 	b2PolygonShape
+	b2CircleShape
 	b2Shape
 	b2Vec2
 	b2World

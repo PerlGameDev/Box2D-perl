@@ -1,0 +1,34 @@
+%module{Box2D};
+
+%name{Box2D::b2CircleShape} class b2CircleShape : public %name{Box2D::b2Shape} b2Shape
+{
+
+~b2CircleShape();
+
+%{
+
+b2CircleShape *
+b2CircleShape::new( )
+	CODE:
+		RETVAL = new b2CircleShape();
+	OUTPUT:
+		RETVAL
+
+void
+b2CircleShape::SetRadius( r )
+		float32 r
+	CODE:
+		THIS->m_radius = r;
+
+
+void
+b2CircleShape::check_p(...)
+	CODE:
+		warn("Circle point %p", THIS);
+		if( items > 1)
+			warn( "Circle arg %p", SvRV(ST(1)));
+
+%}
+
+};
+
