@@ -48,10 +48,9 @@ sub makeBody {
     # create the body from that definition
     my $body = $world->CreateBody($bodyDef);
 
-    # It's a polygonal shape 16x16
+    # It's a circle with radius 8
     # this is the shape information that the fixture holds
     my $dynamicCircle = Box2D::b2CircleShape->new();
-    #$dynamicCircle->SetAsBox( $bodySize, $bodySize );
     $dynamicCircle->SetRadius($bodySize);
 
     # make the fixture
@@ -123,10 +122,8 @@ sub makeGround {
     # record the wall
     push @walls, $groundBody;
     return $groundBody;
-
 }
 
-#
 $app->add_event_handler(
     sub {
         my ( $event, $app ) = @_;
@@ -166,7 +163,7 @@ $app->add_show_handler(
             # draw around the middle of the object
             $app->draw_rect(
                 [   $x - $groundRad,
-                    $HEIGHT - $y - $groundRad, 
+                    $HEIGHT - $y - $groundRad,
                     $groundRad * 2,
                     $groundRad * 2
                 ],
@@ -182,8 +179,8 @@ $app->add_show_handler(
             my ( $x, $y ) = ( $pos->x(), $pos->y() );
             my $angle = $body->GetAngle();
 
-            # print join(" ",$position->x(),$position->y(),$angle,$/);
-            $app->draw_circle_filled( [   $x, $HEIGHT - $y ], $bodySize, [ 255, 255, 0, 255 ]);
+            $app->draw_circle_filled( [ $x, $HEIGHT - $y ],
+                $bodySize, [ 255, 255, 0, 255 ] );
 
             # arbitrary threshold before we delete an object;
             if ( $y > -200 ) {
@@ -192,13 +189,13 @@ $app->add_show_handler(
         }
         @bodies = @nextbodies;
 
- # DestroyBody is dangerous, you want to destroy it in perl pretty quickly too
+        # DestroyBody is dangerous, you want to destroy it in perl pretty
+        # quickly too
         while (@deletebodies) {
             $world->DestroyBody( pop @deletebodies );
         }
 
         $app->update();
-
     }
 );
 
