@@ -28,6 +28,16 @@ b2Shape::GetType( )
 	OUTPUT:
 		RETVAL
 
+float32
+b2Shape::m_radius( ... )
+	CODE:
+		if( items > 1 )
+		{
+			THIS->m_radius = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->m_radius;
+	OUTPUT:
+		RETVAL
 
 %}
 	

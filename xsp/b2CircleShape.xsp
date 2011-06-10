@@ -15,13 +15,6 @@ b2CircleShape::new( )
 		RETVAL
 
 void
-b2CircleShape::SetRadius( r )
-		float32 r
-	CODE:
-		THIS->m_radius = r;
-
-
-void
 b2CircleShape::check_p(...)
 	CODE:
 		warn("Circle point %p", THIS);

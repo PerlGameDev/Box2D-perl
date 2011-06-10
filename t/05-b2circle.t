@@ -28,7 +28,9 @@ my $body = $world->CreateBody($bodyDef);
 pass("Create body for world ");
 
 my $dynamicCircle = Box2D::b2CircleShape->new();
-$dynamicCircle->SetRadius(1.0);
+my $radius = 1.0;
+$dynamicCircle->m_radius($radius);
+is ( $dynamicCircle->m_radius(), $radius, "m_radius" );
 
 pass("Create circle");
 

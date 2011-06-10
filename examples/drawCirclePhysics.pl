@@ -51,7 +51,7 @@ sub makeBody {
     # It's a circle with radius 8
     # this is the shape information that the fixture holds
     my $dynamicCircle = Box2D::b2CircleShape->new();
-    $dynamicCircle->SetRadius($bodySize);
+    $dynamicCircle->m_radius($bodySize);
 
     # make the fixture
     my $fixtureDef = Box2D::b2FixtureDef->new();
