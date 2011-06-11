@@ -8,8 +8,8 @@
 %module{Box2D};
 
 
-%name{Box2D::b2FixtureDef} class b2FixtureDef 
-{ 
+%name{Box2D::b2FixtureDef} class b2FixtureDef
+{
 
 %{
 
@@ -27,8 +27,8 @@ b2FixtureDef::shape( ... )
 	CODE:
 		if( items > 1 )
 		{
-		
-			THIS->shape = (b2Shape *) stack_to_object( ST(1) );	
+
+			THIS->shape = (b2Shape *) stack_to_object( ST(1) );
 
 		}
 
@@ -59,7 +59,18 @@ b2FixtureDef::friction( ... )
 	OUTPUT:
 		RETVAL
 
+float32
+b2FixtureDef::restitution( ... )
+	CODE:
+		if( items > 1 )
+		{
+			THIS->restitution = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->restitution;
+	OUTPUT:
+		RETVAL
+
 %}
-	
+
 };
 
