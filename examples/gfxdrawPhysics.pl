@@ -74,7 +74,7 @@ sub makeBody {
     # record the body
      $bodies{ $bodyCount++ } = $body; 
 
-	$body->SetUserData( "This is body $bodyCount" );
+	$body->SetUserData( sub{ warn "Ok so subroutines can be done: Body count".$bodyCount; } );
 	 
     return $body;
 }
@@ -165,11 +165,11 @@ $listener->SetBeginContactSub(
 		my $body_a = $fix_a->GetBody();
 		my $body_b = $fix_b->GetBody(); 
 
-		warn "USER DATA of FIXTURE A: ". $fix_a->GetUserData(); 
-		warn "USER DATA of FIXTURE B: ". $fix_b->GetUserData();
 
-		warn "USER DATA of BODY A: ". $body_a->GetUserData(); 
-		warn "USER DATA of BODY B: ". $body_b->GetUserData();
+		my $sub_a =  $body_a->GetUserData(); 
+		$sub_a->() if $sub_a;
+		my $sub_b = $body_b->GetUserData();
+		$sub_b->() if $sub_b;
 		$beginContact++;  } 
 	);
 $listener->SetEndContactSub(sub {  $endContact++;  } );
