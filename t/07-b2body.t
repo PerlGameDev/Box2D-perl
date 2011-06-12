@@ -25,8 +25,8 @@ isa_ok( $position, "Box2D::b2Vec2" );
 is( $position->x, $x0, "GetPosition x" );
 is( $position->y, $y0, "GetPosition y" );
 
-my ( $v_x, $v_y ) = ( 1.0, 2.0 );
-my $v0 = Box2D::b2Vec2->new( $v_x, $v_y );
+my ( $v0_x, $v0_y ) = ( 1.0, 2.0 );
+my $v0 = Box2D::b2Vec2->new( $v0_x, $v0_y );
 
 $body->SetLinearVelocity($v0);
 pass("SetLinearVelocity");
@@ -36,14 +36,14 @@ pass("GetLinearVelocity");
 
 isa_ok( $v, "Box2D::b2Vec2" );
 
-is( $v->x, $v_x, "LinearVelocity x" );
-is( $v->y, $v_y, "LinearVelocity y" );
+is( $v->x, $v0_x, "LinearVelocity x" );
+is( $v->y, $v0_y, "LinearVelocity y" );
 
-my $ang_v0 = 1.0;
-$body->SetAngularVelocity($ang_v0);
+my $v0_ang = 1.0;
+$body->SetAngularVelocity($v0_ang);
 pass("SetAngularVelocity");
 
-is( $body->GetAngularVelocity(), $ang_v0, "GetAngularVelocity" );
+is( $body->GetAngularVelocity(), $v0_ang, "GetAngularVelocity" );
 
 is( $body->GetType(), $type0, "GetType" );
 
