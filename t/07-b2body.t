@@ -14,6 +14,9 @@ $body_def->type($type0);
 my ( $x0, $y0 ) = ( 11.0, 12.0 );
 $body_def->position->Set( $x0, $y0 );
 
+my $angle0 = 1.0;
+$body_def->angle($angle0);
+
 my $body = $world->CreateBody($body_def);
 isa_ok( $body, "Box2D::b2Body" );
 
@@ -50,5 +53,10 @@ is( $body->GetType(), $type0, "GetType" );
 my $type1 = Box2D::b2_kinematicBody;
 $body->SetType($type1);
 is( $body->GetType(), $type1, "SetType" );
+
+is( $body->GetAngle(), $angle0, "GetAngle" );
+
+my $transform = $body->GetTransform();
+is( $transform->GetAngle(), $angle0, "GetTransform angle" );
 
 done_testing;
