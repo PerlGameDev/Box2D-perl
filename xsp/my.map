@@ -1,6 +1,7 @@
 int32				T_IV 
 float32				T_NV
 b2Vec2 *				O_OBJECT
+b2Mat22 *				O_OBJECT
 b2World *			O_OBJECT
 b2Body *				O_OBJECT
 b2BodyDef * 			O_OBJECT
