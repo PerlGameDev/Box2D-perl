@@ -43,6 +43,15 @@ b2World::CreateBody( body_def )
 	OUTPUT:
 		RETVAL
 
+b2Joint*
+b2World::CreateJoint( joint_def )
+	b2JointDef* joint_def
+	PREINIT:
+		const char* CLASS = "Box2D::b2Joint";
+	CODE:
+		RETVAL = THIS->CreateJoint( joint_def );
+	OUTPUT:
+		RETVAL
 
 void
 b2World::DestroyBody( body )
