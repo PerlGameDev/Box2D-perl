@@ -60,6 +60,10 @@ my $app = SDLx::App->new(
 my $_fps = SDLx::FPS->new( fps => $fps );
 my $event = SDL::Event->new();
 
+my $realFps = $fps;
+my $frames  = 1;
+my $ticks   = SDL::get_ticks();
+
 while (1) {
     SDL::Events::pump_events();
     while ( SDL::Events::poll_event($event) ) {
@@ -81,10 +85,19 @@ while (1) {
     draw_circle($pivot);
     draw_circle($bob);
 
+    if ( $frames % $fps == 0 ) {
+        my $t = SDL::get_ticks();
+        $realFps = $fps / ( $t - $ticks ) * 1000;
+        $ticks = $t;
+    }
+    $app->draw_gfx_text( [ 10, 10 ],
+        0xFFFFFFFF, sprintf( "FPS: %0.2f", $realFps ) );
 
     $app->update();
 
     $_fps->delay();
+
+    $frames++;
 }
 
 sub make_static_circle {
