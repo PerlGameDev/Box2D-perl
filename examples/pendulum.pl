@@ -3,19 +3,25 @@ use warnings;
 use Box2D;
 use SDL;
 use SDL::Video;
+use SDL::Event;
+use SDL::Events;
 use SDLx::App;
+use SDLx::FPS;
 
-my $width    = 300;
-my $height   = 300;
-my $timestep = 1.0 / 60.0;
+my $width  = 300;
+my $height = 300;
+
+# frames per second
+my $fps      = 60.0;
+my $timestep = 1.0 / $fps;
 
 # velocity iterations
-my $vIters = 6;
+my $vIters = 10;
 
 # position iterations
-my $pIters = 6;
+my $pIters = 10;
 
-my $gravity = Box2D::b2Vec2->new( 0, -10 );
+my $gravity = Box2D::b2Vec2->new( 0, -10.0 );
 my $world = Box2D::b2World->new( $gravity, 1 );
 
 my $rodColor = 0x00CC70FF;
@@ -23,7 +29,7 @@ my $rodColor = 0x00CC70FF;
 my $pivot = {
     x0     => $width / 2,
     y0     => $height / 2,
-    radius => 10,
+    radius => 20,
     color  => 0x5CCC00FF,
 };
 $pivot->{body}   = make_static_circle( @$pivot{qw( x0 y0 radius )} );
@@ -32,7 +38,7 @@ $pivot->{anchor} = Box2D::b2Vec2->new( @$pivot{qw( x0 y0 )} );
 my $bob = {
     x0     => $width - 40,
     y0     => $height / 2,
-    radius => 20,
+    radius => 10,
     color  => 0xCC005CFF,
 };
 $bob->{body}   = make_dynamic_circle( @$bob{qw( x0 y0 radius )} );
@@ -46,39 +52,40 @@ $jointDef->dampingRatio(0.5);
 $world->CreateJoint($jointDef);
 
 my $app = SDLx::App->new(
-    dt     => $timestep,
-    min_t  => $timestep / 2,
     width  => $width,
     height => $height,
     flags  => SDL_DOUBLEBUF | SDL_HWSURFACE,
-    eoq    => 1,
 );
 
-$app->add_move_handler(
-    sub {
-        $world->Step( $timestep, $vIters, $pIters );
-        $world->ClearForces();
+my $_fps = SDLx::FPS->new( fps => $fps );
+my $event = SDL::Event->new();
+
+while (1) {
+    SDL::Events::pump_events();
+    while ( SDL::Events::poll_event($event) ) {
+        my $type = $event->type();
+        exit if $type == SDL_QUIT;
     }
-);
 
-$app->add_show_handler(
-    sub {
-        my $p1 = $pivot->{body}->GetPosition();
-        my $p2 = $bob->{body}->GetPosition();
+    $world->Step( $timestep, $vIters, $pIters );
+    $world->ClearForces();
 
-        # clear surface
-        $app->draw_rect( undef, 0x000000FF );
+    my $p1 = $pivot->{body}->GetPosition();
+    my $p2 = $bob->{body}->GetPosition();
 
-        $app->draw_line( [ $p1->x, $height - $p1->y ],
-            [ $p2->x, $height - $p2->y ], $rodColor );
-        draw_circle($pivot);
-        draw_circle($bob);
+    # clear surface
+    $app->draw_rect( undef, 0x000000FF );
 
-        $app->update();
-    }
-);
+    $app->draw_line( [ $p1->x, $height - $p1->y ],
+        [ $p2->x, $height - $p2->y ], $rodColor );
+    draw_circle($pivot);
+    draw_circle($bob);
 
-$app->run();
+
+    $app->update();
+
+    $_fps->delay();
+}
 
 sub make_static_circle {
     my ( $x, $y, $r ) = @_;
