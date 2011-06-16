@@ -26,6 +26,25 @@ b2World::new( gravity, doSleep)
 		RETVAL
 
 void
+b2World::SetGravity( gravity )
+	b2Vec2* gravity
+	CODE:
+		THIS->SetGravity((const b2Vec2)*gravity);
+
+
+
+b2Vec2*
+b2World::GetGravity()
+	PREINIT:	
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		b2Vec2* ret = new b2Vec2(THIS->GetGravity());
+		RETVAL = ret;
+	OUTPUT:
+		RETVAL 
+
+
+void
 b2World::Step( timeStep, velocityIterations, positionIterations )
 	float32 timeStep
 	int32 velocityIterations
