@@ -3,10 +3,7 @@ use warnings;
 use Box2D;
 use SDL;
 use SDL::Video;
-use SDL::Event;
-use SDL::Events;
 use SDLx::App;
-use SDLx::FPS;
 
 # pixels
 my $width  = 300;
@@ -61,51 +58,47 @@ $world->CreateJoint($jointDef);
 my $app = SDLx::App->new(
     width  => $width,
     height => $height,
+    dt     => $timestep,
+    min_t  => $timestep / 2,
     flags  => SDL_DOUBLEBUF | SDL_HWSURFACE,
+    eoq    => 1,
 );
-
-my $_fps = SDLx::FPS->new( fps => $fps );
-my $event = SDL::Event->new();
 
 my $realFps = $fps;
 my $frames  = 1;
 my $ticks   = SDL::get_ticks();
 
-while (1) {
-    SDL::Events::pump_events();
-    while ( SDL::Events::poll_event($event) ) {
-        my $type = $event->type();
-        exit if $type == SDL_QUIT;
+$app->add_show_handler(
+    sub {
+        $world->Step( $timestep, $vIters, $pIters );
+        $world->ClearForces();
+
+        my $p1 = $pivot->{body}->GetPosition();
+        my $p2 = $bob->{body}->GetPosition();
+
+        # clear surface
+        $app->draw_rect( undef, 0x000000FF );
+
+        $app->draw_line( [ w2s( $p1->x ), w2s( s2w($height) - $p1->y ) ],
+            [ w2s( $p2->x ), w2s( s2w($height) - $p2->y ) ], $rodColor );
+        draw_circle($pivot);
+        draw_circle($bob);
+
+        if ( $frames % $fps == 0 ) {
+            my $t = SDL::get_ticks();
+            $realFps = $fps / ( $t - $ticks ) * 1000;
+            $ticks = $t;
+        }
+        $app->draw_gfx_text( [ 10, 10 ],
+            0xFFFFFFFF, sprintf( "FPS: %0.2f", $realFps ) );
+
+        $app->update();
+
+        $frames++;
     }
+);
 
-    $world->Step( $timestep, $vIters, $pIters );
-    $world->ClearForces();
-
-    my $p1 = $pivot->{body}->GetPosition();
-    my $p2 = $bob->{body}->GetPosition();
-
-    # clear surface
-    $app->draw_rect( undef, 0x000000FF );
-
-    $app->draw_line( [ w2s( $p1->x ), w2s( s2w($height) - $p1->y ) ],
-        [ w2s( $p2->x ), w2s( s2w($height) - $p2->y ) ], $rodColor );
-    draw_circle($pivot);
-    draw_circle($bob);
-
-    if ( $frames % $fps == 0 ) {
-        my $t = SDL::get_ticks();
-        $realFps = $fps / ( $t - $ticks ) * 1000;
-        $ticks = $t;
-    }
-    $app->draw_gfx_text( [ 10, 10 ],
-        0xFFFFFFFF, sprintf( "FPS: %0.2f", $realFps ) );
-
-    $app->update();
-
-    $_fps->delay();
-
-    $frames++;
-}
+$app->run();
 
 # screen to world
 sub s2w { return $_[0] * $mpp }
