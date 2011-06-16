@@ -8,8 +8,15 @@ use SDL::Events;
 use SDLx::App;
 use SDLx::FPS;
 
+# pixels
 my $width  = 300;
 my $height = 300;
+
+# pixels per meter
+my $ppm = 30;
+
+# meters per pixel
+my $mpp = 1.0 / $ppm;
 
 # frames per second
 my $fps      = 60.0;
@@ -27,18 +34,18 @@ my $world = Box2D::b2World->new( $gravity, 1 );
 my $rodColor = 0x00CC70FF;
 
 my $pivot = {
-    x0     => $width / 2,
-    y0     => $height / 2,
-    radius => 20,
+    x0     => s2w( $width / 2 ),
+    y0     => s2w( $height / 2 ),
+    radius => s2w(4),
     color  => 0x5CCC00FF,
 };
 $pivot->{body}   = make_static_circle( @$pivot{qw( x0 y0 radius )} );
 $pivot->{anchor} = Box2D::b2Vec2->new( @$pivot{qw( x0 y0 )} );
 
 my $bob = {
-    x0     => $width - 40,
-    y0     => $height / 2,
-    radius => 10,
+    x0     => s2w( $width - 40 ),
+    y0     => s2w( $height / 2 ),
+    radius => s2w(10),
     color  => 0xCC005CFF,
 };
 $bob->{body}   = make_dynamic_circle( @$bob{qw( x0 y0 radius )} );
@@ -80,8 +87,8 @@ while (1) {
     # clear surface
     $app->draw_rect( undef, 0x000000FF );
 
-    $app->draw_line( [ $p1->x, $height - $p1->y ],
-        [ $p2->x, $height - $p2->y ], $rodColor );
+    $app->draw_line( [ w2s( $p1->x ), w2s( s2w($height) - $p1->y ) ],
+        [ w2s( $p2->x ), w2s( s2w($height) - $p2->y ) ], $rodColor );
     draw_circle($pivot);
     draw_circle($bob);
 
@@ -99,6 +106,12 @@ while (1) {
 
     $frames++;
 }
+
+# screen to world
+sub s2w { return $_[0] * $mpp }
+
+# world to screen
+sub w2s { return $_[0] * $ppm }
 
 sub make_static_circle {
     my ( $x, $y, $r ) = @_;
@@ -135,7 +148,7 @@ sub draw_circle {
     my ($circle) = @_;
     my $p = $circle->{body}->GetPosition();
     my ( $x, $y ) = ( $p->x, $p->y );
-    $y = $height - $y;
+    $y = s2w($height) - $y;
     my ( $r, $c ) = @$circle{qw( radius color )};
-    $app->draw_circle_filled( [ $x, $y ], $r, $c );
+    $app->draw_circle_filled( [ w2s($x), w2s($y) ], w2s($r), $c );
 }
