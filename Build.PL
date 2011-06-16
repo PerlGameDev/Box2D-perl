@@ -12,7 +12,7 @@ my $builder = Module::Build::WithXSpp->new(
     dist_version_from   => 'lib/Box2D.pm',
     build_requires => {
         'Test::More' => 0,
-		'Alien::Box2D' => 0,
+        'Alien::Box2D' => 0.103,
         'ExtUtils::XSpp' => 0.14,
     },
     add_to_cleanup      => [ 'Box2D-*' ],
