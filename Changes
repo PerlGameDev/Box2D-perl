@@ -1,11 +1,21 @@
 Revision history for Box2D
 
 0.02    16/06/2011
-		More features add see github repo's log ... yeah w/e I am sorry garu is being a bitch
+        using Alien::Box2D 0.103 (no cmake) [FROGGS]
+        Added get and set gravity [kthakore]
+        Added other copy right ppl [kthakore]
+        Fixed b2Body::GetTransform and added tests [jtpalmer]
+        Added b2Mat22, b2Transform and tests [jtpalmer]
+        Fixed b2Body::GetLinearVelocity and added tests [jtpalmer]
+        Added b2FixtureDef::restitution and tests [jtpalmer]
+        Can pass subroutines... we have an observer pattern [kthakore]
+        Using b2Contact to do a simple userdata carry over of scalar stuff in example [kthakore]
+        Replace b2CircleShape::SetRadius with b2Shape::m_radius [jtpalmer]
+        Formatting and comment changes [jtpalmer]
+        Added b2CircleShape, tests and example [jtpalmer]
+        added early_include for solaris to inject sys/vnode.h [FROGGS]
 
 0.01    19/05/2011 
         First version, released on an unsuspecting world.
-		Added basic set of classes
-		Added perl contact listeners
-		
-
+        Added basic set of classes
+        Added perl contact listeners
