@@ -70,6 +70,19 @@ b2FixtureDef::restitution( ... )
 	OUTPUT:
 		RETVAL
 
+b2Filter*
+b2FixtureDef::filter( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Filter";
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->filter = *(b2Filter *)stack_to_object( ST(1) );
+		}
+		RETVAL = new b2Filter(THIS->filter);
+	OUTPUT:
+		RETVAL
+
 %}
 
 };
