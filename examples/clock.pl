@@ -51,7 +51,7 @@ $hourHand
 
 my $minuteHand = {
     x0    => s2w( $width / 2 - 1 ),
-    y0    => s2w( $height / 2 ),
+    y0    => s2w( $height / 2 - 110 ),
     w     => s2w(3),
     h     => s2w(110),
     color => 0x3F5400FF,
