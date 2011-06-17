@@ -153,9 +153,13 @@ sub make_dynamic_rect {
     $fixtureDef->shape($rect);
     $fixtureDef->density(1.0);
     $fixtureDef->friction(0.1);
+
+    # Fixtures with the same negative groupIndex will not collide
+    # with each other.
     my $filter = $fixtureDef->filter;
     $filter->groupIndex(-1);
     $fixtureDef->filter($filter);
+
     $body->CreateFixtureDef($fixtureDef);
 
     return { body => $body, shape => $rect };
