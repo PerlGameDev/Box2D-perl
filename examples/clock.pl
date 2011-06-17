@@ -1,3 +1,8 @@
+# This example uses b2RevoluteJoint and it's motor feature to simulate a
+# clock. Instead of showing the correct time, which would be boring, the
+# clock hand move wildly. A collision group is also used to demonstrate
+# how to prevent collisions using a group index. Without this feature,
+# the clock hands would collide with one another.
 use strict;
 use warnings;
 use Box2D;
