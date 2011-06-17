@@ -92,8 +92,6 @@ $app->add_show_handler(
         $world->Step( $timestep, $vIters, $pIters );
         $world->ClearForces();
 
-        my $p1 = $pivot->{body}->GetPosition();
-
         # clear surface
         $app->draw_rect( undef, 0x000000FF );
 
