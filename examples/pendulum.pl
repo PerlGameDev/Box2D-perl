@@ -127,6 +127,8 @@ sub make_dynamic_circle {
     my $bodyDef = Box2D::b2BodyDef->new();
     $bodyDef->type(Box2D::b2_dynamicBody);
     $bodyDef->position->Set( $x, $y );
+    $bodyDef->linearDamping(0.1);
+    $bodyDef->angularDamping(0.1);
     my $body = $world->CreateBody($bodyDef);
 
     my $circle = Box2D::b2CircleShape->new();
