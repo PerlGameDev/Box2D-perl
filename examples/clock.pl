@@ -97,9 +97,9 @@ $app->add_show_handler(
 
         draw_clock_face();
         draw_circle($pivot);
-        draw_rect($hourHand);
-        draw_rect($minuteHand);
-        draw_rect($secondHand);
+        draw_polygon($hourHand);
+        draw_polygon($minuteHand);
+        draw_polygon($secondHand);
 
         if ( $frames % $fps == 0 ) {
             my $t = SDL::get_ticks();
@@ -193,16 +193,17 @@ sub draw_circle {
     $app->draw_circle_filled( [ w2s($x), w2s($y) ], w2s($r), $c );
 }
 
-sub draw_rect {
-    my ($rect) = @_;
+sub draw_polygon {
+    my ($polygon) = @_;
 
-    my ( $body, $shape, $color ) = @$rect{qw( body shape color )};
+    my ( $body, $shape, $color ) = @$polygon{qw( body shape color )};
 
     my @verts = map { $body->GetWorldPoint( $shape->GetVertex($_) ) }
         ( 0 .. $shape->GetVertexCount() - 1 );
 
     my @vx = map { w2s( $_->x ) } @verts;
     my @vy = map { w2s( $_->y ) } @verts;
+
     SDL::GFX::Primitives::filled_polygon_color( $app, \@vx, \@vy,
         scalar @verts, $color );
 }
