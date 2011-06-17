@@ -50,7 +50,7 @@ $hourHand
     = { %$hourHand, %{ make_dynamic_rect( @$hourHand{qw( x0 y0 w h )} ) } };
 
 my $minuteHand = {
-    x0    => s2w( $width / 2 ),
+    x0    => s2w( $width / 2 - 1 ),
     y0    => s2w( $height / 2 ),
     w     => s2w(3),
     h     => s2w(110),
