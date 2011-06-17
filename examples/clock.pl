@@ -70,9 +70,9 @@ $secondHand = { %$secondHand,
     %{ make_dynamic_rect( @$secondHand{qw( x0 y0 w h )} ) } };
 
 make_revolute_joint( $pivot->{body}, $hourHand->{body}, $anchor, 0.5, 100 );
-make_revolute_joint( $pivot->{body}, $minuteHand->{body}, $anchor, -0.5,
+make_revolute_joint( $pivot->{body}, $minuteHand->{body}, $anchor, -1.1,
     100 );
-make_revolute_joint( $pivot->{body}, $secondHand->{body}, $anchor, 1.0, 100 );
+make_revolute_joint( $pivot->{body}, $secondHand->{body}, $anchor, 2.0, 100 );
 
 my $app = SDLx::App->new(
     width  => $width,
