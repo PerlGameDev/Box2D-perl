@@ -43,17 +43,17 @@ my $hourHand = {
     x0    => s2w( $width / 2 - 2 ),
     y0    => s2w( $height / 2 ),
     w     => s2w(5),
-    h     => s2w(50),
+    h     => s2w(70),
     color => 0x3F5400FF,
 };
 $hourHand
     = { %$hourHand, %{ make_dynamic_rect( @$hourHand{qw( x0 y0 w h )} ) } };
 
 my $minuteHand = {
-    x0    => s2w( $width / 2 - 1 ),
+    x0    => s2w( $width / 2 ),
     y0    => s2w( $height / 2 ),
     w     => s2w(3),
-    h     => s2w(90),
+    h     => s2w(110),
     color => 0x3F5400FF,
 };
 $minuteHand = { %$minuteHand,
@@ -61,9 +61,9 @@ $minuteHand = { %$minuteHand,
 
 my $secondHand = {
     x0    => s2w( $width / 2 ),
-    y0    => s2w( $height / 2 ),
+    y0    => s2w( $height / 2 - 10 ),
     w     => s2w(1),
-    h     => s2w(100),
+    h     => s2w(120),
     color => 0x541500FF,
 };
 $secondHand = { %$secondHand,
