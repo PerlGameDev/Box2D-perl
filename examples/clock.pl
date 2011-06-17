@@ -29,13 +29,11 @@ my $pIters = 10;
 my $gravity = Box2D::b2Vec2->new( 0, -10.0 );
 my $world = Box2D::b2World->new( $gravity, 1 );
 
-my $rodColor = 0x00CC70FF;
-
 my $pivot = {
     x0     => s2w( $width / 2 ),
     y0     => s2w( $height / 2 ),
     radius => s2w(4),
-    color  => 0x5CCC00FF,
+    color  => 0x3F5400FF,
 };
 $pivot = { %$pivot, %{ make_static_circle( @$pivot{qw( x0 y0 radius )} ) } };
 
@@ -46,7 +44,7 @@ my $hourHand = {
     y0    => s2w( $height / 2 ),
     w     => s2w(5),
     h     => s2w(50),
-    color => 0x5CCC00FF,
+    color => 0x3F5400FF,
 };
 $hourHand
     = { %$hourHand, %{ make_dynamic_rect( @$hourHand{qw( x0 y0 w h )} ) } };
@@ -56,7 +54,7 @@ my $minuteHand = {
     y0    => s2w( $height / 2 ),
     w     => s2w(3),
     h     => s2w(90),
-    color => 0x5CCC00FF,
+    color => 0x3F5400FF,
 };
 $minuteHand = { %$minuteHand,
     %{ make_dynamic_rect( @$minuteHand{qw( x0 y0 w h )} ) } };
@@ -66,7 +64,7 @@ my $secondHand = {
     y0    => s2w( $height / 2 ),
     w     => s2w(1),
     h     => s2w(100),
-    color => 0x5CCC00FF,
+    color => 0x541500FF,
 };
 $secondHand = { %$secondHand,
     %{ make_dynamic_rect( @$secondHand{qw( x0 y0 w h )} ) } };
@@ -99,6 +97,7 @@ $app->add_show_handler(
         # clear surface
         $app->draw_rect( undef, 0x000000FF );
 
+        draw_clock_face();
         draw_circle($pivot);
         draw_rect($hourHand);
         draw_rect($minuteHand);
@@ -172,6 +171,17 @@ sub make_revolute_joint {
     $jointDef->motorSpeed($speed);
     $jointDef->maxMotorTorque($torque);
     $world->CreateJoint($jointDef);
+}
+
+sub draw_clock_face {
+    my $x = $width / 2;
+    my $y = $height / 2;
+    $app->draw_circle_filled( [ $x, $y ], 140, 0x003F54FF );
+    foreach ( 0 .. 11 ) {
+        my $dx = cos( $_ * ( 2 * 3.14 / 12 ) ) * 120;
+        my $dy = sin( $_ * ( 2 * 3.14 / 12 ) ) * 120;
+        $app->draw_circle_filled( [ $x + $dx, $y + $dy ], 10, 0x150054FF );
+    }
 }
 
 sub draw_circle {
