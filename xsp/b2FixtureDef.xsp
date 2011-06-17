@@ -79,7 +79,7 @@ b2FixtureDef::filter( ... )
 		{
 			THIS->filter = *(b2Filter *)stack_to_object( ST(1) );
 		}
-		RETVAL = new b2Filter(THIS->filter);
+		RETVAL = &(THIS->filter);
 	OUTPUT:
 		RETVAL
 

@@ -156,9 +156,7 @@ sub make_dynamic_rect {
 
     # Fixtures with the same negative groupIndex will not collide
     # with each other.
-    my $filter = $fixtureDef->filter;
-    $filter->groupIndex(-1);
-    $fixtureDef->filter($filter);
+    $fixtureDef->filter->groupIndex(-1);
 
     $body->CreateFixtureDef($fixtureDef);
 
