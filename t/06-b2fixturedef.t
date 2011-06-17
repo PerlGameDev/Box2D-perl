@@ -29,4 +29,14 @@ $fixtureDef->restitution($restitution);
 pass("set restitution");
 is( $fixtureDef->restitution, $restitution, "get restitution" );
 
+my ( $categoryBits, $maskBits, $groupIndex ) = ( 0x2, 0x5, -3 );
+my $filter = $fixtureDef->filter;
+$filter->categoryBits($categoryBits);
+$filter->maskBits($maskBits);
+$filter->groupIndex($groupIndex);
+$fixtureDef->filter($filter);
+is( $fixtureDef->filter->categoryBits, $categoryBits, "get filter->categoryBits" );
+is( $fixtureDef->filter->maskBits,     $maskBits,     "get filter->maskBits" );
+is( $fixtureDef->filter->groupIndex,   $groupIndex,   "get filter->groupIndex" );
+
 done_testing;
