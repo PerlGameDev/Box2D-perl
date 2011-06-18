@@ -1,5 +1,9 @@
 Revision history for Box2D
 
+0.03    19/06/2011
+        weaken tests due to precision  (t/02-b2math.t) [FROGGS]
+        added Alien::Box2D to configure_requires  [FROGGS]
+
 0.02    16/06/2011
         using Alien::Box2D 0.103 (no cmake) [FROGGS]
         Added get and set gravity [kthakore]
