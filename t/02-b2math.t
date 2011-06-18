@@ -17,11 +17,11 @@ $vec->Set(5,5);
 is( $vec->x, 5 );
 is( $vec->y, 5 );
 
-is( $vec->Length(), 7.07106781005859 );
+cmp_ok( abs($vec->Length() - 7.07106781005859), '<', 0.00000001 );
 
 is( $vec->LengthSquared(), 50);
 
-is( $vec->Normalize(), 7.07106781005859 );
+cmp_ok( abs($vec->Normalize() - 7.07106781005859), '<', 0.00000001 );
 
 ok ( ! defined $vec->SetZero()  );
 
