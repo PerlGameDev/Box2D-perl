@@ -31,7 +31,7 @@ b2DistanceJointDef::localAnchorA( ... )
 		{
 			THIS->localAnchorA = *(b2Vec2*)SvUV( ST(1) );
 		}
-		RETVAL = new b2Vec2(THIS->localAnchorA);
+		RETVAL = &(THIS->localAnchorA);
 	OUTPUT:
 		RETVAL
 
@@ -44,7 +44,7 @@ b2DistanceJointDef::localAnchorB( ... )
 		{
 			THIS->localAnchorB = *(b2Vec2*)SvUV( ST(1) );
 		}
-		RETVAL = new b2Vec2(THIS->localAnchorB);
+		RETVAL = &(THIS->localAnchorB);
 	OUTPUT:
 		RETVAL
 
