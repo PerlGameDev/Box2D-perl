@@ -30,7 +30,7 @@ b2Mat22::Set( col1, col2 )
 		THIS->Set( *col1, *col2 );
 
 b2Mat22*
-b2Mat22::getInverse()
+b2Mat22::GetInverse()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Mat22";
 	CODE:
