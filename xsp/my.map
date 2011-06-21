@@ -1,4 +1,7 @@
+int16				T_IV 
+uint16				T_IV 
 int32				T_IV 
+uint32				T_IV 
 float32				T_NV
 b2Vec2 *				O_OBJECT
 b2Mat22 *				O_OBJECT
@@ -8,9 +11,16 @@ b2BodyDef * 			O_OBJECT
 b2Shape	*				O_OBJECT
 b2PolygonShape *		O_OBJECT
 b2CircleShape *		O_OBJECT
+b2Filter *		O_OBJECT
 b2FixtureDef *		O_OBJECT
 b2Fixture * 		O_OBJECT
 b2Transform *		O_OBJECT
+b2Joint *		O_OBJECT
+b2JointDef *		O_OBJECT
+b2DistanceJoint *	O_OBJECT
+b2DistanceJointDef  *	O_OBJECT
+b2RevoluteJoint *	O_OBJECT
+b2RevoluteJointDef  *	O_OBJECT
 b2Manifold  *		O_OBJECT
 PerlContactListener *		O_OBJECT
 b2ContactListener *		O_OBJECT

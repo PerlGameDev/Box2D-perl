@@ -178,7 +178,7 @@ b2Body::GetWorldPoint(localPoint)
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
 		b2Vec2 lv = THIS->GetWorldPoint(*localPoint);
-		RETVAL =  &lv;
+		RETVAL =  new b2Vec2(lv);
 	OUTPUT:
 		RETVAL 
 

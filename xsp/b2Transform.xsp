@@ -47,7 +47,7 @@ b2Transform::position( ... )
 			b2Vec2* v = (b2Vec2 *)stack_to_object( ST(1) );
 			THIS->position = *v;
 		}
-		RETVAL = new b2Vec2(THIS->position);
+		RETVAL = &(THIS->position);
 	OUTPUT:
 		RETVAL
 
@@ -61,7 +61,7 @@ b2Transform::R( ... )
 			b2Mat22* R = (b2Mat22 *)stack_to_object( ST(1) );
 			THIS->R = *R;
 		}
-		RETVAL = new b2Mat22(THIS->R);
+		RETVAL = &(THIS->R);
 	OUTPUT:
 		RETVAL
 
