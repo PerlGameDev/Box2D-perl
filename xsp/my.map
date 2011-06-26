@@ -23,6 +23,8 @@ b2RevoluteJoint *	O_OBJECT
 b2RevoluteJointDef  *	O_OBJECT
 b2PrismaticJoint *	O_OBJECT
 b2PrismaticJointDef  *	O_OBJECT
+b2PulleyJoint *		O_OBJECT
+b2PulleyJointDef  *	O_OBJECT
 b2Manifold  *		O_OBJECT
 PerlContactListener *		O_OBJECT
 b2ContactListener *		O_OBJECT
