@@ -25,13 +25,6 @@ b2PolygonShape::SetAsEdge( v1, v2 )
 	CODE:
 		THIS->SetAsEdge( *v1, *v2 );
 
-void
-b2PolygonShape::check_p(...)
-	CODE:
-		warn("Polygon point %p", THIS);
-		if( items > 1)
-			warn( "Polygon arg %p", SvRV(ST(1)));
-
 b2Vec2*
 b2PolygonShape::GetVertex( index )
 	int index
