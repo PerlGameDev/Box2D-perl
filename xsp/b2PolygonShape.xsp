@@ -19,6 +19,13 @@ b2PolygonShape::new( )
 		RETVAL 
 
 void
+b2PolygonShape::SetAsEdge( v1, v2 )
+	b2Vec2* v1
+	b2Vec2* v2
+	CODE:
+		THIS->SetAsEdge( *v1, *v2 );
+
+void
 b2PolygonShape::check_p(...)
 	CODE:
 		warn("Polygon point %p", THIS);
