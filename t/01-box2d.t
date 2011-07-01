@@ -16,7 +16,7 @@ my $groundBox = Box2D::b2PolygonShape->new();
 
 $groundBox->SetAsBox(50.0, 10.0);
 
-$groundBody->CreateFixture( $groundBox, 0.0 ); 
+isa_ok( $groundBody->CreateFixture( $groundBox, 0.0 ), "Box2D::b2Fixture" );
 
 my $bodyDef = Box2D::b2BodyDef->new();
 	$bodyDef->type(Box2D::b2_dynamicBody);
@@ -38,7 +38,7 @@ $fixtureDef->density(1.0);
 $fixtureDef->friction(0.3);
 
 
-$body->CreateFixtureDef($fixtureDef);
+isa_ok( $body->CreateFixtureDef($fixtureDef), "Box2D::b2Fixture" );
 
 pass( "Create fixture Def" );
 my $timeStep = 1.0/60.0;

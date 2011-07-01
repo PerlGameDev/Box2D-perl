@@ -19,18 +19,26 @@ b2Body::new( )
 		warn("Do nothing");
 
 
-void
+b2Fixture *
 b2Body::CreateFixtureDef(fixtureDef)
 	b2FixtureDef* fixtureDef
+	PREINIT:
+		const char* CLASS = "Box2D::b2Fixture";
 	CODE:
-		THIS->CreateFixture( (const b2FixtureDef*)fixtureDef );
+		RETVAL = THIS->CreateFixture( (const b2FixtureDef*)fixtureDef );
+	OUTPUT:
+		RETVAL
 
 b2Fixture *
 b2Body::CreateFixture(shape, density)
 	b2Shape * shape
 	float32 density
+	PREINIT:
+		const char* CLASS = "Box2D::b2Fixture";
 	CODE:
-		THIS->CreateFixture( (const b2Shape *) shape, density );
+		RETVAL = THIS->CreateFixture( (const b2Shape *) shape, density );
+	OUTPUT:
+		RETVAL
 
 void
 b2Body::DestroyFixture( fixture )
