@@ -17,6 +17,16 @@
         bool IsEnabled() const;
 
 %{
+
+b2Manifold *
+b2Contact::GetManifold()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Manifold";
+	CODE:
+		RETVAL = THIS->GetManifold();
+	OUTPUT:
+		RETVAL
+
 b2Contact * 
 b2Contact::GetNext()
 	PREINIT:
