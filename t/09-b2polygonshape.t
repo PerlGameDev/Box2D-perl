@@ -17,6 +17,18 @@ foreach ( 0 .. 3 ) {
     is( abs( $vertex->y ), $h / 2 );
 }
 
+my ( $x, $y, $angle ) = ( 14.0, 16.0, 0.0 );
+my $rect2 = Box2D::b2PolygonShape->new();
+$rect2->SetAsBox( $w, $h, Box2D::b2Vec2->new( $x, $y), $angle );
+pass("SetAsBox");
+is( $rect2->GetVertexCount, 4, "GetVertexCount" );
+foreach ( 0 .. 3 ) {
+    my $vertex = $rect2->GetVertex($_);
+    isa_ok( $vertex, "Box2D::b2Vec2" );
+    is( abs( $vertex->x - $x ), $w );
+    is( abs( $vertex->y - $y ), $h );
+}
+
 my $edge = Box2D::b2PolygonShape->new();
 $edge->SetAsEdge(
     Box2D::b2Vec2->new( 0.0, 0.0 ),

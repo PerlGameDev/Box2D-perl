@@ -3,8 +3,6 @@
 %name{Box2D::b2PolygonShape} class b2PolygonShape : public %name{Box2D::b2Shape} b2Shape  
 { 
 
-void SetAsBox(float32 x, float32 y);
-
 int32 GetVertexCount();
 
 ~b2PolygonShape();
@@ -17,6 +15,20 @@ b2PolygonShape::new( )
 		RETVAL= new b2PolygonShape();
 	OUTPUT:
 		RETVAL 
+
+void
+b2PolygonShape::SetAsBox( x, y, ... )
+	float32 x
+	float32 y
+	CODE:
+		if ( items == 3 )
+		{
+			THIS->SetAsBox( x, y );
+		}
+		else if ( items == 5 )
+		{
+			THIS->SetAsBox( x, y, *(b2Vec2*)stack_to_object( ST(3) ), (float32)SvNV( ST(4) ) );
+		}
 
 void
 b2PolygonShape::SetAsEdge( v1, v2 )
