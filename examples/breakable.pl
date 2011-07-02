@@ -1,7 +1,6 @@
 # This example is a port of Breakable.h from the Box2D Testbed.
 use strict;
 use warnings;
-use List::Util qw(max);
 use Box2D;
 use SDL;
 use SDL::Video;
@@ -9,6 +8,8 @@ use SDLx::App;
 
 package Breakable;
 use Moose;
+
+use List::Util qw(max);
 
 # Initial coordinates and size
 has [qw( x y w h )] => (
@@ -82,6 +83,18 @@ has [qw( broke break )] => (
     default => 0,
 );
 
+has listener => (
+    is      => 'ro',
+    isa     => 'Box2D::PerlContactListener',
+    default => sub { Box2D::PerlContactListener->new() },
+);
+
+sub BUILD {
+    my ($self) = @_;
+    $self->listener->SetPostSolveSub( sub { $self->PostSolve(@_) } );
+    $self->world->SetContactListener( $self->listener );
+}
+
 sub _build_body1 {
     my ($self) = @_;
     my $bodyDef = Box2D::b2BodyDef->new();
@@ -139,38 +152,44 @@ sub PostSolve {
     my $maxImpulse = max( map { $impulse->normalImpulses($_) }
             ( 0 .. $contact->GetManifold()->pointCount() - 1 ) );
 
-    $self->break(1) if $maxImpulse > 40.0;
+    $self->break(1) if $maxImpulse > 10.0;
 }
 
 sub Break {
     my ($self) = @_;
 
-    my $body1 = $self->body1;
+    my $body1  = $self->body1;
+    my $center = $body1->GetWorldCenter();
 
     $body1->DestroyFixture( $self->piece2 );
 
     my $bodyDef = Box2D::b2BodyDef->new();
     $bodyDef->type(Box2D::b2_dynamicBody);
-    $bodyDef->position->Set( $body1->GetPosition() );
+    my $p = $body1->GetPosition();
+    $bodyDef->position->Set( $p->x, $p->y );
     $bodyDef->angle( $body1->GetAngle() );
 
+    my $fixtureDef = Box2D::b2FixtureDef->new();
+    $fixtureDef->shape( $self->shape2 );
+    $fixtureDef->density(1.0);
+    $fixtureDef->restitution(0.5);
     my $body2 = $self->world->CreateBody($bodyDef);
-    $self->piece2( $body2->CreateFixture( $self->shape2, 1.0 ) );
+    $self->piece2( $body2->CreateFixtureDef($fixtureDef) );
 
     my $center1 = $body1->GetWorldCenter();
     my $center2 = $body2->GetWorldCenter();
 
     my $velocity1 = Box2D::b2Vec2->new(
         $self->velocity->x
-            - $self->angularVelocity * ( $center1->y - $self->center->y ),
-        $self->velocity
-            + $self->angularVelocity * ( $center1->x - $self->center->x )
+            - $self->angularVelocity * ( $center1->y - $center->y ),
+        $self->velocity->y
+            + $self->angularVelocity * ( $center1->x - $center->x )
     );
     my $velocity2 = Box2D::b2Vec2->new(
         $self->velocity->x
-            - $self->angularVelocity * ( $center2->y - $self->center->y ),
-        $self->velocity
-            + $self->angularVelocity * ( $center2->x - $self->center->x )
+            - $self->angularVelocity * ( $center2->y - $center->y ),
+        $self->velocity->y
+            + $self->angularVelocity * ( $center2->x - $center->x )
     );
 
     $body1->SetAngularVelocity( $self->angularVelocity );
@@ -268,9 +287,11 @@ sub make_ground {
     my $bodyDef = Box2D::b2BodyDef->new();
     my $ground  = $world->CreateBody($bodyDef);
     my $shape   = Box2D::b2PolygonShape->new();
+
+    # The ground edge is slightly skewed to make the break obvious
     $shape->SetAsEdge(
         Box2D::b2Vec2->new( 0.0,         s2w($height) ),
-        Box2D::b2Vec2->new( s2w($width), s2w($height) ),
+        Box2D::b2Vec2->new( s2w($width), s2w( $height - 10 ) ),
     );
     $ground->CreateFixture( $shape, 0.0 );
 
@@ -282,7 +303,9 @@ sub draw_breakable {
 
     my @parts = (
         [ $breakable->body1, $breakable->shape1 ],
-        [ $breakable->body1, $breakable->shape2 ]
+        [   $breakable->broke ? $breakable->body2 : $breakable->body1,
+            $breakable->shape2
+        ]
     );
 
     foreach my $part (@parts) {
