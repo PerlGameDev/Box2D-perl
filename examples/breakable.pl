@@ -179,6 +179,8 @@ sub Break {
     my $center1 = $body1->GetWorldCenter();
     my $center2 = $body2->GetWorldCenter();
 
+    # b2Cross has not been implemented, the code below emulates it's behavior
+    # velocityN = velocity + b2Cross( angularVelocity, centerN - center )
     my $velocity1 = Box2D::b2Vec2->new(
         $self->velocity->x
             - $self->angularVelocity * ( $center1->y - $center->y ),
