@@ -6,7 +6,9 @@
 
 %module{Box2D};
 
-%name{Box2D::b2Manifold} class b2Manifold 
-{ 
-  b2Manifold();
+%name{Box2D::b2Manifold} class b2Manifold
+{
+
+b2Manifold();
+
 };
