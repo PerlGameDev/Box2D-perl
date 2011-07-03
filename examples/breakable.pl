@@ -249,15 +249,8 @@ my $world = Box2D::b2World->new( $gravity, 1 );
 
 my $ground = make_ground();
 
-my $breakable = Breakable->new(
-    world => $world,
-    x     => s2w( $width / 2.0 ),
-    y     => s2w(40),
-    w     => s2w(40),
-    h     => s2w(40),
-);
-$breakable->piece1;
-$breakable->piece2;
+my @breakables;
+push @breakables, make_breakable( $width / 2.0, 40 );
 
 my $app = SDLx::App->new(
     width  => $width,
@@ -270,12 +263,12 @@ my $app = SDLx::App->new(
 
 $app->add_show_handler(
     sub {
-        $breakable->Step();
+        $_->Step() foreach @breakables;
         $world->Step( $timestep, $vIters, $pIters );
         $world->ClearForces();
 
         $app->draw_rect( undef, 0x000000FF );
-        draw_breakable( $app, $breakable );
+        draw_breakable( $app, $_ ) foreach @breakables;
         $app->update();
     }
 );
@@ -287,6 +280,22 @@ sub s2w { return $_[0] * $mpp }
 
 # world to screen
 sub w2s { return $_[0] * $ppm }
+
+sub make_breakable {
+    my ( $x, $y ) = @_;
+
+    my $breakable = Breakable->new(
+        world => $world,
+        x     => s2w($x),
+        y     => s2w($y),
+        w     => s2w(40),
+        h     => s2w(40),
+    );
+    $breakable->piece1;
+    $breakable->piece2;
+
+    return $breakable;
+}
 
 sub make_ground {
     my $bodyDef = Box2D::b2BodyDef->new();
