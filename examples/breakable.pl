@@ -93,6 +93,11 @@ sub BUILD {
     my ($self) = @_;
     $self->listener->SetPostSolveSub( sub { $self->PostSolve(@_) } );
     $self->world->SetContactListener( $self->listener );
+
+    # These are lazy, but must be created now. There is probably a
+    # better option than this, but I can't think of anything.
+    $self->piece1;
+    $self->piece2;
 }
 
 sub _build_body1 {
@@ -291,8 +296,6 @@ sub make_breakable {
         w     => s2w(40),
         h     => s2w(40),
     );
-    $breakable->piece1;
-    $breakable->piece2;
 
     return $breakable;
 }
