@@ -310,8 +310,8 @@ sub make_breakable {
         x     => s2w($x),
         y     => s2w($y),
         angle => rand(3.14),
-        w     => s2w(40),
-        h     => s2w(40),
+        w     => s2w( 20.0 + rand(20.0) ),
+        h     => s2w( 20.0 + rand(20.0) ),
         color => [ int rand(255), int rand(255), int rand(255) ],
     );
 
