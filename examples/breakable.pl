@@ -155,7 +155,7 @@ sub PostSolve {
     my $maxImpulse = max( map { $impulse->normalImpulses($_) }
             ( 0 .. $contact->GetManifold()->pointCount() - 1 ) );
 
-    $self->break(1) if $maxImpulse > 10.0;
+    $self->break(1) if $maxImpulse > 1.0;
 }
 
 sub Break {
