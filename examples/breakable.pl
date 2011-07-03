@@ -20,6 +20,12 @@ has [qw( x y angle w h )] => (
     required => 1,
 );
 
+has color => (
+    is      => 'ro',
+    isa     => 'ArrayRef[Int]',
+    default => sub { [ 255, 255, 255 ] },
+);
+
 has world => (
     is       => 'ro',
     isa      => 'Box2D::b2World',
@@ -306,6 +312,7 @@ sub make_breakable {
         angle => rand(3.14),
         w     => s2w(40),
         h     => s2w(40),
+        color => [ int rand(255), int rand(255), int rand(255) ],
     );
 
     return $breakable;
@@ -342,7 +349,7 @@ sub draw_breakable {
             map { $body->GetWorldPoint( $shape->GetVertex($_) ) }
             ( 0 .. $shape->GetVertexCount() - 1 );
 
-        $surface->draw_polygon_filled( \@verts, 0xFFFFFFFF );
+        $surface->draw_polygon_filled( \@verts, $breakable->color );
     }
 }
 
