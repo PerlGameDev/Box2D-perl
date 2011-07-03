@@ -100,6 +100,7 @@ sub _build_body1 {
     my $bodyDef = Box2D::b2BodyDef->new();
     $bodyDef->type(Box2D::b2_dynamicBody);
     $bodyDef->position->Set( $self->x, $self->y );
+    $bodyDef->angle( rand(3.14) );
     my $body1 = $self->world->CreateBody($bodyDef);
     return $body1;
 }
@@ -290,10 +291,9 @@ sub make_ground {
     my $ground  = $world->CreateBody($bodyDef);
     my $shape   = Box2D::b2PolygonShape->new();
 
-    # The ground edge is slightly skewed to make the break obvious
     $shape->SetAsEdge(
         Box2D::b2Vec2->new( 0.0,         s2w($height) ),
-        Box2D::b2Vec2->new( s2w($width), s2w( $height - 10 ) ),
+        Box2D::b2Vec2->new( s2w($width), s2w($height) ),
     );
     $ground->CreateFixture( $shape, 0.0 );
 
