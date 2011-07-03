@@ -1,9 +1,11 @@
-# This example is a port of Breakable.h from the Box2D Testbed.
+# This example is a port of Breakable.h from the Box2D Testbed. Click
+# the window to create a breakable.
 use strict;
 use warnings;
 use Box2D;
 use SDL;
 use SDL::Video;
+use SDL::Events qw(:type);
 use SDLx::App;
 
 package Breakable;
@@ -255,7 +257,6 @@ my $world = Box2D::b2World->new( $gravity, 1 );
 my $ground = make_ground();
 
 my @breakables;
-push @breakables, make_breakable( $width / 2.0, 40 );
 
 my $app = SDLx::App->new(
     width  => $width,
@@ -264,6 +265,15 @@ my $app = SDLx::App->new(
     min_t  => $timestep / 2,
     flags  => SDL_DOUBLEBUF | SDL_HWSURFACE,
     eoq    => 1,
+);
+
+$app->add_event_handler(
+    sub {
+        my ( $event, $app ) = @_;
+        return unless $event->type == SDL_MOUSEBUTTONDOWN;
+        my ( undef, $x, $y ) = @{ SDL::Events::get_mouse_state() };
+        push @breakables, make_breakable( $x, $y );
+    }
 );
 
 $app->add_show_handler(
