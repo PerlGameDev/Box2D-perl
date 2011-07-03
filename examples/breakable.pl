@@ -11,8 +11,8 @@ use Moose;
 
 use List::Util qw(max);
 
-# Initial coordinates and size
-has [qw( x y w h )] => (
+# Initial coordinates, angle and size
+has [qw( x y angle w h )] => (
     is       => 'ro',
     isa      => 'Num',
     required => 1,
@@ -105,7 +105,7 @@ sub _build_body1 {
     my $bodyDef = Box2D::b2BodyDef->new();
     $bodyDef->type(Box2D::b2_dynamicBody);
     $bodyDef->position->Set( $self->x, $self->y );
-    $bodyDef->angle( rand(3.14) );
+    $bodyDef->angle( $self->angle );
     my $body1 = $self->world->CreateBody($bodyDef);
     return $body1;
 }
@@ -293,6 +293,7 @@ sub make_breakable {
         world => $world,
         x     => s2w($x),
         y     => s2w($y),
+        angle => rand(3.14),
         w     => s2w(40),
         h     => s2w(40),
     );
