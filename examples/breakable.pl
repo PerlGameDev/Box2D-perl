@@ -131,7 +131,8 @@ sub _build_piece1 {
     my ($self) = @_;
     my $fixtureDef = Box2D::b2FixtureDef->new();
     $fixtureDef->shape( $self->shape1 );
-    $fixtureDef->density(1.0);
+    $fixtureDef->density(0.5);
+    $fixtureDef->friction(0.5);
     $fixtureDef->restitution(0.5);
     return $self->body1->CreateFixtureDef($fixtureDef);
 }
@@ -140,7 +141,8 @@ sub _build_piece2 {
     my ($self) = @_;
     my $fixtureDef = Box2D::b2FixtureDef->new();
     $fixtureDef->shape( $self->shape2 );
-    $fixtureDef->density(1.0);
+    $fixtureDef->density(0.5);
+    $fixtureDef->friction(0.5);
     $fixtureDef->restitution(0.5);
     return $self->body1->CreateFixtureDef($fixtureDef);
 }
