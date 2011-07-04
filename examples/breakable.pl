@@ -7,6 +7,7 @@ use SDL;
 use SDL::Video;
 use SDL::Events qw(:type);
 use SDLx::App;
+use Math::Trig qw(:pi);
 
 package Breakable;
 use Moose;
@@ -309,7 +310,7 @@ sub make_breakable {
         world => $world,
         x     => s2w($x),
         y     => s2w($y),
-        angle => rand(3.14),
+        angle => rand(pi),
         w     => s2w( 20.0 + rand(20.0) ),
         h     => s2w( 20.0 + rand(20.0) ),
         color => [ int rand(255), int rand(255), int rand(255) ],
