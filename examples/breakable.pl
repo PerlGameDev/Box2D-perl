@@ -236,6 +236,7 @@ sub Step {
     }
 }
 
+__PACKAGE__->meta->make_immutable();
 
 package main;
 
