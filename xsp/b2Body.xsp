@@ -59,8 +59,7 @@ b2Body::GetTransform( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Transform";
 	CODE:
-		b2Transform bt = THIS->GetTransform();
-		RETVAL = new b2Transform(bt);
+		RETVAL = (b2Transform*)&(THIS->GetTransform());
 	OUTPUT:
 		RETVAL
 

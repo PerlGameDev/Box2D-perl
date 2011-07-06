@@ -43,8 +43,7 @@ b2PolygonShape::GetVertex( index )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		b2Vec2 v = THIS->GetVertex(index);
-		RETVAL = new b2Vec2(v);
+		RETVAL = (b2Vec2*)&(THIS->GetVertex(index));
 	OUTPUT:
 		RETVAL
 
