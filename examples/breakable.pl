@@ -13,6 +13,7 @@ package Breakable;
 use Moose;
 
 use List::Util qw(max);
+use namespace::autoclean;
 
 # Initial coordinates, angle and size
 has [qw( x y angle w h )] => (
@@ -235,7 +236,6 @@ sub Step {
     }
 }
 
-no Moose;
 
 package main;
 
