@@ -6,8 +6,9 @@ use SDL;
 use SDL::Video;
 use SDLx::App;
 
-my $precision = 10;
+my $segments = $ARGV[0] || 2;
 
+ 
 # pixels
 my $width  = 450;
 my $height = 450;
@@ -20,21 +21,19 @@ my $mpp = 1.0 / $ppm;
 
 # frames per second
 my $fps      = 60.0;
-my $timestep = 1.0 / ($fps*$precision);
+my $timestep = 1.0 / $fps;
 
 # velocity iterations
-my $vIters = 10;
+my $vIters = 50000/$segments;
 
 # position iterations
-my $pIters = 10;
+my $pIters = 50000/$segments;
 
-my $gravity = Box2D::b2Vec2->new( 0, -8.0 * $precision );
+my $gravity = Box2D::b2Vec2->new( 0, -8.0 );
 my $world = Box2D::b2World->new( $gravity, 0 ); #no sleep. don't lose energy.
 
 my $rodColor = 0x00CC70FF;
 my $pathColor = 0xFFFFCFFF;
-
-my $segments = $ARGV[0] || 2;
 
 my $pivot = {
     x0     => s2w( $width / 2 ),
@@ -62,7 +61,7 @@ for (1..$segments){
    $jointDef->Initialize( $prev_pivot->{body}, $bob->{body}, $prev_pivot->{anchor},
        $bob->{anchor} );
    #high frequency means less energy lost from joint correction
-   $jointDef->frequencyHz($fps*$precision);
+   $jointDef->frequencyHz(1/$timestep);
    $jointDef->dampingRatio(0);
    $world->CreateJoint($jointDef);
    
@@ -102,7 +101,7 @@ $app->add_show_handler(
         
         # draw bg
         $bg->blit( $app, [0,0,$width,$height]);
-
+        #$app->draw_rect([0,0,$width,$height],[0,0,0,255]);
         #draw 1st pendulum
         my $p1 = $pivot->{body}->GetPosition();
         my $p2 = $bobs[0]->{body}->GetPosition();
