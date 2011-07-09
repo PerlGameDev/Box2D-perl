@@ -32,6 +32,7 @@ my $gravity = Box2D::b2Vec2->new( 0, -8.0 * $precision );
 my $world = Box2D::b2World->new( $gravity, 0 ); #no sleep. don't lose energy.
 
 my $rodColor = 0x00CC70FF;
+my $pathColor = 0xFFFFCFFF;
 
 my $segments = $ARGV[0] || 2;
 
@@ -78,18 +79,29 @@ my $app = SDLx::App->new(
     flags  => SDL_DOUBLEBUF | SDL_HWSURFACE,
     eoq    => 1,
 );
+my $bg = $app->duplicate;
+$bg->draw_rect([0,0,$width,$height],[0,0,0,255]);
 
 my $realFps = $fps;
 my $frames  = 1;
 my $ticks   = SDL::get_ticks();
+#last location of end of pendulum
+my $prev_path_pos;
 
 $app->add_show_handler(
     sub {
         $world->Step( $timestep, $vIters, $pIters );
         $world->ClearForces();
         
-        # clear surface
-        $app->draw_rect( undef, 0x000000FF );
+        my $endpoint = $bobs[$#bobs]{body}->GetPosition();
+        my $current_path_pos = [ w2s( $endpoint->x ), w2s( s2w($height) - $endpoint->y ) ];
+        #trace path on bg
+        $bg->draw_line( $prev_path_pos, $current_path_pos, $pathColor )
+            if $prev_path_pos;
+        $prev_path_pos = $current_path_pos;    
+        
+        # draw bg
+        $bg->blit( $app, [0,0,$width,$height]);
 
         #draw 1st pendulum
         my $p1 = $pivot->{body}->GetPosition();
