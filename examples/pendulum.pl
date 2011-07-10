@@ -23,10 +23,10 @@ my $fps      = 60.0;
 my $timestep = 1.0 / $fps;
 
 # velocity iterations
-my $vIters = 50000 / $segments;
+my $vIters = 100;
 
 # position iterations
-my $pIters = 50000 / $segments;
+my $pIters = 100;
 
 my $gravity = Box2D::b2Vec2->new( 0, -8.0 );
 
