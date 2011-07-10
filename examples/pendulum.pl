@@ -1,4 +1,4 @@
-# This example uses b2DistanceJoint to simulate a simple pendulum.
+# This example uses b2DistanceJoint to simulate a pendulum.
 use strict;
 use warnings;
 use Box2D;
