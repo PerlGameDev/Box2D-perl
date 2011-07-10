@@ -64,7 +64,7 @@ for ( 1 .. $segments ) {
         $prev_pivot->{anchor}, $bob->{anchor}
     );
 
-    #high frequency means less energy lost from joint correction
+    # high frequency means less energy lost from joint correction
     $jointDef->frequencyHz( 1 / $timestep );
     $jointDef->dampingRatio(0);
     $world->CreateJoint($jointDef);
@@ -88,7 +88,7 @@ my $realFps = $fps;
 my $frames  = 1;
 my $ticks   = SDL::get_ticks();
 
-#last location of end of pendulum
+# last location of end of pendulum
 my $prev_path_pos;
 
 $app->add_show_handler(
@@ -100,7 +100,7 @@ $app->add_show_handler(
         my $current_path_pos
             = [ w2s( $endpoint->x ), w2s( s2w($height) - $endpoint->y ) ];
 
-        #trace path on bg
+        # trace path on bg
         $bg->draw_line( $prev_path_pos, $current_path_pos, $pathColor )
             if $prev_path_pos;
         $prev_path_pos = $current_path_pos;
@@ -108,14 +108,13 @@ $app->add_show_handler(
         # draw bg
         $bg->blit( $app, [ 0, 0, $width, $height ] );
 
-        #$app->draw_rect([0,0,$width,$height],[0,0,0,255]);
-        #draw 1st pendulum
+        # draw 1st pendulum
         my $p1 = $pivot->{body}->GetPosition();
         my $p2 = $bobs[0]->{body}->GetPosition();
         $app->draw_line( [ w2s( $p1->x ), w2s( s2w($height) - $p1->y ) ],
             [ w2s( $p2->x ), w2s( s2w($height) - $p2->y ) ], $rodColor );
 
-        #draw the other pendulums
+        # draw the other pendulums
         for ( 0 .. $#bobs - 1 ) {
             my $b1 = $bobs[$_]->{body}->GetPosition();
             my $b2 = $bobs[ $_ + 1 ]->{body}->GetPosition();
