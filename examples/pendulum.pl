@@ -170,7 +170,7 @@ sub make_dynamic_circle {
     my $body = $world->CreateBody($bodyDef);
 
     my $dynamicCircle = Box2D::b2CircleShape->new();
-    $dynamicCircle->m_radius(8);
+    $dynamicCircle->m_radius($r);
 
     return $body;
 }
