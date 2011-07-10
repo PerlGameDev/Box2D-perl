@@ -291,7 +291,7 @@ $app->add_show_handler(
         $world->ClearForces();
 
         $app->draw_rect( undef, 0x000000FF );
-        draw_breakable( $app, $_ ) foreach @breakables;
+        draw_breakable($_) foreach @breakables;
         $app->update();
     }
 );
@@ -335,7 +335,7 @@ sub make_ground {
 }
 
 sub draw_breakable {
-    my ( $surface, $breakable ) = @_;
+    my ($breakable) = @_;
 
     my @parts = (
         [ $breakable->body1, $breakable->shape1 ],
@@ -351,7 +351,7 @@ sub draw_breakable {
             map { $body->GetWorldPoint( $shape->GetVertex($_) ) }
             ( 0 .. $shape->GetVertexCount() - 1 );
 
-        $surface->draw_polygon_filled( \@verts, $breakable->color );
+        $app->draw_polygon_filled( \@verts, $breakable->color );
     }
 }
 
