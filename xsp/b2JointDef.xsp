@@ -43,7 +43,7 @@ b2JointDef::bodyA( ... )
 	CODE:
 		if ( items > 1 )
 		{
-			THIS->bodyA = (b2Body*)SvUV( ST(1) );
+			THIS->bodyA = (b2Body*)stack_to_object( ST(1) );
 		}
 		RETVAL = THIS->bodyA;
 	OUTPUT:
@@ -56,7 +56,7 @@ b2JointDef::bodyB( ... )
 	CODE:
 		if ( items > 1 )
 		{
-			THIS->bodyB = (b2Body*)SvUV( ST(1) );
+			THIS->bodyB = (b2Body*)stack_to_object( ST(1) );
 		}
 		RETVAL = THIS->bodyB;
 	OUTPUT:
