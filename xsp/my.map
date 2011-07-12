@@ -27,6 +27,8 @@ b2PulleyJoint *		O_OBJECT
 b2PulleyJointDef  *	O_OBJECT
 b2GearJoint *		O_OBJECT
 b2GearJointDef  *	O_OBJECT
+b2MouseJoint *		O_OBJECT
+b2MouseJointDef *	O_OBJECT
 b2Manifold  *		O_OBJECT
 PerlContactListener *		O_OBJECT
 b2ContactListener *		O_OBJECT
