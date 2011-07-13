@@ -29,19 +29,36 @@ my $pIters = 30;
 my $gravity = make_vec2( 0.0, 0.0 );
 my $world = Box2D::b2World->new( $gravity, 1 );
 
-my $ground = make_ground();
+my $walls = make_walls(
+    [ [ s2w(0.0), s2w(0.0) ], [ s2w(0.0), s2w($height) ] ],
+    [ [ s2w(0.0), s2w(0.0) ], [ s2w($width), s2w(0.0) ] ],
+    [ [ s2w($width), s2w(0.0) ], [ s2w($width), s2w($height) ] ],
+    [ [ s2w(0.0), s2w($height) ], [ s2w($width), s2w($height) ] ],
+);
 
 my $ball = make_ball(
     x       => s2w( $width / 2.0 ),
     y       => s2w( $height / 2.0 ),
-    radius  => s2w( rand(5.0) + 5.0 ),
+    radius  => s2w( rand(5.0) + 10.0 ),
     color   => [ int rand(255), int rand(255), int rand(255) ],
     density => 1.0,
 );
 
+my @balls;
+for ( 1 .. 100 ) {
+    my $b = make_ball(
+        x       => rand s2w($width),
+        y       => rand s2w($height),
+        radius  => s2w( rand(5.0) + 10.0 ),
+        color   => [ int rand(255), int rand(255), int rand(255) ],
+        density => 1.0,
+    );
+    push @balls, $b;
+}
+
 my $joint = make_mouse_joint(
     target   => $ball->{body}->GetWorldCenter(),
-    bodyA    => $ground->{body},
+    bodyA    => $walls->{body},
     bodyB    => $ball->{body},
     maxForce => 1000.0 * $ball->{body}->GetMass(),
 );
@@ -72,6 +89,7 @@ $app->add_show_handler(
         # clear surface
         $app->draw_rect( undef, 0x000000FF );
 
+        draw_circle($_) foreach @balls;
         draw_circle($ball);
 
         $app->update();
@@ -91,21 +109,24 @@ sub make_vec2 {
     return Box2D::b2Vec2->new( $x, $y );
 }
 
-sub make_ground {
-    my $body = make_body(
-        x => $width / 2.0,
-        y => $height,
-    );
-    my $edge
-        = make_edge( [ 0.0, s2w($height) ], [ s2w($width), s2w($height) ] );
-    my $fixture = make_fixture(
-        shape => $edge,
-        body  => $body,
-    );
+sub make_walls {
+    my (@edges) = @_;
+    my $body = make_body();
+    my @fixtures;
+    my @shapes;
+    foreach (@edges) {
+        my $edge    = make_edge(@$_);
+        my $fixture = make_fixture(
+            shape => $edge,
+            body  => $body,
+        );
+        push @shapes,   $edge;
+        push @fixtures, $fixture;
+    }
     return {
-        shape   => $edge,
-        body    => $body,
-        fixture => $fixture,
+        shapes   => \@shapes,
+        body     => $body,
+        fixtures => \@fixtures,
     };
 }
 
@@ -153,11 +174,14 @@ sub make_circle {
 # bodies
 sub make_body {
     my (%options) = @_;
-    my ( $x, $y ) = @options{qw( x y )};
     my $bodyDef = Box2D::b2BodyDef->new();
-    $bodyDef->position->Set( $x, $y );
-    $bodyDef->type(Box2D::b2_dynamicBody)
-        if exists $options{type} && $options{type} eq 'dynamic';
+    if ( exists $options{x} && exists $options{y} ) {
+        my ( $x, $y ) = @options{qw( x y )};
+        $bodyDef->position->Set( $x, $y );
+    }
+    if ( exists $options{type} ) {
+        $bodyDef->type(Box2D::b2_dynamicBody) if $options{type} eq 'dynamic';
+    }
     return $world->CreateBody($bodyDef);
 }
 
