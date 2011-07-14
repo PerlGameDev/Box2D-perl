@@ -33,6 +33,8 @@ b2LineJoint *		O_OBJECT
 b2LineJointDef *	O_OBJECT
 b2WeldJoint *		O_OBJECT
 b2WeldJointDef *	O_OBJECT
+b2FrictionJoint *	O_OBJECT
+b2FrictionJointDef *	O_OBJECT
 b2Manifold  *		O_OBJECT
 PerlContactListener *		O_OBJECT
 b2ContactListener *		O_OBJECT
