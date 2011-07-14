@@ -31,6 +31,8 @@ b2MouseJoint *		O_OBJECT
 b2MouseJointDef *	O_OBJECT
 b2LineJoint *		O_OBJECT
 b2LineJointDef *	O_OBJECT
+b2WeldJoint *		O_OBJECT
+b2WeldJointDef *	O_OBJECT
 b2Manifold  *		O_OBJECT
 PerlContactListener *		O_OBJECT
 b2ContactListener *		O_OBJECT
