@@ -29,6 +29,8 @@ my $pIters = 30;
 my $gravity = make_vec2( 0.0, 0.0 );
 my $world = Box2D::b2World->new( $gravity, 1 );
 
+my $ground = make_ground();
+
 my $walls = make_walls(
     [ [ s2w(0.0), s2w(0.0) ], [ s2w(0.0), s2w($height) ] ],
     [ [ s2w(0.0), s2w(0.0) ], [ s2w($width), s2w(0.0) ] ],
@@ -58,7 +60,7 @@ for ( 1 .. 100 ) {
 
 my $joint = make_mouse_joint(
     target   => $ball->{body}->GetWorldCenter(),
-    bodyA    => $walls->{body},
+    bodyA    => $ground->{body},
     bodyB    => $ball->{body},
     maxForce => 1000.0 * $ball->{body}->GetMass(),
 );
@@ -107,6 +109,24 @@ sub w2s { return $_[0] * $ppm }
 sub make_vec2 {
     my ( $x, $y ) = @_;
     return Box2D::b2Vec2->new( $x, $y );
+}
+
+sub make_ground {
+    my $body = make_body(
+        x => $width / 2.0,
+        y => $height,
+    );
+    my $edge
+        = make_edge( [ 0.0, s2w($height) ], [ s2w($width), s2w($height) ] );
+    my $fixture = make_fixture(
+        shape => $edge,
+        body  => $body,
+    );
+    return {
+        shape   => $edge,
+        body    => $body,
+        fixture => $fixture,
+    };
 }
 
 sub make_walls {
