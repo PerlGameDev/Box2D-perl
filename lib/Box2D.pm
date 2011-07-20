@@ -16,6 +16,7 @@ Currently this module is a 1 to 1 binding. This is still a WIP and so far here a
 	b2BodyDef
 	b2CircleShape
 	b2Contact
+	b2ContactImpulse
 	b2DistanceJoint
 	b2DistanceJointDef
 	b2Filter
