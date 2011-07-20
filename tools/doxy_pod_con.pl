@@ -3,37 +3,36 @@ use strict;
 use warnings;
 use Template;
 use File::Slurp qw(read_file);
+use HTML::TreeBuilder::XPath;
 
 sub main {
-    my ($path) = @_;
+    my ($file) = @_;
 
-    die "Need an html file to read\n" unless defined $path;
-    die "Not a file: $path\n" unless -f $path;
+    die "Need an html file to read\n" unless defined $file;
+    die "Not a file: $file\n" unless -f $file;
 
-    my $file  = read_file($path);
     my $class = parse_html($file);
     output_pod($class);
 }
 
 sub parse_html {
-    my ($html) = @_;
+    my ($file) = @_;
 
     my $class = {};
 
-    my %re = (
-        name        => qr|<title>Box2D:\ (\w+)\ Class\ Reference</title>|xms,
-        description => qr|<h2>Detailed\ Description</h2>\s*<p>(.*?)</p>|xms,
-    );
+    my $tree = HTML::TreeBuilder::XPath->new;
+    $tree->parse_file($file);
 
-    while ( my ( $key, $regex ) = each %re ) {
-        if ( $html =~ $regex ) {
-            $class->{$key} = $1;
-        }
-        else {
-            $class->{$key} = 'TODO';
-            warn "Could not find $key\n";
-        }
+    my $title = $tree->findvalue('/html/head/title');
+
+    if ( $title =~ m|Box2D:\ (\w+)\ Class\ Reference|xms ) {
+        $class->{name} = $1;
     }
+    else {
+        $class->{name} = 'TODO';
+    }
+
+    $class->{description} = $tree->findvalue('//a[@name="_details"]/../p[3]');
 
     # Use the first sentence from the description for the abstract
     if ( $class->{description} =~ /^((?:.*?)\.)/xs ) {
@@ -44,6 +43,24 @@ sub parse_html {
     }
 
     $class->{methods} = [];
+
+    my @members = $tree->findnodes('//div[@class="memitem"]');
+
+    foreach my $member (@members) {
+
+        my $name = $member->findvalue('.//td[@class="memname"]');
+        my $desc = $member->findvalue('.//div[@class="memdoc"]');
+
+        next if $name =~ m/\[protected\]/;
+        next if $name =~ m/\[friend\]/;
+
+        my %method = (
+            name        => $name,
+            description => $desc,
+        );
+
+        push @{ $class->{methods} }, \%method;
+    }
 
     return $class;
 }
