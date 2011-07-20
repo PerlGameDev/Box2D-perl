@@ -1,8 +1,16 @@
 Revision history for Box2D
 
 X.XX    XX/XX/XXXX
+        Pendulum example [jtpalmer, zpmorgan]
+        Added b2WeldJoint and tests [jtpalmer]
+        Added b2PulleyJoint, tests and example [jtpalmer]
+        Added b2PrismaticJoint and test [jtpalmer]
+        Added b2MouseJoint, tests and example [jtpalmer]
+        Added b2LineJoint and tests [jtpalmer]
+        Added b2GearJoint and tests [jtpalmer]
+        Added b2FrictionJoint and tests [jtpalmer]
         Added b2RevoluteJoint, tests and example [jtpalmer]
-        Added b2DistanceJoint, tests and example [jtpalmer]
+        Added b2DistanceJoint, tests [jtpalmer]
         Added b2Filter, b2FixtureDef::filter and tests [jtpalmer]
 
 0.03    19/06/2011
