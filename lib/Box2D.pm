@@ -12,16 +12,39 @@ Box2D - 2D Physics Library
 
 Currently this module is a 1 to 1 binding. This is still a WIP and so far here are the completed class:
 
-	b2Body                 
-	b2BodyDef              
+	b2Body
+	b2BodyDef
+	b2CircleShape
 	b2Contact
+	b2DistanceJoint
+	b2DistanceJointDef
+	b2Filter
 	b2Fixture
 	b2FixtureDef
+	b2FrictionJoint
+	b2FrictionJointDef
+	b2GearJoint
+	b2GearJointDef
+	b2Joint
+	b2JointDef
+	b2LineJoint
+	b2LineJointDef
 	b2Manifold
+	b2Mat22
+	b2MouseJoint
+	b2MouseJointDef
 	b2PolygonShape
-	b2CircleShape
+	b2PrismaticJoint
+	b2PrismaticJointDef
+	b2PulleyJoint
+	b2PulleyJointDef
+	b2RevoluteJoint
+	b2RevoluteJointDef
 	b2Shape
+	b2Transform
 	b2Vec2
+	b2WeldJoint
+	b2WeldJointDef
 	b2World
 	PerlContactListener
 
