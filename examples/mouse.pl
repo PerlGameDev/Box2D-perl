@@ -26,7 +26,7 @@ my $vIters = 30;
 # position iterations
 my $pIters = 30;
 
-my $gravity = make_vec2( 0.0, 0.0 );
+my $gravity = make_vec2( 0.0, 10.0 );
 my $world = Box2D::b2World->new( $gravity, 1 );
 
 my $ground = make_ground();
