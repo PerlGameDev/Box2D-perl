@@ -42,7 +42,7 @@ my $ball = make_ball(
     x       => s2w( $width / 2.0 ),
     y       => s2w( $height / 2.0 ),
     radius  => s2w( rand(5.0) + 10.0 ),
-    color   => [ int rand(255), int rand(255), int rand(255) ],
+    color   => [ 255, 0, 0 ],
     density => 1.0,
 );
 
@@ -52,7 +52,7 @@ for ( 1 .. 100 ) {
         x       => rand s2w($width),
         y       => rand s2w($height),
         radius  => s2w( rand(5.0) + 10.0 ),
-        color   => [ int rand(255), int rand(255), int rand(255) ],
+        color   => [ 0, int rand(200) + 55, int rand(200) + 55 ],
         density => 1.0,
     );
     push @balls, $b;
