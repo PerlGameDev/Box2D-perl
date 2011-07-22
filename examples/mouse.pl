@@ -11,7 +11,7 @@ my $width  = 400;
 my $height = 400;
 
 # pixels per meter
-my $ppm = 10;
+my $ppm = 30;
 
 # meters per pixel
 my $mpp = 1.0 / $ppm;
