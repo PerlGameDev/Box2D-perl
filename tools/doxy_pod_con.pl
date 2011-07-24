@@ -42,27 +42,54 @@ sub parse_html {
         $class->{abstract} = 'TODO';
     }
 
-    $class->{methods} = [];
+    $class->{methods} = parse_methods($class, $tree);
+
+    return $class;
+}
+
+sub parse_methods {
+    my ($class, $tree) = @_;
+
+    my @methods;
 
     my @members = $tree->findnodes('//div[@class="memitem"]');
 
     foreach my $member (@members) {
 
-        my $name = $member->findvalue('.//td[@class="memname"]');
+        my ($type, $name) = parse_method_name($member->findvalue('.//td[@class="memname"]'));
         my $desc = $member->findvalue('.//div[@class="memdoc"]');
 
         next if $name =~ m/\[protected\]/;
         next if $name =~ m/\[friend\]/;
+
+        if ($type && $type ne 'void') {
+            $desc .= "\n\nReturns a $type";
+        }
+
+        if ($name eq $class->{name}) {
+            $name = 'new';
+            $desc = 'Constructor';
+        }
 
         my %method = (
             name        => $name,
             description => $desc,
         );
 
-        push @{ $class->{methods} }, \%method;
+        push @methods, \%method;
     }
 
-    return $class;
+    return \@methods;
+}
+
+sub parse_method_name {
+    my ($name) = @_;
+
+    if ($name =~ /^\s*(?:(\w+) )?(?:\w+)::(\w+)\s*$/) {
+        return ($1, $2);
+    } else {
+        return ('', $name);
+    }
 }
 
 sub output_pod {
@@ -74,8 +101,6 @@ sub output_pod {
 main(@ARGV);
 
 __END__
-
-=pod
 
 =head1 NAME
 
@@ -97,14 +122,18 @@ Box2D::[% name %] - [% abstract %]
 [% END %]
 =head1 BUGS
 
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
 =head1 AUTHORS
 
 See L<Box2D/AUTHORS>
 
 =head1 COPYRIGHT & LICENSE
+[% IF see_also %]
 
 =head1 SEE ALSO
 
 [% see_also %]
 
+[% END %]
 =cut
