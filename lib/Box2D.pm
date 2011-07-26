@@ -72,7 +72,7 @@ L<https://github.com/PerlGameDev/Box2D-perl>
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 require XSLoader;
 XSLoader::load('Box2D', $VERSION);
