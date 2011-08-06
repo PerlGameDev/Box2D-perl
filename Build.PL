@@ -26,7 +26,13 @@ my $builder = Module::Build::WithXSpp->new(
         'ExtUtils::Typemap::Basic'       => '0.04',
     },
     extra_compiler_flags => [ Alien::Box2D->config('cflags') ],
-    extra_linker_flags   => [ Alien::Box2D->config('libs') ]
+    extra_linker_flags   => [ Alien::Box2D->config('libs') ],
+    meta_merge => {
+        resources => {
+            bugtracker => 'https://github.com/PerlGameDev/Box2D-perl/issues',
+            repository => 'https://github.com/PerlGameDev/Box2D-perl'
+        }
+    },
 );
 
 # early_includes will be included right before perl.h in main.xs

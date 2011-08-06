@@ -1,5 +1,8 @@
 Revision history for Box2D
 
+0.05
+        Updated meta resources with github info [jtpalmer]
+
 0.04    26/07/2011
         Added pendulum example [jtpalmer, zpmorgan]
         Added breakable example [jtpalmer]
