@@ -43,3 +43,4 @@ b2ContactImpulse *		O_OBJECT
 b2RayCastInput *		O_OBJECT
 b2RayCastOutput *		O_OBJECT
 b2AABB *			O_OBJECT
+b2MassData *			O_OBJECT
