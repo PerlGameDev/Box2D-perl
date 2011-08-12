@@ -59,6 +59,17 @@ b2Shape::ComputeMass( massData, density )
 	CODE:
 		THIS->ComputeMass( massData, density );
 
+int
+b2Shape::m_type( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->m_type = (b2Shape::Type)SvUV( ST(1) );
+		}
+		RETVAL = (int)THIS->m_type;
+	OUTPUT:
+		RETVAL
+
 float32
 b2Shape::m_radius( ... )
 	CODE:
