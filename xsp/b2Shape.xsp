@@ -22,7 +22,7 @@ enum Type
 int
 b2Shape::GetType( )
 	CODE:
-		RETVAL=(int)THIS->GetType();
+		RETVAL = (int)THIS->GetType();
 	OUTPUT:
 		RETVAL
 
@@ -62,7 +62,7 @@ b2Shape::ComputeMass( massData, density )
 float32
 b2Shape::m_radius( ... )
 	CODE:
-		if( items > 1 )
+		if ( items > 1 )
 		{
 			THIS->m_radius = (float32)SvNV( ST(1) );
 		}
