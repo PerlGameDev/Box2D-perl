@@ -1,6 +1,8 @@
 Revision history for Box2D
 
 0.05
+        Added b2AABB [jtpalmer]
+        Added b2RayCastInput, b2RayCastOutput [jtpalmer]
         Updated meta resources with github info [jtpalmer]
 
 0.04    26/07/2011

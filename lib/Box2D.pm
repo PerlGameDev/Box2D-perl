@@ -12,6 +12,7 @@ Box2D - 2D Physics Library
 
 Currently this module is a 1 to 1 binding. This is still a WIP and so far here are the completed class:
 
+	b2AABB
 	b2Body
 	b2BodyDef
 	b2CircleShape
@@ -39,6 +40,8 @@ Currently this module is a 1 to 1 binding. This is still a WIP and so far here a
 	b2PrismaticJointDef
 	b2PulleyJoint
 	b2PulleyJointDef
+	b2RayCastInput
+	b2RayCastOutput
 	b2RevoluteJoint
 	b2RevoluteJointDef
 	b2Shape

@@ -40,3 +40,6 @@ PerlContactListener *		O_OBJECT
 b2ContactListener *		O_OBJECT
 b2Contact *			O_OBJECT
 b2ContactImpulse *		O_OBJECT
+b2RayCastInput *		O_OBJECT
+b2RayCastOutput *		O_OBJECT
+b2AABB *			O_OBJECT
