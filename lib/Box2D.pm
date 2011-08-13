@@ -32,6 +32,7 @@ Currently this module is a 1 to 1 binding. This is still a WIP and so far here a
 	b2LineJoint
 	b2LineJointDef
 	b2Manifold
+	b2MassData
 	b2Mat22
 	b2MouseJoint
 	b2MouseJointDef
