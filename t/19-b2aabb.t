@@ -8,13 +8,13 @@ my $aabb = Box2D::b2AABB->new();
 ok( $aabb, "new" );
 isa_ok( $aabb, "Box2D::b2AABB" );
 
-ok( $aabb->IsValid(), "IsValid" );
-
 my $lower = Box2D::b2Vec2->new( 1.0, 2.0 );
 my $upper = Box2D::b2Vec2->new( 3.0, 4.0 );
 
 $aabb->lowerBound($lower);
 $aabb->upperBound($upper);
+
+ok( $aabb->IsValid(), "IsValid" );
 
 is( $aabb->lowerBound->x, $lower->x, "Get lowerBound->x" );
 is( $aabb->lowerBound->y, $lower->y, "Get lowerBound->y" );
