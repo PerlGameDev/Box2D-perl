@@ -17,6 +17,13 @@ my $b = Box2D::b2Vec2->new( 3, 4 );
     is( $c, $a->x * $b->y - $a->y * $b->x, "b2CrossV2V2" );
 }
 
+{
+    #my $c = Box2D::b2Math::b2AddV2V2( $a, $b );
+    my $c = $a + $b;
+    is( $c->x, $a->x + $b->x, "b2AddV2V2" );
+    is( $c->y, $a->y + $b->y, "b2AddV2V2" );
+}
+
 my $vec = Box2D::b2Vec2->new( 10, 10 );
 
 ok ( $vec );

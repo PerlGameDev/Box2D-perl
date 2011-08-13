@@ -108,4 +108,21 @@ BEGIN {
 };
 }
 
+package Box2D::b2Vec2;
+
+use overload
+    '+' => '_add',
+    'bool' => sub { 1 };
+
+sub _add {
+    my ($self, $other, $swap) = @_;
+
+    if ($swap) {
+        return Box2D::b2Math::b2AddV2V2($other, $self);
+    }
+    else {
+        return Box2D::b2Math::b2AddV2V2($self, $other);
+    }
+}
+
 1; # End of Box2D
