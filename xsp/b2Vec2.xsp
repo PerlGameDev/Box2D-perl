@@ -6,26 +6,26 @@
 
 %module{Box2D};
 
-%name{Box2D::b2Vec2} class b2Vec2 
-{ 
-	b2Vec2( float32 x, float32 y );
- 
-   	void SetZero();
+%name{Box2D::b2Vec2} class b2Vec2
+{
 
-	void Set(float32 x_, float32 y_);
+b2Vec2( float32 x, float32 y );
 
-	float32 Length();
-	
-	float32 LengthSquared();
+void SetZero();
 
-	float32 Normalize();
+void Set( float32 x_, float32 y_ );
 
-    bool IsValid();
+float32 Length();
 
+float32 LengthSquared();
+
+float32 Normalize();
+
+bool IsValid();
 
 %{
 
-float32 
+float32
 b2Vec2::x()
 	CODE:
 		float32 x = THIS->x;
@@ -33,7 +33,7 @@ b2Vec2::x()
 	OUTPUT:
 		RETVAL
 
-float32 
+float32
 b2Vec2::y()
 	CODE:
 		float32 y = THIS->y;
@@ -42,6 +42,6 @@ b2Vec2::y()
 		RETVAL
 
 %}
-	
+
 };
 
