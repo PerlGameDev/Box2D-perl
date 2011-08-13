@@ -111,7 +111,8 @@ BEGIN {
 package Box2D::b2Vec2;
 
 use overload
-    '+' => '_add',
+    '+'    => '_add',
+    '-'    => '_sub',
     'bool' => sub { 1 };
 
 sub _add {
@@ -122,6 +123,17 @@ sub _add {
     }
     else {
         return Box2D::b2Math::b2AddV2V2($self, $other);
+    }
+}
+
+sub _sub {
+    my ($self, $other, $swap) = @_;
+
+    if ($swap) {
+        return Box2D::b2Math::b2SubV2V2($other, $self);
+    }
+    else {
+        return Box2D::b2Math::b2SubV2V2($self, $other);
     }
 }
 

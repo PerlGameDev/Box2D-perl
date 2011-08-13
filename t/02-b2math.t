@@ -12,16 +12,22 @@ is( Box2D::b2Math::b2Abs(-1.0), 1.0, "b2Abs" );
 
 my $a = Box2D::b2Vec2->new( 1, 2 );
 my $b = Box2D::b2Vec2->new( 3, 4 );
+
 {
     my $c = Box2D::b2Math::b2CrossV2V2( $a, $b );
     is( $c, $a->x * $b->y - $a->y * $b->x, "b2CrossV2V2" );
 }
 
 {
-    #my $c = Box2D::b2Math::b2AddV2V2( $a, $b );
     my $c = $a + $b;
-    is( $c->x, $a->x + $b->x, "b2AddV2V2" );
-    is( $c->y, $a->y + $b->y, "b2AddV2V2" );
+    is( $c->x, $a->x + $b->x, "b2Vec2 + b2Vec2" );
+    is( $c->y, $a->y + $b->y, "b2Vec2 + b2Vec2" );
+}
+
+{
+    my $c = $a - $b;
+    is( $c->x, $a->x - $b->x, "b2Vec2 - b2Vec2" );
+    is( $c->y, $a->y - $b->y, "b2Vec2 - b2Vec2" );
 }
 
 my $vec = Box2D::b2Vec2->new( 10, 10 );
