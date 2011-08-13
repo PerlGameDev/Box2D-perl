@@ -116,14 +116,9 @@ use overload
     'bool' => sub { 1 };
 
 sub _add {
-    my ($self, $other, $swap) = @_;
+    my ( $self, $other ) = @_;
 
-    if ($swap) {
-        return Box2D::b2Math::b2AddV2V2($other, $self);
-    }
-    else {
-        return Box2D::b2Math::b2AddV2V2($self, $other);
-    }
+    return Box2D::b2Math::b2AddV2V2( $other, $self );
 }
 
 sub _sub {
