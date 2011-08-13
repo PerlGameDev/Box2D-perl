@@ -3,6 +3,19 @@ use warnings;
 use Box2D;
 use Test::More;
 
+ok( Box2D::b2Math::b2IsValid(0.0), "b2IsValid" );
+
+cmp_ok( abs( Box2D::b2Math::b2InvSqrt(4.0) - 0.5 ), "<=", 0.001, "b2InvSqrt" );
+
+is( Box2D::b2Math::b2Abs(1.0),  1.0, "b2Abs" );
+is( Box2D::b2Math::b2Abs(-1.0), 1.0, "b2Abs" );
+
+my $a = Box2D::b2Vec2->new( 1, 2 );
+my $b = Box2D::b2Vec2->new( 3, 4 );
+{
+    my $c = Box2D::b2Math::b2CrossV2V2( $a, $b );
+    is( $c, $a->x * $b->y - $a->y * $b->x, "b2CrossV2V2" );
+}
 
 my $vec = Box2D::b2Vec2->new( 10, 10 );
 
