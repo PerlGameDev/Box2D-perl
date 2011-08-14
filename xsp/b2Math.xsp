@@ -73,7 +73,7 @@ b2AddV2V2( a, b )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		RETVAL = new b2Vec2(*a + *b);
+		RETVAL = new b2Vec2( *a + *b );
 	OUTPUT:
 		RETVAL
 
@@ -84,7 +84,7 @@ b2SubV2V2( a, b )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		RETVAL = new b2Vec2(*a - *b);
+		RETVAL = new b2Vec2( *a - *b );
 	OUTPUT:
 		RETVAL
 
