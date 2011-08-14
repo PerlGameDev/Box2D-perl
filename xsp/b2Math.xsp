@@ -139,6 +139,24 @@ b2EqlV2V2( a, b )
 	OUTPUT:
 		RETVAL
 
+float32
+b2Distance( a, b )
+	b2Vec2* a
+	b2Vec2* b
+	CODE:
+		RETVAL = b2Distance( *a, *b );
+	OUTPUT:
+		RETVAL
+
+float32
+b2DistanceSquared( a, b )
+	b2Vec2* a
+	b2Vec2* b
+	CODE:
+		RETVAL = b2DistanceSquared( *a, *b );
+	OUTPUT:
+		RETVAL
+
 %}
 
 };

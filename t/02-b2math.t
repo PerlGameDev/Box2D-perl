@@ -77,6 +77,16 @@ my $s = 9;
     ok( $a == $c, "b2Vec2 == b2Vec2" );
 }
 
+{
+    my $c = Box2D::b2Math::b2Distance( $a, $b );
+    is( $c, ($a - $b)->Length, "b2Distance" );
+}
+
+{
+    my $c = Box2D::b2Math::b2DistanceSquared( $a, $b );
+    is( $c, Box2D::b2Math::b2DotV2V2( $a - $b, $a - $b ), "b2DistanceSquared" );
+}
+
 my $vec = Box2D::b2Vec2->new( 10, 10 );
 
 ok ( $vec );
