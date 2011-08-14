@@ -12,10 +12,41 @@ is( Box2D::b2Math::b2Abs(-1.0), 1.0, "b2Abs" );
 
 my $a = Box2D::b2Vec2->new( 1, 2 );
 my $b = Box2D::b2Vec2->new( 3, 4 );
+my $m = Box2D::b2Mat22->new( 5, 6, 7, 8 );
+my $s = 9;
+
+{
+    my $c = Box2D::b2Math::b2DotV2V2( $a, $b );
+    is( $c, $a->x  * $b->x + $a->y * $b->y, "b2DotV2V2" );
+}
 
 {
     my $c = Box2D::b2Math::b2CrossV2V2( $a, $b );
     is( $c, $a->x * $b->y - $a->y * $b->x, "b2CrossV2V2" );
+}
+
+{
+    my $c = Box2D::b2Math::b2CrossV2S( $a, $s );
+    is( $c->x, $s * $a->y,  "b2CrossV2S" );
+    is( $c->y, -$s * $a->x, "b2CrossV2S" );
+}
+
+{
+    my $c = Box2D::b2Math::b2CrossSV2( $s, $a );
+    is( $c->x, -$s * $a->y, "b2CrossSV2" );
+    is( $c->y, $s * $a->x,  "b2CrossSV2" );
+}
+
+{
+    my $c = Box2D::b2Math::b2MulM22V2( $m, $a );
+    is( $c->x, $m->col1->x * $a->x + $m->col2->x * $a->y, "b2MulM22V2" );
+    is( $c->y, $m->col1->y * $a->x + $m->col2->y * $a->y, "b2MulM22V2" );
+}
+
+{
+    my $c = Box2D::b2Math::b2MulTM22V2( $m, $a );
+    is( $c->x, Box2D::b2Math::b2DotV2V2( $a, $m->col1 ), "b2MulTM22V2" );
+    is( $c->y, Box2D::b2Math::b2DotV2V2( $a, $m->col2 ), "b2MulTM22V2" );
 }
 
 {
@@ -28,6 +59,12 @@ my $b = Box2D::b2Vec2->new( 3, 4 );
     my $c = $a - $b;
     is( $c->x, $a->x - $b->x, "b2Vec2 - b2Vec2" );
     is( $c->y, $a->y - $b->y, "b2Vec2 - b2Vec2" );
+}
+
+{
+    my $c = $s * $a;
+    is( $c->x, $s * $a->x, "scalar * b2Vec2" );
+    is( $c->y, $s * $a->y, "scalar * b2Vec2" );
 }
 
 my $vec = Box2D::b2Vec2->new( 10, 10 );

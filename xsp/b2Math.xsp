@@ -36,6 +36,15 @@ b2Abs( x )
 		RETVAL
 
 float32
+b2DotV2V2( a, b )
+	b2Vec2* a
+	b2Vec2* b
+	CODE:
+		RETVAL = b2Dot( *a, *b );
+	OUTPUT:
+		RETVAL
+
+float32
 b2CrossV2V2( a, b )
 	b2Vec2* a
 	b2Vec2* b
@@ -67,6 +76,28 @@ b2CrossSV2( s, a )
 		RETVAL
 
 b2Vec2*
+b2MulM22V2( A, v )
+	b2Mat22* A
+	b2Vec2* v
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(b2Mul( *A, *v ));
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2MulTM22V2( A, v )
+	b2Mat22* A
+	b2Vec2* v
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(b2MulT( *A, *v ));
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
 b2AddV2V2( a, b )
 	b2Vec2* a
 	b2Vec2* b
@@ -85,6 +116,17 @@ b2SubV2V2( a, b )
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
 		RETVAL = new b2Vec2( *a - *b );
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2MulSV2( s, a )
+	float32 s
+	b2Vec2* a
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2( s * *a );
 	OUTPUT:
 		RETVAL
 

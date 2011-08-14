@@ -113,6 +113,7 @@ package Box2D::b2Vec2;
 use overload
     '+'    => '_add',
     '-'    => '_sub',
+    '*'    => '_mul',
     'bool' => sub { 1 };
 
 sub _add {
@@ -130,6 +131,15 @@ sub _sub {
     else {
         return Box2D::b2Math::b2SubV2V2( $self, $other );
     }
+}
+
+# Multiplication is defined between a vector and scalar. Multiplying two
+# vectors is ambiguous because either cross product or dot product may
+# be intended. Use b2CrossV2V2 or b2DotV2V2 for those operations.
+sub _mul {
+    my ( $self, $other ) = @_;
+
+    return Box2D::b2Math::b2MulSV2( $other, $self );
 }
 
 1; # End of Box2D
