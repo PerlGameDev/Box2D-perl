@@ -114,6 +114,7 @@ use overload
     '+'    => '_add',
     '-'    => '_sub',
     '*'    => '_mul',
+    '=='   => '_eql',
     'bool' => sub { 1 };
 
 sub _add {
@@ -140,6 +141,12 @@ sub _mul {
     my ( $self, $other ) = @_;
 
     return Box2D::b2Math::b2MulSV2( $other, $self );
+}
+
+sub _eql {
+    my ( $self, $other ) = @_;
+
+    return Box2D::b2Math::b2EqlV2V2( $self, $other );
 }
 
 1; # End of Box2D

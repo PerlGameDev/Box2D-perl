@@ -67,6 +67,16 @@ my $s = 9;
     is( $c->y, $s * $a->y, "scalar * b2Vec2" );
 }
 
+{
+    ok( !($a == $b), "b2Vec2 == b2Vec2" );
+    ok( !($b == $a), "b2Vec2 == b2Vec2" );
+    ok( $a == $a,    "b2Vec2 == b2Vec2" );
+    ok( $b == $b,    "b2Vec2 == b2Vec2" );
+
+    my $c = Box2D::b2Vec2->new( $a->x, $a->y );
+    ok( $a == $c, "b2Vec2 == b2Vec2" );
+}
+
 my $vec = Box2D::b2Vec2->new( 10, 10 );
 
 ok ( $vec );
