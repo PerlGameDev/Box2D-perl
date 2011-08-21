@@ -26,18 +26,24 @@ bool IsValid();
 %{
 
 float32
-b2Vec2::x()
+b2Vec2::x( ... )
 	CODE:
-		float32 x = THIS->x;
-		RETVAL = x;
+		if ( items > 1 )
+		{
+			THIS->x = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->x;
 	OUTPUT:
 		RETVAL
 
 float32
-b2Vec2::y()
+b2Vec2::y( ... )
 	CODE:
-		float32 y = THIS->y;
-		RETVAL = y;
+		if ( items > 1 )
+		{
+			THIS->y = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->y;
 	OUTPUT:
 		RETVAL
 

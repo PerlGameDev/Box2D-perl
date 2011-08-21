@@ -94,8 +94,13 @@ ok ( $vec );
 is( $vec->x, 10 );
 is( $vec->y, 10 );
 
-$vec->Set(5,5);
+$vec->x(3);
+$vec->y(4);
 
+is( $vec->x, 3 );
+is( $vec->y, 4 );
+
+$vec->Set(5,5);
 
 is( $vec->x, 5 );
 is( $vec->y, 5 );
