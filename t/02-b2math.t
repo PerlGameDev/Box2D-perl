@@ -3,9 +3,12 @@ use warnings;
 use Box2D;
 use Test::More;
 
-ok( Box2D::b2Math::b2IsValid(0.0), "b2IsValid" );
+ok( Box2D::b2Math::b2IsValid(0.0),  "b2IsValid" );
+ok( Box2D::b2Math::b2IsValid(1.0),  "b2IsValid" );
+ok( Box2D::b2Math::b2IsValid(-1.0), "b2IsValid" );
 
-cmp_ok( abs( Box2D::b2Math::b2InvSqrt(4.0) - 0.5 ), "<=", 0.001, "b2InvSqrt" );
+cmp_ok( abs( Box2D::b2Math::b2InvSqrt(4.0) - 0.5 ), "<=", 0.001,
+    "b2InvSqrt" );
 
 is( Box2D::b2Math::b2Abs(1.0),  1.0, "b2Abs" );
 is( Box2D::b2Math::b2Abs(-1.0), 1.0, "b2Abs" );
@@ -17,7 +20,7 @@ my $s = 9;
 
 {
     my $c = Box2D::b2Math::b2DotV2V2( $a, $b );
-    is( $c, $a->x  * $b->x + $a->y * $b->y, "b2DotV2V2" );
+    is( $c, $a->x * $b->x + $a->y * $b->y, "b2DotV2V2" );
 }
 
 {
@@ -50,13 +53,42 @@ my $s = 9;
 }
 
 {
+    my $c = Box2D::b2Math::b2AddV2V2( $a, $b );
+    is( $c->x, $a->x + $b->x, "b2AddV2V2" );
+    is( $c->y, $a->y + $b->y, "b2AddV2V2" );
+}
+
+{
+    my $c = Box2D::b2Math::b2SubV2V2( $a, $b );
+    is( $c->x, $a->x - $b->x, "b2SubV2V2" );
+    is( $c->y, $a->y - $b->y, "b2SubV2V2" );
+}
+
+{
+    my $c = Box2D::b2Math::b2MulSV2( $s, $a );
+    is( $c->x, $s * $a->x, "b2MulSV2" );
+    is( $c->y, $s * $a->y, "b2MulSV2" );
+}
+
+{
+    ok( !( Box2D::b2Math::b2EqlV2V2( $a, $b ) ), "b2EqlV2V2" );
+    ok( !( Box2D::b2Math::b2EqlV2V2( $b, $a ) ), "b2EqlV2V2" );
+    ok( Box2D::b2Math::b2EqlV2V2( $a, $a ), "b2EqlV2V2" );
+    ok( Box2D::b2Math::b2EqlV2V2( $b, $b ), "b2EqlV2V2" );
+
+    my $c = Box2D::b2Vec2->new( $a->x, $a->y );
+    ok( Box2D::b2Math::b2EqlV2V2( $a, $c ), "b2EqlV2V2" );
+}
+
+{
     my $c = Box2D::b2Math::b2Distance( $a, $b );
-    is( $c, ($a - $b)->Length, "b2Distance" );
+    is( $c, Box2D::b2Math::b2SubV2V2( $a, $b )->Length, "b2Distance" );
 }
 
 {
     my $c = Box2D::b2Math::b2DistanceSquared( $a, $b );
-    is( $c, Box2D::b2Math::b2DotV2V2( $a - $b, $a - $b ), "b2DistanceSquared" );
+    my $d = Box2D::b2Math::b2SubV2V2( $a, $b );
+    is( $c, Box2D::b2Math::b2DotV2V2( $d, $d ), "b2DistanceSquared" );
 }
 
 done_testing;
