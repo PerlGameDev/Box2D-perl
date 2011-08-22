@@ -18,14 +18,9 @@ $body->CreateFixture( $shape, 1.0 );
 my $point1 = Box2D::b2Vec2->new( 0,  0 );
 my $point2 = Box2D::b2Vec2->new( 10, 10 );
 
-my $callback = Box2D::PerlRayCastCallback->new();
-
-ok( $callback, "new" );
-isa_ok( $callback, "Box2D::PerlRayCastCallback" );
-
 my $reported;
 
-$callback->SetReportFixtureSub(
+my $callback = Box2D::PerlRayCastCallback->new(
     sub {
         my ( $fixture, $point, $normal, $fraction ) = @_;
 
@@ -34,6 +29,9 @@ $callback->SetReportFixtureSub(
         return 0;
     }
 );
+
+ok( $callback, "new" );
+isa_ok( $callback, "Box2D::PerlRayCastCallback" );
 
 $world->RayCast( $callback, $point1, $point2 );
 
