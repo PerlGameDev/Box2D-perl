@@ -85,6 +85,14 @@ b2World::SetContactListenerXS( listener )
                 /* fprintf(stderr,"Contact Listener Set!\n\n\n"); */
 		THIS->SetContactListener( listener );
 
+void
+b2World::RayCast( callback, point1, point2 )
+	b2RayCastCallback* callback
+	b2Vec2* point1
+	b2Vec2* point2
+	CODE:
+		THIS->RayCast( callback, *point1, *point2 );
+
 %}
 	
 };

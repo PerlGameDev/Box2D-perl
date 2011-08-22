@@ -44,3 +44,5 @@ b2RayCastInput *		O_OBJECT
 b2RayCastOutput *		O_OBJECT
 b2AABB *			O_OBJECT
 b2MassData *			O_OBJECT
+PerlRayCastCallback *		O_OBJECT
+b2RayCastCallback *		O_OBJECT
