@@ -11,11 +11,17 @@
 %name{Box2D::PerlRayCastCallback} class PerlRayCastCallback
 {
 
-PerlRayCastCallback();
-
 ~PerlRayCastCallback();
 
 %{
+
+PerlRayCastCallback*
+PerlRayCastCallback::new( callback );
+	SV* callback
+	CODE:
+		RETVAL = new PerlRayCastCallback( callback );
+	OUTPUT:
+		RETVAL
 
 void
 PerlRayCastCallback::SetReportFixtureSub( callback )

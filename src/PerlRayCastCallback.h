@@ -11,7 +11,9 @@ protected:
 	SV* reportFixture;
 
 public:
-	PerlRayCastCallback() : reportFixture(NULL) {}
+	PerlRayCastCallback( void* ourSub ) {
+		reportFixture = newSVsv( (SV*)ourSub );
+	}
 
 	~PerlRayCastCallback(){};
 
@@ -49,15 +51,8 @@ public:
 		return rv;
 	}
 
-	void SetReportFixtureSub( void * ourSub ) {
-		/* Take a copy of the callback */
-		if ( reportFixture == NULL ) {
-			/* First time, so create a new SV */
-			reportFixture = newSVsv( (SV*)ourSub );
-		} else {
-			/* Been here before, so overwrite */
-			SvSetSV( reportFixture, (SV*)ourSub );
-		}
+	void SetReportFixtureSub( void* ourSub ) {
+		SvSetSV( reportFixture, (SV*)ourSub );
 	}
 };
 
