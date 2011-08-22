@@ -23,18 +23,19 @@ public:
 		int count;
 
 		dSP;
+
 		ENTER;
 		SAVETMPS;
-		PUSHMARK(SP);
 
+		PUSHMARK(SP);
 		XPUSHs( sv_2mortal(object_to_stack( sizeof(b2Fixture*), (void*)fixture, "Box2D::b2Fixture" )) );
 		XPUSHs( sv_2mortal(object_to_stack( sizeof(b2Vec2*),    (void*)&point,  "Box2D::b2Vec2" )) );
 		XPUSHs( sv_2mortal(object_to_stack( sizeof(b2Vec2*),    (void*)&normal, "Box2D::b2Vec2" )) );
 		XPUSHs( sv_2mortal(newSVnv(fraction)) );
-
 		PUTBACK;
 
 		count = call_sv( reportFixture, G_SCALAR );
+
 		SPAGAIN;
 
 		if ( count != 0 ) {
