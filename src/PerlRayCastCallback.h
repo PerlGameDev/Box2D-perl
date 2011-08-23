@@ -28,9 +28,9 @@ public:
 		SAVETMPS;
 
 		PUSHMARK(SP);
-		XPUSHs( sv_2mortal(object_to_stack( sizeof(b2Fixture*), (void*)fixture, "Box2D::b2Fixture" )) );
-		XPUSHs( sv_2mortal(object_to_stack( sizeof(b2Vec2*),    (void*)&point,  "Box2D::b2Vec2" )) );
-		XPUSHs( sv_2mortal(object_to_stack( sizeof(b2Vec2*),    (void*)&normal, "Box2D::b2Vec2" )) );
+		XPUSHs( sv_2mortal(object_to_stack( sizeof(b2Fixture*), (void*)fixture,            "Box2D::b2Fixture" )) );
+		XPUSHs( sv_2mortal(object_to_stack( sizeof(b2Vec2*),    (void*)new b2Vec2(point),  "Box2D::b2Vec2" )) );
+		XPUSHs( sv_2mortal(object_to_stack( sizeof(b2Vec2*),    (void*)new b2Vec2(normal), "Box2D::b2Vec2" )) );
 		XPUSHs( sv_2mortal(newSVnv(fraction)) );
 		PUTBACK;
 
