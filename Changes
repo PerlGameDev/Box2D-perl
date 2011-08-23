@@ -2,6 +2,10 @@ Revision history for Box2D
 
 0.05
         Added b2RayCastCallback and PerlRayCastCallback [jtpalmer]
+        Changes to b2Vec2 [jtpalmer]
+        Added operator overloading to b2Vec2 [jtpalmer]
+        Added b2Math [jtpalmer]
+        Additions to b2Shape [jtpalmer]
         Added b2MassData [jtpalmer]
         Added b2AABB [jtpalmer]
         Added b2RayCastInput, b2RayCastOutput [jtpalmer]
