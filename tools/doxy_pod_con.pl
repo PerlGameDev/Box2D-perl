@@ -25,7 +25,7 @@ sub parse_html {
 
     my $title = $tree->findvalue('/html/head/title');
 
-    if ( $title =~ m|Box2D:\ (\w+)\ Class\ Reference|xms ) {
+    if ( $title =~ m#Box2D: (\w+) (Class|Struct) Reference#ms ) {
         $class->{name} = $1;
     }
     else {
