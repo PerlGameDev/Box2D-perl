@@ -129,6 +129,8 @@ Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
 See L<Box2D/AUTHORS>
 
 =head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
 [% IF see_also %]
 
 =head1 SEE ALSO
