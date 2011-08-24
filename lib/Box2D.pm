@@ -18,6 +18,7 @@ Currently this module is a 1 to 1 binding. This is still a WIP and so far here a
 	b2CircleShape
 	b2Contact
 	b2ContactImpulse
+	b2ContactListener
 	b2DistanceJoint
 	b2DistanceJointDef
 	b2Filter
@@ -41,6 +42,7 @@ Currently this module is a 1 to 1 binding. This is still a WIP and so far here a
 	b2PrismaticJointDef
 	b2PulleyJoint
 	b2PulleyJointDef
+	b2RayCastCallback
 	b2RayCastInput
 	b2RayCastOutput
 	b2RevoluteJoint
@@ -51,7 +53,6 @@ Currently this module is a 1 to 1 binding. This is still a WIP and so far here a
 	b2WeldJoint
 	b2WeldJointDef
 	b2World
-	PerlContactListener
 
 =head2 USAGE
 
