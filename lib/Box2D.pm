@@ -55,16 +55,16 @@ Currently this module is a 1 to 1 binding. This is still a WIP and so far here a
 
 =head2 USAGE
 
-Have a look at the examples folder for useage examples. 
+Have a look at the examples folder for useage examples.
 
 The Box2D Manual and Documentation are also useful:
 
-L<http://www.box2d.org/documentation.html> 
+L<http://www.box2d.org/documentation.html>
 
 =head2 TODO
 
-	Documentation 
-	Examples 
+	Documentation
+	Examples
 	Adding more bindings
 	Inline::C Support
 
@@ -79,34 +79,36 @@ L<https://github.com/PerlGameDev/Box2D-perl>
 our $VERSION = '0.04';
 
 require XSLoader;
-XSLoader::load('Box2D', $VERSION);
+XSLoader::load( 'Box2D', $VERSION );
 require Exporter;
 
 our @EXPORT_OK   = ();
-our %EXPORT_TAGS = ( );
+our %EXPORT_TAGS = ();
 
 use constant {
-#b2Body Type 
-b2_staticBody => 0,
-b2_kinematicBody => 1,
-b2_dynamicBody => 2,
 
-#b2Shape Type 
-e_unknown=> -1,
-e_circle => 0,
-e_polygon => 1,
-e_typeCount => 2,
+    #b2Body Type
+    b2_staticBody    => 0,
+    b2_kinematicBody => 1,
+    b2_dynamicBody   => 2,
+
+    #b2Shape Type
+    e_unknown   => -1,
+    e_circle    => 0,
+    e_polygon   => 1,
+    e_typeCount => 2,
 
 };
 
 BEGIN {
-*Box2D::b2World::SetContactListener = sub{
-    if (UNIVERSAL::isa($_[1],"Box2D::b2ContactListener")) {
-        $_[0]->SetContactListenerXS( $_[1]->_getListener() );
-    } else {
-        $_[0]->SetContactListenerXS( $_[1] );
-    }
-};
+    *Box2D::b2World::SetContactListener = sub {
+        if ( UNIVERSAL::isa( $_[1], "Box2D::b2ContactListener" ) ) {
+            $_[0]->SetContactListenerXS( $_[1]->_getListener() );
+        }
+        else {
+            $_[0]->SetContactListenerXS( $_[1] );
+        }
+    };
 }
 
 package Box2D::b2Vec2;
@@ -116,7 +118,7 @@ use overload
     '-'    => '_sub',
     '*'    => '_mul',
     '=='   => '_eql',
-    'bool' => sub { 1 };
+    'bool' => sub {1};
 
 sub _add {
     my ( $self, $other ) = @_;
@@ -150,4 +152,4 @@ sub _eql {
     return Box2D::b2Math::b2EqlV2V2( $self, $other );
 }
 
-1; # End of Box2D
+1;    # End of Box2D
