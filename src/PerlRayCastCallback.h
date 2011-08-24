@@ -49,10 +49,6 @@ public:
 
 		return rv;
 	}
-
-	void SetReportFixtureSub( void* ourSub ) {
-		SvSetSV( reportFixture, (SV*)ourSub );
-	}
 };
 
 #endif

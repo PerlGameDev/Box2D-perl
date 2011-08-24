@@ -23,12 +23,6 @@ PerlRayCastCallback::new( callback );
 	OUTPUT:
 		RETVAL
 
-void
-PerlRayCastCallback::SetReportFixtureSub( callback )
-	SV* callback
-	CODE:
-		THIS->SetReportFixtureSub( callback );
-
 %}
 
 };
