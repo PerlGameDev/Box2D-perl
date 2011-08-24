@@ -109,6 +109,17 @@ BEGIN {
             $_[0]->SetContactListenerXS( $_[1] );
         }
     };
+
+    *Box2D::b2World::RayCast = sub {
+        my $world    = shift;
+        my $callback = shift;
+        if ( UNIVERSAL::isa( $callback, "Box2D::b2RayCastCallback" ) ) {
+            $world->RayCastXS( $callback->_getCallback(), @_ );
+        }
+        else {
+            $world->RayCastXS( $callback, @_ );
+        }
+    };
 }
 
 package Box2D::b2Vec2;
