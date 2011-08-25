@@ -11,8 +11,6 @@
 
 void ClearForces();
 
-~b2World();
-
 %{
 
 b2World*
@@ -90,6 +88,12 @@ b2World::RayCastXS( callback, point1, point2 )
 	b2Vec2* point2
 	CODE:
 		THIS->RayCast( callback, *point1, *point2 );
+
+void
+b2World::DESTROY( )
+    CODE:
+        delete THIS;
+        warn ("Destroying World");
 
 %}
 
