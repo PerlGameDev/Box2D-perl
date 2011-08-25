@@ -92,8 +92,10 @@ b2World::RayCastXS( callback, point1, point2 )
 void
 b2World::DESTROY( )
     CODE:
-        delete THIS;
-        warn ("Destroying World");
+        if( THIS != NULL)
+        {
+            delete THIS;
+        }
 
 %}
 

@@ -3,8 +3,6 @@
 %name{Box2D::b2CircleShape} class b2CircleShape : public %name{Box2D::b2Shape} b2Shape
 {
 
-~b2CircleShape();
-
 %{
 
 b2CircleShape *
