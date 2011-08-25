@@ -42,13 +42,13 @@ sub parse_html {
         $class->{abstract} = 'TODO';
     }
 
-    $class->{methods} = parse_methods($class, $tree);
+    $class->{methods} = parse_methods( $class, $tree );
 
     return $class;
 }
 
 sub parse_methods {
-    my ($class, $tree) = @_;
+    my ( $class, $tree ) = @_;
 
     my @methods;
 
@@ -56,24 +56,41 @@ sub parse_methods {
 
     foreach my $member (@members) {
 
-        my ($type, $name) = parse_method_name($member->findvalue('.//td[@class="memname"]'));
+        my ( $type, $name )
+            = parse_method_name(
+            $member->findvalue('.//td[@class="memname"]') );
+
         my $desc = $member->findvalue('.//div[@class="memdoc"]');
 
         next if $name =~ m/\[protected\]/;
         next if $name =~ m/\[friend\]/;
 
-        if ($type && $type ne 'void') {
+        if ( $type && $type ne 'void' ) {
             $desc .= "\n\nReturns a $type";
         }
 
-        if ($name eq $class->{name}) {
+        if ( $name eq $class->{name} ) {
             $name = 'new';
             $desc = 'Constructor';
+        }
+
+        my @p_types
+            = $member->findnodes_as_strings('.//td[@class="paramtype"]/a');
+        my @p_names = map { '$' . $_ }
+            $member->findnodes_as_strings('.//td[@class="paramname"]/em');
+
+        $name .= '( ' . join( ', ', @p_names ) . ' )' if @p_names;
+
+        my @args;
+
+        for (0 .. $#p_types) {
+            push @args, { type => $p_types[$_], name => $p_names[$_] };
         }
 
         my %method = (
             name        => $name,
             description => $desc,
+            arguments   => \@args,
         );
 
         push @methods, \%method;
@@ -85,10 +102,11 @@ sub parse_methods {
 sub parse_method_name {
     my ($name) = @_;
 
-    if ($name =~ /^\s*(?:(\w+) )?(?:\w+)::(\w+)\s*$/) {
-        return ($1, $2);
-    } else {
-        return ('', $name);
+    if ( $name =~ /^\s*(?:(\w+) )?(?:\w+)::(\w+)\s*$/ ) {
+        return ( $1, $2 );
+    }
+    else {
+        return ( '', $name );
     }
 }
 
