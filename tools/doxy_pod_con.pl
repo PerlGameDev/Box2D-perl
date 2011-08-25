@@ -83,7 +83,7 @@ sub parse_methods {
 
         my @args;
 
-        for (0 .. $#p_types) {
+        for ( 0 .. $#p_types ) {
             push @args, { type => $p_types[$_], name => $p_names[$_] };
         }
 
@@ -102,7 +102,25 @@ sub parse_methods {
 sub parse_method_name {
     my ($name) = @_;
 
-    if ( $name =~ /^\s*(?:(\w+) )?(?:\w+)::(\w+)\s*$/ ) {
+    # Parse things like:
+    #   float Class::Method
+    #   Class * Class::Method
+    my $regex = qr/
+        ^
+        \s*
+        (?:
+            (\w+)           # return type
+            \s+
+            (?: \* \s+)?    # possibly a pointer
+        )?
+        (?: \w+ )           # class name
+        ::
+        (\w+)               # method name
+        \s*
+        $
+    /x;
+
+    if ( $name =~ $regex ) {
         return ( $1, $2 );
     }
     else {
