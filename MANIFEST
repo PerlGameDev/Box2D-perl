@@ -11,12 +11,14 @@ examples/pendulum.pl
 examples/pulley.pl
 lib/Box2D.pm
 lib/Box2D/b2ContactListener.pm
+lib/Box2D/b2RayCastCallback.pm
 MANIFEST			This list of files
 META.json
 META.yml
 README
 src/helper.h
 src/PerlContactListener.h
+src/PerlRayCastCallback.h
 src/ppport.h
 t/00-load.t
 t/01-box2d.t
@@ -37,11 +39,21 @@ t/15-b2mousejoint.t
 t/16-b2linejoint.t
 t/17-b2weldjoint.t
 t/18-b2frictionjoint.t
+t/19-b2aabb.t
+t/20-b2raycastinput.t
+t/21-b2raycastoutput.t
+t/22-b2massdata.t
+t/23-b2vec2.t
+t/24-b2mat22.t
+t/25-b2transform.t
+t/26-perlraycastcallback.t
+t/27-b2raycastcallback.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
 tools/doxy_pod_con.pl
+xsp/b2AABB.xsp
 xsp/b2Body.xsp
 xsp/b2BodyDef.xsp
 xsp/b2CircleShape.xsp
@@ -61,7 +73,9 @@ xsp/b2JointDef.xsp
 xsp/b2LineJoint.xsp
 xsp/b2LineJointDef.xsp
 xsp/b2Manifold.xsp
+xsp/b2MassData.xsp
 xsp/b2Mat22.xsp
+xsp/b2Math.xsp
 xsp/b2MouseJoint.xsp
 xsp/b2MouseJointDef.xsp
 xsp/b2PolygonShape.xsp
@@ -69,6 +83,8 @@ xsp/b2PrismaticJoint.xsp
 xsp/b2PrismaticJointDef.xsp
 xsp/b2PulleyJoint.xsp
 xsp/b2PulleyJointDef.xsp
+xsp/b2RayCastInput.xsp
+xsp/b2RayCastOutput.xsp
 xsp/b2RevoluteJoint.xsp
 xsp/b2RevoluteJointDef.xsp
 xsp/b2Shape.xsp
@@ -80,4 +96,5 @@ xsp/b2World.xsp
 xsp/Box2D.xsp
 xsp/my.map
 xsp/PerlContactListener.xsp
+xsp/PerlRayCastCallback.xsp
 xsp/typemap.xsp

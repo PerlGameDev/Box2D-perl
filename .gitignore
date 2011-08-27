@@ -16,3 +16,4 @@ META.yml
 META.json
 buildtmp
 *.swp
+*.bak
