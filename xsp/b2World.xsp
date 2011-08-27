@@ -14,7 +14,7 @@ void ClearForces();
 %{
 
 b2World*
-b2World::new( gravity, doSleep)
+b2World::new( gravity, doSleep )
 	b2Vec2* gravity
 	bool doSleep
 	CODE:
@@ -77,7 +77,7 @@ b2World::DestroyBody( body )
 
 void
 b2World::SetContactListenerXS( listener )
-        b2ContactListener* listener
+	b2ContactListener* listener
 	CODE:
 		THIS->SetContactListener( listener );
 
@@ -90,12 +90,12 @@ b2World::RayCastXS( callback, point1, point2 )
 		THIS->RayCast( callback, *point1, *point2 );
 
 void
-b2World::DESTROY( )
-    CODE:
-        if( THIS != NULL)
-        {
-            delete THIS;
-        }
+b2World::DESTROY()
+	CODE:
+		if ( THIS != NULL )
+		{
+			delete THIS;
+		}
 
 %}
 
