@@ -1,5 +1,8 @@
 Revision history for Box2D
 
+0.06
+        Added radar example [jtpalmer]
+
 0.05    27/08/2011
         Added b2RayCastCallback and PerlRayCastCallback [jtpalmer]
         Changes to b2Vec2 [jtpalmer]
