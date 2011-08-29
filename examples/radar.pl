@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Box2D;
 
-use parent qw(Box2D::b2RayCastCallback);
+use base qw(Box2D::b2RayCastCallback);
 
 sub new {
     my ( $class, $objects ) = @_;
@@ -20,8 +20,7 @@ sub ReportFixture {
 
     my $id = $fixture->GetUserData();
 
-
-    	$self->{objects}->[$id]->{color} = 0xFF0000FF;
+    $self->{objects}->[$id]->{color} = 0xFF0000FF;
 
     return 0;
 }

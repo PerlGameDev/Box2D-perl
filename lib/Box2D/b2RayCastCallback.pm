@@ -30,8 +30,9 @@ Box2D::b2RayCastCallback - Callback class for ray casts
 =head1 SYNOPSIS
 
     package My::RayCastCallback;
+    use Box2D;
 
-    use parent qw(Box2D::b2RayCastCallback);
+    use base qw(Box2D::b2RayCastCallback);
 
     sub ReportFixture {
         my ( $self, $fixture, $point, $normal, $fraction ) = @_;

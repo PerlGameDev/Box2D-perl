@@ -4,7 +4,7 @@ use Box2D;
 
 package My::RayCastCallback;
 
-use parent qw(Box2D::b2RayCastCallback);
+use base qw(Box2D::b2RayCastCallback);
 
 sub new {
     my $class = shift;
