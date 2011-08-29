@@ -20,9 +20,10 @@ sub ReportFixture {
 
     my $id = $fixture->GetUserData();
 
-    $self->{objects}->[$id]->{color} = 0xFF0000FF;
 
-    return 1;
+    	$self->{objects}->[$id]->{color} = 0xFF0000FF;
+
+    return 0;
 }
 
 package main;
