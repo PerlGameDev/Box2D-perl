@@ -57,6 +57,7 @@ is( $body->GetType(), $type1, "SetType" );
 is( $body->GetAngle(), $angle0, "GetAngle" );
 
 my $transform = $body->GetTransform();
-is( $transform->GetAngle(), $angle0, "GetTransform angle" );
+cmp_ok( abs( $transform->GetAngle() - $angle0 ),
+    "<=", 0.00000001, "GetTransform angle" );
 
 done_testing;

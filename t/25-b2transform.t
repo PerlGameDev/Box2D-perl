@@ -21,15 +21,19 @@ ok( $transform, "new" );
 
 isa_ok( $transform, "Box2D::b2Transform" );
 
-is( $transform->position->x, $x,     "position->x" );
-is( $transform->position->y, $y,     "position->y" );
-is( $transform->GetAngle(),  $angle, "GetAngle" );
+is( $transform->position->x, $x, "position->x" );
+is( $transform->position->y, $y, "position->y" );
+
+cmp_ok( abs( $transform->GetAngle() - $angle ), "<=", 0.00000001,
+    "GetAngle" );
 
 $transform->Set( $position2, $angle2 );
 
-is( $transform->position->x, $x2,     "Set position->x" );
-is( $transform->position->y, $y2,     "Set position->y" );
-is( $transform->GetAngle(),  $angle2, "Set angle" );
+is( $transform->position->x, $x2, "Set position->x" );
+is( $transform->position->y, $y2, "Set position->y" );
+
+cmp_ok( abs( $transform->GetAngle() - $angle2 ),
+    "<=", 0.00000001, "Set angle" );
 
 $transform->SetIdentity();
 
@@ -45,6 +49,7 @@ is( $transform->position->x, $x2, "Set position x" );
 is( $transform->position->y, $y2, "Set position y" );
 
 $transform->R($R2);
-is( $transform->GetAngle(), $angle2, "Set R angle" );
+cmp_ok( abs( $transform->GetAngle() - $angle2 ),
+    "<=", 0.00000001, "Set R angle" );
 
 done_testing;

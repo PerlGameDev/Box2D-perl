@@ -3,6 +3,7 @@ Revision history for Box2D
 0.06
         Added radar example [jtpalmer]
         Replaced use of 'parent' with 'base' [jtpalmer]
+        Weaken tests due to precision [jtpalmer]
 
 0.05    27/08/2011
         Added b2RayCastCallback and PerlRayCastCallback [jtpalmer]
