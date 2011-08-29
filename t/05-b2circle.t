@@ -54,8 +54,8 @@ foreach ( 0 .. 60 ) {
 
     my $position = $body->GetPosition();
     my $angle    = $body->GetAngle();
-    warn( "Position " . $position->x() . ", " . $position->y() . "\n" );
-    warn( "Angle " . $angle . "\n" );
+    #warn( "Position " . $position->x() . ", " . $position->y() . "\n" );
+    #warn( "Angle " . $angle . "\n" );
 }
 
 pass("Run step and clear forces");

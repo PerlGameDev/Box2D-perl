@@ -60,30 +60,32 @@ for my $listenerType ("normal","TestContactListener") {
         # if this runs at least callback fixtures work as well!
         $listener->SetBeginContactSub(
             sub { 
-                warn "BeginContact!"; warn @_; $beginContact++;  
+                #warn "BeginContact!"; warn @_;
+                $beginContact++;
                 my ($contact) = @_;
                 my $fixA = $contact->GetFixtureA();
                 my $fixB = $contact->GetFixtureB();
-                warn "$fixA $fixB";
+                #warn "$fixA $fixB";
                 my $posA = $fixA->GetBody()->GetPosition();
                 my $posB = $fixB->GetBody()->GetPosition();
-                warn $posA->x() . " " . $posA->y(). " ".$fixA->GetDensity();
-                warn $posB->x() . " " . $posB->y(). " ".$fixB->GetDensity();
+                #warn $posA->x() . " " . $posA->y(). " ".$fixA->GetDensity();
+                #warn $posB->x() . " " . $posB->y(). " ".$fixB->GetDensity();
                 
             } );
-        $listener->SetEndContactSub(sub { warn "EndContact!"; warn @_; $endContact++;  } );
+        $listener->SetEndContactSub(sub { #warn "EndContact!"; warn @_;
+            $endContact++;  } );
         $listener->SetPreSolveSub(sub { #warn "PreSolve!"; warn @_; 
             $preSolve++;  } );
         $listener->SetPostSolveSub(sub {# warn "PostSolve!"; warn @_; 
             $postSolve++; });
         
-        warn "In Perl Code setting listener";
+        #warn "In Perl Code setting listener";
         $world->SetContactListener( $listener );
     } else {
         $listener = TestContactListener->new();
         ok(  UNIVERSAL::isa($listener,"Box2D::b2ContactListener"), "Not a contactlistener??");
 
-        warn "Setting listener!";
+        #warn "Setting listener!";
         $world->SetContactListener(  $listener );
     }
 
@@ -134,12 +136,12 @@ use base qw(Box2D::b2ContactListener);
 
 sub BeginContact {
     my ($self, $contact) = @_;
-    warn "TestContact BeginContact";
+    #warn "TestContact BeginContact";
     $self->{BeginContact}++;
 }
 sub EndContact {
     my ($self, $contact) = @_;
-    warn "TestContact EndContact";
+    #warn "TestContact EndContact";
     $self->{EndContact}++;
 }
 sub PreSolve {
