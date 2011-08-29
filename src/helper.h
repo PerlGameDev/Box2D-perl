@@ -22,10 +22,11 @@ SV* object_to_stack( int size_ptr, void* obj, const char* CLASS )
 
 SV* new_data( SV* thing )
 {
-	if ( SvROK(thing) )
-		return  newRV_inc( SvRV(thing) );
-	else
-		return  SvREFCNT_inc(thing);
+	if ( SvROK(thing) ) {
+		return newRV_inc( SvRV(thing) );
+	} else {
+		return SvREFCNT_inc(thing);
+	}
 }
 
 #endif
