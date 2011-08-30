@@ -18,6 +18,9 @@ my $builder = Module::Build::WithXSpp->new(
         'Test::More'     => 0,
         'Alien::Box2D'   => 0.103,
         'ExtUtils::XSpp' => 0.14,
+	    'ExtUtils::Typemap::ObjectMap'   => '0',
+        'ExtUtils::Typemap::STL::String' => '0',
+        'ExtUtils::Typemap::Basic'       => '0',
     },
     add_to_cleanup      => [ 'Box2D-*' ],
     extra_typemap_modules => {
