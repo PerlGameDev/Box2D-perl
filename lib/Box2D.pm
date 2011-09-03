@@ -75,6 +75,31 @@ To contribute to this module please contact us on github:
 
 L<https://github.com/PerlGameDev/Box2D-perl>
 
+=head1 AUTHORS
+
+=over 4
+
+=item Kartik Thakore
+
+=item Abram Hindle
+
+=item Tobias Leich
+
+=item Jeffrey T. Palmer
+
+=item Breno G. de Oliveira
+
+=item Zach Morgan
+
+=back
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2011 Box2D Authors as listed above, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
 =cut
 
 our $VERSION = '0.05';
