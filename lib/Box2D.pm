@@ -123,7 +123,8 @@ BEGIN {
     };
 }
 
-package Box2D::b2Vec2;
+package    # Hide from PAUSE
+    Box2D::b2Vec2;
 
 use overload
     '+'    => '_add',
