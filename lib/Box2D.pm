@@ -8,6 +8,16 @@ our @ISA = qw(Exporter);
 
 Box2D - 2D Physics Library
 
+=head1 SYNOPSIS
+
+ use Box2D;
+
+=head1 DESCRIPTION
+
+Box2D is a package of Perl modules that provide an object oriented
+interface to the L<Box2D Physics Engine|http://www.box2d.org/> for
+Perl 5.
+
 =head1 OVERVIEW
 
 Currently this module is a 1 to 1 binding. This is still a WIP and so far here are the completed class:
