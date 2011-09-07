@@ -66,6 +66,7 @@ sub parse_methods {
         next if $name =~ m/\[friend\]/;
 
         if ( $type && $type ne 'void' ) {
+            $type = "Box2D::$type" if $type =~ /^b2/;
             $desc .= "\n\nReturns a $type";
         }
 
