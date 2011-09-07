@@ -32,7 +32,7 @@ sub parse_html {
         $class->{name} = 'TODO';
     }
 
-    $class->{description} = $tree->findvalue('//a[@name="_details"]/../p[3]');
+    $class->{description} = $tree->findvalue('//div[@class="contents"]/p[4]');
 
     # Use the first sentence from the description for the abstract
     if ( $class->{description} =~ /^((?:.*?)\.)/xs ) {
