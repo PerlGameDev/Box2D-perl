@@ -97,6 +97,7 @@ sub parse_methods {
         if ( $desc =~ / ^ (.*) Parameters: (.*) $ /x ) {
             $desc = $1;
 
+            # XXX This works for one or two parameters
             my ( $first, @rest ) = split /\s+(\w+)\xa0/, $2;
 
             my @arg_descs = ($first);
