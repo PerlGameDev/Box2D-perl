@@ -96,7 +96,28 @@ sub parse_methods {
 
         if ( $desc =~ / ^ (.*) Parameters: (.*) $ /x ) {
             $desc = $1;
-            my @args = split /\xa0/, $2;
+
+            my ( $first, @rest ) = split /\s+(\w+)\xa0/, $2;
+
+            my @arg_descs = ($first);
+
+            if (@rest) {
+                for ( 0 .. $#rest / 2 ) {
+                    my $arg_desc
+                        = $rest[ $_ * 2 ] . "\xa0" . $rest[ $_ * 2 + 1 ];
+                    push @arg_descs, $arg_desc;
+                }
+            }
+
+            foreach my $arg_chunk (@arg_descs) {
+                my ( $arg_name, $arg_desc ) = split /\xa0/, $arg_chunk, 2;
+
+                foreach (@args) {
+                    if ( $_->{name} eq $arg_name ) {
+                        $_->{desc} = $arg_desc;
+                    }
+                }
+            }
         }
 
         for (@args) {
@@ -111,7 +132,7 @@ sub parse_methods {
             $name .= '( )';
         }
 
-        $desc =~ s/\s+$// if $desc;
+        $desc   =~ s/\s+$// if $desc;
         $return =~ s/\s+$// if $return;
 
         my %method = (
@@ -119,7 +140,7 @@ sub parse_methods {
             description => $desc,
         );
 
-        $method{arguments} = \@args if @args;
+        $method{arguments} = \@args  if @args;
         $method{return}    = $return if $return;
 
         push @methods, \%method;
@@ -197,7 +218,7 @@ Parameters:
 
 =over 4
 [% FOREACH arg = method.arguments %]
-=item [% arg.type %] [% arg.name %]
+=item [% arg.type %] [% arg.name %][% IF arg.desc %] - [% arg.desc %][% END %]
 [% END %]
 =back
 [% END -%]
