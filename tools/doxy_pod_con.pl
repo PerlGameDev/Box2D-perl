@@ -34,6 +34,8 @@ sub parse_html {
 
     $class->{description} = $tree->findvalue('//div[@class="contents"]/p[4]');
 
+    $class->{description} =~ s/\s+$//;
+
     # Use the first sentence from the description for the abstract
     if ( $class->{description} =~ /^((?:.*?)\.)/xs ) {
         $class->{abstract} = $1;
@@ -112,6 +114,8 @@ sub parse_methods {
 
             foreach my $arg_chunk (@arg_descs) {
                 my ( $arg_name, $arg_desc ) = split /\xa0/, $arg_chunk, 2;
+
+                $arg_desc =~ s/\s+$//;
 
                 foreach (@args) {
                     if ( $_->{name} eq $arg_name ) {
