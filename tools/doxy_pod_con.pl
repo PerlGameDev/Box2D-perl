@@ -65,9 +65,10 @@ sub parse_methods {
         next if $name =~ m/\[protected\]/;
         next if $name =~ m/\[friend\]/;
 
+        my $return;
         if ( $type && $type ne 'void' ) {
             $type = "Box2D::$type" if $type =~ /^b2/;
-            $desc .= "\n\nReturns a $type";
+            $return = $type;
         }
 
         if ( $name eq $class->{name} ) {
@@ -77,22 +78,49 @@ sub parse_methods {
 
         my @p_types
             = $member->findnodes_as_strings('.//td[@class="paramtype"]/a');
-        my @p_names = map { '$' . $_ }
-            $member->findnodes_as_strings('.//td[@class="paramname"]/em');
-
-        $name .= '( ' . join( ', ', @p_names ) . ' )' if @p_names;
+        my @p_names
+            = $member->findnodes_as_strings('.//td[@class="paramname"]/em');
 
         my @args;
 
         for ( 0 .. $#p_types ) {
-            push @args, { type => $p_types[$_], name => $p_names[$_] };
+            my $type = $p_types[$_];
+            $type = "Box2D::$type" if $type =~ /^b2/;
+            push @args, { type => $type, name => $p_names[$_] };
         }
+
+        if ( $desc =~ / ^ (.*) Returns: (.*) $ /x ) {
+            $desc = $1;
+            $return .= " - $2";
+        }
+
+        if ( $desc =~ / ^ (.*) Parameters: (.*) $ /x ) {
+            $desc = $1;
+            my @args = split /\xa0/, $2;
+        }
+
+        for (@args) {
+            $_->{name} = '$' . $_->{name};
+        }
+
+        if (@args) {
+            my @names = map { $_->{name} } @args;
+            $name .= '( ' . join( ', ', @names ) . ' )';
+        }
+        else {
+            $name .= '( )';
+        }
+
+        $desc =~ s/\s+$// if $desc;
+        $return =~ s/\s+$// if $return;
 
         my %method = (
             name        => $name,
             description => $desc,
-            arguments   => \@args,
         );
+
+        $method{arguments} = \@args if @args;
+        $method{return}    = $return if $return;
 
         push @methods, \%method;
     }
@@ -106,17 +134,22 @@ sub parse_method_name {
     # Parse things like:
     #   float Class::Method
     #   Class * Class::Method
+    #   Class & Class::Method
+    #   const Class * Class::Method
+    #   const Class & Class::Method
     my $regex = qr/
         ^
         \s*
         (?:
-            (\w+)           # return type
+            (?: const \s+ )?    # possibly const
+            (\w+)               # return type
             \s+
-            (?: \* \s+)?    # possibly a pointer
+            (?: \* \s+)?        # possibly a pointer
+            (?: & \s+)?         # possibly a reference
         )?
-        (?: \w+ )           # class name
+        (?: \w+ )               # class name
         ::
-        (\w+)               # method name
+        (\w+)                   # method name
         \s*
         $
     /x;
@@ -154,8 +187,23 @@ Box2D::[% name %] - [% abstract %]
 =head1 METHODS
 [% FOREACH method = methods %]
 =head2 [% method.name %]
+[% IF method.description -%]
 
 [% method.description %]
+[% END -%]
+[% IF method.arguments -%]
+
+Parameters:
+
+=over 4
+[% FOREACH arg = method.arguments %]
+=item [% arg.type %] [% arg.name %]
+[% END %]
+=back
+[% END -%]
+[% IF method.return %]
+Returns a [% method.return %]
+[% END -%]
 [% END %]
 =head1 BUGS
 
