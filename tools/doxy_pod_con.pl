@@ -79,7 +79,7 @@ sub parse_methods {
         }
 
         my @p_types
-            = $member->findnodes_as_strings('.//td[@class="paramtype"]/a');
+            = $member->findnodes_as_strings('.//td[@class="paramtype"]');
         my @p_names
             = $member->findnodes_as_strings('.//td[@class="paramname"]/em');
 
@@ -87,7 +87,11 @@ sub parse_methods {
 
         for ( 0 .. $#p_types ) {
             my $type = $p_types[$_];
-            $type = "Box2D::$type" if $type =~ /^b2/;
+            $type =~ s/\xa0$//;
+            if ( $type =~ /b2/ ) {
+                $type =~ s/^.*(b2\w+).*$/$1/;
+                $type = "Box2D::$type";
+            }
             push @args, { type => $type, name => $p_names[$_] };
         }
 
@@ -245,7 +249,7 @@ Parameters:
 
 =over 4
 [% FOREACH arg = method.arguments %]
-=item [% arg.type %] [% arg.name %][% IF arg.desc %] - [% arg.desc %][% END %]
+=item * [% arg.type %] [% arg.name %][% IF arg.desc %] - [% arg.desc %][% END %]
 [% END %]
 =back
 [% END -%]
