@@ -99,7 +99,7 @@ sub parse_methods {
         if ( $desc =~ / ^ (.*) Parameters: (.*) $ /x ) {
             $desc = $1;
 
-            # XXX This works for one or two parameters
+            # XXX This works for one or two parameters, maybe more
             my ( $first, @rest ) = split /\s+(\w+)\xa0/, $2;
 
             my @arg_descs = ($first);
@@ -134,7 +134,7 @@ sub parse_methods {
             $name .= '( ' . join( ', ', @names ) . ' )';
         }
         else {
-            $name .= '( )';
+            $name .= '()';
         }
 
         $desc   =~ s/\s+$// if $desc;
@@ -147,6 +147,24 @@ sub parse_methods {
 
         $method{arguments} = \@args  if @args;
         $method{return}    = $return if $return;
+
+        # XXX not all public members start with a lower case letter
+        if ( $method{name} =~ /^[a-z]/ ) {
+            $method{attr} = 1;
+
+            $method{return} = $return if $return;
+
+            ( my $base = $method{name} ) =~ s/\(\)$//;
+
+            $method{setter} = $base . '( $' . $base . ' )';
+
+            my $arg_name = '$' . $base . ' (optional)';
+
+            $method{arguments} = [ { name => $arg_name } ];
+
+            $method{arguments}->[0]->{type} = $method{return}
+                if $method{return};
+        }
 
         push @methods, \%method;
     }
@@ -213,6 +231,10 @@ Box2D::[% name %] - [% abstract %]
 =head1 METHODS
 [% FOREACH method = methods %]
 =head2 [% method.name %]
+[% IF method.attr -%]
+
+=head2 [% method.setter %]
+[% END -%]
 [% IF method.description -%]
 
 [% method.description %]
