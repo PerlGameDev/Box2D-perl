@@ -97,7 +97,7 @@ sub parse_methods {
 
         if ( $desc =~ / ^ (.*) Returns: (.*) $ /x ) {
             $desc = $1;
-            $return .= " - $2";
+            $return .= " - $2" if $return;
         }
 
         if ( $desc =~ / ^ (.*) Parameters: (.*) $ /x ) {
