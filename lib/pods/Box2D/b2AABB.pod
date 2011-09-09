@@ -1,0 +1,100 @@
+
+=head1 NAME
+
+Box2D::b2AABB - An axis aligned bounding box.
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+An axis aligned bounding box.
+
+=head1 METHODS
+
+=head2 Combine( $aabb1, $aabb2 )
+
+Combine two AABBs into this one.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2AABB $aabb1
+
+=item * Box2D::b2AABB $aabb2
+
+=back
+
+=head2 Contains( $aabb )
+
+Does this aabb contain the provided AABB.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2AABB $aabb
+
+=back
+
+Returns a bool
+
+=head2 GetCenter()
+
+Get the center of the AABB.
+
+Returns a Box2D::b2Vec2
+
+=head2 GetExtents()
+
+Get the extents of the AABB (half-widths).
+
+Returns a Box2D::b2Vec2
+
+=head2 IsValid()
+
+Verify that the bounds are sorted.
+
+Returns a bool
+
+=head2 RayCast( $output, $input )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2RayCastOutput $output
+
+=item * Box2D::b2RayCastInput $input
+
+=back
+
+Returns a bool
+
+=head2 lowerBound()
+
+the lower vertex
+
+Returns a Box2D::b2Vec2
+
+=head2 upperBound()
+
+the upper vertex
+
+Returns a Box2D::b2Vec2
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

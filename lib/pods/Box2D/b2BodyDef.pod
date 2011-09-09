@@ -1,0 +1,114 @@
+
+=head1 NAME
+
+Box2D::b2BodyDef - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 active()
+
+Does this body start out active?
+
+Returns a bool
+
+=head2 allowSleep()
+
+Set this flag to false if this body should never fall asleep. Note that this increases CPU usage.
+
+Returns a bool
+
+=head2 angle()
+
+The world angle of the body in radians.
+
+Returns a float32
+
+=head2 angularDamping()
+
+Angular damping is use to reduce the angular velocity. The damping parameter can be larger than 1.0f but the damping effect becomes sensitive to the time step when the damping parameter is large.
+
+Returns a float32
+
+=head2 angularVelocity()
+
+The angular velocity of the body.
+
+Returns a float32
+
+=head2 awake()
+
+Is this body initially awake or sleeping?
+
+Returns a bool
+
+=head2 bullet()
+
+Is this a fast moving body that should be prevented from tunneling through other moving bodies? Note that all bodies are prevented from tunneling through kinematic and static bodies. This setting is only considered on dynamic bodies. Warning:You should use this flag sparingly since it increases processing time.
+
+Returns a bool
+
+=head2 fixedRotation()
+
+Should this body be prevented from rotating? Useful for characters.
+
+Returns a bool
+
+=head2 inertiaScale()
+
+Experimental: scales the inertia tensor.
+
+Returns a float32
+
+=head2 linearDamping()
+
+Linear damping is use to reduce the linear velocity. The damping parameter can be larger than 1.0f but the damping effect becomes sensitive to the time step when the damping parameter is large.
+
+Returns a float32
+
+=head2 linearVelocity()
+
+The linear velocity of the body's origin in world co-ordinates.
+
+Returns a Box2D::b2Vec2
+
+=head2 position()
+
+The world position of the body. Avoid creating bodies at the origin since this can lead to many overlapping shapes.
+
+Returns a Box2D::b2Vec2
+
+=head2 type()
+
+The body type: static, kinematic, or dynamic. Note: if a dynamic body would have zero mass, the mass is set to one.
+
+Returns a Box2D::b2BodyType
+
+=head2 void* b2BodyDef::userData()
+
+Use this to store application specific body data.
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut
