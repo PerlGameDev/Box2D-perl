@@ -58,9 +58,8 @@ sub parse_methods {
 
     foreach my $member (@members) {
 
-        my ( $type, $name )
-            = parse_method_name(
-            $member->findvalue('.//td[@class="memname"]') );
+        my $member_name = $member->findvalue('.//td[@class="memname"]');
+        my ( $type, $name ) = parse_method_name($member_name);
 
         my $desc = $member->findvalue('.//div[@class="memdoc"]');
 
@@ -153,7 +152,7 @@ sub parse_methods {
         $method{return}    = $return if $return;
 
         # XXX not all public members start with a lower case letter
-        if ( $method{name} =~ /^[a-z]/ ) {
+        if ( !@args && $method{name} eq 'new' && $method{name} =~ /^[a-z]/ ) {
             $method{attr} = 1;
 
             $method{return} = $return if $return;
