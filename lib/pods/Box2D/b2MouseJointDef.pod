@@ -1,0 +1,56 @@
+
+=head1 NAME
+
+Box2D::b2MouseJointDef - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 dampingRatio()
+
+The damping ratio. 0 = no damping, 1 = critical damping.
+
+Returns a float32
+
+=head2 frequencyHz()
+
+The response speed.
+
+Returns a float32
+
+=head2 maxForce()
+
+The maximum constraint force that can be exerted to move the candidate body. Usually you will express as some multiple of the weight (multiplier * mass * gravity).
+
+Returns a float32
+
+=head2 target()
+
+The initial world target point. This is assumed to coincide with the body anchor initially.
+
+Returns a Box2D::b2Vec2
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

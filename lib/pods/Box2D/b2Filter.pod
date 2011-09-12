@@ -1,0 +1,46 @@
+
+=head1 NAME
+
+Box2D::b2Filter - This holds contact filtering data.
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+This holds contact filtering data.
+
+=head1 METHODS
+
+=head2 categoryBits()
+
+The collision category bits. Normally you would just set one bit.
+
+Returns a uint16
+
+=head2 groupIndex()
+
+Collision groups allow a certain group of objects to never collide (negative) or always collide (positive). Zero means no collision group. Non-zero group filtering always wins against the mask bits.
+
+Returns a int16
+
+=head2 maskBits()
+
+The collision mask bits. This states the categories that this shape would accept for collision.
+
+Returns a uint16
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

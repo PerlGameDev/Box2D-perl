@@ -1,0 +1,118 @@
+
+=head1 NAME
+
+Box2D::b2WeldJoint - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new( $def )
+
+Constructor
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2WeldJointDef $def
+
+=back
+
+=head2 GetAnchorA()
+
+Get the anchor point on bodyA in world coordinates. Implements b2Joint.
+
+Returns a Box2D::b2Vec2
+
+=head2 GetAnchorB()
+
+Get the anchor point on bodyB in world coordinates. Implements b2Joint.
+
+Returns a Box2D::b2Vec2
+
+=head2 GetReactionForce( $inv_dt )
+
+Get the reaction force on body2 at the joint anchor in Newtons. Implements b2Joint.
+
+Parameters:
+
+=over 4
+
+=item * float32 $inv_dt
+
+=back
+
+Returns a Box2D::b2Vec2
+
+=head2 GetReactionTorque( $inv_dt )
+
+Get the reaction torque on body2 in N*m. Implements b2Joint.
+
+Parameters:
+
+=over 4
+
+=item * float32 $inv_dt
+
+=back
+
+Returns a float32
+
+=head2 InitVelocityConstraints( $step )
+
+Implements b2Joint.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2TimeStep $step
+
+=back
+
+=head2 SolvePositionConstraints( $baumgarte )
+
+Implements b2Joint.
+
+Parameters:
+
+=over 4
+
+=item * float32 $baumgarte
+
+=back
+
+Returns a bool
+
+=head2 SolveVelocityConstraints( $step )
+
+Implements b2Joint.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2TimeStep $step
+
+=back
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

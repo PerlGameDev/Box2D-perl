@@ -1,0 +1,162 @@
+
+=head1 NAME
+
+Box2D::b2CircleShape - A circle shape.
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+A circle shape.
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 Clone( $allocator )
+
+Implement b2Shape. Implements b2Shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2BlockAllocator $allocator
+
+=back
+
+Returns a Box2D::b2Shape
+
+=head2 ComputeAABB( $aabb, $transform )
+
+See also:b2Shape::ComputeAABBImplements b2Shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2AABB $aabb
+
+=item * Box2D::b2Transform $transform
+
+=back
+
+=head2 ComputeMass( $massData, $density )
+
+See also:b2Shape::ComputeMassImplements b2Shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2MassData $massData
+
+=item * float32 $density
+
+=back
+
+=head2 GetSupport( $d )
+
+Get the supporting vertex index in the given direction.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $d
+
+=back
+
+Returns a int32
+
+=head2 GetSupportVertex( $d )
+
+Get the supporting vertex in the given direction.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $d
+
+=back
+
+Returns a Box2D::b2Vec2
+
+=head2 GetVertex( $index )
+
+Get a vertex by index. Used by b2Distance.
+
+Parameters:
+
+=over 4
+
+=item * int32 $index
+
+=back
+
+Returns a Box2D::b2Vec2
+
+=head2 GetVertexCount()
+
+Get the vertex count.
+
+Returns a int32
+
+=head2 RayCast( $output, $input, $transform )
+
+Implement b2Shape. Implements b2Shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2RayCastOutput $output
+
+=item * Box2D::b2RayCastInput $input
+
+=item * Box2D::b2Transform $transform
+
+=back
+
+Returns a bool
+
+=head2 TestPoint( $transform, $p )
+
+Implement b2Shape. Implements b2Shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Transform $transform
+
+=item * Box2D::b2Vec2 $p
+
+=back
+
+Returns a bool
+
+=head2 m_p()
+
+Position.
+
+Returns a Box2D::b2Vec2
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

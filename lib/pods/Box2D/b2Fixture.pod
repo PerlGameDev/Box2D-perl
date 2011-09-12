@@ -1,0 +1,282 @@
+
+=head1 NAME
+
+Box2D::b2Fixture - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 b2Fixture::~b2Fixture ()
+
+=head2 Create( $allocator, $body, $def )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2BlockAllocator $allocator
+
+=item * Box2D::b2Body $body
+
+=item * Box2D::b2FixtureDef $def
+
+=back
+
+=head2 CreateProxy( $broadPhase, $xf )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2BroadPhase $broadPhase
+
+=item * Box2D::b2Transform $xf
+
+=back
+
+=head2 Destroy( $allocator )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2BlockAllocator $allocator
+
+=back
+
+=head2 DestroyProxy( $broadPhase )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2BroadPhase $broadPhase
+
+=back
+
+=head2 GetAABB()
+
+Get the fixture's AABB. This AABB may be enlarge and/or stale. If you need a more accurate AABB, compute it using the shape and the body transform.
+
+Returns a Box2D::b2AABB
+
+=head2 GetBody()
+
+Returns a Box2D::b2Body
+
+=head2 GetBody()
+
+Get the parent body of this fixture. This is NULL if the fixture is not attached.
+
+Returns a Box2D::b2Body - the parent body.
+
+=head2 GetDensity()
+
+Get the density of this fixture.
+
+Returns a float32
+
+=head2 GetFilterData()
+
+Get the contact filtering data.
+
+Returns a Box2D::b2Filter
+
+=head2 GetFriction()
+
+Get the coefficient of friction.
+
+Returns a float32
+
+=head2 GetMassData( $massData )
+
+Get the mass data for this fixture. The mass data is based on the density and the shape. The rotational inertia is about the shape's origin. This operation may be expensive.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2MassData $massData
+
+=back
+
+=head2 GetNext()
+
+Returns a Box2D::b2Fixture
+
+=head2 GetNext()
+
+Get the next fixture in the parent body's fixture list.
+
+Returns a Box2D::b2Fixture - the next shape.
+
+=head2 GetRestitution()
+
+Get the coefficient of restitution.
+
+Returns a float32
+
+=head2 GetShape()
+
+Returns a Box2D::b2Shape
+
+=head2 GetShape()
+
+Get the child shape. You can modify the child shape, however you should not change the number of vertices because this will crash some collision caching mechanisms. Manipulating the shape may lead to non-physical behavior.
+
+Returns a Box2D::b2Shape
+
+=head2 b2Shape::Type b2Fixture::GetType ()
+
+Get the type of the child shape. You can use this to down cast to the concrete shape.
+
+=head2 GetUserData()
+
+Get the user data that was assigned in the fixture definition. Use this to store your application specific data.
+
+=head2 IsSensor()
+
+Is this fixture a sensor (non-solid)?
+
+Returns a bool - the true if the shape is a sensor.
+
+=head2 RayCast( $output, $input )
+
+Cast a ray against this shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2RayCastOutput $output - the ray-cast results.
+
+=item * Box2D::b2RayCastInput $input - the ray-cast input parameters.
+
+=back
+
+Returns a bool
+
+=head2 SetDensity( $density )
+
+Set the density of this fixture. This will _not_ automatically adjust the mass of the body. You must call b2Body::ResetMassData to update the body's mass.
+
+Parameters:
+
+=over 4
+
+=item * float32 $density
+
+=back
+
+=head2 SetFilterData( $filter )
+
+Set the contact filtering data. This will not update contacts until the next time step when either parent body is active and awake.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Filter $filter
+
+=back
+
+=head2 SetFriction( $friction )
+
+Set the coefficient of friction.
+
+Parameters:
+
+=over 4
+
+=item * float32 $friction
+
+=back
+
+=head2 SetRestitution( $restitution )
+
+Set the coefficient of restitution.
+
+Parameters:
+
+=over 4
+
+=item * float32 $restitution
+
+=back
+
+=head2 SetSensor( $sensor )
+
+Set if this fixture is a sensor.
+
+Parameters:
+
+=over 4
+
+=item * bool $sensor
+
+=back
+
+=head2 SetUserData( $data )
+
+Set the user data. Use this to store your application specific data.
+
+Parameters:
+
+=over 4
+
+=item * void * $data
+
+=back
+
+=head2 Synchronize( $broadPhase, $xf1, $xf2 )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2BroadPhase $broadPhase
+
+=item * Box2D::b2Transform $xf1
+
+=item * Box2D::b2Transform $xf2
+
+=back
+
+=head2 TestPoint( $p )
+
+Test a point for containment in this fixture.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $p - a point in world coordinates.
+
+=back
+
+Returns a bool
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

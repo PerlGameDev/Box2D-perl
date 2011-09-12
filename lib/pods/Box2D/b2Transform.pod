@@ -1,0 +1,78 @@
+
+=head1 NAME
+
+Box2D::b2Transform - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 new( $position, $R )
+
+Constructor
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $position
+
+=item * Box2D::b2Mat22 $R
+
+=back
+
+=head2 GetAngle()
+
+Calculate the angle that the rotation matrix represents.
+
+Returns a float32
+
+=head2 Set( $p, $angle )
+
+Set this based on the position and angle.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $p
+
+=item * float32 $angle
+
+=back
+
+=head2 SetIdentity()
+
+Set this to the identity transform.
+
+=head2 position()
+
+Returns a Box2D::b2Vec2
+
+=head2 R()
+
+Returns a Box2D::b2Mat22
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

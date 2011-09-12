@@ -1,0 +1,122 @@
+
+=head1 NAME
+
+Box2D::b2Shape - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 Type()
+
+Enumerator: e_unknown e_circle e_polygon e_typeCount 
+
+Returns a enum
+
+=head2 new()
+
+Constructor
+
+=head2 virtual b2Shape::~b2Shape ()
+
+=head2 virtual b2Shape* b2Shape::Clone ( $allocator )
+
+Clone the concrete shape using the provided allocator. Implemented in b2CircleShape, and b2PolygonShape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2BlockAllocator $allocator
+
+=back
+
+=head2 virtual void b2Shape::ComputeAABB ( $aabb, $xf )
+
+Given a transform, compute the associated axis aligned bounding box for this shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2AABB $aabb - returns the axis aligned box.
+
+=item * Box2D::b2Transform $xf - the world transform of the shape. Implemented in b2CircleShape, and b2PolygonShape.
+
+=back
+
+=head2 virtual void b2Shape::ComputeMass ( $massData, $density )
+
+Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed about the local origin.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2MassData $massData - returns the mass data for this shape.
+
+=item * float32 $density - the density in kilograms per meter squared. Implemented in b2CircleShape, and b2PolygonShape.
+
+=back
+
+=head2 b2Shape::Type b2Shape::GetType ()
+
+Get the type of this shape. You can use this to down cast to the concrete shape.
+
+=head2 virtual bool b2Shape::RayCast ( $output, $input, $transform )
+
+Cast a ray against this shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2RayCastOutput $output - the ray-cast results.
+
+=item * Box2D::b2RayCastInput $input - the ray-cast input parameters.
+
+=item * Box2D::b2Transform $transform - the transform to be applied to the shape. Implemented in b2CircleShape, and b2PolygonShape.
+
+=back
+
+=head2 virtual bool b2Shape::TestPoint ( $xf, $p )
+
+Test a point for containment in this shape. This only works for convex shapes.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Transform $xf - the shape world transform.
+
+=item * Box2D::b2Vec2 $p - a point in world coordinates. Implemented in b2CircleShape, and b2PolygonShape.
+
+=back
+
+=head2 m_radius()
+
+Returns a float32
+
+=head2 m_type()
+
+Returns a Type
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

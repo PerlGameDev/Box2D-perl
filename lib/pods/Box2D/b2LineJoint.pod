@@ -1,0 +1,232 @@
+
+=head1 NAME
+
+Box2D::b2LineJoint - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new( $def )
+
+Constructor
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2LineJointDef $def
+
+=back
+
+=head2 EnableLimit( $flag )
+
+Enable/disable the joint limit.
+
+Parameters:
+
+=over 4
+
+=item * bool $flag
+
+=back
+
+=head2 EnableMotor( $flag )
+
+Enable/disable the joint motor.
+
+Parameters:
+
+=over 4
+
+=item * bool $flag
+
+=back
+
+=head2 GetAnchorA()
+
+Get the anchor point on bodyA in world coordinates. Implements b2Joint.
+
+Returns a Box2D::b2Vec2
+
+=head2 GetAnchorB()
+
+Get the anchor point on bodyB in world coordinates. Implements b2Joint.
+
+Returns a Box2D::b2Vec2
+
+=head2 GetJointSpeed()
+
+Get the current joint translation speed, usually in meters per second.
+
+Returns a float32
+
+=head2 GetJointTranslation()
+
+Get the current joint translation, usually in meters.
+
+Returns a float32
+
+=head2 GetLowerLimit()
+
+Get the lower joint limit, usually in meters.
+
+Returns a float32
+
+=head2 GetMaxMotorForce()
+
+Returns a float32
+
+=head2 GetMotorForce()
+
+Get the current motor force, usually in N.
+
+Returns a float32
+
+=head2 GetMotorSpeed()
+
+Get the motor speed, usually in meters per second.
+
+Returns a float32
+
+=head2 GetReactionForce( $inv_dt )
+
+Get the reaction force on body2 at the joint anchor in Newtons. Implements b2Joint.
+
+Parameters:
+
+=over 4
+
+=item * float32 $inv_dt
+
+=back
+
+Returns a Box2D::b2Vec2
+
+=head2 GetReactionTorque( $inv_dt )
+
+Get the reaction torque on body2 in N*m. Implements b2Joint.
+
+Parameters:
+
+=over 4
+
+=item * float32 $inv_dt
+
+=back
+
+Returns a float32
+
+=head2 GetUpperLimit()
+
+Get the upper joint limit, usually in meters.
+
+Returns a float32
+
+=head2 InitVelocityConstraints( $step )
+
+Implements b2Joint.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2TimeStep $step
+
+=back
+
+=head2 IsLimitEnabled()
+
+Is the joint limit enabled?
+
+Returns a bool
+
+=head2 IsMotorEnabled()
+
+Is the joint motor enabled?
+
+Returns a bool
+
+=head2 SetLimits( $lower, $upper )
+
+Set the joint limits, usually in meters.
+
+Parameters:
+
+=over 4
+
+=item * float32 $lower
+
+=item * float32 $upper
+
+=back
+
+=head2 SetMaxMotorForce( $force )
+
+Set/Get the maximum motor force, usually in N.
+
+Parameters:
+
+=over 4
+
+=item * float32 $force
+
+=back
+
+=head2 SetMotorSpeed( $speed )
+
+Set the motor speed, usually in meters per second.
+
+Parameters:
+
+=over 4
+
+=item * float32 $speed
+
+=back
+
+=head2 SolvePositionConstraints( $baumgarte )
+
+Implements b2Joint.
+
+Parameters:
+
+=over 4
+
+=item * float32 $baumgarte
+
+=back
+
+Returns a bool
+
+=head2 SolveVelocityConstraints( $step )
+
+Implements b2Joint.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2TimeStep $step
+
+=back
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

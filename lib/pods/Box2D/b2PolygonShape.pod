@@ -1,0 +1,228 @@
+
+=head1 NAME
+
+Box2D::b2PolygonShape - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 Clone( $allocator )
+
+Implement b2Shape. Implements b2Shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2BlockAllocator $allocator
+
+=back
+
+Returns a Box2D::b2Shape
+
+=head2 ComputeAABB( $aabb, $transform )
+
+See also:b2Shape::ComputeAABBImplements b2Shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2AABB $aabb
+
+=item * Box2D::b2Transform $transform
+
+=back
+
+=head2 ComputeMass( $massData, $density )
+
+See also:b2Shape::ComputeMassImplements b2Shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2MassData $massData
+
+=item * float32 $density
+
+=back
+
+=head2 GetSupport( $d )
+
+Get the supporting vertex index in the given direction.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $d
+
+=back
+
+Returns a int32
+
+=head2 GetSupportVertex( $d )
+
+Get the supporting vertex in the given direction.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $d
+
+=back
+
+Returns a Box2D::b2Vec2
+
+=head2 GetVertex( $index )
+
+Get a vertex by index.
+
+Parameters:
+
+=over 4
+
+=item * int32 $index
+
+=back
+
+Returns a Box2D::b2Vec2
+
+=head2 GetVertexCount()
+
+Get the vertex count.
+
+Returns a int32
+
+=head2 RayCast( $output, $input, $transform )
+
+Implement b2Shape. Implements b2Shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2RayCastOutput $output
+
+=item * Box2D::b2RayCastInput $input
+
+=item * Box2D::b2Transform $transform
+
+=back
+
+Returns a bool
+
+=head2 Set( $vertices, $vertexCount )
+
+Copy vertices. This assumes the vertices define a convex polygon. It is assumed that the exterior is the the right of each edge.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $vertices
+
+=item * int32 $vertexCount
+
+=back
+
+=head2 SetAsBox( $hx, $hy, $center, $angle )
+
+Build vertices to represent an oriented box.
+
+Parameters:
+
+=over 4
+
+=item * float32 $hx - the half-width.
+
+=item * float32 $hy - the half-height.
+
+=item * Box2D::b2Vec2 $center - the center of the box in local coordinates.
+
+=item * float32 $angle - the rotation of the box in local coordinates.
+
+=back
+
+=head2 SetAsBox( $hx, $hy )
+
+Build vertices to represent an axis-aligned box.
+
+Parameters:
+
+=over 4
+
+=item * float32 $hx - the half-width.
+
+=item * float32 $hy - the half-height.
+
+=back
+
+=head2 SetAsEdge( $v1, $v2 )
+
+Set this as a single edge.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $v1
+
+=item * Box2D::b2Vec2 $v2
+
+=back
+
+=head2 TestPoint( $transform, $p )
+
+See also:b2Shape::TestPointImplements b2Shape.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Transform $transform
+
+=item * Box2D::b2Vec2 $p
+
+=back
+
+Returns a bool
+
+=head2 m_centroid()
+
+Returns a Box2D::b2Vec2
+
+=head2 b2Vec2 b2PolygonShape::m_normals[b2_maxPolygonVertices]()
+
+=head2 m_vertexCount()
+
+Returns a int32
+
+=head2 b2Vec2 b2PolygonShape::m_vertices[b2_maxPolygonVertices]()
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

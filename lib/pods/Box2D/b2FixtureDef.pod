@@ -1,0 +1,72 @@
+
+=head1 NAME
+
+Box2D::b2FixtureDef - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 virtual b2FixtureDef::~b2FixtureDef ()
+
+=head2 density()
+
+The density, usually in kg/m^2.
+
+Returns a float32
+
+=head2 filter()
+
+Contact filtering data.
+
+Returns a Box2D::b2Filter
+
+=head2 friction()
+
+The friction coefficient, usually in the range [0,1].
+
+Returns a float32
+
+=head2 isSensor()
+
+A sensor shape collects contact information but never generates a collision response.
+
+Returns a bool
+
+=head2 restitution()
+
+The restitution (elasticity) usually in the range [0,1].
+
+Returns a float32
+
+=head2 const b2Shape* b2FixtureDef::shape()
+
+The shape, this must be set. The shape will be cloned, so you can create the shape on the stack.
+
+=head2 void* b2FixtureDef::userData()
+
+Use this to store application specific fixture data.
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

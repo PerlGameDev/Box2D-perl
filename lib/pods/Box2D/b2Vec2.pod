@@ -1,0 +1,160 @@
+
+=head1 NAME
+
+Box2D::b2Vec2 - A 2D column vector.
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+A 2D column vector.
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 new( $x, $y )
+
+Constructor
+
+Parameters:
+
+=over 4
+
+=item * float32 $x
+
+=item * float32 $y
+
+=back
+
+=head2 IsValid()
+
+Does this vector contain finite coordinates?
+
+Returns a bool
+
+=head2 Length()
+
+Get the length of this vector (the norm).
+
+Returns a float32
+
+=head2 LengthSquared()
+
+Get the length squared. For performance, use this instead of b2Vec2::Length (if possible).
+
+Returns a float32
+
+=head2 Normalize()
+
+Convert this vector into a unit vector. Returns the length.
+
+Returns a float32
+
+=head2 float32& b2Vec2::operator() ( $i )
+
+Write to an indexed element.
+
+Parameters:
+
+=over 4
+
+=item * int32 $i
+
+=back
+
+=head2 float32 b2Vec2::operator() ( $i )
+
+Read from and indexed element.
+
+Parameters:
+
+=over 4
+
+=item * int32 $i
+
+=back
+
+=head2 void b2Vec2::operator*= ( $a )
+
+Multiply this vector by a scalar.
+
+Parameters:
+
+=over 4
+
+=item * float32 $a
+
+=back
+
+=head2 void b2Vec2::operator+= ( $v )
+
+Add a vector to this vector.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $v
+
+=back
+
+=head2 b2Vec2 b2Vec2::operator- ()
+
+Negate this vector.
+
+=head2 void b2Vec2::operator-= ( $v )
+
+Subtract a vector from this vector.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $v
+
+=back
+
+=head2 Set( $x_, $y_ )
+
+Set this vector to some specified coordinates.
+
+Parameters:
+
+=over 4
+
+=item * float32 $x_
+
+=item * float32 $y_
+
+=back
+
+=head2 SetZero()
+
+Set this vector to all zeros.
+
+=head2 x()
+
+Returns a float32
+
+=head2 y()
+
+Returns a float32
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

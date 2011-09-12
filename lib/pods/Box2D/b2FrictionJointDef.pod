@@ -1,0 +1,72 @@
+
+=head1 NAME
+
+Box2D::b2FrictionJointDef - Friction joint definition.
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+Friction joint definition.
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 Initialize( $bodyA, $bodyB, $anchor )
+
+Initialize the bodies, anchors, axis, and reference angle using the world anchor and world axis.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Body $bodyA
+
+=item * Box2D::b2Body $bodyB
+
+=item * Box2D::b2Vec2 $anchor
+
+=back
+
+=head2 localAnchorA()
+
+The local anchor point relative to bodyA's origin.
+
+Returns a Box2D::b2Vec2
+
+=head2 localAnchorB()
+
+The local anchor point relative to bodyB's origin.
+
+Returns a Box2D::b2Vec2
+
+=head2 maxForce()
+
+The maximum friction force in N.
+
+Returns a float32
+
+=head2 maxTorque()
+
+The maximum friction torque in N-m.
+
+Returns a float32
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

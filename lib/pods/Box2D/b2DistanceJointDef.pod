@@ -1,0 +1,80 @@
+
+=head1 NAME
+
+Box2D::b2DistanceJointDef - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 Initialize( $bodyA, $bodyB, $anchorA, $anchorB )
+
+Initialize the bodies, anchors, and length using the world anchors.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Body $bodyA
+
+=item * Box2D::b2Body $bodyB
+
+=item * Box2D::b2Vec2 $anchorA
+
+=item * Box2D::b2Vec2 $anchorB
+
+=back
+
+=head2 dampingRatio()
+
+The damping ratio. 0 = no damping, 1 = critical damping.
+
+Returns a float32
+
+=head2 frequencyHz()
+
+The mass-spring-damper frequency in Hertz.
+
+Returns a float32
+
+=head2 length()
+
+The natural length between the anchor points.
+
+Returns a float32
+
+=head2 localAnchorA()
+
+The local anchor point relative to body1's origin.
+
+Returns a Box2D::b2Vec2
+
+=head2 localAnchorB()
+
+The local anchor point relative to body2's origin.
+
+Returns a Box2D::b2Vec2
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

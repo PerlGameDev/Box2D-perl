@@ -1,0 +1,224 @@
+
+=head1 NAME
+
+Box2D::b2Contact - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 new( $fixtureA, $fixtureB )
+
+Constructor
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Fixture $fixtureA
+
+=item * Box2D::b2Fixture $fixtureB
+
+=back
+
+=head2 virtual b2Contact::~b2Contact ()
+
+=head2 AddType( $createFcn, $destroyFcn, $typeA, $typeB )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2ContactCreateFcn $createFcn
+
+=item * Box2D::b2ContactDestroyFcn $destroyFcn
+
+=item * Box2D::b2Shape $typeA
+
+=item * Box2D::b2Shape $typeB
+
+=back
+
+=head2 Create( $fixtureA, $fixtureB, $allocator )
+
+Reimplemented in b2CircleContact, b2PolygonAndCircleContact, and b2PolygonContact.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Fixture $fixtureA
+
+=item * Box2D::b2Fixture $fixtureB
+
+=item * Box2D::b2BlockAllocator $allocator
+
+=back
+
+Returns a Box2D::b2Contact
+
+=head2 Destroy( $contact, $allocator )
+
+Reimplemented in b2CircleContact, b2PolygonAndCircleContact, and b2PolygonContact.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Contact $contact
+
+=item * Box2D::b2BlockAllocator $allocator
+
+=back
+
+=head2 static void b2Contact::Destroy ( $contact, $typeA, $typeB, $allocator )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Contact $contact
+
+=item * Box2D::b2Shape $typeA
+
+=item * Box2D::b2Shape $typeB
+
+=item * Box2D::b2BlockAllocator $allocator
+
+=back
+
+=head2 virtual void b2Contact::Evaluate ( $manifold, $xfA, $xfB )
+
+Evaluate this contact with your own manifold and transforms. Implemented in b2CircleContact, b2PolygonAndCircleContact, and b2PolygonContact.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Manifold $manifold
+
+=item * Box2D::b2Transform $xfA
+
+=item * Box2D::b2Transform $xfB
+
+=back
+
+=head2 FlagForFiltering()
+
+Flag this contact for filtering. Filtering will occur the next time step.
+
+=head2 GetFixtureA()
+
+Returns a Box2D::b2Fixture
+
+=head2 GetFixtureA()
+
+Get the first fixture in this contact.
+
+Returns a Box2D::b2Fixture
+
+=head2 GetFixtureB()
+
+Returns a Box2D::b2Fixture
+
+=head2 GetFixtureB()
+
+Get the second fixture in this contact.
+
+Returns a Box2D::b2Fixture
+
+=head2 GetManifold()
+
+Returns a Box2D::b2Manifold
+
+=head2 GetManifold()
+
+Get the contact manifold. Do not modify the manifold unless you understand the internals of Box2D.
+
+Returns a Box2D::b2Manifold
+
+=head2 GetNext()
+
+Returns a Box2D::b2Contact
+
+=head2 GetNext()
+
+Get the next contact in the world's contact list.
+
+Returns a Box2D::b2Contact
+
+=head2 GetWorldManifold( $worldManifold )
+
+Get the world manifold.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2WorldManifold $worldManifold
+
+=back
+
+=head2 InitializeRegisters()
+
+=head2 IsEnabled()
+
+Has this contact been disabled?
+
+Returns a bool
+
+=head2 IsTouching()
+
+Is this contact touching?
+
+Returns a bool
+
+=head2 SetEnabled( $flag )
+
+Enable/disable this contact. This can be used inside the pre-solve contact listener. The contact is only disabled for the current time step (or sub-step in continuous collisions).
+
+Parameters:
+
+=over 4
+
+=item * bool $flag
+
+=back
+
+=head2 Update( $listener )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2ContactListener $listener
+
+=back
+
+=head2 bool b2Contact::s_initialized = false [static, protected]()
+
+=head2 b2ContactRegister b2Contact::s_registers [static, protected]()
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

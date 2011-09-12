@@ -1,0 +1,142 @@
+
+=head1 NAME
+
+Box2D::b2Mat22 - A 2-by-2 matrix.
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+A 2-by-2 matrix. Stored in column-major order.
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 new( $c1, $c2 )
+
+Constructor
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $c1
+
+=item * Box2D::b2Vec2 $c2
+
+=back
+
+=head2 new( $a11, $a12, $a21, $a22 )
+
+Constructor
+
+Parameters:
+
+=over 4
+
+=item * float32 $a11
+
+=item * float32 $a12
+
+=item * float32 $a21
+
+=item * float32 $a22
+
+=back
+
+=head2 new( $angle )
+
+Constructor
+
+Parameters:
+
+=over 4
+
+=item * float32 $angle
+
+=back
+
+=head2 GetAngle()
+
+Extract the angle from this matrix (assumed to be a rotation matrix).
+
+Returns a float32
+
+=head2 GetInverse()
+
+Returns a Box2D::b2Mat22
+
+=head2 Set( $angle )
+
+Initialize this matrix using an angle. This matrix becomes an orthonormal rotation matrix.
+
+Parameters:
+
+=over 4
+
+=item * float32 $angle
+
+=back
+
+=head2 Set( $c1, $c2 )
+
+Initialize this matrix using columns.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $c1
+
+=item * Box2D::b2Vec2 $c2
+
+=back
+
+=head2 SetIdentity()
+
+Set this to the identity matrix.
+
+=head2 SetZero()
+
+Set this matrix to all zeros.
+
+=head2 Solve( $b )
+
+Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot cases.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $b
+
+=back
+
+Returns a Box2D::b2Vec2
+
+=head2 col1()
+
+Returns a Box2D::b2Vec2
+
+=head2 col2()
+
+Returns a Box2D::b2Vec2
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

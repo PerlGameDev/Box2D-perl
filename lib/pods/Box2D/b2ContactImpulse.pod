@@ -1,0 +1,32 @@
+
+=head1 NAME
+
+Box2D::b2ContactImpulse - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 float32 b2ContactImpulse::normalImpulses[b2_maxManifoldPoints]()
+
+=head2 float32 b2ContactImpulse::tangentImpulses[b2_maxManifoldPoints]()
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

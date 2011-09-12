@@ -1,0 +1,56 @@
+
+=head1 NAME
+
+Box2D::b2JointDef - Joint definitions are used to construct joints.
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+Joint definitions are used to construct joints.
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 b2Body* b2JointDef::bodyA()
+
+The first attached body.
+
+=head2 b2Body* b2JointDef::bodyB()
+
+The second attached body.
+
+=head2 collideConnected()
+
+Set this flag to true if the attached bodies should collide.
+
+Returns a bool
+
+=head2 type()
+
+The joint type is set automatically for concrete joint types.
+
+Returns a Box2D::b2JointType
+
+=head2 void* b2JointDef::userData()
+
+Use this to attach application specific data to your joints.
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

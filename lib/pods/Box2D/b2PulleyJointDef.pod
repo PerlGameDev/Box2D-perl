@@ -1,0 +1,110 @@
+
+=head1 NAME
+
+Box2D::b2PulleyJointDef - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 Initialize( $bodyA, $bodyB, $groundAnchorA, $groundAnchorB, $anchorA, $anchorB, $ratio )
+
+Initialize the bodies, anchors, lengths, max lengths, and ratio using the world anchors.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Body $bodyA
+
+=item * Box2D::b2Body $bodyB
+
+=item * Box2D::b2Vec2 $groundAnchorA
+
+=item * Box2D::b2Vec2 $groundAnchorB
+
+=item * Box2D::b2Vec2 $anchorA
+
+=item * Box2D::b2Vec2 $anchorB
+
+=item * float32 $ratio
+
+=back
+
+=head2 groundAnchorA()
+
+The first ground anchor in world coordinates. This point never moves.
+
+Returns a Box2D::b2Vec2
+
+=head2 groundAnchorB()
+
+The second ground anchor in world coordinates. This point never moves.
+
+Returns a Box2D::b2Vec2
+
+=head2 lengthA()
+
+The a reference length for the segment attached to bodyA.
+
+Returns a float32
+
+=head2 lengthB()
+
+The a reference length for the segment attached to bodyB.
+
+Returns a float32
+
+=head2 localAnchorA()
+
+The local anchor point relative to bodyA's origin.
+
+Returns a Box2D::b2Vec2
+
+=head2 localAnchorB()
+
+The local anchor point relative to bodyB's origin.
+
+Returns a Box2D::b2Vec2
+
+=head2 maxLengthA()
+
+The maximum length of the segment attached to bodyA.
+
+Returns a float32
+
+=head2 maxLengthB()
+
+The maximum length of the segment attached to bodyB.
+
+Returns a float32
+
+=head2 ratio()
+
+The pulley ratio, used to simulate a block-and-tackle.
+
+Returns a float32
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

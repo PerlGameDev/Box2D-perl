@@ -1,0 +1,104 @@
+
+=head1 NAME
+
+Box2D::b2LineJointDef - TODO
+
+=head1 SYNOPSIS
+
+  # TODO
+
+=head1 DESCRIPTION
+
+
+
+=head1 METHODS
+
+=head2 new()
+
+Constructor
+
+=head2 Initialize( $bodyA, $bodyB, $anchor, $axis )
+
+Initialize the bodies, anchors, axis, and reference angle using the world anchor and world axis.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Body $bodyA
+
+=item * Box2D::b2Body $bodyB
+
+=item * Box2D::b2Vec2 $anchor
+
+=item * Box2D::b2Vec2 $axis
+
+=back
+
+=head2 enableLimit()
+
+Enable/disable the joint limit.
+
+Returns a bool
+
+=head2 enableMotor()
+
+Enable/disable the joint motor.
+
+Returns a bool
+
+=head2 localAnchorA()
+
+The local anchor point relative to body1's origin.
+
+Returns a Box2D::b2Vec2
+
+=head2 localAnchorB()
+
+The local anchor point relative to body2's origin.
+
+Returns a Box2D::b2Vec2
+
+=head2 localAxisA()
+
+The local translation axis in body1.
+
+Returns a Box2D::b2Vec2
+
+=head2 lowerTranslation()
+
+The lower translation limit, usually in meters.
+
+Returns a float32
+
+=head2 maxMotorForce()
+
+The maximum motor torque, usually in N-m.
+
+Returns a float32
+
+=head2 motorSpeed()
+
+The desired motor speed in radians per second.
+
+Returns a float32
+
+=head2 upperTranslation()
+
+The upper translation limit, usually in meters.
+
+Returns a float32
+
+=head1 BUGS
+
+Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut
