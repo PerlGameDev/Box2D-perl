@@ -15,9 +15,29 @@ Box2D::b2RayCastOutput - TODO
 
 =head2 fraction()
 
+=head2 fraction( $fraction )
+
+Parameters:
+
+=over 4
+
+=item * float32 $fraction (optional)
+
+=back
+
 Returns a float32
 
 =head2 normal()
+
+=head2 normal( $normal )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $normal (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 

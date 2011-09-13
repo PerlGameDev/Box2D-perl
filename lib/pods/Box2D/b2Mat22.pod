@@ -121,9 +121,29 @@ Returns a Box2D::b2Vec2
 
 =head2 col1()
 
+=head2 col1( $col1 )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $col1 (optional)
+
+=back
+
 Returns a Box2D::b2Vec2
 
 =head2 col2()
+
+=head2 col2( $col2 )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $col2 (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 

@@ -152,7 +152,7 @@ sub parse_methods {
         $method{return}    = $return if $return;
 
         # XXX not all public members start with a lower case letter
-        if ( !@args && $method{name} eq 'new' && $method{name} =~ /^[a-z]/ ) {
+        if ( !@args && $name ne 'new()' && $name =~ /^[a-z]/ ) {
             $method{attr} = 1;
 
             $method{return} = $return if $return;

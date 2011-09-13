@@ -19,27 +19,77 @@ Constructor
 
 =head2 b2Body* b2JointDef::bodyA()
 
+=head2 b2Body* b2JointDef::bodyA( $b2Body* b2JointDef::bodyA )
+
 The first attached body.
+
+Parameters:
+
+=over 4
+
+=item *  $b2Body* b2JointDef::bodyA (optional)
+
+=back
 
 =head2 b2Body* b2JointDef::bodyB()
 
+=head2 b2Body* b2JointDef::bodyB( $b2Body* b2JointDef::bodyB )
+
 The second attached body.
+
+Parameters:
+
+=over 4
+
+=item *  $b2Body* b2JointDef::bodyB (optional)
+
+=back
 
 =head2 collideConnected()
 
+=head2 collideConnected( $collideConnected )
+
 Set this flag to true if the attached bodies should collide.
+
+Parameters:
+
+=over 4
+
+=item * bool $collideConnected (optional)
+
+=back
 
 Returns a bool
 
 =head2 type()
 
+=head2 type( $type )
+
 The joint type is set automatically for concrete joint types.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2JointType $type (optional)
+
+=back
 
 Returns a Box2D::b2JointType
 
 =head2 void* b2JointDef::userData()
 
+=head2 void* b2JointDef::userData( $void* b2JointDef::userData )
+
 Use this to attach application specific data to your joints.
+
+Parameters:
+
+=over 4
+
+=item *  $void* b2JointDef::userData (optional)
+
+=back
 
 =head1 BUGS
 

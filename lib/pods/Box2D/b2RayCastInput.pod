@@ -15,13 +15,43 @@ Ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).
 
 =head2 maxFraction()
 
+=head2 maxFraction( $maxFraction )
+
+Parameters:
+
+=over 4
+
+=item * float32 $maxFraction (optional)
+
+=back
+
 Returns a float32
 
 =head2 p1()
 
+=head2 p1( $p1 )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $p1 (optional)
+
+=back
+
 Returns a Box2D::b2Vec2
 
 =head2 p2()
+
+=head2 p2( $p2 )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $p2 (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 

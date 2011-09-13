@@ -19,25 +19,65 @@ Constructor
 
 =head2 dampingRatio()
 
+=head2 dampingRatio( $dampingRatio )
+
 The damping ratio. 0 = no damping, 1 = critical damping.
+
+Parameters:
+
+=over 4
+
+=item * float32 $dampingRatio (optional)
+
+=back
 
 Returns a float32
 
 =head2 frequencyHz()
 
+=head2 frequencyHz( $frequencyHz )
+
 The response speed.
+
+Parameters:
+
+=over 4
+
+=item * float32 $frequencyHz (optional)
+
+=back
 
 Returns a float32
 
 =head2 maxForce()
 
+=head2 maxForce( $maxForce )
+
 The maximum constraint force that can be exerted to move the candidate body. Usually you will express as some multiple of the weight (multiplier * mass * gravity).
+
+Parameters:
+
+=over 4
+
+=item * float32 $maxForce (optional)
+
+=back
 
 Returns a float32
 
 =head2 target()
 
+=head2 target( $target )
+
 The initial world target point. This is assumed to coincide with the body anchor initially.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $target (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 

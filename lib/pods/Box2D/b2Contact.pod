@@ -33,6 +33,16 @@ Parameters:
 
 =head2 virtual b2Contact::~b2Contact ()
 
+=head2 virtual b2Contact::~b2Contact ( $virtual b2Contact::~b2Contact  )
+
+Parameters:
+
+=over 4
+
+=item *  $virtual b2Contact::~b2Contact  (optional)
+
+=back
+
 =head2 AddType( $createFcn, $destroyFcn, $typeA, $typeB )
 
 Parameters:
@@ -207,7 +217,27 @@ Parameters:
 
 =head2 bool b2Contact::s_initialized = false [static, protected]()
 
+=head2 bool b2Contact::s_initialized = false [static, protected]( $bool b2Contact::s_initialized = false [static, protected] )
+
+Parameters:
+
+=over 4
+
+=item *  $bool b2Contact::s_initialized = false [static, protected] (optional)
+
+=back
+
 =head2 b2ContactRegister b2Contact::s_registers [static, protected]()
+
+=head2 b2ContactRegister b2Contact::s_registers [static, protected]( $b2ContactRegister b2Contact::s_registers [static, protected] )
+
+Parameters:
+
+=over 4
+
+=item *  $b2ContactRegister b2Contact::s_registers [static, protected] (optional)
+
+=back
 
 =head1 BUGS
 

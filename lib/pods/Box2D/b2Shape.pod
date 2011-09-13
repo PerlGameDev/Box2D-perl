@@ -25,6 +25,16 @@ Constructor
 
 =head2 virtual b2Shape::~b2Shape ()
 
+=head2 virtual b2Shape::~b2Shape ( $virtual b2Shape::~b2Shape  )
+
+Parameters:
+
+=over 4
+
+=item *  $virtual b2Shape::~b2Shape  (optional)
+
+=back
+
 =head2 virtual b2Shape* b2Shape::Clone ( $allocator )
 
 Clone the concrete shape using the provided allocator. Implemented in b2CircleShape, and b2PolygonShape.
@@ -67,7 +77,17 @@ Parameters:
 
 =head2 b2Shape::Type b2Shape::GetType ()
 
+=head2 b2Shape::Type b2Shape::GetType ( $b2Shape::Type b2Shape::GetType  )
+
 Get the type of this shape. You can use this to down cast to the concrete shape.
+
+Parameters:
+
+=over 4
+
+=item *  $b2Shape::Type b2Shape::GetType  (optional)
+
+=back
 
 =head2 virtual bool b2Shape::RayCast ( $output, $input, $transform )
 
@@ -101,9 +121,29 @@ Parameters:
 
 =head2 m_radius()
 
+=head2 m_radius( $m_radius )
+
+Parameters:
+
+=over 4
+
+=item * float32 $m_radius (optional)
+
+=back
+
 Returns a float32
 
 =head2 m_type()
+
+=head2 m_type( $m_type )
+
+Parameters:
+
+=over 4
+
+=item * Type $m_type (optional)
+
+=back
 
 Returns a Type
 

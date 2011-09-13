@@ -37,31 +37,81 @@ Parameters:
 
 =head2 dampingRatio()
 
+=head2 dampingRatio( $dampingRatio )
+
 The damping ratio. 0 = no damping, 1 = critical damping.
+
+Parameters:
+
+=over 4
+
+=item * float32 $dampingRatio (optional)
+
+=back
 
 Returns a float32
 
 =head2 frequencyHz()
 
+=head2 frequencyHz( $frequencyHz )
+
 The mass-spring-damper frequency in Hertz.
+
+Parameters:
+
+=over 4
+
+=item * float32 $frequencyHz (optional)
+
+=back
 
 Returns a float32
 
 =head2 length()
 
+=head2 length( $length )
+
 The natural length between the anchor points.
+
+Parameters:
+
+=over 4
+
+=item * float32 $length (optional)
+
+=back
 
 Returns a float32
 
 =head2 localAnchorA()
 
+=head2 localAnchorA( $localAnchorA )
+
 The local anchor point relative to body1's origin.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $localAnchorA (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 
 =head2 localAnchorB()
 
+=head2 localAnchorB( $localAnchorB )
+
 The local anchor point relative to body2's origin.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $localAnchorB (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 

@@ -57,6 +57,16 @@ Set this to the identity transform.
 
 =head2 position()
 
+=head2 position( $position )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $position (optional)
+
+=back
+
 Returns a Box2D::b2Vec2
 
 =head2 R()

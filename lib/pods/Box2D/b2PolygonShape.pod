@@ -203,15 +203,55 @@ Returns a bool
 
 =head2 m_centroid()
 
+=head2 m_centroid( $m_centroid )
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $m_centroid (optional)
+
+=back
+
 Returns a Box2D::b2Vec2
 
 =head2 b2Vec2 b2PolygonShape::m_normals[b2_maxPolygonVertices]()
 
+=head2 b2Vec2 b2PolygonShape::m_normals[b2_maxPolygonVertices]( $b2Vec2 b2PolygonShape::m_normals[b2_maxPolygonVertices] )
+
+Parameters:
+
+=over 4
+
+=item *  $b2Vec2 b2PolygonShape::m_normals[b2_maxPolygonVertices] (optional)
+
+=back
+
 =head2 m_vertexCount()
+
+=head2 m_vertexCount( $m_vertexCount )
+
+Parameters:
+
+=over 4
+
+=item * int32 $m_vertexCount (optional)
+
+=back
 
 Returns a int32
 
 =head2 b2Vec2 b2PolygonShape::m_vertices[b2_maxPolygonVertices]()
+
+=head2 b2Vec2 b2PolygonShape::m_vertices[b2_maxPolygonVertices]( $b2Vec2 b2PolygonShape::m_vertices[b2_maxPolygonVertices] )
+
+Parameters:
+
+=over 4
+
+=item *  $b2Vec2 b2PolygonShape::m_vertices[b2_maxPolygonVertices] (optional)
+
+=back
 
 =head1 BUGS
 

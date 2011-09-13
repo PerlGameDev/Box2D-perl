@@ -19,6 +19,16 @@ Constructor
 
 =head2 b2Fixture::~b2Fixture ()
 
+=head2 b2Fixture::~b2Fixture ( $b2Fixture::~b2Fixture  )
+
+Parameters:
+
+=over 4
+
+=item *  $b2Fixture::~b2Fixture  (optional)
+
+=back
+
 =head2 Create( $allocator, $body, $def )
 
 Parameters:
@@ -139,7 +149,17 @@ Returns a Box2D::b2Shape
 
 =head2 b2Shape::Type b2Fixture::GetType ()
 
+=head2 b2Shape::Type b2Fixture::GetType ( $b2Shape::Type b2Fixture::GetType  )
+
 Get the type of the child shape. You can use this to down cast to the concrete shape.
+
+Parameters:
+
+=over 4
+
+=item *  $b2Shape::Type b2Fixture::GetType  (optional)
+
+=back
 
 =head2 GetUserData()
 

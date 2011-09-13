@@ -15,19 +15,49 @@ This holds contact filtering data.
 
 =head2 categoryBits()
 
+=head2 categoryBits( $categoryBits )
+
 The collision category bits. Normally you would just set one bit.
+
+Parameters:
+
+=over 4
+
+=item * uint16 $categoryBits (optional)
+
+=back
 
 Returns a uint16
 
 =head2 groupIndex()
 
+=head2 groupIndex( $groupIndex )
+
 Collision groups allow a certain group of objects to never collide (negative) or always collide (positive). Zero means no collision group. Non-zero group filtering always wins against the mask bits.
+
+Parameters:
+
+=over 4
+
+=item * int16 $groupIndex (optional)
+
+=back
 
 Returns a int16
 
 =head2 maskBits()
 
+=head2 maskBits( $maskBits )
+
 The collision mask bits. This states the categories that this shape would accept for collision.
+
+Parameters:
+
+=over 4
+
+=item * uint16 $maskBits (optional)
+
+=back
 
 Returns a uint16
 

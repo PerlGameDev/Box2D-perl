@@ -27,6 +27,16 @@ Parameters:
 
 =head2 virtual b2Joint::~b2Joint ()
 
+=head2 virtual b2Joint::~b2Joint ( $virtual b2Joint::~b2Joint  )
+
+Parameters:
+
+=over 4
+
+=item *  $virtual b2Joint::~b2Joint  (optional)
+
+=back
+
 =head2 Create( $def, $allocator )
 
 Parameters:
@@ -55,11 +65,31 @@ Parameters:
 
 =head2 virtual b2Vec2 b2Joint::GetAnchorA ()
 
+=head2 virtual b2Vec2 b2Joint::GetAnchorA ( $virtual b2Vec2 b2Joint::GetAnchorA  )
+
 Get the anchor point on bodyA in world coordinates. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
+
+Parameters:
+
+=over 4
+
+=item *  $virtual b2Vec2 b2Joint::GetAnchorA  (optional)
+
+=back
 
 =head2 virtual b2Vec2 b2Joint::GetAnchorB ()
 
+=head2 virtual b2Vec2 b2Joint::GetAnchorB ( $virtual b2Vec2 b2Joint::GetAnchorB  )
+
 Get the anchor point on bodyB in world coordinates. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
+
+Parameters:
+
+=over 4
+
+=item *  $virtual b2Vec2 b2Joint::GetAnchorB  (optional)
+
+=back
 
 =head2 GetBodyA()
 

@@ -15,7 +15,27 @@ Box2D::b2ContactImpulse - TODO
 
 =head2 float32 b2ContactImpulse::normalImpulses[b2_maxManifoldPoints]()
 
+=head2 float32 b2ContactImpulse::normalImpulses[b2_maxManifoldPoints]( $float32 b2ContactImpulse::normalImpulses[b2_maxManifoldPoints] )
+
+Parameters:
+
+=over 4
+
+=item *  $float32 b2ContactImpulse::normalImpulses[b2_maxManifoldPoints] (optional)
+
+=back
+
 =head2 float32 b2ContactImpulse::tangentImpulses[b2_maxManifoldPoints]()
+
+=head2 float32 b2ContactImpulse::tangentImpulses[b2_maxManifoldPoints]( $float32 b2ContactImpulse::tangentImpulses[b2_maxManifoldPoints] )
+
+Parameters:
+
+=over 4
+
+=item *  $float32 b2ContactImpulse::tangentImpulses[b2_maxManifoldPoints] (optional)
+
+=back
 
 =head1 BUGS
 

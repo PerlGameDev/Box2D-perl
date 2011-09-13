@@ -19,15 +19,45 @@ Constructor
 
 =head2 b2Joint* b2GearJointDef::joint1()
 
+=head2 b2Joint* b2GearJointDef::joint1( $b2Joint* b2GearJointDef::joint1 )
+
 The first revolute/prismatic joint attached to the gear joint.
+
+Parameters:
+
+=over 4
+
+=item *  $b2Joint* b2GearJointDef::joint1 (optional)
+
+=back
 
 =head2 b2Joint* b2GearJointDef::joint2()
 
+=head2 b2Joint* b2GearJointDef::joint2( $b2Joint* b2GearJointDef::joint2 )
+
 The second revolute/prismatic joint attached to the gear joint.
+
+Parameters:
+
+=over 4
+
+=item *  $b2Joint* b2GearJointDef::joint2 (optional)
+
+=back
 
 =head2 ratio()
 
+=head2 ratio( $ratio )
+
 The gear ratio. See also:b2GearJoint for explanation.
+
+Parameters:
+
+=over 4
+
+=item * float32 $ratio (optional)
+
+=back
 
 Returns a float32
 

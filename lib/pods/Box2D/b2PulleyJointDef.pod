@@ -43,55 +43,145 @@ Parameters:
 
 =head2 groundAnchorA()
 
+=head2 groundAnchorA( $groundAnchorA )
+
 The first ground anchor in world coordinates. This point never moves.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $groundAnchorA (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 
 =head2 groundAnchorB()
 
+=head2 groundAnchorB( $groundAnchorB )
+
 The second ground anchor in world coordinates. This point never moves.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $groundAnchorB (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 
 =head2 lengthA()
 
+=head2 lengthA( $lengthA )
+
 The a reference length for the segment attached to bodyA.
+
+Parameters:
+
+=over 4
+
+=item * float32 $lengthA (optional)
+
+=back
 
 Returns a float32
 
 =head2 lengthB()
 
+=head2 lengthB( $lengthB )
+
 The a reference length for the segment attached to bodyB.
+
+Parameters:
+
+=over 4
+
+=item * float32 $lengthB (optional)
+
+=back
 
 Returns a float32
 
 =head2 localAnchorA()
 
+=head2 localAnchorA( $localAnchorA )
+
 The local anchor point relative to bodyA's origin.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $localAnchorA (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 
 =head2 localAnchorB()
 
+=head2 localAnchorB( $localAnchorB )
+
 The local anchor point relative to bodyB's origin.
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $localAnchorB (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 
 =head2 maxLengthA()
 
+=head2 maxLengthA( $maxLengthA )
+
 The maximum length of the segment attached to bodyA.
+
+Parameters:
+
+=over 4
+
+=item * float32 $maxLengthA (optional)
+
+=back
 
 Returns a float32
 
 =head2 maxLengthB()
 
+=head2 maxLengthB( $maxLengthB )
+
 The maximum length of the segment attached to bodyB.
+
+Parameters:
+
+=over 4
+
+=item * float32 $maxLengthB (optional)
+
+=back
 
 Returns a float32
 
 =head2 ratio()
 
+=head2 ratio( $ratio )
+
 The pulley ratio, used to simulate a block-and-tackle.
+
+Parameters:
+
+=over 4
+
+=item * float32 $ratio (optional)
+
+=back
 
 Returns a float32
 

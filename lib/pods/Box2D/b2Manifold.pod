@@ -21,27 +21,77 @@ Returns a enum
 
 =head2 localNormal()
 
+=head2 localNormal( $localNormal )
+
 not use for Type::e_points
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $localNormal (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 
 =head2 localPoint()
 
+=head2 localPoint( $localPoint )
+
 usage depends on manifold type
+
+Parameters:
+
+=over 4
+
+=item * Box2D::b2Vec2 $localPoint (optional)
+
+=back
 
 Returns a Box2D::b2Vec2
 
 =head2 pointCount()
 
+=head2 pointCount( $pointCount )
+
 the number of manifold points
+
+Parameters:
+
+=over 4
+
+=item * int32 $pointCount (optional)
+
+=back
 
 Returns a int32
 
 =head2 b2ManifoldPoint b2Manifold::points[b2_maxManifoldPoints]()
 
+=head2 b2ManifoldPoint b2Manifold::points[b2_maxManifoldPoints]( $b2ManifoldPoint b2Manifold::points[b2_maxManifoldPoints] )
+
 the points of contact
 
+Parameters:
+
+=over 4
+
+=item *  $b2ManifoldPoint b2Manifold::points[b2_maxManifoldPoints] (optional)
+
+=back
+
 =head2 type()
+
+=head2 type( $type )
+
+Parameters:
+
+=over 4
+
+=item * Type $type (optional)
+
+=back
 
 Returns a Type
 
