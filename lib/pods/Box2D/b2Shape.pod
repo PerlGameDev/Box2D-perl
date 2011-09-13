@@ -21,7 +21,7 @@ Returns a enum
 
 =head2 new()
 
-Constructor
+Default constructor.
 
 =head2 virtual b2Shape* b2Shape::Clone ( $allocator )
 

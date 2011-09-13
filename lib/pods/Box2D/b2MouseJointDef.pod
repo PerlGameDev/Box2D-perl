@@ -15,7 +15,7 @@ Box2D::b2MouseJointDef - TODO
 
 =head2 new()
 
-Constructor
+Default constructor.
 
 =head2 dampingRatio()
 

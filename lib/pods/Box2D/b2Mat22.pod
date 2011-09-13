@@ -15,11 +15,11 @@ A 2-by-2 matrix. Stored in column-major order.
 
 =head2 new()
 
-Constructor
+The default constructor does nothing (for performance).
 
 =head2 new( $c1, $c2 )
 
-Constructor
+Construct this matrix using columns.
 
 Parameters:
 
@@ -33,7 +33,7 @@ Parameters:
 
 =head2 new( $a11, $a12, $a21, $a22 )
 
-Constructor
+Construct this matrix using scalars.
 
 Parameters:
 
@@ -51,7 +51,7 @@ Parameters:
 
 =head2 new( $angle )
 
-Constructor
+Construct this matrix using an angle. This matrix becomes an orthonormal rotation matrix.
 
 Parameters:
 

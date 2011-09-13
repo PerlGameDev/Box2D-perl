@@ -15,11 +15,11 @@ Box2D::b2Transform - TODO
 
 =head2 new()
 
-Constructor
+The default constructor does nothing (for performance).
 
 =head2 new( $position, $R )
 
-Constructor
+Initialize using a position vector and a rotation matrix.
 
 Parameters:
 

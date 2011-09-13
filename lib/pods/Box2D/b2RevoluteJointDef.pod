@@ -15,7 +15,7 @@ Box2D::b2RevoluteJointDef - TODO
 
 =head2 new()
 
-Constructor
+Default constructor.
 
 =head2 Initialize( $bodyA, $bodyB, $anchor )
 

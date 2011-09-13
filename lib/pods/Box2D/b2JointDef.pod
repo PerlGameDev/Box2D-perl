@@ -15,7 +15,7 @@ Joint definitions are used to construct joints.
 
 =head2 new()
 
-Constructor
+Default constructor.
 
 =head2 b2Body* b2JointDef::bodyA()
 

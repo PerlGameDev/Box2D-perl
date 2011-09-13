@@ -15,7 +15,7 @@ Box2D::b2DistanceJoint - TODO
 
 =head2 new( $data )
 
-Constructor
+Constructor.
 
 Parameters:
 

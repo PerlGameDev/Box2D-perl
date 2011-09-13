@@ -15,11 +15,11 @@ Box2D::b2Contact - TODO
 
 =head2 new()
 
-Constructor
+Default constructor.
 
 =head2 new( $fixtureA, $fixtureB )
 
-Constructor
+Constructor.
 
 Parameters:
 

@@ -75,11 +75,6 @@ sub parse_methods {
             $return = $type;
         }
 
-        if ( $name eq $class->{name} ) {
-            $name = 'new';
-            $desc = 'Constructor';
-        }
-
         my @p_types
             = $member->findnodes_as_strings('.//td[@class="paramtype"]');
         my @p_names
@@ -95,6 +90,15 @@ sub parse_methods {
                 $type = "Box2D::$type";
             }
             push @args, { type => $type, name => $p_names[$_] };
+        }
+
+        if ( $name eq $class->{name} ) {
+            $name = 'new';
+
+            if ( !$desc ) {
+                $desc = 'Constructor.'         if @args;
+                $desc = 'Default constructor.' if !@args;
+            }
         }
 
         if ( $desc =~ / ^ (.*) Returns: (.*) $ /x ) {

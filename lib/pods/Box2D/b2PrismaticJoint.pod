@@ -15,7 +15,7 @@ Box2D::b2PrismaticJoint - TODO
 
 =head2 new( $def )
 
-Constructor
+Constructor.
 
 Parameters:
 

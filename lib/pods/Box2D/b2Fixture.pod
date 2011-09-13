@@ -15,7 +15,7 @@ Box2D::b2Fixture - TODO
 
 =head2 new()
 
-Constructor
+Default constructor.
 
 =head2 Create( $allocator, $body, $def )
 

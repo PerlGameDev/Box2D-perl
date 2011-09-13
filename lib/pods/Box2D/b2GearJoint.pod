@@ -15,7 +15,7 @@ Box2D::b2GearJoint - TODO
 
 =head2 new( $data )
 
-Constructor
+Constructor.
 
 Parameters:
 

@@ -15,7 +15,7 @@ Friction joint definition.
 
 =head2 new()
 
-Constructor
+Default constructor.
 
 =head2 Initialize( $bodyA, $bodyB, $anchor )
 
