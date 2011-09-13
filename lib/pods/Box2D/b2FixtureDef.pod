@@ -17,18 +17,6 @@ Box2D::b2FixtureDef - TODO
 
 Constructor
 
-=head2 virtual b2FixtureDef::~b2FixtureDef ()
-
-=head2 virtual b2FixtureDef::~b2FixtureDef ( $virtual b2FixtureDef::~b2FixtureDef  )
-
-Parameters:
-
-=over 4
-
-=item *  $virtual b2FixtureDef::~b2FixtureDef  (optional)
-
-=back
-
 =head2 density()
 
 =head2 density( $density )

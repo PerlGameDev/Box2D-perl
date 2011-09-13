@@ -31,18 +31,6 @@ Parameters:
 
 =back
 
-=head2 virtual b2Contact::~b2Contact ()
-
-=head2 virtual b2Contact::~b2Contact ( $virtual b2Contact::~b2Contact  )
-
-Parameters:
-
-=over 4
-
-=item *  $virtual b2Contact::~b2Contact  (optional)
-
-=back
-
 =head2 AddType( $createFcn, $destroyFcn, $typeA, $typeB )
 
 Parameters:
@@ -107,7 +95,7 @@ Parameters:
 
 =back
 
-=head2 virtual void b2Contact::Evaluate ( $manifold, $xfA, $xfB )
+=head2 Evaluate( $manifold, $xfA, $xfB )
 
 Evaluate this contact with your own manifold and transforms. Implemented in b2CircleContact, b2PolygonAndCircleContact, and b2PolygonContact.
 

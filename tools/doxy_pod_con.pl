@@ -66,8 +66,11 @@ sub parse_methods {
         next if $name =~ m/\[protected\]/;
         next if $name =~ m/\[friend\]/;
 
+        # Skip destructors
+        next if $name =~ m/ ^ ~ /x;
+
         my $return;
-        if ( $type && $type ne 'void' ) {
+        if ( $type && $type ne 'void' && $type ne 'virtual' ) {
             $type = "Box2D::$type" if $type =~ /^b2/;
             $return = $type;
         }
@@ -188,6 +191,7 @@ sub parse_method_name {
         ^
         \s*
         (?:
+            (?: virtual \s+ )?  # possibly virtual
             (?: const \s+ )?    # possibly const
             (\w+)               # return type
             \s+
@@ -196,7 +200,7 @@ sub parse_method_name {
         )?
         (?: \w+ )               # class name
         ::
-        (\w+)                   # method name
+        ( ~? \w+ )              # method name
         \s*
         $
     /x;

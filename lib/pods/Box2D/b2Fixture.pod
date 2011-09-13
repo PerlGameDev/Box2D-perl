@@ -17,18 +17,6 @@ Box2D::b2Fixture - TODO
 
 Constructor
 
-=head2 b2Fixture::~b2Fixture ()
-
-=head2 b2Fixture::~b2Fixture ( $b2Fixture::~b2Fixture  )
-
-Parameters:
-
-=over 4
-
-=item *  $b2Fixture::~b2Fixture  (optional)
-
-=back
-
 =head2 Create( $allocator, $body, $def )
 
 Parameters:

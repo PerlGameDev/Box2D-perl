@@ -25,18 +25,6 @@ Parameters:
 
 =back
 
-=head2 virtual b2Joint::~b2Joint ()
-
-=head2 virtual b2Joint::~b2Joint ( $virtual b2Joint::~b2Joint  )
-
-Parameters:
-
-=over 4
-
-=item *  $virtual b2Joint::~b2Joint  (optional)
-
-=back
-
 =head2 Create( $def, $allocator )
 
 Parameters:
@@ -63,33 +51,17 @@ Parameters:
 
 =back
 
-=head2 virtual b2Vec2 b2Joint::GetAnchorA ()
-
-=head2 virtual b2Vec2 b2Joint::GetAnchorA ( $virtual b2Vec2 b2Joint::GetAnchorA  )
+=head2 GetAnchorA()
 
 Get the anchor point on bodyA in world coordinates. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
 
-Parameters:
+Returns a Box2D::b2Vec2
 
-=over 4
-
-=item *  $virtual b2Vec2 b2Joint::GetAnchorA  (optional)
-
-=back
-
-=head2 virtual b2Vec2 b2Joint::GetAnchorB ()
-
-=head2 virtual b2Vec2 b2Joint::GetAnchorB ( $virtual b2Vec2 b2Joint::GetAnchorB  )
+=head2 GetAnchorB()
 
 Get the anchor point on bodyB in world coordinates. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
 
-Parameters:
-
-=over 4
-
-=item *  $virtual b2Vec2 b2Joint::GetAnchorB  (optional)
-
-=back
+Returns a Box2D::b2Vec2
 
 =head2 GetBodyA()
 
@@ -109,7 +81,7 @@ Get the next joint the world joint list.
 
 Returns a Box2D::b2Joint
 
-=head2 virtual b2Vec2 b2Joint::GetReactionForce ( $inv_dt )
+=head2 GetReactionForce( $inv_dt )
 
 Get the reaction force on body2 at the joint anchor in Newtons. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
 
@@ -121,7 +93,9 @@ Parameters:
 
 =back
 
-=head2 virtual float32 b2Joint::GetReactionTorque ( $inv_dt )
+Returns a Box2D::b2Vec2
+
+=head2 GetReactionTorque( $inv_dt )
 
 Get the reaction torque on body2 in N*m. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
 
@@ -133,6 +107,8 @@ Parameters:
 
 =back
 
+Returns a float32
+
 =head2 GetType()
 
 Get the type of the concrete joint.
@@ -143,7 +119,7 @@ Returns a Box2D::b2JointType
 
 Get the user data pointer.
 
-=head2 virtual void b2Joint::InitVelocityConstraints ( $step )
+=head2 InitVelocityConstraints( $step )
 
 Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
 
@@ -173,7 +149,7 @@ Parameters:
 
 =back
 
-=head2 virtual bool b2Joint::SolvePositionConstraints ( $baumgarte )
+=head2 SolvePositionConstraints( $baumgarte )
 
 Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
 
@@ -185,7 +161,9 @@ Parameters:
 
 =back
 
-=head2 virtual void b2Joint::SolveVelocityConstraints ( $step )
+Returns a bool
+
+=head2 SolveVelocityConstraints( $step )
 
 Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
 
