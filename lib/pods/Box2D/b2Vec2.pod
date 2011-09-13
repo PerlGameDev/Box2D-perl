@@ -5,7 +5,7 @@ Box2D::b2Vec2 - A 2D column vector.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $v = Box2D::b2Vec2->new( $x, $y );
 
 =head1 DESCRIPTION
 
@@ -15,11 +15,11 @@ A 2D column vector.
 
 =head2 new()
 
-Constructor
+Default constructor does nothing.
 
 =head2 new( $x, $y )
 
-Constructor
+Construct using coordinates.
 
 Parameters:
 
@@ -55,71 +55,7 @@ Convert this vector into a unit vector. Returns the length.
 
 Returns a float32
 
-=head2 float32& b2Vec2::operator() ( $i )
-
-Write to an indexed element.
-
-Parameters:
-
-=over 4
-
-=item * int32 $i
-
-=back
-
-=head2 float32 b2Vec2::operator() ( $i )
-
-Read from and indexed element.
-
-Parameters:
-
-=over 4
-
-=item * int32 $i
-
-=back
-
-=head2 void b2Vec2::operator*= ( $a )
-
-Multiply this vector by a scalar.
-
-Parameters:
-
-=over 4
-
-=item * float32 $a
-
-=back
-
-=head2 void b2Vec2::operator+= ( $v )
-
-Add a vector to this vector.
-
-Parameters:
-
-=over 4
-
-=item * Box2D::b2Vec2 $v
-
-=back
-
-=head2 b2Vec2 b2Vec2::operator- ()
-
-Negate this vector.
-
-=head2 void b2Vec2::operator-= ( $v )
-
-Subtract a vector from this vector.
-
-Parameters:
-
-=over 4
-
-=item * Box2D::b2Vec2 $v
-
-=back
-
-=head2 Set( $x_, $y_ )
+=head2 Set( $x, $y )
 
 Set this vector to some specified coordinates.
 
@@ -127,9 +63,9 @@ Parameters:
 
 =over 4
 
-=item * float32 $x_
+=item * float32 $x
 
-=item * float32 $y_
+=item * float32 $y
 
 =back
 
@@ -139,9 +75,29 @@ Set this vector to all zeros.
 
 =head2 x()
 
+=head2 x( $x )
+
+Parameters:
+
+=over 4
+
+=item * float32 $x (optional)
+
+=back
+
 Returns a float32
 
 =head2 y()
+
+=head2 y( $y )
+
+Parameters:
+
+=over 4
+
+=item * float32 $y (optional)
+
+=back
 
 Returns a float32
 
