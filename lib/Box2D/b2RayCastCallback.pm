@@ -37,7 +37,7 @@ Box2D::b2RayCastCallback - Callback class for ray casts
     sub ReportFixture {
         my ( $self, $fixture, $point, $normal, $fraction ) = @_;
 
-        // Do something
+        # Do something
     }
 
     1;
