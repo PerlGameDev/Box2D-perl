@@ -65,13 +65,13 @@ Parameters:
 
 =over 4
 
-=item C<Box2D::b2Fixture $fixture> the fixture hit by the ray
+=item * C<Box2D::b2Fixture $fixture> the fixture hit by the ray
 
-=item C<Box2D::b2Vec2 $point> the point of initial intersection
+=item * C<Box2D::b2Vec2 $point> the point of initial intersection
 
-=item C<Box2D::b2Vec2 $normal> the normal vector at the point of intersection
+=item * C<Box2D::b2Vec2 $normal> the normal vector at the point of intersection
 
-=item C<float32 $fraction> the fraction of the distance to the point of
+=item * C<float32 $fraction> the fraction of the distance to the point of
 intersection
 
 =back
@@ -80,13 +80,13 @@ Returns:
 
 =over 4
 
-=item C<-1> to ignore the fixture and continue
+=item * C<-1> to ignore the fixture and continue
 
-=item C<0> to terminate the ray cast
+=item * C<0> to terminate the ray cast
 
-=item C<$fraction> to clip the ray for closest hit
+=item * C<$fraction> to clip the ray for closest hit
 
-=item C<1> don't clip the ray and continue
+=item * C<1> don't clip the ray and continue
 
 =back
 
@@ -106,9 +106,9 @@ See L<Box2D/"COPYRIGHT & LICENSE">
 
 =over 4
 
-=item L<Box2D>
+=item * L<Box2D>
 
-=item L<Box2D::b2World>
+=item * L<Box2D::b2World>
 
 =back
 
