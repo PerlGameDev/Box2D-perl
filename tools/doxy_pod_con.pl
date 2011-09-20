@@ -72,7 +72,7 @@ sub parse_methods {
         my $return;
         if ( $type && $type ne 'void' && $type ne 'virtual' ) {
             $type = "Box2D::$type" if $type =~ /^b2/;
-            $return = $type;
+            $return = "C<$type>";
         }
 
         my @p_types
@@ -89,7 +89,7 @@ sub parse_methods {
                 $type =~ s/^.*(b2\w+).*$/$1/;
                 $type = "Box2D::$type";
             }
-            push @args, { type => $type, name => $p_names[$_] };
+            push @args, { type => "C<$type>", name => $p_names[$_] };
         }
 
         if ( $name eq $class->{name} ) {
@@ -147,6 +147,10 @@ sub parse_methods {
             $name .= '()';
         }
 
+        for (@args) {
+            $_->{name} = "C<$_->{name}>";
+        }
+
         $desc   =~ s/\s+$// if $desc;
         $return =~ s/\s+$// if $return;
 
@@ -168,7 +172,7 @@ sub parse_methods {
 
             $method{setter} = $base . '( $' . $base . ' )';
 
-            my $arg_name = '$' . $base . ' (optional)';
+            my $arg_name = 'C<$' . $base . '> (optional)';
 
             $method{arguments} = [ { name => $arg_name } ];
 

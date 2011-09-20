@@ -25,11 +25,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Body $body1
+=item * C<Box2D::b2Body> C<$body1>
 
-=item * Box2D::b2Body $body2
+=item * C<Box2D::b2Body> C<$body2>
 
-=item * Box2D::b2Vec2 $anchor
+=item * C<Box2D::b2Vec2> C<$anchor>
 
 =back
 
@@ -43,11 +43,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localAnchorA (optional)
+=item * C<Box2D::b2Vec2> C<$localAnchorA> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 localAnchorB()
 
@@ -59,11 +59,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localAnchorB (optional)
+=item * C<Box2D::b2Vec2> C<$localAnchorB> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 referenceAngle()
 
@@ -75,11 +75,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $referenceAngle (optional)
+=item * C<float32> C<$referenceAngle> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head1 BUGS
 

@@ -23,17 +23,17 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $center (optional)
+=item * C<Box2D::b2Vec2> C<$center> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 I()
 
 The rotational inertia of the shape about the local origin.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 mass()
 
@@ -45,11 +45,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $mass (optional)
+=item * C<float32> C<$mass> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head1 BUGS
 

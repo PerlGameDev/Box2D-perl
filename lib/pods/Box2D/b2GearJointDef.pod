@@ -27,7 +27,7 @@ Parameters:
 
 =over 4
 
-=item *  $b2Joint* b2GearJointDef::joint1 (optional)
+=item *  C<$b2Joint* b2GearJointDef::joint1> (optional)
 
 =back
 
@@ -41,7 +41,7 @@ Parameters:
 
 =over 4
 
-=item *  $b2Joint* b2GearJointDef::joint2 (optional)
+=item *  C<$b2Joint* b2GearJointDef::joint2> (optional)
 
 =back
 
@@ -55,11 +55,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $ratio (optional)
+=item * C<float32> C<$ratio> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head1 BUGS
 

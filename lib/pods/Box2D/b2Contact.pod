@@ -25,9 +25,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Fixture $fixtureA
+=item * C<Box2D::b2Fixture> C<$fixtureA>
 
-=item * Box2D::b2Fixture $fixtureB
+=item * C<Box2D::b2Fixture> C<$fixtureB>
 
 =back
 
@@ -37,13 +37,13 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2ContactCreateFcn $createFcn
+=item * C<Box2D::b2ContactCreateFcn> C<$createFcn>
 
-=item * Box2D::b2ContactDestroyFcn $destroyFcn
+=item * C<Box2D::b2ContactDestroyFcn> C<$destroyFcn>
 
-=item * Box2D::b2Shape $typeA
+=item * C<Box2D::b2Shape> C<$typeA>
 
-=item * Box2D::b2Shape $typeB
+=item * C<Box2D::b2Shape> C<$typeB>
 
 =back
 
@@ -55,15 +55,15 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Fixture $fixtureA
+=item * C<Box2D::b2Fixture> C<$fixtureA>
 
-=item * Box2D::b2Fixture $fixtureB
+=item * C<Box2D::b2Fixture> C<$fixtureB>
 
-=item * Box2D::b2BlockAllocator $allocator
+=item * C<Box2D::b2BlockAllocator> C<$allocator>
 
 =back
 
-Returns a Box2D::b2Contact
+Returns a C<Box2D::b2Contact>
 
 =head2 Destroy( $contact, $allocator )
 
@@ -73,9 +73,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Contact $contact
+=item * C<Box2D::b2Contact> C<$contact>
 
-=item * Box2D::b2BlockAllocator $allocator
+=item * C<Box2D::b2BlockAllocator> C<$allocator>
 
 =back
 
@@ -85,13 +85,13 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Contact $contact
+=item * C<Box2D::b2Contact> C<$contact>
 
-=item * Box2D::b2Shape $typeA
+=item * C<Box2D::b2Shape> C<$typeA>
 
-=item * Box2D::b2Shape $typeB
+=item * C<Box2D::b2Shape> C<$typeB>
 
-=item * Box2D::b2BlockAllocator $allocator
+=item * C<Box2D::b2BlockAllocator> C<$allocator>
 
 =back
 
@@ -103,11 +103,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Manifold $manifold
+=item * C<Box2D::b2Manifold> C<$manifold>
 
-=item * Box2D::b2Transform $xfA
+=item * C<Box2D::b2Transform> C<$xfA>
 
-=item * Box2D::b2Transform $xfB
+=item * C<Box2D::b2Transform> C<$xfB>
 
 =back
 
@@ -117,43 +117,43 @@ Flag this contact for filtering. Filtering will occur the next time step.
 
 =head2 GetFixtureA()
 
-Returns a Box2D::b2Fixture
+Returns a C<Box2D::b2Fixture>
 
 =head2 GetFixtureA()
 
 Get the first fixture in this contact.
 
-Returns a Box2D::b2Fixture
+Returns a C<Box2D::b2Fixture>
 
 =head2 GetFixtureB()
 
-Returns a Box2D::b2Fixture
+Returns a C<Box2D::b2Fixture>
 
 =head2 GetFixtureB()
 
 Get the second fixture in this contact.
 
-Returns a Box2D::b2Fixture
+Returns a C<Box2D::b2Fixture>
 
 =head2 GetManifold()
 
-Returns a Box2D::b2Manifold
+Returns a C<Box2D::b2Manifold>
 
 =head2 GetManifold()
 
 Get the contact manifold. Do not modify the manifold unless you understand the internals of Box2D.
 
-Returns a Box2D::b2Manifold
+Returns a C<Box2D::b2Manifold>
 
 =head2 GetNext()
 
-Returns a Box2D::b2Contact
+Returns a C<Box2D::b2Contact>
 
 =head2 GetNext()
 
 Get the next contact in the world's contact list.
 
-Returns a Box2D::b2Contact
+Returns a C<Box2D::b2Contact>
 
 =head2 GetWorldManifold( $worldManifold )
 
@@ -163,7 +163,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2WorldManifold $worldManifold
+=item * C<Box2D::b2WorldManifold> C<$worldManifold>
 
 =back
 
@@ -173,13 +173,13 @@ Parameters:
 
 Has this contact been disabled?
 
-Returns a bool
+Returns a C<bool>
 
 =head2 IsTouching()
 
 Is this contact touching?
 
-Returns a bool
+Returns a C<bool>
 
 =head2 SetEnabled( $flag )
 
@@ -189,7 +189,7 @@ Parameters:
 
 =over 4
 
-=item * bool $flag
+=item * C<bool> C<$flag>
 
 =back
 
@@ -199,7 +199,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2ContactListener $listener
+=item * C<Box2D::b2ContactListener> C<$listener>
 
 =back
 
@@ -211,7 +211,7 @@ Parameters:
 
 =over 4
 
-=item *  $bool b2Contact::s_initialized = false [static, protected] (optional)
+=item *  C<$bool b2Contact::s_initialized = false [static, protected]> (optional)
 
 =back
 
@@ -223,7 +223,7 @@ Parameters:
 
 =over 4
 
-=item *  $b2ContactRegister b2Contact::s_registers [static, protected] (optional)
+=item *  C<$b2ContactRegister b2Contact::s_registers [static, protected]> (optional)
 
 =back
 

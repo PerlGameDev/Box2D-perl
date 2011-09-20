@@ -25,13 +25,13 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Body $bodyA
+=item * C<Box2D::b2Body> C<$bodyA>
 
-=item * Box2D::b2Body $bodyB
+=item * C<Box2D::b2Body> C<$bodyB>
 
-=item * Box2D::b2Vec2 $anchorA
+=item * C<Box2D::b2Vec2> C<$anchorA>
 
-=item * Box2D::b2Vec2 $anchorB
+=item * C<Box2D::b2Vec2> C<$anchorB>
 
 =back
 
@@ -45,11 +45,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $dampingRatio (optional)
+=item * C<float32> C<$dampingRatio> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 frequencyHz()
 
@@ -61,11 +61,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $frequencyHz (optional)
+=item * C<float32> C<$frequencyHz> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 length()
 
@@ -77,11 +77,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $length (optional)
+=item * C<float32> C<$length> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 localAnchorA()
 
@@ -93,11 +93,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localAnchorA (optional)
+=item * C<Box2D::b2Vec2> C<$localAnchorA> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 localAnchorB()
 
@@ -109,11 +109,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localAnchorB (optional)
+=item * C<Box2D::b2Vec2> C<$localAnchorB> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head1 BUGS
 

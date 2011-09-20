@@ -21,7 +21,7 @@ Parameters:
 
 =over 4
 
-=item *  $float32 b2ContactImpulse::normalImpulses[b2_maxManifoldPoints] (optional)
+=item *  C<$float32 b2ContactImpulse::normalImpulses[b2_maxManifoldPoints]> (optional)
 
 =back
 
@@ -33,7 +33,7 @@ Parameters:
 
 =over 4
 
-=item *  $float32 b2ContactImpulse::tangentImpulses[b2_maxManifoldPoints] (optional)
+=item *  C<$float32 b2ContactImpulse::tangentImpulses[b2_maxManifoldPoints]> (optional)
 
 =back
 

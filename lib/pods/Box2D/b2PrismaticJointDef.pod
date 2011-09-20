@@ -25,13 +25,13 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Body $bodyA
+=item * C<Box2D::b2Body> C<$bodyA>
 
-=item * Box2D::b2Body $bodyB
+=item * C<Box2D::b2Body> C<$bodyB>
 
-=item * Box2D::b2Vec2 $anchor
+=item * C<Box2D::b2Vec2> C<$anchor>
 
-=item * Box2D::b2Vec2 $axis
+=item * C<Box2D::b2Vec2> C<$axis>
 
 =back
 
@@ -45,11 +45,11 @@ Parameters:
 
 =over 4
 
-=item * bool $enableLimit (optional)
+=item * C<bool> C<$enableLimit> (optional)
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 enableMotor()
 
@@ -61,11 +61,11 @@ Parameters:
 
 =over 4
 
-=item * bool $enableMotor (optional)
+=item * C<bool> C<$enableMotor> (optional)
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 localAnchorA()
 
@@ -77,11 +77,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localAnchorA (optional)
+=item * C<Box2D::b2Vec2> C<$localAnchorA> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 localAnchorB()
 
@@ -93,11 +93,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localAnchorB (optional)
+=item * C<Box2D::b2Vec2> C<$localAnchorB> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 localAxis1()
 
@@ -109,11 +109,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localAxis1 (optional)
+=item * C<Box2D::b2Vec2> C<$localAxis1> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 lowerTranslation()
 
@@ -125,11 +125,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $lowerTranslation (optional)
+=item * C<float32> C<$lowerTranslation> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 maxMotorForce()
 
@@ -141,11 +141,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $maxMotorForce (optional)
+=item * C<float32> C<$maxMotorForce> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 motorSpeed()
 
@@ -157,11 +157,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $motorSpeed (optional)
+=item * C<float32> C<$motorSpeed> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 referenceAngle()
 
@@ -173,11 +173,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $referenceAngle (optional)
+=item * C<float32> C<$referenceAngle> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 upperTranslation()
 
@@ -189,11 +189,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $upperTranslation (optional)
+=item * C<float32> C<$upperTranslation> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head1 BUGS
 

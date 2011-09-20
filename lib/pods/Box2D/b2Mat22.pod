@@ -25,9 +25,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $c1
+=item * C<Box2D::b2Vec2> C<$c1>
 
-=item * Box2D::b2Vec2 $c2
+=item * C<Box2D::b2Vec2> C<$c2>
 
 =back
 
@@ -39,13 +39,13 @@ Parameters:
 
 =over 4
 
-=item * float32 $a11
+=item * C<float32> C<$a11>
 
-=item * float32 $a12
+=item * C<float32> C<$a12>
 
-=item * float32 $a21
+=item * C<float32> C<$a21>
 
-=item * float32 $a22
+=item * C<float32> C<$a22>
 
 =back
 
@@ -57,7 +57,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $angle
+=item * C<float32> C<$angle>
 
 =back
 
@@ -65,11 +65,11 @@ Parameters:
 
 Extract the angle from this matrix (assumed to be a rotation matrix).
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetInverse()
 
-Returns a Box2D::b2Mat22
+Returns a C<Box2D::b2Mat22>
 
 =head2 Set( $angle )
 
@@ -79,7 +79,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $angle
+=item * C<float32> C<$angle>
 
 =back
 
@@ -91,9 +91,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $c1
+=item * C<Box2D::b2Vec2> C<$c1>
 
-=item * Box2D::b2Vec2 $c2
+=item * C<Box2D::b2Vec2> C<$c2>
 
 =back
 
@@ -113,11 +113,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $b
+=item * C<Box2D::b2Vec2> C<$b>
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 col1()
 
@@ -127,11 +127,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $col1 (optional)
+=item * C<Box2D::b2Vec2> C<$col1> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 col2()
 
@@ -141,11 +141,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $col2 (optional)
+=item * C<Box2D::b2Vec2> C<$col2> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head1 BUGS
 

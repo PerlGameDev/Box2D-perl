@@ -24,9 +24,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $gravity - the world gravity vector.
+=item * C<Box2D::b2Vec2> C<$gravity> - the world gravity vector.
 
-=item * bool $doSleep - improve performance by not simulating inactive
+=item * C<bool> C<$doSleep> - improve performance by not simulating inactive
 bodies.
 
 =back
@@ -51,11 +51,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2BodyDef $def
+=item * C<Box2D::b2BodyDef> C<$def>
 
 =back
 
-Returns a Box2D::b2Body
+Returns a C<Box2D::b2Body>
 
 =head2 CreateJoint( $def )
 
@@ -69,11 +69,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2JointDef $def
+=item * C<Box2D::b2JointDef> C<$def>
 
 =back
 
-Returns a Box2D::b2Joint
+Returns a C<Box2D::b2Joint>
 
 =head2 DestroyBody( $body )
 
@@ -87,7 +87,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Body $body
+=item * C<Box2D::b2Body> C<$body>
 
 =back
 
@@ -95,7 +95,7 @@ Parameters:
 
 Get the global gravity vector.
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 RayCast( $callback, $point1, $point2 )
 
@@ -107,12 +107,12 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2RayCastCallback $callback - a user implemented
+=item * C<Box2D::b2RayCastCallback> C<$callback> - a user implemented
 callback class.
 
-=item * Box2D::b2Vec2 $point1 - the ray starting point
+=item * C<Box2D::b2Vec2> C<$point1> - the ray starting point
 
-=item * Box2D::b2Vec2 $point2 - the ray ending point
+=item * C<Box2D::b2Vec2> C<$point2> - the ray ending point
 
 =back
 
@@ -125,7 +125,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2ContactListener $listener
+=item * C<Box2D::b2ContactListener> C<$listener>
 
 =back
 
@@ -137,7 +137,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $gravity
+=item * C<Box2D::b2Vec2> C<$gravity>
 
 =back
 
@@ -150,12 +150,12 @@ Parameters:
 
 =over 4
 
-=item * float32 $timeStep - the amount of time to simulate, this should
+=item * C<float32> C<$timeStep> - the amount of time to simulate, this should
 not vary.
 
-=item * int32 $velocityIterations - for the velocity constraint solver.
+=item * C<int32> C<$velocityIterations> - for the velocity constraint solver.
 
-=item * int32 $positionIterations - for the position constraint solver.
+=item * C<int32> C<$positionIterations> - for the position constraint solver.
 
 =back
 

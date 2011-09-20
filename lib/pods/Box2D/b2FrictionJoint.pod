@@ -21,7 +21,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2FrictionJointDef $def
+=item * C<Box2D::b2FrictionJointDef> C<$def>
 
 =back
 
@@ -29,25 +29,25 @@ Parameters:
 
 Get the anchor point on bodyA in world coordinates. Implements b2Joint.
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetAnchorB()
 
 Get the anchor point on bodyB in world coordinates. Implements b2Joint.
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetMaxForce()
 
 Get the maximum friction force in N.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetMaxTorque()
 
 Get the maximum friction torque in N*m.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetReactionForce( $inv_dt )
 
@@ -57,11 +57,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $inv_dt
+=item * C<float32> C<$inv_dt>
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetReactionTorque( $inv_dt )
 
@@ -71,11 +71,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $inv_dt
+=item * C<float32> C<$inv_dt>
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 InitVelocityConstraints( $step )
 
@@ -85,7 +85,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2TimeStep $step
+=item * C<Box2D::b2TimeStep> C<$step>
 
 =back
 
@@ -97,7 +97,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $force
+=item * C<float32> C<$force>
 
 =back
 
@@ -109,7 +109,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $torque
+=item * C<float32> C<$torque>
 
 =back
 
@@ -121,11 +121,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $baumgarte
+=item * C<float32> C<$baumgarte>
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 SolveVelocityConstraints( $step )
 
@@ -135,7 +135,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2TimeStep $step
+=item * C<Box2D::b2TimeStep> C<$step>
 
 =back
 

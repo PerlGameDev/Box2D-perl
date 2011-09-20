@@ -17,7 +17,7 @@ Box2D::b2Manifold - TODO
 
 Enumerator: e_circles e_faceA e_faceB 
 
-Returns a enum
+Returns a C<enum>
 
 =head2 localNormal()
 
@@ -29,11 +29,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localNormal (optional)
+=item * C<Box2D::b2Vec2> C<$localNormal> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 localPoint()
 
@@ -45,11 +45,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localPoint (optional)
+=item * C<Box2D::b2Vec2> C<$localPoint> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 pointCount()
 
@@ -61,11 +61,11 @@ Parameters:
 
 =over 4
 
-=item * int32 $pointCount (optional)
+=item * C<int32> C<$pointCount> (optional)
 
 =back
 
-Returns a int32
+Returns a C<int32>
 
 =head2 b2ManifoldPoint b2Manifold::points[b2_maxManifoldPoints]()
 
@@ -77,7 +77,7 @@ Parameters:
 
 =over 4
 
-=item *  $b2ManifoldPoint b2Manifold::points[b2_maxManifoldPoints] (optional)
+=item *  C<$b2ManifoldPoint b2Manifold::points[b2_maxManifoldPoints]> (optional)
 
 =back
 
@@ -89,11 +89,11 @@ Parameters:
 
 =over 4
 
-=item * Type $type (optional)
+=item * C<Type> C<$type> (optional)
 
 =back
 
-Returns a Type
+Returns a C<Type>
 
 =head1 BUGS
 

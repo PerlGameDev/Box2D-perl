@@ -28,9 +28,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2AABB $aabb
+=item * C<Box2D::b2AABB> C<$aabb>
 
-=item * Box2D::b2Transform $transform
+=item * C<Box2D::b2Transform> C<$transform>
 
 =back
 
@@ -44,9 +44,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2MassData $massData
+=item * C<Box2D::b2MassData> C<$massData>
 
-=item * float32 $density
+=item * C<float32> C<$density>
 
 =back
 
@@ -58,15 +58,15 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2RayCastOutput $output
+=item * C<Box2D::b2RayCastOutput> C<$output>
 
-=item * Box2D::b2RayCastInput $input
+=item * C<Box2D::b2RayCastInput> C<$input>
 
-=item * Box2D::b2Transform $transform
+=item * C<Box2D::b2Transform> C<$transform>
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 TestPoint( $transform, $p )
 
@@ -76,13 +76,13 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Transform $transform
+=item * C<Box2D::b2Transform> C<$transform>
 
-=item * Box2D::b2Vec2 $p
+=item * C<Box2D::b2Vec2> C<$p>
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head1 BUGS
 

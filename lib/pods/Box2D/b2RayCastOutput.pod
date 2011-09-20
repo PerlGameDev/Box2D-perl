@@ -21,11 +21,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $fraction (optional)
+=item * C<float32> C<$fraction> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 normal()
 
@@ -35,11 +35,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $normal (optional)
+=item * C<Box2D::b2Vec2> C<$normal> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head1 BUGS
 

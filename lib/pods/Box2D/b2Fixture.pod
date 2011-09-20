@@ -23,11 +23,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2BlockAllocator $allocator
+=item * C<Box2D::b2BlockAllocator> C<$allocator>
 
-=item * Box2D::b2Body $body
+=item * C<Box2D::b2Body> C<$body>
 
-=item * Box2D::b2FixtureDef $def
+=item * C<Box2D::b2FixtureDef> C<$def>
 
 =back
 
@@ -37,9 +37,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2BroadPhase $broadPhase
+=item * C<Box2D::b2BroadPhase> C<$broadPhase>
 
-=item * Box2D::b2Transform $xf
+=item * C<Box2D::b2Transform> C<$xf>
 
 =back
 
@@ -49,7 +49,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2BlockAllocator $allocator
+=item * C<Box2D::b2BlockAllocator> C<$allocator>
 
 =back
 
@@ -59,7 +59,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2BroadPhase $broadPhase
+=item * C<Box2D::b2BroadPhase> C<$broadPhase>
 
 =back
 
@@ -67,35 +67,35 @@ Parameters:
 
 Get the fixture's AABB. This AABB may be enlarge and/or stale. If you need a more accurate AABB, compute it using the shape and the body transform.
 
-Returns a Box2D::b2AABB
+Returns a C<Box2D::b2AABB>
 
 =head2 GetBody()
 
-Returns a Box2D::b2Body
+Returns a C<Box2D::b2Body>
 
 =head2 GetBody()
 
 Get the parent body of this fixture. This is NULL if the fixture is not attached.
 
-Returns a Box2D::b2Body - the parent body.
+Returns a C<Box2D::b2Body> - the parent body.
 
 =head2 GetDensity()
 
 Get the density of this fixture.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetFilterData()
 
 Get the contact filtering data.
 
-Returns a Box2D::b2Filter
+Returns a C<Box2D::b2Filter>
 
 =head2 GetFriction()
 
 Get the coefficient of friction.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetMassData( $massData )
 
@@ -105,35 +105,35 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2MassData $massData
+=item * C<Box2D::b2MassData> C<$massData>
 
 =back
 
 =head2 GetNext()
 
-Returns a Box2D::b2Fixture
+Returns a C<Box2D::b2Fixture>
 
 =head2 GetNext()
 
 Get the next fixture in the parent body's fixture list.
 
-Returns a Box2D::b2Fixture - the next shape.
+Returns a C<Box2D::b2Fixture> - the next shape.
 
 =head2 GetRestitution()
 
 Get the coefficient of restitution.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetShape()
 
-Returns a Box2D::b2Shape
+Returns a C<Box2D::b2Shape>
 
 =head2 GetShape()
 
 Get the child shape. You can modify the child shape, however you should not change the number of vertices because this will crash some collision caching mechanisms. Manipulating the shape may lead to non-physical behavior.
 
-Returns a Box2D::b2Shape
+Returns a C<Box2D::b2Shape>
 
 =head2 b2Shape::Type b2Fixture::GetType ()
 
@@ -145,7 +145,7 @@ Parameters:
 
 =over 4
 
-=item *  $b2Shape::Type b2Fixture::GetType  (optional)
+=item *  C<$b2Shape::Type b2Fixture::GetType > (optional)
 
 =back
 
@@ -157,7 +157,7 @@ Get the user data that was assigned in the fixture definition. Use this to store
 
 Is this fixture a sensor (non-solid)?
 
-Returns a bool - the true if the shape is a sensor.
+Returns a C<bool> - the true if the shape is a sensor.
 
 =head2 RayCast( $output, $input )
 
@@ -167,13 +167,13 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2RayCastOutput $output - the ray-cast results.
+=item * C<Box2D::b2RayCastOutput> C<$output> - the ray-cast results.
 
-=item * Box2D::b2RayCastInput $input - the ray-cast input parameters.
+=item * C<Box2D::b2RayCastInput> C<$input> - the ray-cast input parameters.
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 SetDensity( $density )
 
@@ -183,7 +183,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $density
+=item * C<float32> C<$density>
 
 =back
 
@@ -195,7 +195,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Filter $filter
+=item * C<Box2D::b2Filter> C<$filter>
 
 =back
 
@@ -207,7 +207,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $friction
+=item * C<float32> C<$friction>
 
 =back
 
@@ -219,7 +219,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $restitution
+=item * C<float32> C<$restitution>
 
 =back
 
@@ -231,7 +231,7 @@ Parameters:
 
 =over 4
 
-=item * bool $sensor
+=item * C<bool> C<$sensor>
 
 =back
 
@@ -243,7 +243,7 @@ Parameters:
 
 =over 4
 
-=item * void * $data
+=item * C<void *> C<$data>
 
 =back
 
@@ -253,11 +253,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2BroadPhase $broadPhase
+=item * C<Box2D::b2BroadPhase> C<$broadPhase>
 
-=item * Box2D::b2Transform $xf1
+=item * C<Box2D::b2Transform> C<$xf1>
 
-=item * Box2D::b2Transform $xf2
+=item * C<Box2D::b2Transform> C<$xf2>
 
 =back
 
@@ -269,11 +269,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $p - a point in world coordinates.
+=item * C<Box2D::b2Vec2> C<$p> - a point in world coordinates.
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head1 BUGS
 

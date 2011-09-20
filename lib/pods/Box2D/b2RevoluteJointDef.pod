@@ -25,11 +25,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Body $bodyA
+=item * C<Box2D::b2Body> C<$bodyA>
 
-=item * Box2D::b2Body $bodyB
+=item * C<Box2D::b2Body> C<$bodyB>
 
-=item * Box2D::b2Vec2 $anchor
+=item * C<Box2D::b2Vec2> C<$anchor>
 
 =back
 
@@ -43,11 +43,11 @@ Parameters:
 
 =over 4
 
-=item * bool $enableLimit (optional)
+=item * C<bool> C<$enableLimit> (optional)
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 enableMotor()
 
@@ -59,11 +59,11 @@ Parameters:
 
 =over 4
 
-=item * bool $enableMotor (optional)
+=item * C<bool> C<$enableMotor> (optional)
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 localAnchorA()
 
@@ -75,11 +75,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localAnchorA (optional)
+=item * C<Box2D::b2Vec2> C<$localAnchorA> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 localAnchorB()
 
@@ -91,11 +91,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localAnchorB (optional)
+=item * C<Box2D::b2Vec2> C<$localAnchorB> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 lowerAngle()
 
@@ -107,11 +107,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $lowerAngle (optional)
+=item * C<float32> C<$lowerAngle> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 maxMotorTorque()
 
@@ -123,11 +123,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $maxMotorTorque (optional)
+=item * C<float32> C<$maxMotorTorque> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 motorSpeed()
 
@@ -139,11 +139,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $motorSpeed (optional)
+=item * C<float32> C<$motorSpeed> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 referenceAngle()
 
@@ -155,11 +155,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $referenceAngle (optional)
+=item * C<float32> C<$referenceAngle> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 upperAngle()
 
@@ -171,11 +171,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $upperAngle (optional)
+=item * C<float32> C<$upperAngle> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head1 BUGS
 

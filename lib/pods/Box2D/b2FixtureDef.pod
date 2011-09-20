@@ -27,11 +27,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $density (optional)
+=item * C<float32> C<$density> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 filter()
 
@@ -43,11 +43,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Filter $filter (optional)
+=item * C<Box2D::b2Filter> C<$filter> (optional)
 
 =back
 
-Returns a Box2D::b2Filter
+Returns a C<Box2D::b2Filter>
 
 =head2 friction()
 
@@ -59,11 +59,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $friction (optional)
+=item * C<float32> C<$friction> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 isSensor()
 
@@ -75,11 +75,11 @@ Parameters:
 
 =over 4
 
-=item * bool $isSensor (optional)
+=item * C<bool> C<$isSensor> (optional)
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 restitution()
 
@@ -91,11 +91,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $restitution (optional)
+=item * C<float32> C<$restitution> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 const b2Shape* b2FixtureDef::shape()
 
@@ -107,7 +107,7 @@ Parameters:
 
 =over 4
 
-=item *  $const b2Shape* b2FixtureDef::shape (optional)
+=item *  C<$const b2Shape* b2FixtureDef::shape> (optional)
 
 =back
 
@@ -121,7 +121,7 @@ Parameters:
 
 =over 4
 
-=item *  $void* b2FixtureDef::userData (optional)
+=item *  C<$void* b2FixtureDef::userData> (optional)
 
 =back
 

@@ -21,7 +21,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2PrismaticJointDef $def
+=item * C<Box2D::b2PrismaticJointDef> C<$def>
 
 =back
 
@@ -33,7 +33,7 @@ Parameters:
 
 =over 4
 
-=item * bool $flag
+=item * C<bool> C<$flag>
 
 =back
 
@@ -45,7 +45,7 @@ Parameters:
 
 =over 4
 
-=item * bool $flag
+=item * C<bool> C<$flag>
 
 =back
 
@@ -53,43 +53,43 @@ Parameters:
 
 Get the anchor point on bodyA in world coordinates. Implements b2Joint.
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetAnchorB()
 
 Get the anchor point on bodyB in world coordinates. Implements b2Joint.
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetJointSpeed()
 
 Get the current joint translation speed, usually in meters per second.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetJointTranslation()
 
 Get the current joint translation, usually in meters.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetLowerLimit()
 
 Get the lower joint limit, usually in meters.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetMotorForce()
 
 Get the current motor force, usually in N.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetMotorSpeed()
 
 Get the motor speed, usually in meters per second.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetReactionForce( $inv_dt )
 
@@ -99,11 +99,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $inv_dt
+=item * C<float32> C<$inv_dt>
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetReactionTorque( $inv_dt )
 
@@ -113,17 +113,17 @@ Parameters:
 
 =over 4
 
-=item * float32 $inv_dt
+=item * C<float32> C<$inv_dt>
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetUpperLimit()
 
 Get the upper joint limit, usually in meters.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 InitVelocityConstraints( $step )
 
@@ -133,7 +133,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2TimeStep $step
+=item * C<Box2D::b2TimeStep> C<$step>
 
 =back
 
@@ -141,13 +141,13 @@ Parameters:
 
 Is the joint limit enabled?
 
-Returns a bool
+Returns a C<bool>
 
 =head2 IsMotorEnabled()
 
 Is the joint motor enabled?
 
-Returns a bool
+Returns a C<bool>
 
 =head2 SetLimits( $lower, $upper )
 
@@ -157,9 +157,9 @@ Parameters:
 
 =over 4
 
-=item * float32 $lower
+=item * C<float32> C<$lower>
 
-=item * float32 $upper
+=item * C<float32> C<$upper>
 
 =back
 
@@ -171,7 +171,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $force
+=item * C<float32> C<$force>
 
 =back
 
@@ -183,7 +183,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $speed
+=item * C<float32> C<$speed>
 
 =back
 
@@ -195,11 +195,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $baumgarte
+=item * C<float32> C<$baumgarte>
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 SolveVelocityConstraints( $step )
 
@@ -209,7 +209,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2TimeStep $step
+=item * C<Box2D::b2TimeStep> C<$step>
 
 =back
 

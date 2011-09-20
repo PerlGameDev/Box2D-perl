@@ -17,7 +17,7 @@ Box2D::b2Shape - TODO
 
 Enumerator: e_unknown e_circle e_polygon e_typeCount 
 
-Returns a enum
+Returns a C<enum>
 
 =head2 new()
 
@@ -31,7 +31,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2BlockAllocator $allocator
+=item * C<Box2D::b2BlockAllocator> C<$allocator>
 
 =back
 
@@ -43,9 +43,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2AABB $aabb - returns the axis aligned box.
+=item * C<Box2D::b2AABB> C<$aabb> - returns the axis aligned box.
 
-=item * Box2D::b2Transform $xf - the world transform of the shape. Implemented in b2CircleShape, and b2PolygonShape.
+=item * C<Box2D::b2Transform> C<$xf> - the world transform of the shape. Implemented in b2CircleShape, and b2PolygonShape.
 
 =back
 
@@ -57,9 +57,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2MassData $massData - returns the mass data for this shape.
+=item * C<Box2D::b2MassData> C<$massData> - returns the mass data for this shape.
 
-=item * float32 $density - the density in kilograms per meter squared. Implemented in b2CircleShape, and b2PolygonShape.
+=item * C<float32> C<$density> - the density in kilograms per meter squared. Implemented in b2CircleShape, and b2PolygonShape.
 
 =back
 
@@ -73,7 +73,7 @@ Parameters:
 
 =over 4
 
-=item *  $b2Shape::Type b2Shape::GetType  (optional)
+=item *  C<$b2Shape::Type b2Shape::GetType > (optional)
 
 =back
 
@@ -85,15 +85,15 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2RayCastOutput $output - the ray-cast results.
+=item * C<Box2D::b2RayCastOutput> C<$output> - the ray-cast results.
 
-=item * Box2D::b2RayCastInput $input - the ray-cast input parameters.
+=item * C<Box2D::b2RayCastInput> C<$input> - the ray-cast input parameters.
 
-=item * Box2D::b2Transform $transform - the transform to be applied to the shape. Implemented in b2CircleShape, and b2PolygonShape.
+=item * C<Box2D::b2Transform> C<$transform> - the transform to be applied to the shape. Implemented in b2CircleShape, and b2PolygonShape.
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 TestPoint( $xf, $p )
 
@@ -103,13 +103,13 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Transform $xf - the shape world transform.
+=item * C<Box2D::b2Transform> C<$xf> - the shape world transform.
 
-=item * Box2D::b2Vec2 $p - a point in world coordinates. Implemented in b2CircleShape, and b2PolygonShape.
+=item * C<Box2D::b2Vec2> C<$p> - a point in world coordinates. Implemented in b2CircleShape, and b2PolygonShape.
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 m_radius()
 
@@ -119,11 +119,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $m_radius (optional)
+=item * C<float32> C<$m_radius> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 m_type()
 
@@ -133,11 +133,11 @@ Parameters:
 
 =over 4
 
-=item * Type $m_type (optional)
+=item * C<Type> C<$m_type> (optional)
 
 =back
 
-Returns a Type
+Returns a C<Type>
 
 =head1 BUGS
 

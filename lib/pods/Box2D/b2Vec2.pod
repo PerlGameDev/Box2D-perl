@@ -25,9 +25,9 @@ Parameters:
 
 =over 4
 
-=item * float32 $x
+=item * C<float32> C<$x>
 
-=item * float32 $y
+=item * C<float32> C<$y>
 
 =back
 
@@ -35,25 +35,25 @@ Parameters:
 
 Does this vector contain finite coordinates?
 
-Returns a bool
+Returns a C<bool>
 
 =head2 Length()
 
 Get the length of this vector (the norm).
 
-Returns a float32
+Returns a C<float32>
 
 =head2 LengthSquared()
 
 Get the length squared. For performance, use this instead of b2Vec2::Length (if possible).
 
-Returns a float32
+Returns a C<float32>
 
 =head2 Normalize()
 
 Convert this vector into a unit vector. Returns the length.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 Set( $x, $y )
 
@@ -63,9 +63,9 @@ Parameters:
 
 =over 4
 
-=item * float32 $x
+=item * C<float32> C<$x>
 
-=item * float32 $y
+=item * C<float32> C<$y>
 
 =back
 
@@ -81,11 +81,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $x (optional)
+=item * C<float32> C<$x> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 y()
 
@@ -95,11 +95,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $y (optional)
+=item * C<float32> C<$y> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head1 BUGS
 

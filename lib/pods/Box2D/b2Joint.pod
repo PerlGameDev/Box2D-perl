@@ -21,7 +21,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2JointDef $def
+=item * C<Box2D::b2JointDef> C<$def>
 
 =back
 
@@ -31,13 +31,13 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2JointDef $def
+=item * C<Box2D::b2JointDef> C<$def>
 
-=item * Box2D::b2BlockAllocator $allocator
+=item * C<Box2D::b2BlockAllocator> C<$allocator>
 
 =back
 
-Returns a Box2D::b2Joint
+Returns a C<Box2D::b2Joint>
 
 =head2 Destroy( $joint, $allocator )
 
@@ -45,9 +45,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Joint $joint
+=item * C<Box2D::b2Joint> C<$joint>
 
-=item * Box2D::b2BlockAllocator $allocator
+=item * C<Box2D::b2BlockAllocator> C<$allocator>
 
 =back
 
@@ -55,31 +55,31 @@ Parameters:
 
 Get the anchor point on bodyA in world coordinates. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetAnchorB()
 
 Get the anchor point on bodyB in world coordinates. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetBodyA()
 
 Get the first body attached to this joint.
 
-Returns a Box2D::b2Body
+Returns a C<Box2D::b2Body>
 
 =head2 GetBodyB()
 
 Get the second body attached to this joint.
 
-Returns a Box2D::b2Body
+Returns a C<Box2D::b2Body>
 
 =head2 GetNext()
 
 Get the next joint the world joint list.
 
-Returns a Box2D::b2Joint
+Returns a C<Box2D::b2Joint>
 
 =head2 GetReactionForce( $inv_dt )
 
@@ -89,11 +89,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $inv_dt
+=item * C<float32> C<$inv_dt>
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetReactionTorque( $inv_dt )
 
@@ -103,17 +103,17 @@ Parameters:
 
 =over 4
 
-=item * float32 $inv_dt
+=item * C<float32> C<$inv_dt>
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetType()
 
 Get the type of the concrete joint.
 
-Returns a Box2D::b2JointType
+Returns a C<Box2D::b2JointType>
 
 =head2 GetUserData()
 
@@ -127,7 +127,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2TimeStep $step
+=item * C<Box2D::b2TimeStep> C<$step>
 
 =back
 
@@ -135,7 +135,7 @@ Parameters:
 
 Short-cut function to determine if either body is inactive.
 
-Returns a bool
+Returns a C<bool>
 
 =head2 SetUserData( $data )
 
@@ -145,7 +145,7 @@ Parameters:
 
 =over 4
 
-=item * void * $data
+=item * C<void *> C<$data>
 
 =back
 
@@ -157,11 +157,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $baumgarte
+=item * C<float32> C<$baumgarte>
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 SolveVelocityConstraints( $step )
 
@@ -171,7 +171,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2TimeStep $step
+=item * C<Box2D::b2TimeStep> C<$step>
 
 =back
 

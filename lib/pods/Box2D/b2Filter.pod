@@ -23,11 +23,11 @@ Parameters:
 
 =over 4
 
-=item * uint16 $categoryBits (optional)
+=item * C<uint16> C<$categoryBits> (optional)
 
 =back
 
-Returns a uint16
+Returns a C<uint16>
 
 =head2 groupIndex()
 
@@ -39,11 +39,11 @@ Parameters:
 
 =over 4
 
-=item * int16 $groupIndex (optional)
+=item * C<int16> C<$groupIndex> (optional)
 
 =back
 
-Returns a int16
+Returns a C<int16>
 
 =head2 maskBits()
 
@@ -55,11 +55,11 @@ Parameters:
 
 =over 4
 
-=item * uint16 $maskBits (optional)
+=item * C<uint16> C<$maskBits> (optional)
 
 =back
 
-Returns a uint16
+Returns a C<uint16>
 
 =head1 BUGS
 

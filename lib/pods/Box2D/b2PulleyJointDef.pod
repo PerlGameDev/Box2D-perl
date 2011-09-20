@@ -25,19 +25,19 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Body $bodyA
+=item * C<Box2D::b2Body> C<$bodyA>
 
-=item * Box2D::b2Body $bodyB
+=item * C<Box2D::b2Body> C<$bodyB>
 
-=item * Box2D::b2Vec2 $groundAnchorA
+=item * C<Box2D::b2Vec2> C<$groundAnchorA>
 
-=item * Box2D::b2Vec2 $groundAnchorB
+=item * C<Box2D::b2Vec2> C<$groundAnchorB>
 
-=item * Box2D::b2Vec2 $anchorA
+=item * C<Box2D::b2Vec2> C<$anchorA>
 
-=item * Box2D::b2Vec2 $anchorB
+=item * C<Box2D::b2Vec2> C<$anchorB>
 
-=item * float32 $ratio
+=item * C<float32> C<$ratio>
 
 =back
 
@@ -51,11 +51,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $groundAnchorA (optional)
+=item * C<Box2D::b2Vec2> C<$groundAnchorA> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 groundAnchorB()
 
@@ -67,11 +67,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $groundAnchorB (optional)
+=item * C<Box2D::b2Vec2> C<$groundAnchorB> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 lengthA()
 
@@ -83,11 +83,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $lengthA (optional)
+=item * C<float32> C<$lengthA> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 lengthB()
 
@@ -99,11 +99,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $lengthB (optional)
+=item * C<float32> C<$lengthB> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 localAnchorA()
 
@@ -115,11 +115,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localAnchorA (optional)
+=item * C<Box2D::b2Vec2> C<$localAnchorA> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 localAnchorB()
 
@@ -131,11 +131,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localAnchorB (optional)
+=item * C<Box2D::b2Vec2> C<$localAnchorB> (optional)
 
 =back
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 maxLengthA()
 
@@ -147,11 +147,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $maxLengthA (optional)
+=item * C<float32> C<$maxLengthA> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 maxLengthB()
 
@@ -163,11 +163,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $maxLengthB (optional)
+=item * C<float32> C<$maxLengthB> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head2 ratio()
 
@@ -179,11 +179,11 @@ Parameters:
 
 =over 4
 
-=item * float32 $ratio (optional)
+=item * C<float32> C<$ratio> (optional)
 
 =back
 
-Returns a float32
+Returns a C<float32>
 
 =head1 BUGS
 
