@@ -85,6 +85,11 @@ To contribute to this module please contact us on github:
 
 L<https://github.com/PerlGameDev/Box2D-perl>
 
+=head1 BUGS
+
+Report bugs at
+L<GitHub Issues|https://github.com/PerlGameDev/Box2D-perl/issues>
+
 =head1 AUTHORS
 
 =over 4

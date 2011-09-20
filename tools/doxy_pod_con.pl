@@ -266,7 +266,7 @@ Returns a [% method.return %]
 [% END %]
 =head1 BUGS
 
-Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+See L<Box2D/BUGS>
 
 =head1 AUTHORS
 
