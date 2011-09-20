@@ -268,6 +268,14 @@ Parameters:
 Returns a [% method.return %]
 [% END -%]
 [% END %]
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D>
+
+=back
+
 =head1 BUGS
 
 See L<Box2D/BUGS>
@@ -279,11 +287,5 @@ See L<Box2D/AUTHORS>
 =head1 COPYRIGHT & LICENSE
 
 See L<Box2D/"COPYRIGHT & LICENSE">
-[% IF see_also %]
 
-=head1 SEE ALSO
-
-[% see_also %]
-
-[% END %]
 =cut

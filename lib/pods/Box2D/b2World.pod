@@ -159,6 +159,24 @@ not vary.
 
 =back
 
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D>
+
+=item * L<Box2D::b2Vec2>
+
+=item * L<Box2D::b2BodyDef>
+
+=item * L<Box2D::b2JointDef>
+
+=item * L<Box2D::b2RayCastCallback>
+
+=item * L<Box2D::b2ContactListener>
+
+=back
+
 =head1 BUGS
 
 See L<Box2D/BUGS>

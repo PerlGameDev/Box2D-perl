@@ -84,6 +84,14 @@ Parameters:
 
 Returns a C<bool>
 
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D>
+
+=back
+
 =head1 BUGS
 
 See L<Box2D/BUGS>

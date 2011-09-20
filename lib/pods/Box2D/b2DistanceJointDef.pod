@@ -115,6 +115,14 @@ Parameters:
 
 Returns a C<Box2D::b2Vec2>
 
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D>
+
+=back
+
 =head1 BUGS
 
 See L<Box2D/BUGS>
