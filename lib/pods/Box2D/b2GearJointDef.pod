@@ -17,9 +17,9 @@ Box2D::b2GearJointDef - TODO
 
 Default constructor.
 
-=head2 b2Joint* b2GearJointDef::joint1()
+=head2 joint1()
 
-=head2 b2Joint* b2GearJointDef::joint1( $b2Joint* b2GearJointDef::joint1 )
+=head2 joint1( $joint1 )
 
 The first revolute/prismatic joint attached to the gear joint.
 
@@ -27,13 +27,15 @@ Parameters:
 
 =over 4
 
-=item *  C<$b2Joint* b2GearJointDef::joint1> (optional)
+=item * C<Box2D::b2Joint*> C<$joint1> (optional)
 
 =back
 
-=head2 b2Joint* b2GearJointDef::joint2()
+Returns a C<Box2D::b2Joint*>
 
-=head2 b2Joint* b2GearJointDef::joint2( $b2Joint* b2GearJointDef::joint2 )
+=head2 joint2()
+
+=head2 joint2( $joint2 )
 
 The second revolute/prismatic joint attached to the gear joint.
 
@@ -41,9 +43,11 @@ Parameters:
 
 =over 4
 
-=item *  C<$b2Joint* b2GearJointDef::joint2> (optional)
+=item * C<Box2D::b2Joint*> C<$joint2> (optional)
 
 =back
+
+Returns a C<Box2D::b2Joint*>
 
 =head2 ratio()
 

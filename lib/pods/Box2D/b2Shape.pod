@@ -23,7 +23,7 @@ Returns a C<enum>
 
 Default constructor.
 
-=head2 virtual b2Shape* b2Shape::Clone ( $allocator )
+=head2 Clone( $allocator )
 
 Clone the concrete shape using the provided allocator. Implemented in b2CircleShape, and b2PolygonShape.
 
@@ -34,6 +34,8 @@ Parameters:
 =item * C<Box2D::b2BlockAllocator> C<$allocator>
 
 =back
+
+Returns a C<Box2D::b2Shape*>
 
 =head2 ComputeAABB( $aabb, $xf )
 

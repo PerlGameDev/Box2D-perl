@@ -17,9 +17,9 @@ Joint definitions are used to construct joints.
 
 Default constructor.
 
-=head2 b2Body* b2JointDef::bodyA()
+=head2 bodyA()
 
-=head2 b2Body* b2JointDef::bodyA( $b2Body* b2JointDef::bodyA )
+=head2 bodyA( $bodyA )
 
 The first attached body.
 
@@ -27,13 +27,15 @@ Parameters:
 
 =over 4
 
-=item *  C<$b2Body* b2JointDef::bodyA> (optional)
+=item * C<Box2D::b2Body*> C<$bodyA> (optional)
 
 =back
 
-=head2 b2Body* b2JointDef::bodyB()
+Returns a C<Box2D::b2Body*>
 
-=head2 b2Body* b2JointDef::bodyB( $b2Body* b2JointDef::bodyB )
+=head2 bodyB()
+
+=head2 bodyB( $bodyB )
 
 The second attached body.
 
@@ -41,9 +43,11 @@ Parameters:
 
 =over 4
 
-=item *  C<$b2Body* b2JointDef::bodyB> (optional)
+=item * C<Box2D::b2Body*> C<$bodyB> (optional)
 
 =back
+
+Returns a C<Box2D::b2Body*>
 
 =head2 collideConnected()
 
@@ -77,9 +81,9 @@ Parameters:
 
 Returns a C<Box2D::b2JointType>
 
-=head2 void* b2JointDef::userData()
+=head2 userData()
 
-=head2 void* b2JointDef::userData( $void* b2JointDef::userData )
+=head2 userData( $userData )
 
 Use this to attach application specific data to your joints.
 
@@ -87,9 +91,11 @@ Parameters:
 
 =over 4
 
-=item *  C<$void* b2JointDef::userData> (optional)
+=item * C<void*> C<$userData> (optional)
 
 =back
+
+Returns a C<void*>
 
 =head1 SEE ALSO
 

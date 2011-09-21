@@ -225,9 +225,9 @@ Parameters:
 
 Returns a C<Box2D::b2BodyType>
 
-=head2 void* b2BodyDef::userData()
+=head2 userData()
 
-=head2 void* b2BodyDef::userData( $void* b2BodyDef::userData )
+=head2 userData( $userData )
 
 Use this to store application specific body data.
 
@@ -235,9 +235,11 @@ Parameters:
 
 =over 4
 
-=item *  C<$void* b2BodyDef::userData> (optional)
+=item * C<void*> C<$userData> (optional)
 
 =back
+
+Returns a C<void*>
 
 =head1 SEE ALSO
 

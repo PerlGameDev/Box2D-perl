@@ -97,9 +97,9 @@ Parameters:
 
 Returns a C<float32>
 
-=head2 const b2Shape* b2FixtureDef::shape()
+=head2 shape()
 
-=head2 const b2Shape* b2FixtureDef::shape( $const b2Shape* b2FixtureDef::shape )
+=head2 shape( $shape )
 
 The shape, this must be set. The shape will be cloned, so you can create the shape on the stack.
 
@@ -107,13 +107,15 @@ Parameters:
 
 =over 4
 
-=item *  C<$const b2Shape* b2FixtureDef::shape> (optional)
+=item * C<Box2D::b2Shape*> C<$shape> (optional)
 
 =back
 
-=head2 void* b2FixtureDef::userData()
+Returns a C<Box2D::b2Shape*>
 
-=head2 void* b2FixtureDef::userData( $void* b2FixtureDef::userData )
+=head2 userData()
+
+=head2 userData( $userData )
 
 Use this to store application specific fixture data.
 
@@ -121,9 +123,11 @@ Parameters:
 
 =over 4
 
-=item *  C<$void* b2FixtureDef::userData> (optional)
+=item * C<void*> C<$userData> (optional)
 
 =back
+
+Returns a C<void*>
 
 =head1 SEE ALSO
 
