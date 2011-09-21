@@ -201,7 +201,7 @@ sub parse_method_name {
         (?:
             (?: virtual \s+ )?  # possibly virtual
             (?: const \s+ )?    # possibly const
-            ( \w+ \*? )               # return type
+            ( \w+ \*? )         # return type
             \s+
             (?: \* \s+)?        # possibly a pointer
             (?: & \s+)?         # possibly a reference
