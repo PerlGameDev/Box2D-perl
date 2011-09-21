@@ -21,9 +21,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2AABB $aabb1
+=item * C<Box2D::b2AABB> C<$aabb1>
 
-=item * Box2D::b2AABB $aabb2
+=item * C<Box2D::b2AABB> C<$aabb2>
 
 =back
 
@@ -35,29 +35,29 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2AABB $aabb
+=item * C<Box2D::b2AABB> C<$aabb>
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 GetCenter()
 
 Get the center of the AABB.
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetExtents()
 
 Get the extents of the AABB (half-widths).
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 IsValid()
 
 Verify that the bounds are sorted.
 
-Returns a bool
+Returns a C<bool>
 
 =head2 RayCast( $output, $input )
 
@@ -65,29 +65,57 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2RayCastOutput $output
+=item * C<Box2D::b2RayCastOutput> C<$output>
 
-=item * Box2D::b2RayCastInput $input
+=item * C<Box2D::b2RayCastInput> C<$input>
 
 =back
 
-Returns a bool
+Returns a C<bool>
 
 =head2 lowerBound()
 
+=head2 lowerBound( $lowerBound )
+
 the lower vertex
 
-Returns a Box2D::b2Vec2
+Parameters:
+
+=over 4
+
+=item * C<Box2D::b2Vec2> C<$lowerBound> (optional)
+
+=back
+
+Returns a C<Box2D::b2Vec2>
 
 =head2 upperBound()
 
+=head2 upperBound( $upperBound )
+
 the upper vertex
 
-Returns a Box2D::b2Vec2
+Parameters:
+
+=over 4
+
+=item * C<Box2D::b2Vec2> C<$upperBound> (optional)
+
+=back
+
+Returns a C<Box2D::b2Vec2>
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D>
+
+=back
 
 =head1 BUGS
 
-Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+See L<Box2D/BUGS>
 
 =head1 AUTHORS
 

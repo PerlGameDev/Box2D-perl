@@ -21,7 +21,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $impulse - the angular impulse in units of kg*m*m/s
+=item * C<float32> C<$impulse> - the angular impulse in units of kg*m*m/s
 
 =back
 
@@ -33,9 +33,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $force - the world force vector, usually in Newtons (N).
+=item * C<Box2D::b2Vec2> C<$force> - the world force vector, usually in Newtons (N).
 
-=item * Box2D::b2Vec2 $point - the world position of the point of application.
+=item * C<Box2D::b2Vec2> C<$point> - the world position of the point of application.
 
 =back
 
@@ -47,9 +47,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $impulse - the world impulse vector, usually in N-seconds or kg-m/s.
+=item * C<Box2D::b2Vec2> C<$impulse> - the world impulse vector, usually in N-seconds or kg-m/s.
 
-=item * Box2D::b2Vec2 $point - the world position of the point of application.
+=item * C<Box2D::b2Vec2> C<$point> - the world position of the point of application.
 
 =back
 
@@ -61,7 +61,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $torque - about the z-axis (out of the screen), usually in N-m.
+=item * C<float32> C<$torque> - about the z-axis (out of the screen), usually in N-m.
 
 =back
 
@@ -73,13 +73,13 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Shape $shape - the shape to be cloned.
+=item * C<Box2D::b2Shape> C<$shape> - the shape to be cloned.
 
-=item * float32 $density - the shape density (set to zero for static bodies). Warning:This function is locked during callbacks.
+=item * C<float32> C<$density> - the shape density (set to zero for static bodies). Warning:This function is locked during callbacks.
 
 =back
 
-Returns a Box2D::b2Fixture
+Returns a C<Box2D::b2Fixture>
 
 =head2 CreateFixture( $def )
 
@@ -89,11 +89,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2FixtureDef $def - the fixture definition. Warning:This function is locked during callbacks.
+=item * C<Box2D::b2FixtureDef> C<$def> - the fixture definition. Warning:This function is locked during callbacks.
 
 =back
 
-Returns a Box2D::b2Fixture
+Returns a C<Box2D::b2Fixture>
 
 =head2 DestroyFixture( $fixture )
 
@@ -103,7 +103,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Fixture $fixture - the fixture to be removed. Warning:This function is locked during callbacks.
+=item * C<Box2D::b2Fixture> C<$fixture> - the fixture to be removed. Warning:This function is locked during callbacks.
 
 =back
 
@@ -111,67 +111,67 @@ Parameters:
 
 Get the angle in radians.
 
-Returns a float32 - the current world rotation angle in radians.
+Returns a C<float32> - the current world rotation angle in radians.
 
 =head2 GetAngularDamping()
 
 Get the angular damping of the body.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetAngularVelocity()
 
 Get the angular velocity.
 
-Returns a float32 - the angular velocity in radians/second.
+Returns a C<float32> - the angular velocity in radians/second.
 
 =head2 GetContactList()
 
-Returns a Box2D::b2ContactEdge
+Returns a C<Box2D::b2ContactEdge>
 
 =head2 GetContactList()
 
 Get the list of all contacts attached to this body. Warning:this list changes during the time step and you may miss some collisions if you don't use b2ContactListener.
 
-Returns a Box2D::b2ContactEdge
+Returns a C<Box2D::b2ContactEdge>
 
 =head2 GetFixtureList()
 
-Returns a Box2D::b2Fixture
+Returns a C<Box2D::b2Fixture>
 
 =head2 GetFixtureList()
 
 Get the list of all fixtures attached to this body.
 
-Returns a Box2D::b2Fixture
+Returns a C<Box2D::b2Fixture>
 
 =head2 GetInertia()
 
 Get the rotational inertia of the body about the local origin.
 
-Returns a float32 - the rotational inertia, usually in kg-m^2.
+Returns a C<float32> - the rotational inertia, usually in kg-m^2.
 
 =head2 GetJointList()
 
-Returns a Box2D::b2JointEdge
+Returns a C<Box2D::b2JointEdge>
 
 =head2 GetJointList()
 
 Get the list of all joints attached to this body.
 
-Returns a Box2D::b2JointEdge
+Returns a C<Box2D::b2JointEdge>
 
 =head2 GetLinearDamping()
 
 Get the linear damping of the body.
 
-Returns a float32
+Returns a C<float32>
 
 =head2 GetLinearVelocity()
 
 Get the linear velocity of the center of mass.
 
-Returns a Box2D::b2Vec2 - the linear velocity of the center of mass.
+Returns a C<Box2D::b2Vec2> - the linear velocity of the center of mass.
 
 =head2 GetLinearVelocityFromLocalPoint( $localPoint )
 
@@ -181,11 +181,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localPoint
+=item * C<Box2D::b2Vec2> C<$localPoint>
 
 =back
 
-Returns a Box2D::b2Vec2 - the world velocity of a point.
+Returns a C<Box2D::b2Vec2> - the world velocity of a point.
 
 =head2 GetLinearVelocityFromWorldPoint( $worldPoint )
 
@@ -195,17 +195,17 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $worldPoint
+=item * C<Box2D::b2Vec2> C<$worldPoint>
 
 =back
 
-Returns a Box2D::b2Vec2 - the world velocity of a point.
+Returns a C<Box2D::b2Vec2> - the world velocity of a point.
 
 =head2 GetLocalCenter()
 
 Get the local position of the center of mass.
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetLocalPoint( $worldPoint )
 
@@ -215,11 +215,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $worldPoint
+=item * C<Box2D::b2Vec2> C<$worldPoint>
 
 =back
 
-Returns a Box2D::b2Vec2 - the corresponding local point relative to the body's origin.
+Returns a C<Box2D::b2Vec2> - the corresponding local point relative to the body's origin.
 
 =head2 GetLocalVector( $worldVector )
 
@@ -229,17 +229,17 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $worldVector
+=item * C<Box2D::b2Vec2> C<$worldVector>
 
 =back
 
-Returns a Box2D::b2Vec2 - the corresponding local vector.
+Returns a C<Box2D::b2Vec2> - the corresponding local vector.
 
 =head2 GetMass()
 
 Get the total mass of the body.
 
-Returns a float32 - the mass, usually in kilograms (kg).
+Returns a C<float32> - the mass, usually in kilograms (kg).
 
 =head2 GetMassData( $data )
 
@@ -249,37 +249,37 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2MassData $data
+=item * C<Box2D::b2MassData> C<$data>
 
 =back
 
 =head2 GetNext()
 
-Returns a Box2D::b2Body
+Returns a C<Box2D::b2Body>
 
 =head2 GetNext()
 
 Get the next body in the world's body list.
 
-Returns a Box2D::b2Body
+Returns a C<Box2D::b2Body>
 
 =head2 GetPosition()
 
 Get the world body origin position.
 
-Returns a Box2D::b2Vec2 - the world position of the body's origin.
+Returns a C<Box2D::b2Vec2> - the world position of the body's origin.
 
 =head2 GetTransform()
 
 Get the body transform for the body's origin.
 
-Returns a Box2D::b2Transform - the world transform of the body's origin.
+Returns a C<Box2D::b2Transform> - the world transform of the body's origin.
 
 =head2 GetType()
 
 Get the type of this body.
 
-Returns a Box2D::b2BodyType
+Returns a C<Box2D::b2BodyType>
 
 =head2 GetUserData()
 
@@ -287,19 +287,19 @@ Get the user data pointer that was provided in the body definition.
 
 =head2 GetWorld()
 
-Returns a Box2D::b2World
+Returns a C<Box2D::b2World>
 
 =head2 GetWorld()
 
 Get the parent world of this body.
 
-Returns a Box2D::b2World
+Returns a C<Box2D::b2World>
 
 =head2 GetWorldCenter()
 
 Get the world position of the center of mass.
 
-Returns a Box2D::b2Vec2
+Returns a C<Box2D::b2Vec2>
 
 =head2 GetWorldPoint( $localPoint )
 
@@ -309,11 +309,11 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localPoint - a point on the body measured relative the the body's origin.
+=item * C<Box2D::b2Vec2> C<$localPoint> - a point on the body measured relative the the body's origin.
 
 =back
 
-Returns a Box2D::b2Vec2 - the same point expressed in world coordinates.
+Returns a C<Box2D::b2Vec2> - the same point expressed in world coordinates.
 
 =head2 GetWorldVector( $localVector )
 
@@ -323,41 +323,41 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $localVector - a vector fixed in the body.
+=item * C<Box2D::b2Vec2> C<$localVector> - a vector fixed in the body.
 
 =back
 
-Returns a Box2D::b2Vec2 - the same vector expressed in world coordinates.
+Returns a C<Box2D::b2Vec2> - the same vector expressed in world coordinates.
 
 =head2 IsActive()
 
 Get the active state of the body.
 
-Returns a bool
+Returns a C<bool>
 
 =head2 IsAwake()
 
 Get the sleeping state of this body.
 
-Returns a bool - true if the body is sleeping.
+Returns a C<bool> - true if the body is sleeping.
 
 =head2 IsBullet()
 
 Is this body treated like a bullet for continuous collision detection?
 
-Returns a bool
+Returns a C<bool>
 
 =head2 IsFixedRotation()
 
 Does this body have fixed rotation?
 
-Returns a bool
+Returns a C<bool>
 
 =head2 IsSleepingAllowed()
 
 Is this body allowed to sleep.
 
-Returns a bool
+Returns a C<bool>
 
 =head2 ResetMassData()
 
@@ -371,7 +371,7 @@ Parameters:
 
 =over 4
 
-=item * bool $flag
+=item * C<bool> C<$flag>
 
 =back
 
@@ -383,7 +383,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $angularDamping
+=item * C<float32> C<$angularDamping>
 
 =back
 
@@ -395,7 +395,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $omega - the new angular velocity in radians/second.
+=item * C<float32> C<$omega> - the new angular velocity in radians/second.
 
 =back
 
@@ -407,7 +407,7 @@ Parameters:
 
 =over 4
 
-=item * bool $flag - set to true to put body to sleep, false to wake it.
+=item * C<bool> C<$flag> - set to true to put body to sleep, false to wake it.
 
 =back
 
@@ -419,7 +419,7 @@ Parameters:
 
 =over 4
 
-=item * bool $flag
+=item * C<bool> C<$flag>
 
 =back
 
@@ -431,7 +431,7 @@ Parameters:
 
 =over 4
 
-=item * bool $flag
+=item * C<bool> C<$flag>
 
 =back
 
@@ -443,7 +443,7 @@ Parameters:
 
 =over 4
 
-=item * float32 $linearDamping
+=item * C<float32> C<$linearDamping>
 
 =back
 
@@ -455,7 +455,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $v - the new linear velocity of the center of mass.
+=item * C<Box2D::b2Vec2> C<$v> - the new linear velocity of the center of mass.
 
 =back
 
@@ -467,7 +467,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2MassData $data
+=item * C<Box2D::b2MassData> C<$data>
 
 =back
 
@@ -479,7 +479,7 @@ Parameters:
 
 =over 4
 
-=item * bool $flag
+=item * C<bool> C<$flag>
 
 =back
 
@@ -491,9 +491,9 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2Vec2 $position - the world position of the body's local origin.
+=item * C<Box2D::b2Vec2> C<$position> - the world position of the body's local origin.
 
-=item * float32 $angle - the world rotation in radians.
+=item * C<float32> C<$angle> - the world rotation in radians.
 
 =back
 
@@ -505,7 +505,7 @@ Parameters:
 
 =over 4
 
-=item * Box2D::b2BodyType $type
+=item * C<Box2D::b2BodyType> C<$type>
 
 =back
 
@@ -517,13 +517,21 @@ Parameters:
 
 =over 4
 
-=item * void * $data
+=item * C<void *> C<$data>
+
+=back
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D>
 
 =back
 
 =head1 BUGS
 
-Report bugs at https://github.com/PerlGameDev/Box2D-perl/issues
+See L<Box2D/BUGS>
 
 =head1 AUTHORS
 
