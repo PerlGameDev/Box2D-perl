@@ -1,7 +1,7 @@
 
 =head1 NAME
 
-Box2D::b2RayCastCallback - Callback class for ray casts
+Box2D::b2RayCastCallback - Callback class for ray casts.
 
 =head1 SYNOPSIS
 
@@ -20,7 +20,8 @@ Box2D::b2RayCastCallback - Callback class for ray casts
 
 =head1 DESCRIPTION
 
-Callback class for ray casts. See L<Box2D::b2World/RayCast>.
+Callback class for ray casts. See
+L<Box2D::b2World/"RayCast( $callback, $point1, $point2 )">.
 
 =head1 METHODS
 
@@ -41,14 +42,15 @@ Parameters:
 
 =over 4
 
-=item * C<Box2D::b2Fixture $fixture> the fixture hit by the ray
+=item * C<Box2D::b2Fixture> C<$fixture> the fixture hit by the ray
 
-=item * C<Box2D::b2Vec2 $point> the point of initial intersection
+=item * C<Box2D::b2Vec2> C<$point> the point of initial intersection
 
-=item * C<Box2D::b2Vec2 $normal> the normal vector at the point of intersection
-
-=item * C<float32 $fraction> the fraction of the distance to the point of
+=item * C<Box2D::b2Vec2> C<$normal> the normal vector at the point of
 intersection
+
+=item * C<float32> C<$fraction> the fraction of the distance to the
+point of intersection
 
 =back
 
