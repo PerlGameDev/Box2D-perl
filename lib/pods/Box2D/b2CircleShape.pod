@@ -20,7 +20,7 @@ Default constructor.
 
 =head2 ComputeAABB( $aabb, $transform )
 
-See also: Box2D:::b2Shape::ComputeAABB
+See also: Box2D::b2Shape::ComputeAABB
 
 Implements b2Shape.
 
