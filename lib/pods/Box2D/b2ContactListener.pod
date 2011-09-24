@@ -1,0 +1,36 @@
+=head1 NAME
+
+Box2D::b2ContactListener - 2D Physics Library Contact Listener
+
+=head1 METHODS
+
+=head2 Creation
+
+=over 4
+
+=item new Box2D::b2ContactListener
+
+Creates and returns a new b2Contactlistener. This is an inheritance friendly
+sub so you're free to leave it as default. Remember to call super in your own 
+code, don't forget to call this!
+
+=back
+
+=head2 Listener Methods
+
+=over 4
+
+=item $listener->BeginContact( $contact )
+
+=item $listener->EndContact( $contact )
+
+=item $listener->PreSolve( $contact, $manifold )
+
+=item $listener->PostSolve( $contact, $impulse )
+
+=item $listener->setOurListeners()
+
+This is private don't bother calling it unless you inherit and need to initialize.
+$self->{_listener} needs to be a PerlContactListener
+
+=cut
