@@ -20,9 +20,9 @@ Default constructor.
 
 =head2 ComputeAABB( $aabb, $transform )
 
-See also: Box2D::b2Shape::ComputeAABB
+See also: L<Box2D::b2Shape/"ComputeAABB( $aabb, $xf )">
 
-Implements b2Shape.
+Implements C<Box2D::b2Shape>.
 
 Parameters:
 
@@ -36,9 +36,9 @@ Parameters:
 
 =head2 ComputeMass( $massData, $density )
 
-See also: Box2D::b2Shape::ComputeMass
+See also: L<Box2D::b2Shape/"ComputeMass( $massData, $density )">
 
-Implements b2Shape.
+Implements C<Box2D::b2Shape>.
 
 Parameters:
 
@@ -52,7 +52,7 @@ Parameters:
 
 =head2 RayCast( $output, $input, $transform )
 
-Implements b2Shape.
+Implements C<Box2D::b2Shape>.
 
 Parameters:
 
@@ -70,7 +70,7 @@ Returns a C<bool>
 
 =head2 TestPoint( $transform, $p )
 
-Implements b2Shape.
+Implements C<Box2D::b2Shape>.
 
 Parameters:
 
@@ -89,6 +89,8 @@ Returns a C<bool>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2Shape>
 
 =back
 
