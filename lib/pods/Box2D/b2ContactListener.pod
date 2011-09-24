@@ -33,4 +33,34 @@ code, don't forget to call this!
 This is private don't bother calling it unless you inherit and need to initialize.
 $self->{_listener} needs to be a PerlContactListener
 
+=back
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D>
+
+=item * L<Box2D::b2World>
+
+=item * L<Box2D::b2Contact>
+
+=item * L<Box2D::b2Manifold>
+
+=item * L<Box2D::b2ContactImpulse>
+
+=back
+
+=head1 BUGS
+
+See L<Box2D/BUGS>
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
 =cut
