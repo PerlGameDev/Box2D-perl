@@ -13,6 +13,10 @@ Box2D::b2Manifold - TODO
 
 =head1 METHODS
 
+=head2 new()
+
+Default constructor.
+
 =head2 Type()
 
 Enumerator: e_circles e_faceA e_faceB 

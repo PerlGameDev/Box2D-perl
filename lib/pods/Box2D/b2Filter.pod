@@ -13,6 +13,10 @@ This holds contact filtering data.
 
 =head1 METHODS
 
+=head2 new()
+
+Default constructor.
+
 =head2 categoryBits()
 
 =head2 categoryBits( $categoryBits )

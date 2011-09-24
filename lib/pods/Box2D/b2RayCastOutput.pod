@@ -13,6 +13,10 @@ Box2D::b2RayCastOutput - TODO
 
 =head1 METHODS
 
+=head2 new()
+
+Default constructor.
+
 =head2 fraction()
 
 =head2 fraction( $fraction )

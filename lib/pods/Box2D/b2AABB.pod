@@ -13,6 +13,10 @@ An axis aligned bounding box.
 
 =head1 METHODS
 
+=head2 new()
+
+Default constructor.
+
 =head2 Combine( $aabb1, $aabb2 )
 
 Combine two AABBs into this one.

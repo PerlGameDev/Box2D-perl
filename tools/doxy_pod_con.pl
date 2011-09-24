@@ -46,6 +46,18 @@ sub parse_html {
 
     $class->{methods} = parse_methods( $class, $tree );
 
+    my $has_constructor
+        = grep { $_->{name} =~ /^new/ } @{ $class->{methods} };
+
+    if ( $title =~ m#Struct# && !$has_constructor ) {
+        my %constructor = (
+            name        => 'new()',
+            description => 'Default constructor.',
+        );
+
+        unshift @{ $class->{methods} }, \%constructor;
+    }
+
     return $class;
 }
 
