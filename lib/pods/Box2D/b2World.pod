@@ -9,10 +9,10 @@ Box2D::b2World - Manages all aspects of the simulation.
 
 =head1 DESCRIPTION
 
-The Box2D::b2World class contains the bodies and joints. It manages all
-aspects of the simulation and allows for asynchronous queries (like AABB
-queries and ray-casts). Much of your interactions with Box2D will be
-with a Box2D::b2World object.
+The C<Box2D::b2World> class contains the bodies and joints. It manages
+all aspects of the simulation and allows for asynchronous queries (like
+AABB queries and ray-casts). Much of your interactions with Box2D will
+be with a C<Box2D::b2World> object.
 
 =head1 METHODS
 
