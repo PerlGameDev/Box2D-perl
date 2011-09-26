@@ -5,7 +5,18 @@ Box2D::b2AABB - An axis aligned bounding box.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $aabb = Box2D::b2AABB->new();
+  $aabb->lowerBound( Box2D::b2Vec2->new( $x1, $y1 ) );
+  $aabb->upperBound( Box2D::b2Vec2->new( $x2, $y2 ) );
+
+  $aabb->Combine( $aabb1, $aabb2 );
+
+  my $center  = $aabb->GetCenter();
+  my $extents = $aabb->GetExtents();
+
+  my $input  = Box2D::b2RayCastInput->new();
+  my $output = Box2D::b2RayCastOutput->new();
+  $aabb->RayCast( $output, $input );
 
 =head1 DESCRIPTION
 
@@ -114,6 +125,10 @@ Returns a C<Box2D::b2Vec2>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2RayCastInput>
+
+=item * L<Box2D::b2RayCastOutput>
 
 =back
 
