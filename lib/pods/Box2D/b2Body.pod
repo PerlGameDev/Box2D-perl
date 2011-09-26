@@ -248,6 +248,8 @@ Returns a C<Box2D::b2BodyType>
 
 Get the user data pointer that was provided in the body definition.
 
+Returns a C<scalar>
+
 =head2 GetWorld()
 
 Get the parent world of this body.
@@ -464,7 +466,7 @@ Parameters:
 
 =over 4
 
-=item * C<void *> C<$data>
+=item * C<scalar> C<$data>
 
 =back
 
