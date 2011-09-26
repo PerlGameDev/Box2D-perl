@@ -5,11 +5,20 @@ Box2D::b2Body - A rigid body.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $body = $world->CreateBody( $body_def );
+
+  my $fixture = $body->CreateFixture();
+
+  my $position = $body->GetPosition();
+
+  my $center = $body->GetWorldCenter();
+
+  $body->SetAngularVelocity( $v );
+  $body->SetLinearVelocity( Box2D::b2Vec2->new( $vx, $vy ) );
 
 =head1 DESCRIPTION
 
-A rigid body. These are created via b2World::CreateBody.
+A rigid body. These are created via C<Box2D::b2World::CreateBody>.
 
 =head1 METHODS
 
@@ -81,7 +90,7 @@ Parameters:
 
 Returns a C<Box2D::b2Fixture>
 
-=head2 CreateFixture( $def )
+=head2 CreateFixtureDef( $def )
 
 Creates a fixture and attach it to this body. Use this function if you need to set some fixture parameters, like friction. Otherwise you can create the fixture directly from a shape. If the density is non-zero, this function automatically updates the mass of the body. Contacts are not created until the next time step.
 
@@ -125,41 +134,11 @@ Get the angular velocity.
 
 Returns a C<float32> - the angular velocity in radians/second.
 
-=head2 GetContactList()
-
-Returns a C<Box2D::b2ContactEdge>
-
-=head2 GetContactList()
-
-Get the list of all contacts attached to this body. Warning:this list changes during the time step and you may miss some collisions if you don't use b2ContactListener.
-
-Returns a C<Box2D::b2ContactEdge>
-
-=head2 GetFixtureList()
-
-Returns a C<Box2D::b2Fixture>
-
-=head2 GetFixtureList()
-
-Get the list of all fixtures attached to this body.
-
-Returns a C<Box2D::b2Fixture>
-
 =head2 GetInertia()
 
 Get the rotational inertia of the body about the local origin.
 
 Returns a C<float32> - the rotational inertia, usually in kg-m^2.
-
-=head2 GetJointList()
-
-Returns a C<Box2D::b2JointEdge>
-
-=head2 GetJointList()
-
-Get the list of all joints attached to this body.
-
-Returns a C<Box2D::b2JointEdge>
 
 =head2 GetLinearDamping()
 
@@ -241,22 +220,6 @@ Get the total mass of the body.
 
 Returns a C<float32> - the mass, usually in kilograms (kg).
 
-=head2 GetMassData( $data )
-
-Get the mass data of the body.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2MassData> C<$data>
-
-=back
-
-=head2 GetNext()
-
-Returns a C<Box2D::b2Body>
-
 =head2 GetNext()
 
 Get the next body in the world's body list.
@@ -284,10 +247,6 @@ Returns a C<Box2D::b2BodyType>
 =head2 GetUserData()
 
 Get the user data pointer that was provided in the body definition.
-
-=head2 GetWorld()
-
-Returns a C<Box2D::b2World>
 
 =head2 GetWorld()
 
@@ -459,18 +418,6 @@ Parameters:
 
 =back
 
-=head2 SetMassData( $data )
-
-Set the mass properties to override the mass properties of the fixtures. Note that this changes the center of mass position. Note that creating or destroying fixtures can also alter the mass. This function has no effect if the body isn't dynamic.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2MassData> C<$data>
-
-=back
-
 =head2 SetSleepingAllowed( $flag )
 
 You can disable sleeping on this body. If you disable sleeping, the body will be woken.
@@ -526,6 +473,14 @@ Parameters:
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2BodyDef>
+
+=item * L<Box2D::b2World>
+
+=item * L<Box2D::b2Shape>
+
+=item * L<Box2D::b2Fixture>
 
 =back
 
