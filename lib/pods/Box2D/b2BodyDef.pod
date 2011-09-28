@@ -1,15 +1,21 @@
 
 =head1 NAME
 
-Box2D::b2BodyDef - TODO
+Box2D::b2BodyDef - Holds all the data needed to construct a rigid body.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $body_def = Box2D::b2BodyDef->new();
+  $body_def->type( Box2D::b2_dynamicBody );
+  $body_def->position->Set( $x, $y );
+  $body_def->angle( $theta );
+  my $body = $world->CreateBody( $body_def );
 
 =head1 DESCRIPTION
 
-
+A body definition holds all the data needed to construct a rigid body.
+You can safely re-use body definitions. Shapes are added to a body after
+construction.
 
 =head1 METHODS
 
@@ -37,7 +43,8 @@ Returns a C<bool>
 
 =head2 allowSleep( $allowSleep )
 
-Set this flag to false if this body should never fall asleep. Note that this increases CPU usage.
+Set this flag to false if this body should never fall asleep. Note that
+this increases CPU usage.
 
 Parameters:
 
@@ -69,7 +76,9 @@ Returns a C<float32>
 
 =head2 angularDamping( $angularDamping )
 
-Angular damping is use to reduce the angular velocity. The damping parameter can be larger than 1.0f but the damping effect becomes sensitive to the time step when the damping parameter is large.
+Angular damping is use to reduce the angular velocity. The damping
+parameter can be larger than 1.0f but the damping effect becomes
+sensitive to the time step when the damping parameter is large.
 
 Parameters:
 
@@ -117,7 +126,13 @@ Returns a C<bool>
 
 =head2 bullet( $bullet )
 
-Is this a fast moving body that should be prevented from tunneling through other moving bodies? Note that all bodies are prevented from tunneling through kinematic and static bodies. This setting is only considered on dynamic bodies. Warning:You should use this flag sparingly since it increases processing time.
+Is this a fast moving body that should be prevented from tunneling
+through other moving bodies? Note that all bodies are prevented from
+tunneling through kinematic and static bodies. This setting is only
+considered on dynamic bodies.
+
+Warning: You should use this flag sparingly since it increases
+processing time.
 
 Parameters:
 
@@ -145,27 +160,13 @@ Parameters:
 
 Returns a C<bool>
 
-=head2 inertiaScale()
-
-=head2 inertiaScale( $inertiaScale )
-
-Experimental: scales the inertia tensor.
-
-Parameters:
-
-=over 4
-
-=item * C<float32> C<$inertiaScale> (optional)
-
-=back
-
-Returns a C<float32>
-
 =head2 linearDamping()
 
 =head2 linearDamping( $linearDamping )
 
-Linear damping is use to reduce the linear velocity. The damping parameter can be larger than 1.0f but the damping effect becomes sensitive to the time step when the damping parameter is large.
+Linear damping is use to reduce the linear velocity. The damping
+parameter can be larger than 1.0f but the damping effect becomes
+sensitive to the time step when the damping parameter is large.
 
 Parameters:
 
@@ -197,7 +198,8 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 position( $position )
 
-The world position of the body. Avoid creating bodies at the origin since this can lead to many overlapping shapes.
+The world position of the body. Avoid creating bodies at the origin
+since this can lead to many overlapping shapes.
 
 Parameters:
 
@@ -213,7 +215,10 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 type( $type )
 
-The body type: static, kinematic, or dynamic. Note: if a dynamic body would have zero mass, the mass is set to one.
+The body type: C<Box2D::b2_staticBody>, C<Box2D::b2_kinematicBody>, or
+C<Box2D::b2_dynamicBody>.
+
+Note: if a dynamic body would have zero mass, the mass is set to one.
 
 Parameters:
 
@@ -246,6 +251,10 @@ Returns a C<void*>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2Body>
+
+=item * L<Box2D::b2World>
 
 =back
 
