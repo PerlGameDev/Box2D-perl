@@ -240,11 +240,11 @@ Parameters:
 
 =over 4
 
-=item * C<void*> C<$userData> (optional)
+=item * C<scalar> C<$userData> (optional)
 
 =back
 
-Returns a C<void*>
+Returns a C<scalar>
 
 =head1 SEE ALSO
 
