@@ -1,51 +1,49 @@
 
 =head1 NAME
 
-Box2D::b2ContactImpulse - TODO
+Box2D::b2ContactImpulse - Contact impulses for reporting.
 
 =head1 SYNOPSIS
 
-  # TODO
+  for my $i ( 0 .. $contact->GetManifold()->pointCount() - 1 ) {
+
+      my $impulse = $contactImpulse->normalImpulses( $i );
+
+      # Do something
+  }
 
 =head1 DESCRIPTION
 
-
+Contact impulses for reporting. Impulses are used instead of forces
+because sub-step forces may approach infinity for rigid body
+collisions. These match up one-to-one with the contact points in
+C<Box2D::b2Manifold>.
 
 =head1 METHODS
 
-=head2 new()
-
-Default constructor.
-
-=head2 float32 b2ContactImpulse::normalImpulses[b2_maxManifoldPoints]()
-
-=head2 float32 b2ContactImpulse::normalImpulses[b2_maxManifoldPoints]( $float32 b2ContactImpulse::normalImpulses[b2_maxManifoldPoints] )
+=head2 normalImpulses( $index )
 
 Parameters:
 
 =over 4
 
-=item *  C<$float32 b2ContactImpulse::normalImpulses[b2_maxManifoldPoints]> (optional)
+=item * C<int> C<$index>
 
 =back
 
-=head2 float32 b2ContactImpulse::tangentImpulses[b2_maxManifoldPoints]()
-
-=head2 float32 b2ContactImpulse::tangentImpulses[b2_maxManifoldPoints]( $float32 b2ContactImpulse::tangentImpulses[b2_maxManifoldPoints] )
-
-Parameters:
-
-=over 4
-
-=item *  C<$float32 b2ContactImpulse::tangentImpulses[b2_maxManifoldPoints]> (optional)
-
-=back
+Returns a C<float32>
 
 =head1 SEE ALSO
 
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2ContactListener>
+
+=item * L<Box2D::b2Contact>
+
+=item * L<Box2D::b2Manifold>
 
 =back
 
