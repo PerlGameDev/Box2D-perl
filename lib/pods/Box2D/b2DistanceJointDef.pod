@@ -1,15 +1,24 @@
 
 =head1 NAME
 
-Box2D::b2DistanceJointDef - TODO
+Box2D::b2DistanceJointDef - Distance joint definition.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $joint_def = Box2D::b2DistanceJointDef->new();
+  $joint_def->Initialize( $body_a, $body_b, $anchor_a, $anchor_b );
+  $joint_def->length( $length );
+  my $joint = $world->CreateJoint( $joint_def );
 
 =head1 DESCRIPTION
 
+Distance joint definition. This requires defining an anchor point on
+both bodies and the non-zero length of the distance joint. The
+definition uses local anchor points so that the initial configuration
+can violate the constraint slightly. This helps when saving and loading
+a game.
 
+Warning: Do not use a zero or short length.
 
 =head1 METHODS
 
@@ -120,6 +129,12 @@ Returns a C<Box2D::b2Vec2>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2JointDef>
+
+=item * L<Box2D::b2DistanceJoint>
+
+=item * L<Box2D::b2World>
 
 =back
 
