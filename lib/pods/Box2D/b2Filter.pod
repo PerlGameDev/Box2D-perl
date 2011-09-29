@@ -5,7 +5,10 @@ Box2D::b2Filter - This holds contact filtering data.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $filter = Box2D::b2Filter->new();
+  $filter->categoryBits( $category_bits );
+  $filter->maskBits( $mask_bits );
+  $filter->groupIndex($ group_index );
 
 =head1 DESCRIPTION
 
@@ -16,6 +19,8 @@ This holds contact filtering data.
 =head2 new()
 
 Default constructor.
+
+Returns a C<Box2D::b2Filter>
 
 =head2 categoryBits()
 
@@ -37,7 +42,9 @@ Returns a C<uint16>
 
 =head2 groupIndex( $groupIndex )
 
-Collision groups allow a certain group of objects to never collide (negative) or always collide (positive). Zero means no collision group. Non-zero group filtering always wins against the mask bits.
+Collision groups allow a certain group of objects to never collide
+(negative) or always collide (positive). Zero means no collision group.
+Non-zero group filtering always wins against the mask bits.
 
 Parameters:
 
@@ -53,7 +60,8 @@ Returns a C<int16>
 
 =head2 maskBits( $maskBits )
 
-The collision mask bits. This states the categories that this shape would accept for collision.
+The collision mask bits. This states the categories that this shape
+would accept for collision.
 
 Parameters:
 
@@ -70,6 +78,10 @@ Returns a C<uint16>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2Fixture>
+
+=item * L<Box2D::b2FixtureDef>
 
 =back
 
