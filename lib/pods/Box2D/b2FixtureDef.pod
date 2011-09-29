@@ -1,21 +1,29 @@
 
 =head1 NAME
 
-Box2D::b2FixtureDef - TODO
+Box2D::b2FixtureDef - Used to create a fixture.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $fixture_def = Box2D::b2FixtureDef->new();
+  $fixture_def->shape( $shape );
+  $fixture_def->density( $density )
+  $fixture_def->friction( $friction );
+  $fixture_def->restitution( $restitution );
+  my $fixture = $body->CreateFixtureDef( $fixture_def );
 
 =head1 DESCRIPTION
 
-
+A fixture definition is used to create a fixture. This class defines an
+abstract fixture definition. You can reuse fixture definitions safely.
 
 =head1 METHODS
 
 =head2 new()
 
 The constructor sets the default fixture definition values.
+
+Returns a C<Box2D::b2FixtureDef>
 
 =head2 density()
 
@@ -65,22 +73,6 @@ Parameters:
 
 Returns a C<float32>
 
-=head2 isSensor()
-
-=head2 isSensor( $isSensor )
-
-A sensor shape collects contact information but never generates a collision response.
-
-Parameters:
-
-=over 4
-
-=item * C<bool> C<$isSensor> (optional)
-
-=back
-
-Returns a C<bool>
-
 =head2 restitution()
 
 =head2 restitution( $restitution )
@@ -101,39 +93,30 @@ Returns a C<float32>
 
 =head2 shape( $shape )
 
-The shape, this must be set. The shape will be cloned, so you can create the shape on the stack.
+The shape, this must be set. The shape will be cloned, so you can
+create the shape on the stack.
 
 Parameters:
 
 =over 4
 
-=item * C<Box2D::b2Shape*> C<$shape> (optional)
+=item * C<Box2D::b2Shape> C<$shape> (optional)
 
 =back
 
-Returns a C<Box2D::b2Shape*>
-
-=head2 userData()
-
-=head2 userData( $userData )
-
-Use this to store application specific fixture data.
-
-Parameters:
-
-=over 4
-
-=item * C<scalar> C<$userData> (optional)
-
-=back
-
-Returns a C<scalar>
+Returns a C<Box2D::b2Shape>
 
 =head1 SEE ALSO
 
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2Fixture>
+
+=item * L<Box2D::b2Body>
+
+=item * L<Box2D::b2Shape>
 
 =back
 
