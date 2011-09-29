@@ -1,81 +1,27 @@
 
 =head1 NAME
 
-Box2D::b2Fixture - TODO
+Box2D::b2Fixture - Used to attach a shape to a body for collision detection.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $fixture = $body->CreateFixture( $shape, $density );
 
 =head1 DESCRIPTION
 
+A fixture is used to attach a shape to a body for collision detection.
+A fixture inherits its transform from its parent. Fixtures hold
+additional non-geometric data such as friction, collision filters, etc.
+Fixtures are created via C<Box2D::b2Body::CreateFixture>.
 
+Warning: you cannot reuse fixtures.
 
 =head1 METHODS
 
-=head2 new()
-
-Default constructor.
-
-=head2 Create( $allocator, $body, $def )
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2BlockAllocator> C<$allocator>
-
-=item * C<Box2D::b2Body> C<$body>
-
-=item * C<Box2D::b2FixtureDef> C<$def>
-
-=back
-
-=head2 CreateProxy( $broadPhase, $xf )
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2BroadPhase> C<$broadPhase>
-
-=item * C<Box2D::b2Transform> C<$xf>
-
-=back
-
-=head2 Destroy( $allocator )
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2BlockAllocator> C<$allocator>
-
-=back
-
-=head2 DestroyProxy( $broadPhase )
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2BroadPhase> C<$broadPhase>
-
-=back
-
-=head2 GetAABB()
-
-Get the fixture's AABB. This AABB may be enlarge and/or stale. If you need a more accurate AABB, compute it using the shape and the body transform.
-
-Returns a C<Box2D::b2AABB>
-
 =head2 GetBody()
 
-Returns a C<Box2D::b2Body>
-
-=head2 GetBody()
-
-Get the parent body of this fixture. This is NULL if the fixture is not attached.
+Get the parent body of this fixture. This is NULL if the fixture is not
+attached.
 
 Returns a C<Box2D::b2Body> - the parent body.
 
@@ -85,33 +31,11 @@ Get the density of this fixture.
 
 Returns a C<float32>
 
-=head2 GetFilterData()
-
-Get the contact filtering data.
-
-Returns a C<Box2D::b2Filter>
-
 =head2 GetFriction()
 
 Get the coefficient of friction.
 
 Returns a C<float32>
-
-=head2 GetMassData( $massData )
-
-Get the mass data for this fixture. The mass data is based on the density and the shape. The rotational inertia is about the shape's origin. This operation may be expensive.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2MassData> C<$massData>
-
-=back
-
-=head2 GetNext()
-
-Returns a C<Box2D::b2Fixture>
 
 =head2 GetNext()
 
@@ -127,31 +51,19 @@ Returns a C<float32>
 
 =head2 GetShape()
 
+Get the child shape. You can modify the child shape, however you should
+not change the number of vertices because this will crash some
+collision caching mechanisms. Manipulating the shape may lead to
+non-physical behavior.
+
 Returns a C<Box2D::b2Shape>
-
-=head2 GetShape()
-
-Get the child shape. You can modify the child shape, however you should not change the number of vertices because this will crash some collision caching mechanisms. Manipulating the shape may lead to non-physical behavior.
-
-Returns a C<Box2D::b2Shape>
-
-=head2 b2Shape::Type b2Fixture::GetType ()
-
-=head2 b2Shape::Type b2Fixture::GetType ( $b2Shape::Type b2Fixture::GetType  )
-
-Get the type of the child shape. You can use this to down cast to the concrete shape.
-
-Parameters:
-
-=over 4
-
-=item *  C<$b2Shape::Type b2Fixture::GetType > (optional)
-
-=back
 
 =head2 GetUserData()
 
-Get the user data that was assigned in the fixture definition. Use this to store your application specific data.
+Get the user data that was assigned in the fixture definition. Use this
+to store your application specific data.
+
+Returns a C<scalar>
 
 =head2 IsSensor()
 
@@ -159,43 +71,17 @@ Is this fixture a sensor (non-solid)?
 
 Returns a C<bool> - the true if the shape is a sensor.
 
-=head2 RayCast( $output, $input )
-
-Cast a ray against this shape.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2RayCastOutput> C<$output> - the ray-cast results.
-
-=item * C<Box2D::b2RayCastInput> C<$input> - the ray-cast input parameters.
-
-=back
-
-Returns a C<bool>
-
 =head2 SetDensity( $density )
 
-Set the density of this fixture. This will _not_ automatically adjust the mass of the body. You must call b2Body::ResetMassData to update the body's mass.
+Set the density of this fixture. This will _not_ automatically adjust
+the mass of the body. You must call C<Box2D::b2Body::ResetMassData> to
+update the body's mass.
 
 Parameters:
 
 =over 4
 
 =item * C<float32> C<$density>
-
-=back
-
-=head2 SetFilterData( $filter )
-
-Set the contact filtering data. This will not update contacts until the next time step when either parent body is active and awake.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Filter> C<$filter>
 
 =back
 
@@ -247,20 +133,6 @@ Parameters:
 
 =back
 
-=head2 Synchronize( $broadPhase, $xf1, $xf2 )
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2BroadPhase> C<$broadPhase>
-
-=item * C<Box2D::b2Transform> C<$xf1>
-
-=item * C<Box2D::b2Transform> C<$xf2>
-
-=back
-
 =head2 TestPoint( $p )
 
 Test a point for containment in this fixture.
@@ -280,6 +152,10 @@ Returns a C<bool>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2Body>
+
+=item * L<Box2D::b2Shape>
 
 =back
 
