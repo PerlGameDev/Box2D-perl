@@ -26,6 +26,8 @@ Warning: Do not use a zero or short length.
 
 Default constructor.
 
+Returns a C<Box2D::b2DistanceJointDef>
+
 =head2 Initialize( $bodyA, $bodyB, $anchorA, $anchorB )
 
 Initialize the bodies, anchors, and length using the world anchors.

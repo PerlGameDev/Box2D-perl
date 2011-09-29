@@ -23,6 +23,8 @@ construction.
 
 This constructor sets the body definition default values.
 
+Returns a C<Box2D::b2BodyDef>
+
 =head2 active()
 
 =head2 active( $active )

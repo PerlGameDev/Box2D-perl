@@ -28,6 +28,8 @@ An axis aligned bounding box.
 
 Default constructor.
 
+Returns a C<Box2D::b2AABB>
+
 =head2 Combine( $aabb1, $aabb2 )
 
 Combine two AABBs into this one.

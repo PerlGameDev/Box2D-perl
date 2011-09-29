@@ -31,6 +31,8 @@ bodies.
 
 =back
 
+Returns a C<Box2D::b2World>
+
 =head2 ClearForces()
 
 Call this after you are done with time steps to clear the forces.

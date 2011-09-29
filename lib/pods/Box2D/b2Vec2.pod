@@ -17,6 +17,8 @@ A 2D column vector.
 
 Default constructor does nothing.
 
+Returns a C<Box2D::b2Vec2>
+
 =head2 new( $x, $y )
 
 Construct using coordinates.

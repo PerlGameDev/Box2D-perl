@@ -18,6 +18,8 @@ A circle shape.
 
 Default constructor.
 
+Returns a C<Box2D::b2CircleShape>
+
 =head2 ComputeAABB( $aabb, $transform )
 
 See also: L<Box2D::b2Shape/"ComputeAABB( $aabb, $xf )">
