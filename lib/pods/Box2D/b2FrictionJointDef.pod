@@ -5,7 +5,11 @@ Box2D::b2FrictionJointDef - Friction joint definition.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $joint_def = Box2D::b2FrictionJointDef->new();
+  $joint_def->Initialize( $body_a, $body_b, $anchor );
+  $joint_def->maxForce( $max_force );
+  $joint_def->maxTorque( $max_torque );
+  my $joint = $world->CreateJoint( $joint_def );
 
 =head1 DESCRIPTION
 
@@ -17,9 +21,12 @@ Friction joint definition.
 
 Default constructor.
 
+Returns a C<Box2D::b2FrictionJointDef>
+
 =head2 Initialize( $bodyA, $bodyB, $anchor )
 
-Initialize the bodies, anchors, axis, and reference angle using the world anchor and world axis.
+Initialize the bodies, anchors, axis, and reference angle using the
+world anchor and world axis.
 
 Parameters:
 
@@ -102,6 +109,12 @@ Returns a C<float32>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2JointDef>
+
+=item * L<Box2D::b2FrictionJoint>
+
+=item * L<Box2D::b2World>
 
 =back
 
