@@ -1,39 +1,32 @@
 
 =head1 NAME
 
-Box2D::b2FrictionJoint - TODO
+Box2D::b2FrictionJoint - Provides translational and angular friction.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $joint = $world->CreateJoint( $joint_def );
+  $joint->SetMaxForce( $max_force );
+  $joint->SetMaxTorque( $max_torque );
 
 =head1 DESCRIPTION
 
-
+Friction joint. This is used for top-down friction. It provides 2D
+translational friction and angular friction.
 
 =head1 METHODS
 
-=head2 new( $def )
-
-Constructor.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2FrictionJointDef> C<$def>
-
-=back
-
 =head2 GetAnchorA()
 
-Get the anchor point on bodyA in world coordinates. Implements b2Joint.
+Get the anchor point on bodyA in world coordinates. Implements
+C<Box2D::b2Joint>.
 
 Returns a C<Box2D::b2Vec2>
 
 =head2 GetAnchorB()
 
-Get the anchor point on bodyB in world coordinates. Implements b2Joint.
+Get the anchor point on bodyB in world coordinates. Implements
+C<Box2D::b2Joint>.
 
 Returns a C<Box2D::b2Vec2>
 
@@ -51,7 +44,8 @@ Returns a C<float32>
 
 =head2 GetReactionForce( $inv_dt )
 
-Get the reaction force on body2 at the joint anchor in Newtons. Implements b2Joint.
+Get the reaction force on body2 at the joint anchor in Newtons.
+Implements C<Box2D::b2Joint>.
 
 Parameters:
 
@@ -65,7 +59,7 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 GetReactionTorque( $inv_dt )
 
-Get the reaction torque on body2 in N*m. Implements b2Joint.
+Get the reaction torque on body2 in N*m. Implements C<Box2D::b2Joint>.
 
 Parameters:
 
@@ -76,18 +70,6 @@ Parameters:
 =back
 
 Returns a C<float32>
-
-=head2 InitVelocityConstraints( $step )
-
-Implements b2Joint.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2TimeStep> C<$step>
-
-=back
 
 =head2 SetMaxForce( $force )
 
@@ -113,37 +95,17 @@ Parameters:
 
 =back
 
-=head2 SolvePositionConstraints( $baumgarte )
-
-Implements b2Joint.
-
-Parameters:
-
-=over 4
-
-=item * C<float32> C<$baumgarte>
-
-=back
-
-Returns a C<bool>
-
-=head2 SolveVelocityConstraints( $step )
-
-Implements b2Joint.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2TimeStep> C<$step>
-
-=back
-
 =head1 SEE ALSO
 
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2FrictionJointDef>
+
+=item * L<Box2D::b2Joint>
+
+=item * L<Box2D::b2World>
 
 =back
 
