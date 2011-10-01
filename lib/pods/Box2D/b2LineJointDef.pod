@@ -1,15 +1,28 @@
 
 =head1 NAME
 
-Box2D::b2LineJointDef - TODO
+Box2D::b2LineJointDef - Line joint definition.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $joint_def = Box2D::b2LineJointDef->new();
+  $joint_def->Initialize( $body_a, $body_b, $anchor, $axis );
+  $joint_def->enableLimit( 1 );
+  $joint_def->lowerTranslation( $lower_translation );
+  $joint_def->upperTranslation( $upper_translation );
+  $joint_def->enableMotor( 1 );
+  $joint_def->motorSpeed( $speed );
+  $joint_def->maxMotorForce( $max_force );
+  my $joint = $world->CreateJoint( $joint_def );
 
 =head1 DESCRIPTION
 
-
+Line joint definition. This requires defining a line of motion using an
+axis and an anchor point. The definition uses local anchor points and a
+local axis so that the initial configuration can violate the constraint
+slightly. The joint translation is zero when the local anchor points
+coincide in world space. Using local anchors and a local axis helps
+when saving and loading a game.
 
 =head1 METHODS
 
@@ -17,9 +30,12 @@ Box2D::b2LineJointDef - TODO
 
 Default constructor.
 
+Returns a C<Box2D::b2LineJointDef>
+
 =head2 Initialize( $bodyA, $bodyB, $anchor, $axis )
 
-Initialize the bodies, anchors, axis, and reference angle using the world anchor and world axis.
+Initialize the bodies, anchors, axis, and reference angle using the
+world anchor and world axis.
 
 Parameters:
 
@@ -184,6 +200,12 @@ Returns a C<float32>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2LineJoint>
+
+=item * L<Box2D::b2JointDef>
+
+=item * L<Box2D::b2World>
 
 =back
 
