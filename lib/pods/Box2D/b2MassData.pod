@@ -9,7 +9,7 @@ Box2D::b2MassData - Holds the mass data computed for a shape.
   $shape->ComputeMass( $massData, $density );
   my $mass    = $massData->mass();
   my $center  = $massData->center();
-  my $interia = $massData->I();
+  my $inertia = $massData->I();
 
 =head1 DESCRIPTION
 
