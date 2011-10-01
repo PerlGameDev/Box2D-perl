@@ -1,27 +1,62 @@
 
 =head1 NAME
 
-Box2D::b2Manifold - TODO
+Box2D::b2Manifold - Manifold for two touching convex shapes.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $manifold = $contact->GetManifold();
+  my $normal = $manifold->localNormal();
+  my $point = $manifold->localPoint();
 
 =head1 DESCRIPTION
 
+A manifold for two touching convex shapes.
 
+C<Box2D> supports multiple types of contact:
+
+=over 4
+
+=item * clip point versus plane with radius
+
+=item * point versus point with radius (circles)
+
+=back
+
+The local point usage depends on the manifold type:
+
+=over 4
+
+=item * C<e_circles>: the local center of circleA
+
+=item * C<e_faceA>: the center of faceA
+
+=item * C<e_faceB>: the center of faceB
+
+=back
+
+Similarly the local normal usage:
+
+=over 4
+
+=item * C<e_circles>: not used
+
+=item * C<e_faceA>: the normal on polygonA
+
+=item * C<e_faceB>: the normal on polygonB
+
+=back
+
+We store contacts in this way so that position correction can account
+for movement, which is critical for continuous physics. All contact
+scenarios must be expressed in one of these types. This structure is
+stored across time steps, so we keep it small.
 
 =head1 METHODS
 
 =head2 new()
 
 Default constructor.
-
-=head2 Type()
-
-Enumerator: e_circles e_faceA e_faceB 
-
-Returns a C<enum>
 
 =head2 localNormal()
 
@@ -71,39 +106,13 @@ Parameters:
 
 Returns a C<int32>
 
-=head2 b2ManifoldPoint b2Manifold::points[b2_maxManifoldPoints]()
-
-=head2 b2ManifoldPoint b2Manifold::points[b2_maxManifoldPoints]( $b2ManifoldPoint b2Manifold::points[b2_maxManifoldPoints] )
-
-the points of contact
-
-Parameters:
-
-=over 4
-
-=item *  C<$b2ManifoldPoint b2Manifold::points[b2_maxManifoldPoints]> (optional)
-
-=back
-
-=head2 type()
-
-=head2 type( $type )
-
-Parameters:
-
-=over 4
-
-=item * C<Type> C<$type> (optional)
-
-=back
-
-Returns a C<Type>
-
 =head1 SEE ALSO
 
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2Contact>
 
 =back
 
