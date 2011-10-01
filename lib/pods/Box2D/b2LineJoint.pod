@@ -1,29 +1,24 @@
 
 =head1 NAME
 
-Box2D::b2LineJoint - TODO
+Box2D::b2LineJoint - Provides two degrees of freedom: translation
+along an axis and rotation in the plane.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $joint - $world->CreateJoint( $joint_def );
+  $joint->EnableLimit( 1 );
+  $joint->EnableMotor( 1 );
+  $joint->SetMotorSpeed( $speed );
 
 =head1 DESCRIPTION
 
-
+A line joint. This joint provides two degrees of freedom: translation
+along an axis fixed in body1 and rotation in the plane. You can use a
+joint limit to restrict the range of motion and a joint motor to drive
+the motion or to model joint friction.
 
 =head1 METHODS
-
-=head2 new( $def )
-
-Constructor.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2LineJointDef> C<$def>
-
-=back
 
 =head2 EnableLimit( $flag )
 
@@ -51,13 +46,15 @@ Parameters:
 
 =head2 GetAnchorA()
 
-Get the anchor point on bodyA in world coordinates. Implements b2Joint.
+Get the anchor point on bodyA in world coordinates. Implements
+C<Box2D::b2Joint>.
 
 Returns a C<Box2D::b2Vec2>
 
 =head2 GetAnchorB()
 
-Get the anchor point on bodyB in world coordinates. Implements b2Joint.
+Get the anchor point on bodyB in world coordinates. Implements
+C<Box2D::b2Joint>.
 
 Returns a C<Box2D::b2Vec2>
 
@@ -97,7 +94,8 @@ Returns a C<float32>
 
 =head2 GetReactionForce( $inv_dt )
 
-Get the reaction force on body2 at the joint anchor in Newtons. Implements b2Joint.
+Get the reaction force on body2 at the joint anchor in Newtons.
+Implements C<Box2D::b2Joint>.
 
 Parameters:
 
@@ -111,7 +109,7 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 GetReactionTorque( $inv_dt )
 
-Get the reaction torque on body2 in N*m. Implements b2Joint.
+Get the reaction torque on body2 in N*m. Implements C<Box2D::b2Joint>.
 
 Parameters:
 
@@ -128,18 +126,6 @@ Returns a C<float32>
 Get the upper joint limit, usually in meters.
 
 Returns a C<float32>
-
-=head2 InitVelocityConstraints( $step )
-
-Implements b2Joint.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2TimeStep> C<$step>
-
-=back
 
 =head2 IsLimitEnabled()
 
@@ -191,37 +177,17 @@ Parameters:
 
 =back
 
-=head2 SolvePositionConstraints( $baumgarte )
-
-Implements b2Joint.
-
-Parameters:
-
-=over 4
-
-=item * C<float32> C<$baumgarte>
-
-=back
-
-Returns a C<bool>
-
-=head2 SolveVelocityConstraints( $step )
-
-Implements b2Joint.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2TimeStep> C<$step>
-
-=back
-
 =head1 SEE ALSO
 
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2LineJointDef>
+
+=item * L<Box2D::b2Joint>
+
+=item * L<Box2D::b2World>
 
 =back
 
