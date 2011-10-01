@@ -1,65 +1,36 @@
 
 =head1 NAME
 
-Box2D::b2Joint - TODO
+Box2D::b2Joint - Base joint class.
 
 =head1 SYNOPSIS
 
-  # TODO
+  # Don't use this class directly, use a subclass.
 
 =head1 DESCRIPTION
 
-
+The base joint class. Joints are used to constraint two bodies together
+in various fashions. Some joints also feature limits and motors.
 
 =head1 METHODS
 
-=head2 new( $def )
-
-Constructor.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2JointDef> C<$def>
-
-=back
-
-=head2 Create( $def, $allocator )
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2JointDef> C<$def>
-
-=item * C<Box2D::b2BlockAllocator> C<$allocator>
-
-=back
-
-Returns a C<Box2D::b2Joint>
-
-=head2 Destroy( $joint, $allocator )
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Joint> C<$joint>
-
-=item * C<Box2D::b2BlockAllocator> C<$allocator>
-
-=back
-
 =head2 GetAnchorA()
 
-Get the anchor point on bodyA in world coordinates. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
+Get the anchor point on bodyA in world coordinates. Implemented in
+C<Box2D::b2DistanceJoint>, C<Box2D::b2FrictionJoint>,
+C<Box2D::b2GearJoint>, C<Box2D::b2LineJoint>, C<Box2D::b2MouseJoint>,
+C<Box2D::b2PrismaticJoint>, C<Box2D::b2PulleyJoint>,
+C<Box2D::b2RevoluteJoint>, and C<Box2D::b2WeldJoint>.
 
 Returns a C<Box2D::b2Vec2>
 
 =head2 GetAnchorB()
 
-Get the anchor point on bodyB in world coordinates. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
+Get the anchor point on bodyB in world coordinates. Implemented in
+C<Box2D::b2DistanceJoint>, C<Box2D::b2FrictionJoint>,
+C<Box2D::b2GearJoint>, C<Box2D::b2LineJoint>, C<Box2D::b2MouseJoint>,
+C<Box2D::b2PrismaticJoint>, C<Box2D::b2PulleyJoint>,
+C<Box2D::b2RevoluteJoint>, and C<Box2D::b2WeldJoint>.
 
 Returns a C<Box2D::b2Vec2>
 
@@ -83,7 +54,11 @@ Returns a C<Box2D::b2Joint>
 
 =head2 GetReactionForce( $inv_dt )
 
-Get the reaction force on body2 at the joint anchor in Newtons. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
+Get the reaction force on body2 at the joint anchor in Newtons.
+Implemented in C<Box2D::b2DistanceJoint>, C<Box2D::b2FrictionJoint>,
+C<Box2D::b2GearJoint>, C<Box2D::b2LineJoint>, C<Box2D::b2MouseJoint>,
+C<Box2D::b2PrismaticJoint>, C<Box2D::b2PulleyJoint>,
+C<Box2D::b2RevoluteJoint>, and C<Box2D::b2WeldJoint>.
 
 Parameters:
 
@@ -97,7 +72,11 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 GetReactionTorque( $inv_dt )
 
-Get the reaction torque on body2 in N*m. Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
+Get the reaction torque on body2 in N*m. Implemented in
+C<Box2D::b2DistanceJoint>, C<Box2D::b2FrictionJoint>,
+C<Box2D::b2GearJoint>, C<Box2D::b2LineJoint>, C<Box2D::b2MouseJoint>,
+C<Box2D::b2PrismaticJoint>, C<Box2D::b2PulleyJoint>,
+C<Box2D::b2RevoluteJoint>, and C<Box2D::b2WeldJoint>.
 
 Parameters:
 
@@ -119,18 +98,6 @@ Returns a C<Box2D::b2JointType>
 
 Get the user data pointer.
 
-=head2 InitVelocityConstraints( $step )
-
-Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2TimeStep> C<$step>
-
-=back
-
 =head2 IsActive()
 
 Short-cut function to determine if either body is inactive.
@@ -149,37 +116,31 @@ Parameters:
 
 =back
 
-=head2 SolvePositionConstraints( $baumgarte )
-
-Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
-
-Parameters:
-
-=over 4
-
-=item * C<float32> C<$baumgarte>
-
-=back
-
-Returns a C<bool>
-
-=head2 SolveVelocityConstraints( $step )
-
-Implemented in b2DistanceJoint, b2FrictionJoint, b2GearJoint, b2LineJoint, b2MouseJoint, b2PrismaticJoint, b2PulleyJoint, b2RevoluteJoint, and b2WeldJoint.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2TimeStep> C<$step>
-
-=back
-
 =head1 SEE ALSO
 
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2JointDef>
+
+=item * L<Box2D::b2DistanceJoint>
+
+=item * L<Box2D::b2FrictionJoint>
+
+=item * L<Box2D::b2GearJoint>
+
+=item * L<Box2D::b2LineJoint>
+
+=item * L<Box2D::b2MouseJoint>
+
+=item * L<Box2D::b2PrismaticJoint>
+
+=item * L<Box2D::b2PulleyJoint>
+
+=item * L<Box2D::b2RevoluteJoint>
+
+=item * L<Box2D::b2WeldJoint>
 
 =back
 
