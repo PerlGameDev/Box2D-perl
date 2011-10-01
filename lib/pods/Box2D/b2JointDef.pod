@@ -1,11 +1,11 @@
 
 =head1 NAME
 
-Box2D::b2JointDef - Joint definitions are used to construct joints.
+Box2D::b2JointDef - Used to construct joints.
 
 =head1 SYNOPSIS
 
-  # TODO
+  # Don't use this class directly, use a subclass.
 
 =head1 DESCRIPTION
 
@@ -102,6 +102,26 @@ Returns a C<scalar>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2Joint>
+
+=item * L<Box2D::b2DistanceJointDef>
+
+=item * L<Box2D::b2FrictionJointDef>
+
+=item * L<Box2D::b2GearJointDef>
+
+=item * L<Box2D::b2LineJointDef>
+
+=item * L<Box2D::b2MouseJointDef>
+
+=item * L<Box2D::b2PrismaticJointDef>
+
+=item * L<Box2D::b2PulleyJointDef>
+
+=item * L<Box2D::b2RevoluteJointDef>
+
+=item * L<Box2D::b2WeldJointDef>
 
 =back
 
