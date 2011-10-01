@@ -1,11 +1,15 @@
 
 =head1 NAME
 
-Box2D::b2MassData - This holds the mass data computed for a shape.
+Box2D::b2MassData - Holds the mass data computed for a shape.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $massData = Box2D::b2MassData->new();
+  $shape->ComputeMass( $massData, $density );
+  my $mass    = $massData->mass();
+  my $center  = $massData->center();
+  my $interia = $massData->I();
 
 =head1 DESCRIPTION
 
@@ -35,7 +39,17 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 I()
 
+=head2 I( $I )
+
 The rotational inertia of the shape about the local origin.
+
+Parameters:
+
+=over 4
+
+=item * C<float32> C<$I> (optional)
+
+=back
 
 Returns a C<float32>
 
@@ -60,6 +74,8 @@ Returns a C<float32>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2Shape>
 
 =back
 
