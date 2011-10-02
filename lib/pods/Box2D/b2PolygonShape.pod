@@ -1,15 +1,17 @@
 
 =head1 NAME
 
-Box2D::b2PolygonShape - TODO
+Box2D::b2PolygonShape - A convex polygon.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $rect = Box2D::b2PolygonShape->new();
+  $rect->SetAsBox( $hx, $hy );
 
 =head1 DESCRIPTION
 
-
+A convex polygon. It is assumed that the interior of the polygon is to
+the left of each edge.
 
 =head1 METHODS
 
@@ -17,75 +19,7 @@ Box2D::b2PolygonShape - TODO
 
 Default constructor.
 
-=head2 Clone( $allocator )
-
-Implement b2Shape. Implements b2Shape.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2BlockAllocator> C<$allocator>
-
-=back
-
-Returns a C<Box2D::b2Shape>
-
-=head2 ComputeAABB( $aabb, $transform )
-
-See also:b2Shape::ComputeAABBImplements b2Shape.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2AABB> C<$aabb>
-
-=item * C<Box2D::b2Transform> C<$transform>
-
-=back
-
-=head2 ComputeMass( $massData, $density )
-
-See also:b2Shape::ComputeMassImplements b2Shape.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2MassData> C<$massData>
-
-=item * C<float32> C<$density>
-
-=back
-
-=head2 GetSupport( $d )
-
-Get the supporting vertex index in the given direction.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$d>
-
-=back
-
-Returns a C<int32>
-
-=head2 GetSupportVertex( $d )
-
-Get the supporting vertex in the given direction.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$d>
-
-=back
-
-Returns a C<Box2D::b2Vec2>
+Returns a C<Box2D::b2PolygonShape>
 
 =head2 GetVertex( $index )
 
@@ -107,37 +41,7 @@ Get the vertex count.
 
 Returns a C<int32>
 
-=head2 RayCast( $output, $input, $transform )
-
-Implement b2Shape. Implements b2Shape.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2RayCastOutput> C<$output>
-
-=item * C<Box2D::b2RayCastInput> C<$input>
-
-=item * C<Box2D::b2Transform> C<$transform>
-
-=back
-
-Returns a C<bool>
-
-=head2 Set( $vertices, $vertexCount )
-
-Copy vertices. This assumes the vertices define a convex polygon. It is assumed that the exterior is the the right of each edge.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$vertices>
-
-=item * C<int32> C<$vertexCount>
-
-=back
+=head2 SetAsBox( $hx, $hy )
 
 =head2 SetAsBox( $hx, $hy, $center, $angle )
 
@@ -151,23 +55,11 @@ Parameters:
 
 =item * C<float32> C<$hy> - the half-height.
 
-=item * C<Box2D::b2Vec2> C<$center> - the center of the box in local coordinates.
+=item * C<Box2D::b2Vec2> C<$center> (optional) - the center of the box in local
+coordinates.
 
-=item * C<float32> C<$angle> - the rotation of the box in local coordinates.
-
-=back
-
-=head2 SetAsBox( $hx, $hy )
-
-Build vertices to represent an axis-aligned box.
-
-Parameters:
-
-=over 4
-
-=item * C<float32> C<$hx> - the half-width.
-
-=item * C<float32> C<$hy> - the half-height.
+=item * C<float32> C<$angle> (optional) - the rotation of the box in local
+coordinates.
 
 =back
 
@@ -185,79 +77,13 @@ Parameters:
 
 =back
 
-=head2 TestPoint( $transform, $p )
-
-See also:b2Shape::TestPointImplements b2Shape.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Transform> C<$transform>
-
-=item * C<Box2D::b2Vec2> C<$p>
-
-=back
-
-Returns a C<bool>
-
-=head2 m_centroid()
-
-=head2 m_centroid( $m_centroid )
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$m_centroid> (optional)
-
-=back
-
-Returns a C<Box2D::b2Vec2>
-
-=head2 b2Vec2 b2PolygonShape::m_normals[b2_maxPolygonVertices]()
-
-=head2 b2Vec2 b2PolygonShape::m_normals[b2_maxPolygonVertices]( $b2Vec2 b2PolygonShape::m_normals[b2_maxPolygonVertices] )
-
-Parameters:
-
-=over 4
-
-=item *  C<$b2Vec2 b2PolygonShape::m_normals[b2_maxPolygonVertices]> (optional)
-
-=back
-
-=head2 m_vertexCount()
-
-=head2 m_vertexCount( $m_vertexCount )
-
-Parameters:
-
-=over 4
-
-=item * C<int32> C<$m_vertexCount> (optional)
-
-=back
-
-Returns a C<int32>
-
-=head2 b2Vec2 b2PolygonShape::m_vertices[b2_maxPolygonVertices]()
-
-=head2 b2Vec2 b2PolygonShape::m_vertices[b2_maxPolygonVertices]( $b2Vec2 b2PolygonShape::m_vertices[b2_maxPolygonVertices] )
-
-Parameters:
-
-=over 4
-
-=item *  C<$b2Vec2 b2PolygonShape::m_vertices[b2_maxPolygonVertices]> (optional)
-
-=back
-
 =head1 SEE ALSO
 
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2Shape>
 
 =back
 
