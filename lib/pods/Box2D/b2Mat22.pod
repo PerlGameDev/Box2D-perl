@@ -5,31 +5,13 @@ Box2D::b2Mat22 - A 2-by-2 matrix.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $matrix = Box2D::b2Mat22->new( $a11, $a12, $a21, $a22 );
 
 =head1 DESCRIPTION
 
 A 2-by-2 matrix. Stored in column-major order.
 
 =head1 METHODS
-
-=head2 new()
-
-The default constructor does nothing (for performance).
-
-=head2 new( $c1, $c2 )
-
-Construct this matrix using columns.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$c1>
-
-=item * C<Box2D::b2Vec2> C<$c2>
-
-=back
 
 =head2 new( $a11, $a12, $a21, $a22 )
 
@@ -49,18 +31,6 @@ Parameters:
 
 =back
 
-=head2 new( $angle )
-
-Construct this matrix using an angle. This matrix becomes an orthonormal rotation matrix.
-
-Parameters:
-
-=over 4
-
-=item * C<float32> C<$angle>
-
-=back
-
 =head2 GetAngle()
 
 Extract the angle from this matrix (assumed to be a rotation matrix).
@@ -70,18 +40,6 @@ Returns a C<float32>
 =head2 GetInverse()
 
 Returns a C<Box2D::b2Mat22>
-
-=head2 Set( $angle )
-
-Initialize this matrix using an angle. This matrix becomes an orthonormal rotation matrix.
-
-Parameters:
-
-=over 4
-
-=item * C<float32> C<$angle>
-
-=back
 
 =head2 Set( $c1, $c2 )
 
@@ -104,20 +62,6 @@ Set this to the identity matrix.
 =head2 SetZero()
 
 Set this matrix to all zeros.
-
-=head2 Solve( $b )
-
-Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot cases.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$b>
-
-=back
-
-Returns a C<Box2D::b2Vec2>
 
 =head2 col1()
 
