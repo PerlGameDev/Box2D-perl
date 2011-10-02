@@ -1,39 +1,34 @@
 
 =head1 NAME
 
-Box2D::b2MouseJoint - TODO
+Box2D::b2MouseJoint - Make a point on a body track a specified point.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $joint = $world->CreateJoint( $joint_def );
+  $joint->SetTarget( $target );
 
 =head1 DESCRIPTION
 
+A mouse joint is used to make a point on a body track a specified world
+point. This a soft constraint with a maximum force. This allows the
+constraint to stretch and without applying huge forces.
 
+NOTE: this joint is not documented in the manual because it was
+developed to be used in the testbed. If you want to learn how to use
+the mouse joint, look at the testbed.
 
 =head1 METHODS
 
-=head2 new( $def )
-
-Constructor.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2MouseJointDef> C<$def>
-
-=back
-
 =head2 GetAnchorA()
 
-Implements b2Joint. Implements b2Joint.
+Implements C<Box2D::b2Joint>.
 
 Returns a C<Box2D::b2Vec2>
 
 =head2 GetAnchorB()
 
-Implements b2Joint. Implements b2Joint.
+Implements C<Box2D::b2Joint>.
 
 Returns a C<Box2D::b2Vec2>
 
@@ -51,7 +46,7 @@ Returns a C<float32>
 
 =head2 GetReactionForce( $inv_dt )
 
-Implements b2Joint. Implements b2Joint.
+Implements C<Box2D::b2Joint>.
 
 Parameters:
 
@@ -65,7 +60,7 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 GetReactionTorque( $inv_dt )
 
-Implements b2Joint. Implements b2Joint.
+Implements C<Box2D::b2Joint>.
 
 Parameters:
 
@@ -80,18 +75,6 @@ Returns a C<float32>
 =head2 GetTarget()
 
 Returns a C<Box2D::b2Vec2>
-
-=head2 InitVelocityConstraints( $step )
-
-Implements b2Joint.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2TimeStep> C<$step>
-
-=back
 
 =head2 SetDampingRatio( $ratio )
 
@@ -141,37 +124,17 @@ Parameters:
 
 =back
 
-=head2 SolvePositionConstraints( $baumgarte )
-
-Implements b2Joint.
-
-Parameters:
-
-=over 4
-
-=item * C<float32> C<$baumgarte>
-
-=back
-
-Returns a C<bool>
-
-=head2 SolveVelocityConstraints( $step )
-
-Implements b2Joint.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2TimeStep> C<$step>
-
-=back
-
 =head1 SEE ALSO
 
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2MouseJointDef>
+
+=item * L<Box2D::b2Joint>
+
+=item * L<Box2D::b2World>
 
 =back
 
