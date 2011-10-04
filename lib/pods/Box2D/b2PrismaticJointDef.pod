@@ -1,15 +1,24 @@
 
 =head1 NAME
 
-Box2D::b2PrismaticJointDef - TODO
+Box2D::b2PrismaticJointDef - Prismatic joint definition.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $joint_def = Box2D::b2PrismaticJointDef->new()
+  $joint_def->Initialize( $body_a, $body_b, $anchor, $axis );
+  my $joint = $world->CreateJoint( $joint );
 
 =head1 DESCRIPTION
 
+Prismatic joint definition. This requires defining a line of motion
+using an axis and an anchor point. The definition uses local anchor
+points and a local axis so that the initial configuration can violate
+the constraint slightly. The joint translation is zero when the local
+anchor points coincide in world space. Using local anchors and a local
+axis helps when saving and loading a game.
 
+Warning: at least one body should by dynamic with a non-fixed rotation.
 
 =head1 METHODS
 
@@ -17,9 +26,12 @@ Box2D::b2PrismaticJointDef - TODO
 
 Default constructor.
 
+Returns a C<Box2D::b2PrismaticJointDef>
+
 =head2 Initialize( $bodyA, $bodyB, $anchor, $axis )
 
-Initialize the bodies, anchors, axis, and reference angle using the world anchor and world axis.
+Initialize the bodies, anchors, axis, and reference angle using the
+world anchor and world axis.
 
 Parameters:
 
@@ -200,6 +212,12 @@ Returns a C<float32>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2PrismaticJoint>
+
+=item * L<Box2D::b2JointDef>
+
+=item * L<Box2D::b2World>
 
 =back
 
