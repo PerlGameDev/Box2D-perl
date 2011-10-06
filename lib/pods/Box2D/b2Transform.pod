@@ -1,21 +1,18 @@
 
 =head1 NAME
 
-Box2D::b2Transform - TODO
+Box2D::b2Transform - Contains translation and rotation.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $transform = Box2D::b2Transform->new( $postiion, $rotation );
 
 =head1 DESCRIPTION
 
-
+A transform contains translation and rotation. It is used to represent
+the position and orientation of rigid frames.
 
 =head1 METHODS
-
-=head2 new()
-
-The default constructor does nothing (for performance).
 
 =head2 new( $position, $R )
 
@@ -30,6 +27,8 @@ Parameters:
 =item * C<Box2D::b2Mat22> C<$R>
 
 =back
+
+Returns a C<Box2D::b2Transform>
 
 =head2 GetAngle()
 
@@ -71,6 +70,16 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 R()
 
+=head2 R( $rotation )
+
+Parameters:
+
+=over 4
+
+=item * C<Box2D::b2Mat22> C<$rotation> (optional) - rotation matrix
+
+=back
+
 Returns a C<Box2D::b2Mat22>
 
 =head1 SEE ALSO
@@ -78,6 +87,8 @@ Returns a C<Box2D::b2Mat22>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2Mat22>
 
 =back
 
