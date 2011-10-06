@@ -1,15 +1,35 @@
 
 =head1 NAME
 
-Box2D::b2RevoluteJointDef - TODO
+Box2D::b2RevoluteJointDef - Revolute joint definition.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $joint_def = Box2D::b2RevoluteJointDef->new();
+  $joint_def->Initialize( $body_a, $body_b, $anchor );
+  my $joint = $world->CreateJoint( $joint_def );
 
 =head1 DESCRIPTION
 
+Revolute joint definition. This requires defining an anchor point where
+the bodies are joined. The definition uses local anchor points so that
+the initial configuration can violate the constraint slightly. You also
+need to specify the initial relative angle for joint limits. This helps
+when saving and loading a game. The local anchor points are measured
+from the body's origin rather than the center of mass because:
 
+=over 4
+
+=item 1.
+
+you might not know where the center of mass will be.
+
+=item 2.
+
+if you add/remove shapes from a body and recompute the mass, the joints
+will be broken.
+
+=back
 
 =head1 METHODS
 
@@ -17,9 +37,12 @@ Box2D::b2RevoluteJointDef - TODO
 
 Default constructor.
 
+Returns a C<Box2D::b2RevoluteJointDef>
+
 =head2 Initialize( $bodyA, $bodyB, $anchor )
 
-Initialize the bodies, anchors, and reference angle using a world anchor point.
+Initialize the bodies, anchors, and reference angle using a world
+anchor point.
 
 Parameters:
 
@@ -117,7 +140,8 @@ Returns a C<float32>
 
 =head2 maxMotorTorque( $maxMotorTorque )
 
-The maximum motor torque used to achieve the desired motor speed. Usually in N-m.
+The maximum motor torque used to achieve the desired motor speed.
+Usually in N-m.
 
 Parameters:
 
@@ -182,6 +206,12 @@ Returns a C<float32>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2RevoluteJoint>
+
+=item * L<Box2D::b2JointDef>
+
+=item * L<Box2D::b2World>
 
 =back
 
