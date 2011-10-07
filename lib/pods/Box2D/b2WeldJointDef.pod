@@ -1,15 +1,19 @@
 
 =head1 NAME
 
-Box2D::b2WeldJointDef - TODO
+Box2D::b2WeldJointDef - Weld joint definition.
 
 =head1 SYNOPSIS
 
-  # TODO
+  my $joint_def = Box2D::b2WeldJointDef->new();
+  $joint_def->Initialize( $body1, $body2, $anchor );
+  my $joint = $world->CreateJoint( $joint_def );
 
 =head1 DESCRIPTION
 
-
+Weld joint definition. You need to specify local anchor points where
+they are attached and the relative body angle. The position of the
+anchor points is important for computing the reaction torque.
 
 =head1 METHODS
 
@@ -17,9 +21,12 @@ Box2D::b2WeldJointDef - TODO
 
 Default constructor.
 
+Returns a C<Box2D::b2WeldJointDef>
+
 =head2 Initialize( $body1, $body2, $anchor )
 
-Initialize the bodies, anchors, and reference angle using a world anchor point.
+Initialize the bodies, anchors, and reference angle using a world
+anchor point.
 
 Parameters:
 
@@ -86,6 +93,12 @@ Returns a C<float32>
 =over 4
 
 =item * L<Box2D>
+
+=item * L<Box2D::b2WeldJoint>
+
+=item * L<Box2D::b2JointDef>
+
+=item * L<Box2D::b2World>
 
 =back
 
