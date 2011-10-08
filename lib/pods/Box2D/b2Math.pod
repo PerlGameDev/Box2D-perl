@@ -31,6 +31,8 @@ Returns a C<bool>
 
 =head2 b2InvSqrt( $x )
 
+Compute the inverse square-root of a scalar. Approximate yet fast.
+
 Parameters:
 
 =over 4
@@ -55,6 +57,8 @@ Returns a C<float32>
 
 =head2 b2DotV2V2( $a, $b )
 
+Compute the dot product of two vectors.
+
 Parameters:
 
 =over 4
@@ -68,6 +72,8 @@ Parameters:
 Returns a C<float32>
 
 =head2 b2CrossV2V2( $a, $b )
+
+Compute the cross product of two vectors.
 
 Parameters:
 
@@ -83,6 +89,8 @@ Returns a C<float32>
 
 =head2 b2CrossV2S( $v, $s )
 
+Compute the cross product of a vector and a scalar.
+
 Parameters:
 
 =over 4
@@ -96,6 +104,8 @@ Parameters:
 Returns a C<Box2D::b2Vec2>
 
 =head2 b2CrossSV2( $s, $v )
+
+Compute the cross product of a scalar and a vector.
 
 Parameters:
 
@@ -111,6 +121,8 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 b2MulM22V2( $M, $v )
 
+Multiply a matrix and a vector.
+
 Parameters:
 
 =over 4
@@ -124,6 +136,8 @@ Parameters:
 Returns a C<Box2D::b2Vec2>
 
 =head2 b2MulTM22V2( $M, $v )
+
+Multiply a matrix transpose and a vector.
 
 Parameters:
 
@@ -139,6 +153,8 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 b2AddV2V2( $a, $b )
 
+Add two vectors.
+
 Parameters:
 
 =over 4
@@ -152,6 +168,8 @@ Parameters:
 Returns a C<Box2D::b2Vec2>
 
 =head2 b2SubV2V2( $a, $b )
+
+Subtract one vector from another.
 
 Parameters:
 
@@ -167,6 +185,8 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 b2MulSV2( $s, $v )
 
+Multiply a scalar and a vector.
+
 Parameters:
 
 =over 4
@@ -180,6 +200,8 @@ Parameters:
 Returns a C<Box2D::b2Vec2>
 
 =head2 b2EqlV2V2( $a, $b )
+
+Are these vectors equal?
 
 Parameters:
 
@@ -195,6 +217,8 @@ Returns a C<bool>
 
 =head2 b2Distance( $a, $b )
 
+Compute the distance between two vectors.
+
 Parameters:
 
 =over 4
@@ -208,6 +232,8 @@ Parameters:
 Returns a C<float32>
 
 =head2 b2DistanceSquared( $a, $b )
+
+Compute the square of the distance between two vectors.
 
 Parameters:
 
