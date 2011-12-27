@@ -9,6 +9,8 @@
 %name{Box2D::b2Filter} class b2Filter
 {
 
+b2Filter();
+
 %{
 
 uint16
