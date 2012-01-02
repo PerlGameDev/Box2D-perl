@@ -1,0 +1,120 @@
+%{
+
+#include <Box2D/Box2D.h>
+#include <helper.h>
+
+%}
+
+%module{Box2D};
+
+%name{Box2D::b2WheelJointDef} class b2WheelJointDef : public %name{Box2D::b2JointDef} b2JointDef
+{
+
+%{
+
+void
+b2WheelJointDef::Initialize( bodyA, bodyB, anchor, axis )
+	b2Body* bodyA
+	b2Body* bodyB
+	b2Vec2* anchor
+	b2Vec2* axis
+	CODE:
+		THIS->Initialize( bodyA, bodyB, *anchor, *axis );
+
+b2Vec2*
+b2WheelJointDef::localAnchorA( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->localAnchorA = *(b2Vec2*)SvUV( ST(1) );
+		}
+		RETVAL = &(THIS->localAnchorA);
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2WheelJointDef::localAnchorB( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->localAnchorB = *(b2Vec2*)SvUV( ST(1) );
+		}
+		RETVAL = &(THIS->localAnchorB);
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2WheelJointDef::localAxisA( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->localAxisA = *(b2Vec2*)SvUV( ST(1) );
+		}
+		RETVAL = &(THIS->localAxisA);
+	OUTPUT:
+		RETVAL
+
+bool
+b2WheelJointDef::enableMotor( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->enableMotor = (bool)SvNV( ST(1) );
+		}
+		RETVAL = THIS->enableMotor;
+	OUTPUT:
+		RETVAL
+
+float32
+b2WheelJointDef::maxMotorTorque( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->maxMotorTorque = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->maxMotorTorque;
+	OUTPUT:
+		RETVAL
+
+float32
+b2WheelJointDef::motorSpeed( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->motorSpeed = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->motorSpeed;
+	OUTPUT:
+		RETVAL
+
+float32
+b2WheelJointDef::frequencyHz( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->frequencyHz = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->frequencyHz;
+	OUTPUT:
+		RETVAL
+
+float32
+b2WheelJointDef::dampingRatio( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->dampingRatio = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->dampingRatio;
+	OUTPUT:
+		RETVAL
+
+%}
+
+};

@@ -7,7 +7,7 @@
 
 %module{Box2D};
 
-%name{Box2D::b2WheelJoint} class b2WheelJoint
+%name{Box2D::b2WheelJoint} class b2WheelJoint : public %name{Box2D::b2Joint} b2Joint
 {
 
 %{

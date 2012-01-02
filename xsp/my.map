@@ -45,6 +45,7 @@ b2Transform *			O_OBJECT
 b2Vec2 *			O_OBJECT
 b2WeldJoint *			O_OBJECT
 b2WeldJointDef *		O_OBJECT
+b2WheelJointDef *		O_OBJECT
 b2World *			O_OBJECT
 PerlContactListener *		O_OBJECT
 PerlRayCastCallback *		O_OBJECT
