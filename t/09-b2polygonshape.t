@@ -29,16 +29,17 @@ foreach ( 0 .. 3 ) {
     is( abs( $vertex->y - $y ), $h );
 }
 
-my $edge = Box2D::b2PolygonShape->new();
-$edge->SetAsEdge(
-    Box2D::b2Vec2->new( 0.0, 0.0 ),
-    Box2D::b2Vec2->new( $w, $h ),
-);
-pass("SetAsEdge");
-is( $edge->GetVertexCount, 2, "GetVertexCount" );
-is( $edge->GetVertex(0)->x, 0.0, "GetVertex(0)->x" );
-is( $edge->GetVertex(0)->y, 0.0, "GetVertex(0)->y" );
-is( $edge->GetVertex(1)->x, $w, "GetVertex(1)->x" );
-is( $edge->GetVertex(1)->y, $h, "GetVertex(1)->y" );
+#my $edge = Box2D::b2PolygonShape->new();
+# SetAsEdge is gone since v2.2
+#$edge->SetAsEdge(
+#    Box2D::b2Vec2->new( 0.0, 0.0 ),
+#    Box2D::b2Vec2->new( $w, $h ),
+#);
+#pass("SetAsEdge");
+#is( $edge->GetVertexCount, 2, "GetVertexCount" );
+#is( $edge->GetVertex(0)->x, 0.0, "GetVertex(0)->x" );
+#is( $edge->GetVertex(0)->y, 0.0, "GetVertex(0)->y" );
+#is( $edge->GetVertex(1)->x, $w, "GetVertex(1)->x" );
+#is( $edge->GetVertex(1)->y, $h, "GetVertex(1)->y" );
 
 done_testing;

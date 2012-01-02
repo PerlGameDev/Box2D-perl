@@ -4,7 +4,7 @@ use Box2D;
 use Test::More;
 
 my $gravity = Box2D::b2Vec2->new( 0.0, 10.0 );
-my $world = Box2D::b2World->new( $gravity, 1 );
+my $world = Box2D::b2World->new( $gravity );
 
 # Bodies
 my ( $xA, $yA, $xB, $yB ) = ( 10.0, 20.0, 30.0, 40.0 );
@@ -71,16 +71,9 @@ is( $jointDef->localAnchorB->y,
 is( $jointDef->lengthA, $lengthA, "get lengthA" );
 is( $jointDef->lengthB, $lengthB, "get lengthB" );
 
-$jointDef->maxLengthA($maxLengthA);
-pass("set maxLengthA");
-$jointDef->maxLengthB($maxLengthB);
-pass("set maxLengthB");
 $jointDef->ratio($ratio);
 pass("set ratio");
-
-is( $jointDef->maxLengthA, $maxLengthA, "get maxLengthA" );
-is( $jointDef->maxLengthB, $maxLengthB, "get maxLengthB" );
-is( $jointDef->ratio,      $ratio,      "get ratio" );
+is( $jointDef->ratio, $ratio, "get ratio" );
 
 my $joint = $world->CreateJoint($jointDef);
 ok( $joint, "Box2D::b2World->CreateJoint" );
@@ -99,8 +92,8 @@ is( $joint->GetGroundAnchorA->y, $groundAnchorA->y, "GetGroundAnchorA->y" );
 is( $joint->GetGroundAnchorB->x, $groundAnchorB->x, "GetGroundAnchorB->x" );
 is( $joint->GetGroundAnchorB->y, $groundAnchorB->y, "GetGroundAnchorB->y" );
 
-is( $joint->GetLength1, $lengthA, "GetLength1" );
-is( $joint->GetLength2, $lengthB, "GetLength2" );
+is( $joint->GetLengthA, $lengthA, "GetLengthA" );
+is( $joint->GetLengthB, $lengthB, "GetLengthB" );
 
 is( $joint->GetRatio, $ratio, "GetRatio" );
 

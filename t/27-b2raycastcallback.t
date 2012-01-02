@@ -31,7 +31,7 @@ package main;
 use Test::More;
 
 my $gravity = Box2D::b2Vec2->new( 0, 10 );
-my $world = Box2D::b2World->new( $gravity, 1 );
+my $world = Box2D::b2World->new( $gravity );
 
 my $bodyDef = Box2D::b2BodyDef->new();
 $bodyDef->position->Set( 5, 5 );

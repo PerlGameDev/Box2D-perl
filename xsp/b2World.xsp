@@ -14,11 +14,10 @@ void ClearForces();
 %{
 
 b2World*
-b2World::new( gravity, doSleep )
+b2World::new( gravity )
 	b2Vec2* gravity
-	bool doSleep
 	CODE:
-		RETVAL = new b2World( *gravity, doSleep );
+		RETVAL = new b2World( *gravity );
 	OUTPUT:
 		RETVAL
 

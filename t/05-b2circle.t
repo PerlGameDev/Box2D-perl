@@ -4,7 +4,7 @@ use Box2D;
 use Test::More;
 
 my $vec = Box2D::b2Vec2->new( 0, -10 );
-my $world = Box2D::b2World->new( $vec, 1 );
+my $world = Box2D::b2World->new( $vec );
 
 my $body_def = Box2D::b2BodyDef->new();
 

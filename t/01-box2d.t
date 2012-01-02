@@ -4,13 +4,13 @@ use Box2D;
 use Test::More;
 
 my $vec = Box2D::b2Vec2->new(0,-10);
-my $world = Box2D::b2World->new($vec, 1);
+my $world = Box2D::b2World->new($vec);
 
 my $body_def = Box2D::b2BodyDef->new();
 
 $body_def->position->Set(0.0, -10.0);
 
-my $groundBody = $world->CreateBody($body_def); 
+my $groundBody = $world->CreateBody($body_def);
 
 my $groundBox = Box2D::b2PolygonShape->new();
 

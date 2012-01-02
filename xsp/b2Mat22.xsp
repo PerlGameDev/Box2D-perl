@@ -12,13 +12,9 @@
 
 b2Mat22(float32 a11 = 0.0, float32 a12 = 0.0, float32 a21 = 0.0, float32 a22 = 0.0);
 
-%name{SetAngle} void Set(float32 angle);
-
 void SetIdentity();
 
 void SetZero();
-
-float32 GetAngle();
 
 %{
 
@@ -40,30 +36,41 @@ b2Mat22::GetInverse()
 		RETVAL
 
 b2Vec2*
-b2Mat22::col1( ... )
+b2Mat22::Solve( b )
+	b2Vec2* b
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		if( items > 1 )
-		{
-			b2Vec2* v = (b2Vec2 *)stack_to_object( ST(1) );
-			THIS->col1 = *v;
-		}
-		RETVAL = &(THIS->col1);
+		b2Vec2 bv = THIS->Solve( *b );
+		RETVAL = new b2Vec2(bv);
 	OUTPUT:
 		RETVAL
 
 b2Vec2*
-b2Mat22::col2( ... )
+b2Mat22::ex( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
 		if( items > 1 )
 		{
 			b2Vec2* v = (b2Vec2 *)stack_to_object( ST(1) );
-			THIS->col2 = *v;
+			THIS->ex = *v;
 		}
-		RETVAL = &(THIS->col2);
+		RETVAL = &(THIS->ex);
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2Mat22::ey( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if( items > 1 )
+		{
+			b2Vec2* v = (b2Vec2 *)stack_to_object( ST(1) );
+			THIS->ey = *v;
+		}
+		RETVAL = &(THIS->ey);
 	OUTPUT:
 		RETVAL
 

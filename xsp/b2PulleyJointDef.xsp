@@ -89,17 +89,6 @@ b2PulleyJointDef::lengthA( ... )
 		RETVAL
 
 float32
-b2PulleyJointDef::maxLengthA( ... )
-	CODE:
-		if ( items > 1 )
-		{
-			THIS->maxLengthA = (float32)SvNV( ST(1) );
-		}
-		RETVAL = THIS->maxLengthA;
-	OUTPUT:
-		RETVAL
-
-float32
 b2PulleyJointDef::lengthB( ... )
 	CODE:
 		if ( items > 1 )
@@ -107,17 +96,6 @@ b2PulleyJointDef::lengthB( ... )
 			THIS->lengthB = (float32)SvNV( ST(1) );
 		}
 		RETVAL = THIS->lengthB;
-	OUTPUT:
-		RETVAL
-
-float32
-b2PulleyJointDef::maxLengthB( ... )
-	CODE:
-		if ( items > 1 )
-		{
-			THIS->maxLengthB = (float32)SvNV( ST(1) );
-		}
-		RETVAL = THIS->maxLengthB;
 	OUTPUT:
 		RETVAL
 

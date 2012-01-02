@@ -1,7 +1,7 @@
 %module{Box2D};
 
-%name{Box2D::b2PolygonShape} class b2PolygonShape : public %name{Box2D::b2Shape} b2Shape  
-{ 
+%name{Box2D::b2PolygonShape} class b2PolygonShape : public %name{Box2D::b2Shape} b2Shape
+{
 
 int32 GetVertexCount();
 
@@ -12,7 +12,7 @@ b2PolygonShape::new( )
 	CODE:
 		RETVAL= new b2PolygonShape();
 	OUTPUT:
-		RETVAL 
+		RETVAL
 
 void
 b2PolygonShape::Set( ... )
@@ -40,13 +40,6 @@ b2PolygonShape::SetAsBox( x, y, ... )
 			THIS->SetAsBox( x, y, *(b2Vec2*)stack_to_object( ST(3) ), (float32)SvNV( ST(4) ) );
 		}
 
-void
-b2PolygonShape::SetAsEdge( v1, v2 )
-	b2Vec2* v1
-	b2Vec2* v2
-	CODE:
-		THIS->SetAsEdge( *v1, *v2 );
-
 b2Vec2*
 b2PolygonShape::GetVertex( index )
 	int index
@@ -59,6 +52,6 @@ b2PolygonShape::GetVertex( index )
 
 
 %}
-	
+
 };
 

@@ -9,11 +9,8 @@ my ( $x2, $y2, $angle2 ) = ( 11.0, 13.0, 2.0 );
 my $position  = Box2D::b2Vec2->new( $x,  $y );
 my $position2 = Box2D::b2Vec2->new( $x2, $y2 );
 
-my $R  = Box2D::b2Mat22->new();
-my $R2 = Box2D::b2Mat22->new();
-
-$R->SetAngle($angle);
-$R2->SetAngle($angle2);
+my $R  = Box2D::b2Rot->new( $angle );
+my $R2 = Box2D::b2Rot->new( $angle2 );
 
 my $transform = Box2D::b2Transform->new( $position, $R );
 
@@ -21,35 +18,33 @@ ok( $transform, "new" );
 
 isa_ok( $transform, "Box2D::b2Transform" );
 
-is( $transform->position->x, $x, "position->x" );
-is( $transform->position->y, $y, "position->y" );
+is( $transform->p->x, $x, "position->x" );
+is( $transform->p->y, $y, "position->y" );
 
-cmp_ok( abs( $transform->GetAngle() - $angle ), "<=", 0.00000001,
+cmp_ok( abs( $transform->q->GetAngle() - $angle ), "<=", 0.00000001,
     "GetAngle" );
 
 $transform->Set( $position2, $angle2 );
 
-is( $transform->position->x, $x2, "Set position->x" );
-is( $transform->position->y, $y2, "Set position->y" );
+is( $transform->p->x, $x2, "Set position->x" );
+is( $transform->p->y, $y2, "Set position->y" );
 
-cmp_ok( abs( $transform->GetAngle() - $angle2 ),
+cmp_ok( abs( $transform->q->GetAngle() - $angle2 ),
     "<=", 0.00000001, "Set angle" );
 
 $transform->SetIdentity();
 
-is( $transform->position->x, 0, "SetIdentity position->x" );
-is( $transform->position->y, 0, "SetIdentity position->y" );
-is( $transform->R->col1->x,  1, "SetIdentity R->col1->x" );
-is( $transform->R->col2->x,  0, "SetIdentity R->col2->x" );
-is( $transform->R->col1->y,  0, "SetIdentity R->col1->y" );
-is( $transform->R->col2->y,  1, "SetIdentity R->col2->y" );
+is( $transform->p->x, 0, "SetIdentity p->x" );
+is( $transform->p->y, 0, "SetIdentity p->y" );
+is( $transform->q->s, 0, "SetIdentity q->s" );
+is( $transform->q->c, 1, "SetIdentity q->c" );
 
-$transform->position($position2);
-is( $transform->position->x, $x2, "Set position x" );
-is( $transform->position->y, $y2, "Set position y" );
+$transform->p($position2);
+is( $transform->p->x, $x2, "Set position x" );
+is( $transform->p->y, $y2, "Set position y" );
 
-$transform->R($R2);
-cmp_ok( abs( $transform->GetAngle() - $angle2 ),
+$transform->q($R2);
+cmp_ok( abs( $transform->q->GetAngle() - $angle2 ),
     "<=", 0.00000001, "Set R angle" );
 
 done_testing;

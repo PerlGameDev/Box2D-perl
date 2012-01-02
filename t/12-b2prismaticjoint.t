@@ -4,7 +4,7 @@ use Box2D;
 use Test::More;
 
 my $gravity = Box2D::b2Vec2->new( 0.0, 0.0 );
-my $world = Box2D::b2World->new( $gravity, 1 );
+my $world = Box2D::b2World->new( $gravity );
 
 my ( $xA, $yA, $xB, $yB ) = ( 10.0, 20.0, 30.0, 40.0 );
 
@@ -50,8 +50,8 @@ is( $jointDef->localAnchorB->y,
     "get localAnchorB->y"
 );
 
-is( $jointDef->localAxis1->x, $axis->x, "get localAxis1->x" );
-is( $jointDef->localAxis1->y, $axis->y, "get localAxis1->y" );
+is( $jointDef->localAxisA->x, $axis->x, "get localAxis1->x" );
+is( $jointDef->localAxisA->y, $axis->y, "get localAxis1->y" );
 
 my ($referenceAngle, $lowerTranslation, $upperTranslation,
     $motorSpeed,     $maxMotorForce

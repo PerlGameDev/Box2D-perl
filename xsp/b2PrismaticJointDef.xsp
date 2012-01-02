@@ -49,15 +49,15 @@ b2PrismaticJointDef::localAnchorB( ... )
 		RETVAL
 
 b2Vec2*
-b2PrismaticJointDef::localAxis1( ... )
+b2PrismaticJointDef::localAxisA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
 		if ( items > 1 )
 		{
-			THIS->localAxis1 = *(b2Vec2*)SvUV( ST(1) );
+			THIS->localAxisA = *(b2Vec2*)SvUV( ST(1) );
 		}
-		RETVAL = &(THIS->localAxis1);
+		RETVAL = &(THIS->localAxisA);
 	OUTPUT:
 		RETVAL
 

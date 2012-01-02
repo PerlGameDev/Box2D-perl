@@ -42,14 +42,14 @@ my $s = 9;
 
 {
     my $c = Box2D::b2Math::b2MulM22V2( $m, $a );
-    is( $c->x, $m->col1->x * $a->x + $m->col2->x * $a->y, "b2MulM22V2" );
-    is( $c->y, $m->col1->y * $a->x + $m->col2->y * $a->y, "b2MulM22V2" );
+    is( $c->x, $m->ex->x * $a->x + $m->ey->x * $a->y, "b2MulM22V2" );
+    is( $c->y, $m->ex->y * $a->x + $m->ey->y * $a->y, "b2MulM22V2" );
 }
 
 {
     my $c = Box2D::b2Math::b2MulTM22V2( $m, $a );
-    is( $c->x, Box2D::b2Math::b2DotV2V2( $a, $m->col1 ), "b2MulTM22V2" );
-    is( $c->y, Box2D::b2Math::b2DotV2V2( $a, $m->col2 ), "b2MulTM22V2" );
+    is( $c->x, Box2D::b2Math::b2DotV2V2( $a, $m->ex ), "b2MulTM22V2" );
+    is( $c->y, Box2D::b2Math::b2DotV2V2( $a, $m->ey ), "b2MulTM22V2" );
 }
 
 {

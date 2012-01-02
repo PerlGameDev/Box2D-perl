@@ -15,18 +15,11 @@ void SetIdentity();
 %{
 
 b2Transform*
-b2Transform::new( position, R )
+b2Transform::new( position, rotation )
 	b2Vec2* position
-	b2Mat22* R
+	b2Rot* rotation
 	CODE:
-		RETVAL = new b2Transform( *position, *R );
-	OUTPUT:
-		RETVAL
-
-float32
-b2Transform::GetAngle()
-	CODE:
-		RETVAL = THIS->GetAngle();
+		RETVAL = new b2Transform( *position, *rotation );
 	OUTPUT:
 		RETVAL
 
@@ -38,30 +31,30 @@ b2Transform::Set( position, angle )
 		THIS->Set( *position, angle );
 
 b2Vec2*
-b2Transform::position( ... )
+b2Transform::p( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
 		if( items > 1 )
 		{
-			b2Vec2* v = (b2Vec2 *)stack_to_object( ST(1) );
-			THIS->position = *v;
+			b2Vec2* position = (b2Vec2 *)stack_to_object( ST(1) );
+			THIS->p = *position;
 		}
-		RETVAL = &(THIS->position);
+		RETVAL = &(THIS->p);
 	OUTPUT:
 		RETVAL
 
-b2Mat22*
-b2Transform::R( ... )
+b2Rot*
+b2Transform::q( ... )
 	PREINIT:
-		const char* CLASS = "Box2D::b2Mat22";
+		const char* CLASS = "Box2D::b2Rot";
 	CODE:
 		if( items > 1 )
 		{
-			b2Mat22* R = (b2Mat22 *)stack_to_object( ST(1) );
-			THIS->R = *R;
+			b2Rot* rotation = (b2Rot *)stack_to_object( ST(1) );
+			THIS->q = *rotation;
 		}
-		RETVAL = &(THIS->R);
+		RETVAL = &(THIS->q);
 	OUTPUT:
 		RETVAL
 

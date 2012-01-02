@@ -35,7 +35,7 @@ float32 GetMotorSpeed();
 
 void SetMaxMotorForce(float32 torque);
 
-float32 GetMotorForce();
+float32 GetMotorForce(float32 inv_dt);
 
 %{
 

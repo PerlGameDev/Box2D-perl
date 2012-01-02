@@ -4,7 +4,7 @@ use Box2D;
 use Test::More;
 
 my $vec = Box2D::b2Vec2->new( 0, -10 );
-my $world = Box2D::b2World->new( $vec, 1 );
+my $world = Box2D::b2World->new( $vec );
 
 my $body_def = Box2D::b2BodyDef->new();
 
@@ -57,7 +57,7 @@ is( $body->GetType(), $type1, "SetType" );
 is( $body->GetAngle(), $angle0, "GetAngle" );
 
 my $transform = $body->GetTransform();
-cmp_ok( abs( $transform->GetAngle() - $angle0 ),
+cmp_ok( abs( $transform->q->GetAngle() - $angle0 ),
     "<=", 0.00000001, "GetTransform angle" );
 
 done_testing;

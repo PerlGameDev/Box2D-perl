@@ -1,0 +1,69 @@
+%{
+
+#include <Box2D/Box2D.h>
+#include <helper.h>
+
+%}
+
+%module{Box2D};
+
+%name{Box2D::b2Rot} class b2Rot
+{
+
+void SetIdentity();
+
+float32 GetAngle();
+
+%{
+
+b2Rot*
+b2Rot::new( angle )
+	float32 angle
+	CODE:
+		RETVAL = new b2Rot( angle );
+	OUTPUT:
+		RETVAL
+
+void
+b2Rot::Set( angle )
+	float32 angle
+	CODE:
+		THIS->Set( angle );
+
+b2Vec2*
+b2Rot::GetXAxis( )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		b2Vec2* ret = new b2Vec2(THIS->GetXAxis());
+		RETVAL      = ret;
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2Rot::GetYAxis( )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		b2Vec2* ret = new b2Vec2(THIS->GetYAxis());
+		RETVAL      = ret;
+	OUTPUT:
+		RETVAL
+
+float32
+b2Rot::s( )
+	CODE:
+		RETVAL = THIS->s;
+	OUTPUT:
+		RETVAL
+
+float32
+b2Rot::c( )
+	CODE:
+		RETVAL = THIS->c;
+	OUTPUT:
+		RETVAL
+
+%}
+
+};

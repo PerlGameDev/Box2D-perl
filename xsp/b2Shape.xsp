@@ -36,21 +36,23 @@ b2Shape::TestPoint( xf, p )
 		RETVAL
 
 bool
-b2Shape::RayCast( output, input, transform )
+b2Shape::RayCast( output, input, transform, index )
 	b2RayCastOutput* output
 	b2RayCastInput* input
 	b2Transform* transform
+	int32 index
 	CODE:
-		RETVAL = THIS->RayCast( output, *input, *transform );
+		RETVAL = THIS->RayCast( output, *input, *transform, index );
 	OUTPUT:
 		RETVAL
 
 void
-b2Shape::ComputeAABB( aabb, xf )
+b2Shape::ComputeAABB( aabb, xf, index )
 	b2AABB* aabb
 	b2Transform* xf
+	int32 index
 	CODE:
-		THIS->ComputeAABB( aabb, *xf );
+		THIS->ComputeAABB( aabb, *xf, index );
 
 void
 b2Shape::ComputeMass( massData, density )
