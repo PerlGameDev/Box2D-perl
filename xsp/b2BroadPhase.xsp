@@ -1,0 +1,22 @@
+%{
+
+#include <Box2D/Box2D.h>
+#include <helper.h>
+
+%}
+
+%module{Box2D};
+
+%name{Box2D::b2BroadPhase} class b2BroadPhase
+{
+
+%{
+
+void
+b2BroadPhase::new( )
+	CODE:
+		warn("This is a stub for b2BroadPhase");
+
+%}
+
+};

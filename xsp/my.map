@@ -6,6 +6,7 @@ float32				T_NV
 b2AABB *			O_OBJECT
 b2Body *			O_OBJECT
 b2BodyDef *			O_OBJECT
+b2BroadPhase *			O_OBJECT
 b2CircleShape *			O_OBJECT
 b2ContactListener *		O_OBJECT
 b2Contact *			O_OBJECT

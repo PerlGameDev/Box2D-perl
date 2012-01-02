@@ -1,0 +1,22 @@
+%{
+
+#include <Box2D/Box2D.h>
+#include <helper.h>
+
+%}
+
+%module{Box2D};
+
+%name{Box2D::b2StackAllocator} class b2StackAllocator
+{
+
+%{
+
+void
+b2StackAllocator::new( )
+	CODE:
+		warn("This is a stub for b2StackAllocator");
+
+%}
+
+};
