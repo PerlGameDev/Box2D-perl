@@ -1,0 +1,51 @@
+%{
+
+#include <Box2D/Box2D.h>
+
+%}
+
+%module{Box2D};
+
+%name{Box2D::b2Version} class b2Version
+{
+
+%{
+
+b2Version *
+b2Version::new( )
+	CODE:
+		RETVAL             = (b2Version *)safemalloc(sizeof(b2Version));
+	OUTPUT:
+		RETVAL
+
+int32
+b2Version::major( ... )
+	CODE:
+		if ( items > 1 )
+			THIS->major = (int32)SvNV( ST(1) );
+		RETVAL = THIS->major;
+	OUTPUT:
+		RETVAL
+
+int32
+b2Version::minor( ... )
+	CODE:
+		if ( items > 1 )
+			THIS->minor = (int32)SvNV( ST(1) );
+		RETVAL = THIS->minor;
+	OUTPUT:
+		RETVAL
+
+int32
+b2Version::revision( ... )
+	CODE:
+		if ( items > 1 )
+			THIS->revision = (int32)SvNV( ST(1) );
+		RETVAL = THIS->revision;
+	OUTPUT:
+		RETVAL
+
+%}
+
+};
+

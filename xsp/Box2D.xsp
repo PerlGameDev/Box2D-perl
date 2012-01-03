@@ -7,4 +7,23 @@
 %module{Box2D};
 %package{Box2D};
 
+%name{Box2D} class b2
+{
 
+%{
+
+b2Version *
+b2_version( )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Version";
+	CODE:
+		RETVAL           = (b2Version *)safemalloc(sizeof(b2Version));
+		RETVAL->major    = b2_version.major;
+		RETVAL->minor    = b2_version.minor;
+		RETVAL->revision = b2_version.revision;
+	OUTPUT:
+		RETVAL
+
+%}
+
+};
