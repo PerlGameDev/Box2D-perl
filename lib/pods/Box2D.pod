@@ -15,53 +15,14 @@ Perl 5.
 
 =head1 OVERVIEW
 
-Currently this module is a 1 to 1 binding. This is still a WIP and so far here are the completed class:
+Currently this module is a 1 to 1 binding.
+This is still a WIP and so far here are the completed classes:
 
-	b2AABB
-	b2Body
-	b2BodyDef
-	b2CircleShape
-	b2Contact
-	b2ContactImpulse
-	b2ContactListener
-	b2DistanceJoint
-	b2DistanceJointDef
-	b2Filter
-	b2Fixture
-	b2FixtureDef
-	b2FrictionJoint
-	b2FrictionJointDef
-	b2GearJoint
-	b2GearJointDef
-	b2Joint
-	b2JointDef
-	b2LineJoint
-	b2LineJointDef
-	b2Manifold
-	b2MassData
-	b2Mat22
-	b2MouseJoint
-	b2MouseJointDef
-	b2PolygonShape
-	b2PrismaticJoint
-	b2PrismaticJointDef
-	b2PulleyJoint
-	b2PulleyJointDef
-	b2RayCastCallback
-	b2RayCastInput
-	b2RayCastOutput
-	b2RevoluteJoint
-	b2RevoluteJointDef
-	b2Shape
-	b2Transform
-	b2Vec2
-	b2WeldJoint
-	b2WeldJointDef
-	b2World
+    none yet
 
 =head2 USAGE
 
-Have a look at the examples folder for useage examples.
+Have a look at the examples folder for usage examples.
 
 The Box2D Manual and Documentation are also useful:
 
@@ -69,10 +30,10 @@ L<http://www.box2d.org/documentation.html>
 
 =head2 TODO
 
-	Documentation
-	Examples
-	Adding more bindings
-	Inline::C Support
+    Documentation
+    Examples
+    Adding more bindings
+    Inline::C Support
 
 =head2 CONTRIBUTE
 
@@ -82,26 +43,19 @@ L<https://github.com/PerlGameDev/Box2D-perl>
 
 =head1 BUGS
 
-Report bugs at
+Report bugs at:
+
 L<GitHub Issues|https://github.com/PerlGameDev/Box2D-perl/issues>
 
 =head1 AUTHORS
 
-=over 4
-
-=item Kartik Thakore
-
-=item Abram Hindle
-
-=item Tobias Leich
-
-=item Jeffrey T. Palmer
-
-=item Breno G. de Oliveira
-
-=item Zach Morgan
-
-=back
+    Kartik Thakore
+    Abram Hindle
+    Tobias Leich
+    Jeffrey T. Palmer
+    Breno G. de Oliveira
+    Zach Morgan
+    Blaise Roth
 
 =head1 COPYRIGHT & LICENSE
 
