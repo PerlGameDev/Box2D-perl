@@ -5,7 +5,7 @@ use Test::More;
 
 my $vec = Box2D::b2Vec2->new( 10, 11 );
 
-ok( $vec, "new" );
+isa_ok( $vec, "Box2D::b2Vec2" );
 
 is( $vec->x, 10, "Get x" );
 is( $vec->y, 11, "Get y" );
@@ -30,44 +30,42 @@ is( $vec->LengthSquared(), 50, "LengthSquared" );
 cmp_ok( abs( $vec->Normalize() - 7.07106781005859 ),
     '<', 0.00000001, "Normalize" );
 
+ok( $vec->IsValid(), "IsValid" );
+
+$vec->Set( -1e1000**1e1000, 2 );
+ok( !$vec->IsValid(), "IsValid" );
+
+$vec->Set( 4, -1e1000**1e1000 );
+ok( !$vec->IsValid(), "IsValid" );
+
 $vec->SetZero();
 
 is( $vec->x, 0, "SetZero" );
 is( $vec->y, 0, "SetZero" );
 
-ok( $vec->IsValid(), "IsValid" );
+$vec += Box2D::b2Vec2->new(2, -4);
+is( $vec->x, 2, "a += b" );
+is( $vec->y, -4, "a += b" );
 
-my $a = Box2D::b2Vec2->new( 1, 2 );
-my $b = Box2D::b2Vec2->new( 3, 4 );
-my $m = Box2D::b2Mat22->new( 5, 6, 7, 8 );
-my $s = 9;
+$vec *= 2.5;
+is( $vec->x, 5, "a *= b" );
+is( $vec->y, -10, "a *= b" );
+
+$vec -= Box2D::b2Vec2->new(3, -9);
+is( $vec->x, 2, "a -= b" );
+is( $vec->y, -1, "a -= b" );
 
 {
-    my $c = $a + $b;
-    is( $c->x, $a->x + $b->x, "b2Vec2 + b2Vec2" );
-    is( $c->y, $a->y + $b->y, "b2Vec2 + b2Vec2" );
+	my $c = -$vec;
+	is( $c->x, -2, "-a" );
+	is( $c->y, 1, "-a" );
 }
 
 {
-    my $c = $a - $b;
-    is( $c->x, $a->x - $b->x, "b2Vec2 - b2Vec2" );
-    is( $c->y, $a->y - $b->y, "b2Vec2 - b2Vec2" );
-}
-
-{
-    my $c = $s * $a;
-    is( $c->x, $s * $a->x, "scalar * b2Vec2" );
-    is( $c->y, $s * $a->y, "scalar * b2Vec2" );
-}
-
-{
-    ok( !( $a == $b ), "b2Vec2 == b2Vec2" );
-    ok( !( $b == $a ), "b2Vec2 == b2Vec2" );
-    ok( $a == $a,      "b2Vec2 == b2Vec2" );
-    ok( $b == $b,      "b2Vec2 == b2Vec2" );
-
-    my $c = Box2D::b2Vec2->new( $a->x, $a->y );
-    ok( $a == $c, "b2Vec2 == b2Vec2" );
+	# Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
+	my $skew = $vec->Skew();
+	my $other = Box2D::b2Vec2->new(3, -7);
+	is( $skew . $other, $vec x $other, "Skew()" );
 }
 
 done_testing;

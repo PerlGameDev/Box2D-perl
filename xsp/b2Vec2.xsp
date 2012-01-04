@@ -47,7 +47,28 @@ b2Vec2::y( ... )
 	OUTPUT:
 		RETVAL
 
+b2Vec2*
+b2Vec2::_negate()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(-*THIS);
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2Vec2::Skew()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(THIS->Skew());
+	OUTPUT:
+		RETVAL
+
 %}
+
+/* +=, -= and *= would be here,
+but it's better to let Perl autogenerate them */
 
 };
 

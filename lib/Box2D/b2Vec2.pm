@@ -13,6 +13,7 @@ use overload
 	'.'      => '_dot',
 	'x'      => '_cross',
 	'abs'    => '_abs',
+	'neg'    => sub { $_[0]->_negate() },
 	fallback => 1,
 ;
 
@@ -50,13 +51,13 @@ sub _equal {
 
 sub _dot {
 	my ( $self, $other ) = @_;
-	
+
 	return Box2D::b2Dot( $self, $other );
 }
 
 sub _cross {
 	my ( $self, $other, $swap ) = @_;
-	
+
 	if ($swap) {
 		return Box2D::b2Cross( $other, $self );
 	}
@@ -67,7 +68,7 @@ sub _cross {
 
 sub _abs {
 	my ( $self ) = @_;
-	
+
 	return Box2D::b2Abs( $self );
 }
 

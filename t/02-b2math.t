@@ -10,7 +10,7 @@ ok( !Box2D::b2IsValid(1e1000**1e1000), "!b2IsValid" );
 ok( !Box2D::b2IsValid(-1e1000**1e1000), "!b2IsValid" );
 my $nan = "NaN";
 SKIP: {
-	skip "No NaN support", 1 unless $nan != $nan; 
+	skip "No NaN support", 1 unless $nan != $nan;
 	ok( !Box2D::b2IsValid($nan), "!b2IsValid" );
 }
 
@@ -189,6 +189,15 @@ is( Box2D::b2Max($t, $s), $t, "b2Max" );
 	my $c = Box2D::b2Clamp($d, $low, $high);
 	is( $c->x, $d->x, "b2Clamp" );
 	is( $c->y, $high->y, "b2Clamp" );
+}
+
+TODO: {
+	local $TODO = "dunno how to get the xsp to work";
+	my $d = 123;
+	my $e = \456;
+	Box2D::b2Swap($d, $e);
+	is( $$d, 456, "b2Swap" );
+	is( $e, 123, "b2Swap" );
 }
 
 is( Box2D::b2NextPowerOfTwo(64), 128, "b2NextPowerOfTwo");

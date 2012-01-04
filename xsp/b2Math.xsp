@@ -232,6 +232,13 @@ b2Clamp( a, low, high )
 		}
 		XSRETURN_NV(b2Clamp(SvNV(a), SvNV(low), SvNV(high)));
 
+void
+b2Swap( a, b )
+	SV* a
+	SV* b
+	CODE:
+		b2Swap(*a, *b);
+
 uint32
 b2NextPowerOfTwo( x )
 	uint32 x
@@ -247,5 +254,5 @@ b2IsPowerOfTwo( x )
 		RETVAL = b2IsPowerOfTwo(x);
 	OUTPUT:
 		RETVAL
-		
+
 %}
