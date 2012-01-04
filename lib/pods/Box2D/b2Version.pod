@@ -22,9 +22,9 @@ See L<Box2D::b2_version|Box2D/b2_version>.
 
 =head2 new
 
- Box2D::b2Version->new();
+ my $version = Box2D::b2Version->new();
 
-Default constructor. Returns a C<Box2D::b2Version>
+Default constructor. Returns a new C<Box2D::b2Version>.
 
 B<Note:> C<major>, C<minor> and C<revision> will return weird values if not
 initialized.

@@ -5,109 +5,132 @@ Box2D::b2Vec2 - A 2D column vector
 
 =head1 SYNOPSIS
 
-  my $v = Box2D::b2Vec2->new( $x, $y );
+ # create a new vector representing the gravity
+ my $gravity = Box2D::b2Vec2->new( 0, -10 );
+ 
+ my $world = Box2D::b2World->new( $gravity, 1 );
 
 =head1 DESCRIPTION
 
-A 2D column vector.
+C<Box2D::b2Vec2> holds all of Box2D's 2 parameter lists;
+most commonly the 2D vector and point.
+It also provides some methods and overloaded operators
+for manipulating vectors.
+There are more functions that operate on C<b2Vec2>s found in L<Box2D::b2Math>.
 
 =head1 METHODS
 
-=head2 new()
+=head2 new
 
-Default constructor does nothing.
+ my $vec = Box2D::b2Vec2->new( $x, $y );
 
-Returns a C<Box2D::b2Vec2>
+Returns a new C<Box2D::b2Vec2> with the specifed C<x> and C<y> components.
 
-=head2 new( $x, $y )
+=head2 x
 
-Construct using coordinates.
+ my $x = $vec->x();
+ $vec->x( $x );
 
-Parameters:
+Returns the vector's C<x> component.
+Specify a single numeric value to modify it.
 
-=over 4
+=head2 y
 
-=item * C<float32> C<$x>
+ my $y = $vec->y();
+ $vec->y( $y );
 
-=item * C<float32> C<$y>
+Returns the vector's C<y> component.
+Specify a single numeric value to modify it.
 
-=back
+=head2 Set
 
-=head2 IsValid()
+ $vec->Set( $x, $y );
 
-Does this vector contain finite coordinates?
-
-Returns a C<bool>
-
-=head2 Length()
-
-Get the length of this vector (the norm).
-
-Returns a C<float32>
-
-=head2 LengthSquared()
-
-Get the length squared. For performance, use this instead of b2Vec2::Length (if possible).
-
-Returns a C<float32>
-
-=head2 Normalize()
-
-Convert this vector into a unit vector. Returns the length.
-
-Returns a C<float32>
-
-=head2 Set( $x, $y )
-
-Set this vector to some specified coordinates.
-
-Parameters:
-
-=over 4
-
-=item * C<float32> C<$x>
-
-=item * C<float32> C<$y>
-
-=back
+Sets the vector's components to those specified.
 
 =head2 SetZero()
 
-Set this vector to all zeros.
+ $vec->SetZero();
 
-=head2 x()
+Sets the vector's components both to zero.
 
-=head2 x( $x )
+=head2 IsValid
 
-Parameters:
+ my $is_valid = $vec->IsValid();
 
-=over 4
+Returns true if both components are finite numbers. False otherwise.
 
-=item * C<float32> C<$x> (optional)
+=head2 Length
 
-=back
+ my $length = $vec->Length();
 
-Returns a C<float32>
+Returns the length of the vector.
 
-=head2 y()
+=head2 LengthSquared()
 
-=head2 y( $y )
+ my $length_squared = $vec->LengthSquared();
 
-Parameters:
+Returns the length of the vector squared.
+For performance, use this instead of L</Length> (if possible).
 
-=over 4
+=head2 Normalize
 
-=item * C<float32> C<$y> (optional)
+ my $length = $vec->Normalize();
 
-=back
+Converts the vector into a unit vector.
+Returns the length of the new vector.
 
-Returns a C<float32>
+=head2 Skew
+
+ my $skew = $vec->Skew();
+ 
+Returns the skew vector such that C<dot($skew, $other) == cross($vec, $other)>
+
+=head1 OVERLOADED OPERATORS
+
+=head2 +
+
+=head2 +=
+
+Vector addition of two vectors.
+
+=head2 -
+
+=head2 -=
+
+Vector subtraction of two vectors.
+
+=head2 unary -
+
+Negation of the components of a vector.
+
+=head2 *
+
+=head2 *=
+
+Scalar multiplication of a vector.
+
+=head2 .
+
+=head2 .=
+
+Dot product of two vectors.
+
+=head2 x
+
+=head2 x=
+
+Cross product of vector-vector, scalar-vector or vector-scalar.
+
+=head2 abs
+
+Absolute values of the compenents of a vector.
 
 =head1 SEE ALSO
 
 =over 4
 
-=item * L<Box2D>
+=item * L<Box2D::b2Math>
 
 =back
 
