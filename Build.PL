@@ -10,6 +10,7 @@ my $builder = Module::Build::WithXSpp->new(
     license             => 'perl',
     dist_author         => q{Kartik Thakore <kthakore@CPAN.org>},
     dist_version_from   => 'lib/Box2D.pm',
+	dist_abstract       => '2D Physics Library',
     configure_requires => {
         'Module::Build' => 0.38,
         'Alien::Box2D' => 0.103,
