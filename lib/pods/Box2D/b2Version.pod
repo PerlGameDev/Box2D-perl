@@ -1,21 +1,22 @@
 
 =head1 NAME
 
-Box2D::b2Version - Version structure.
+Box2D::b2Version - Version structure
 
 =head1 SYNOPSIS
 
- my $v = Box2D::b2Version->new();
  $v->major( 1 ); # set major to 1
  $v->minor( 2 );
  $v->revision( 3 );
 
  # get and print version information
+ my $v = Box2D::b2Version->new();
  printf( "%d.%d.%d\n", $v->major, $v->minor, $v->revision );
 
 =head1 DESCRIPTION
 
-Version structure used to obtain the version of the c++-library Box2D. See L<Box2D::b2_version|Box2D/b2_version>.
+Version structure used to obtain the version of the C++ library Box2D.
+See L<Box2D::b2_version|Box2D/b2_version>.
 
 =head1 METHODS
 
@@ -31,7 +32,7 @@ initialized.
 =head2 major
 
  $major = $version->major;
- $version->major( 1 );
+ $version->major( $num );
 
 Returns the major part of the version triplet. It is meant to represent
 significant changes when altered. Pass one numeric argument to set its value.
@@ -39,7 +40,7 @@ significant changes when altered. Pass one numeric argument to set its value.
 =head2 minor
 
  $minor = $version->minor;
- $version->minor( 2 );
+ $version->minor( $num );
 
 Returns the minor part of the version triplet. It is meant to represent
 incremental changes when altered. Pass one numeric argument to set its value.
@@ -47,7 +48,7 @@ incremental changes when altered. Pass one numeric argument to set its value.
 =head2 revision
 
  $revision = $version->revision;
- $version->revision( 3 );
+ $version->revision( $num );
 
 Returns the revision part of the version triplet. It is meant to represent
 bug fixes when altered. Pass one numeric argument to set its value.

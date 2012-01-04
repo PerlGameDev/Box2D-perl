@@ -22,15 +22,18 @@ Perl 5.
  # will print something like "2.2.1"
  printf( "%d.%d.%d\n", $version->major, $version->minor, $version->revision );
 
-This method is the only one provided by the Box2D base package. It returns
-a L<Box2D::b2Version> object holding the current libBox2D version.
+Returns a L<Box2D::b2Version> object holding the current libBox2D version.
+
+B<Note:> This is not the Box2D-perl version.
+This is found in C<$Box2D::VERSION>.
 
 =head1 OVERVIEW
 
 Currently this module is a 1 to 1 binding.
 This is still a WIP and so far here are the completed classes:
 
- Box2D::b2Version
+ b2TreeNode
+ b2Version
 
 =head1 USAGE
 
@@ -42,10 +45,10 @@ L<http://www.box2d.org/documentation.html>
 
 =head1 TODO
 
-    Documentation
-    Examples
-    Adding more bindings
-    Inline::C Support
+ Documentation
+ Examples
+ Adding more bindings
+ Inline::C Support
 
 =head1 CONTRIBUTE
 
@@ -61,13 +64,13 @@ L<GitHub Issues|https://github.com/PerlGameDev/Box2D-perl/issues>
 
 =head1 AUTHORS
 
-    Kartik Thakore
-    Abram Hindle
-    Tobias Leich
-    Jeffrey T. Palmer
-    Breno G. de Oliveira
-    Zach Morgan
-    Blaise Roth
+ Kartik Thakore
+ Abram Hindle
+ Tobias Leich
+ Jeffrey T. Palmer
+ Breno G. de Oliveira
+ Zach Morgan
+ Blaise Roth
 
 =head1 COPYRIGHT & LICENSE
 

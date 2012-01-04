@@ -1,7 +1,7 @@
 
 =head1 NAME
 
-Box2D::b2Vec2 - A 2D column vector.
+Box2D::b2Vec2 - A 2D column vector
 
 =head1 SYNOPSIS
 
