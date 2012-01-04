@@ -3,92 +3,197 @@ use warnings;
 use Box2D;
 use Test::More;
 
-ok( Box2D::b2Math::b2IsValid(0.0),  "b2IsValid" );
-ok( Box2D::b2Math::b2IsValid(1.0),  "b2IsValid" );
-ok( Box2D::b2Math::b2IsValid(-1.0), "b2IsValid" );
+ok( Box2D::b2IsValid(0.0),  "b2IsValid" );
+ok( Box2D::b2IsValid(1.0),  "b2IsValid" );
+ok( Box2D::b2IsValid(-1.0), "b2IsValid" );
+ok( !Box2D::b2IsValid(1e1000**1e1000), "!b2IsValid" );
+ok( !Box2D::b2IsValid(-1e1000**1e1000), "!b2IsValid" );
+my $nan = "NaN";
+SKIP: {
+	skip "No NaN support", 1 unless $nan != $nan; 
+	ok( !Box2D::b2IsValid($nan), "!b2IsValid" );
+}
 
-cmp_ok( abs( Box2D::b2Math::b2InvSqrt(4.0) - 0.5 ), "<=", 0.001,
-    "b2InvSqrt" );
+cmp_ok( abs( Box2D::b2InvSqrt(4.0) - 0.5 ), "<=", 0.001, "b2InvSqrt" );
 
-is( Box2D::b2Math::b2Abs(1.0),  1.0, "b2Abs" );
-is( Box2D::b2Math::b2Abs(-1.0), 1.0, "b2Abs" );
+cmp_ok( abs( Box2D::b2Sqrt(94) - sqrt(94) ), "<=", 0.001, "b2Sqrt" );
+cmp_ok( abs( Box2D::b2Sqrt(7.3) - sqrt(7.3) ), "<=", 0.001, "b2Sqrt" );
+
+cmp_ok( abs( Box2D::b2Atan2(35, 5.4) - atan2(35, 5.4) ), "<=", 0.001, "b2Atan2" );
 
 my $a = Box2D::b2Vec2->new( 1, 2 );
 my $b = Box2D::b2Vec2->new( 3, 4 );
 my $m = Box2D::b2Mat22->new( 5, 6, 7, 8 );
 my $s = 9;
+my $t = 10;
 
 {
-    my $c = Box2D::b2Math::b2DotV2V2( $a, $b );
-    is( $c, $a->x * $b->x + $a->y * $b->y, "b2DotV2V2" );
+    my $c = Box2D::b2Dot( $a, $b );
+    is( $c, $a->x * $b->x + $a->y * $b->y, "b2Dot" );
 }
 
 {
-    my $c = Box2D::b2Math::b2CrossV2V2( $a, $b );
-    is( $c, $a->x * $b->y - $a->y * $b->x, "b2CrossV2V2" );
+    my $c = $a . $b;
+    is( $c, $a->x * $b->x + $a->y * $b->y, "a . b" );
 }
 
 {
-    my $c = Box2D::b2Math::b2CrossV2S( $a, $s );
-    is( $c->x, $s * $a->y,  "b2CrossV2S" );
-    is( $c->y, -$s * $a->x, "b2CrossV2S" );
+    my $c = Box2D::b2Cross( $a, $b );
+    is( $c, $a->x * $b->y - $a->y * $b->x, "b2Cross a, b" );
 }
 
 {
-    my $c = Box2D::b2Math::b2CrossSV2( $s, $a );
-    is( $c->x, -$s * $a->y, "b2CrossSV2" );
-    is( $c->y, $s * $a->x,  "b2CrossSV2" );
+    my $c = Box2D::b2Cross( $a, $s );
+    is( $c->x, $s * $a->y,  "b2Cross a, s" );
+    is( $c->y, -$s * $a->x, "b2Cross a, s" );
 }
 
 {
-    my $c = Box2D::b2Math::b2MulM22V2( $m, $a );
-    is( $c->x, $m->ex->x * $a->x + $m->ey->x * $a->y, "b2MulM22V2" );
-    is( $c->y, $m->ex->y * $a->x + $m->ey->y * $a->y, "b2MulM22V2" );
+    my $c = Box2D::b2Cross( $s, $a );
+    is( $c->x, -$s * $a->y, "b2Cross s, a" );
+    is( $c->y, $s * $a->x,  "b2Cross s, a" );
 }
 
 {
-    my $c = Box2D::b2Math::b2MulTM22V2( $m, $a );
-    is( $c->x, Box2D::b2Math::b2DotV2V2( $a, $m->ex ), "b2MulTM22V2" );
-    is( $c->y, Box2D::b2Math::b2DotV2V2( $a, $m->ey ), "b2MulTM22V2" );
+    my $c = $a x $b;
+    is( $c, $a->x * $b->y - $a->y * $b->x, "a x b" );
 }
 
 {
-    my $c = Box2D::b2Math::b2AddV2V2( $a, $b );
-    is( $c->x, $a->x + $b->x, "b2AddV2V2" );
-    is( $c->y, $a->y + $b->y, "b2AddV2V2" );
+    my $c = $a x $s;
+    is( $c->x, $s * $a->y,  "a x s" );
+    is( $c->y, -$s * $a->x, "a x s" );
 }
 
 {
-    my $c = Box2D::b2Math::b2SubV2V2( $a, $b );
-    is( $c->x, $a->x - $b->x, "b2SubV2V2" );
-    is( $c->y, $a->y - $b->y, "b2SubV2V2" );
+    my $c = $s x $a;
+    is( $c->x, -$s * $a->y, "s x a" );
+    is( $c->y, $s * $a->x,  "s x a" );
 }
 
 {
-    my $c = Box2D::b2Math::b2MulSV2( $s, $a );
-    is( $c->x, $s * $a->x, "b2MulSV2" );
-    is( $c->y, $s * $a->y, "b2MulSV2" );
+    my $c = Box2D::b2Mul( $m, $a );
+    is( $c->x, $m->ex->x * $a->x + $m->ey->x * $a->y, "b2Mul" );
+    is( $c->y, $m->ex->y * $a->x + $m->ey->y * $a->y, "b2Mul" );
 }
 
 {
-    ok( !( Box2D::b2Math::b2EqlV2V2( $a, $b ) ), "b2EqlV2V2" );
-    ok( !( Box2D::b2Math::b2EqlV2V2( $b, $a ) ), "b2EqlV2V2" );
-    ok( Box2D::b2Math::b2EqlV2V2( $a, $a ), "b2EqlV2V2" );
-    ok( Box2D::b2Math::b2EqlV2V2( $b, $b ), "b2EqlV2V2" );
+    my $c = Box2D::b2MulT( $m, $a );
+    is( $c->x, Box2D::b2Dot( $a, $m->ex ), "b2MulT" );
+    is( $c->y, Box2D::b2Dot( $a, $m->ey ), "b2MulT" );
+}
+
+{
+    my $c = $a + $b;
+    is( $c->x, $a->x + $b->x, "a + b" );
+    is( $c->y, $a->y + $b->y, "a + b" );
+}
+
+{
+    my $c = $a - $b;
+    is( $c->x, $a->x - $b->x, "a - b" );
+    is( $c->y, $a->y - $b->y, "a - b" );
+}
+
+{
+    my $c = $s * $a;
+    is( $c->x, $s * $a->x, "s * a" );
+    is( $c->y, $s * $a->y, "s * a" );
+}
+
+{
+    ok( !($a == $b ), "!(a == b)" );
+    ok( !($b == $a ), "!(b == a)" );
+    ok( $a != $b, "a != b" );
+    ok( $b != $a, "b != a" );
+    ok( $a == $a, "a == a" );
+    ok( $b == $b, "a == a" );
+    ok( !($a != $a), "!(a != a)" );
+    ok( !($b != $b), "!(a != a)" );
+	ok(Box2D::b2Vec2->new(33, 5.7) == Box2D::b2Vec2->new(33, 5.7), "a == a");
+	ok(!(Box2D::b2Vec2->new(9.9, 95) != Box2D::b2Vec2->new(9.9, 95)), "!(a != a)");
 
     my $c = Box2D::b2Vec2->new( $a->x, $a->y );
-    ok( Box2D::b2Math::b2EqlV2V2( $a, $c ), "b2EqlV2V2" );
+    ok( $a == $c, "a == b" );
 }
 
 {
-    my $c = Box2D::b2Math::b2Distance( $a, $b );
-    is( $c, Box2D::b2Math::b2SubV2V2( $a, $b )->Length, "b2Distance" );
+    my $c = Box2D::b2Distance( $a, $b );
+    is( $c, ( $a - $b )->Length, "b2Distance" );
 }
 
 {
-    my $c = Box2D::b2Math::b2DistanceSquared( $a, $b );
-    my $d = Box2D::b2Math::b2SubV2V2( $a, $b );
-    is( $c, Box2D::b2Math::b2DotV2V2( $d, $d ), "b2DistanceSquared" );
+    my $c = Box2D::b2DistanceSquared( $a, $b );
+    my $d = $a - $b;
+    is( $c, Box2D::b2Dot( $d, $d ), "b2DistanceSquared" );
 }
+
+is( Box2D::b2Abs(1.0),  1.0, "b2Abs" );
+is( Box2D::b2Abs(-1.0), 1.0, "b2Abs" );
+
+{
+	my $d = $a - $b;
+	my $c = Box2D::b2Abs($d);
+	is( $c->x, abs($d->x), "b2Abs" );
+	is( $c->y, abs($d->y), "b2Abs" );
+}
+
+{
+	my $d = $a - $b;
+	my $c = abs($d);
+	is( $c->x, abs($d->x), "abs" );
+	is( $c->y, abs($d->y), "abs" );
+}
+
+is( Box2D::b2Min($s, $t), $s, "b2Min" );
+is( Box2D::b2Min($t, $s), $s, "b2Min" );
+is( Box2D::b2Max($s, $t), $t, "b2Max" );
+is( Box2D::b2Max($t, $s), $t, "b2Max" );
+
+{
+	my $c = Box2D::b2Min($a, $b);
+	is( $c->x, $a->x, "b2Min" );
+	is( $c->y, $a->y, "b2Min" );
+}
+
+{
+	my $c = Box2D::b2Min($b, $a);
+	is( $c->x, $a->x, "b2Min" );
+	is( $c->y, $a->y, "b2Min" );
+}
+
+{
+	my $c = Box2D::b2Max($a, $b);
+	is( $c->x, $b->x, "b2Max" );
+	is( $c->y, $b->y, "b2Max" );
+}
+
+{
+	my $c = Box2D::b2Max($b, $a);
+	is( $c->x, $b->x, "b2Max" );
+	is( $c->y, $b->y, "b2Max" );
+}
+
+{
+	my $d = 1;
+	my $low = 3;
+	my $high = 4;
+	my $c = Box2D::b2Clamp($d, $low, $high);
+	is( $c, $low, "b2Clamp" );
+}
+
+{
+	my $d = Box2D::b2Vec2->new(3, 6);
+	my $low = Box2D::b2Vec2->new(-2, 4);
+	my $high = Box2D::b2Vec2->new(8, 5);
+	my $c = Box2D::b2Clamp($d, $low, $high);
+	is( $c->x, $d->x, "b2Clamp" );
+	is( $c->y, $high->y, "b2Clamp" );
+}
+
+is( Box2D::b2NextPowerOfTwo(64), 128, "b2NextPowerOfTwo");
+
+ok( Box2D::b2IsPowerOfTwo(8), "b2IsPowerOfTwo");
+ok( !Box2D::b2IsPowerOfTwo(31), "b2IsPowerOfTwo");
 
 done_testing;

@@ -6,8 +6,6 @@
 
 %module{Box2D};
 %package{Box2D};
-<<<<<<< HEAD
-=======
 
 %name{Box2D} class b2
 {
@@ -29,4 +27,3 @@ b2_version( )
 %}
 
 };
->>>>>>> d2c7f2e94b007feca78e82ea9b2e96c4e036f46e
