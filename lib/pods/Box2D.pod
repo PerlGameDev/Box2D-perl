@@ -13,20 +13,6 @@ Box2D is a package of Perl modules that provide an object oriented
 interface to the L<Box2D Physics Engine|http://www.box2d.org/> for
 Perl 5.
 
-=head1 METHODS
-
-=head2 b2_version
-
- my $version = Box2D::b2_version();
-
- # will print something like "2.2.1"
- printf( "%d.%d.%d\n", $version->major, $version->minor, $version->revision );
-
-Returns a L<Box2D::b2Version> object holding the current libBox2D version.
-
-B<Note:> This is not the Box2D-perl version.
-This is found in C<$Box2D::VERSION>.
-
 =head1 OVERVIEW
 
 Currently this module is a 1 to 1 binding.
