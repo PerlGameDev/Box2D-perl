@@ -1,6 +1,6 @@
 Revision history for Box2D
 
-0.06
+0.06    05/01/2012
         Implemented b2PolygonShape::Set [FROGGS]
         Updated documentation [jtpalmer]
         Added radar example [jtpalmer]
