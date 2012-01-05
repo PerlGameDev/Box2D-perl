@@ -44,10 +44,25 @@ b2Atan2( y, x )
 
 float32
 b2Dot( a, b )
-	b2Vec2* a
-	b2Vec2* b
+	SV* a
+	SV* b
 	CODE:
-		RETVAL = b2Dot( *a, *b );
+		if(sv_isobject(a)) {
+			if(sv_derived_from(a, "Box2D::b2Vec2")) {
+				if(sv_isobject(b) && sv_derived_from(b, "Box2D::b2Vec2")) {
+					RETVAL = b2Dot( *(b2Vec2*)SvIV(SvRV(a)), *(b2Vec2*)SvIV(SvRV(b)) );
+				}
+				else XSRETURN_UNDEF;
+			}
+			else if(sv_derived_from(a, "Box2D::b2Vec3")) {
+				if(sv_isobject(b) && sv_derived_from(b, "Box2D::b2Vec3")) {
+					RETVAL = b2Dot( *(b2Vec3*)SvIV(SvRV(a)), *(b2Vec3*)SvIV(SvRV(b)) );
+				}
+				else XSRETURN_UNDEF;
+			}
+			else XSRETURN_UNDEF;
+		}
+		else XSRETURN_UNDEF;
 	OUTPUT:
 		RETVAL
 
@@ -68,14 +83,20 @@ b2Cross( x, y )
 				sv_setref_pv(ST(0), "Box2D::b2Vec2", RETVAL);
 			}
 		}
-		else if(sv_isobject(y) && sv_derived_from(y, "Box2D::b2Vec2")) {
-			ST(0) = sv_newmortal();
-			RETVAL = new b2Vec2(b2Cross((float32)SvNV(x), *(b2Vec2*)SvIV(SvRV(y))));
-			sv_setref_pv(ST(0), "Box2D::b2Vec2", RETVAL);
+		else if(sv_isobject(y)) {
+			if(sv_derived_from(y, "Box2D::b2Vec2")) {
+				ST(0) = sv_newmortal();
+				RETVAL = new b2Vec2(b2Cross((float32)SvNV(x), *(b2Vec2*)SvIV(SvRV(y))));
+				sv_setref_pv(ST(0), "Box2D::b2Vec2", RETVAL);
+			}
+			else if(sv_isobject(x) && sv_derived_from(x, "Box2D::b2Vec3") && sv_derived_from(y, "Box2D::b2Vec3")) {
+				ST(0) = sv_newmortal();
+				RETVAL = new b2Vec3(b2Cross(*(b2Vec3*)SvIV(SvRV(x)), *(b2Vec3*)SvIV(SvRV(y))));
+				sv_setref_pv(ST(0), "Box2D::b2Vec3", RETVAL);
+			}
+			else XSRETURN_UNDEF;
 		}
-		else {
-			XSRETURN_UNDEF;
-		}
+		else XSRETURN_UNDEF;
 		XSRETURN(1);
 
 b2Vec2*
@@ -157,6 +178,39 @@ b2DistanceSquared( a, b )
 	b2Vec2* b
 	CODE:
 		RETVAL = b2DistanceSquared( *a, *b );
+	OUTPUT:
+		RETVAL
+
+b2Vec3*
+_vec3_multiply( s, a )
+	float32 s
+	b2Vec3* a
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec3";
+	CODE:
+		RETVAL = new b2Vec3( s * *a );
+	OUTPUT:
+		RETVAL
+
+b2Vec3*
+_vec3_add( a, b )
+	b2Vec3* a
+	b2Vec3* b
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec3";
+	CODE:
+		RETVAL = new b2Vec3( *a + *b );
+	OUTPUT:
+		RETVAL
+
+b2Vec3*
+_vec3_subtract( a, b )
+	b2Vec3* a
+	b2Vec3* b
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec3";
+	CODE:
+		RETVAL = new b2Vec3( *a - *b );
 	OUTPUT:
 		RETVAL
 

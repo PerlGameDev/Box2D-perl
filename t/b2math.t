@@ -26,6 +26,8 @@ my $b = Box2D::b2Vec2->new( 3, 4 );
 my $m = Box2D::b2Mat22->new( 5, 6, 7, 8 );
 my $s = 9;
 my $t = 10;
+my $q = Box2D::b2Vec3->new( 11, 12, 13 );
+my $r = Box2D::b2Vec3->new( 14, 15, 16 );
 
 {
     my $c = Box2D::b2Dot( $a, $b );
@@ -126,6 +128,51 @@ my $t = 10;
     my $c = Box2D::b2DistanceSquared( $a, $b );
     my $d = $a - $b;
     is( $c, Box2D::b2Dot( $d, $d ), "b2DistanceSquared" );
+}
+
+{
+	my $c = $s * $r;
+	is( $c->x, $s * $r->x, "v3 s * a" );
+	is( $c->y, $s * $r->y, "v3 s * a" );
+	is( $c->z, $s * $r->z, "v3 s * a" );
+}
+
+{
+	my $c = $r + $q;
+	is( $c->x, $r->x + $q->x, "v3 a * b" );
+	is( $c->y, $r->y + $q->y, "v3 a * b" );
+	is( $c->z, $r->z + $q->z, "v3 a * b" );
+}
+
+{
+	my $c = $q - $r;
+	is( $c->x, $q->x - $r->x, "v3 a - b" );
+	is( $c->y, $q->y - $r->y, "v3 a - b" );
+	is( $c->z, $q->z - $r->z, "v3 a - b" );
+}
+
+{
+	my $c = Box2D::b2Dot($r, $q);
+	is( $c, $r->x * $q->x + $r->y * $q->y + $r->z * $q->z, "v3 b2Dot" );
+}
+
+{
+	my $c = $q . $r;
+	is( $c, $r->x * $q->x + $r->y * $q->y + $r->z * $q->z, "v3 a . b" );
+}
+
+{
+	my $c = Box2D::b2Cross($r, $q);
+	is( $c->x, $r->y * $q->z - $r->z * $q->y, "v3 b2Cross" );
+	is( $c->y, $r->z * $q->x - $r->x * $q->z, "v3 b2Cross" );
+	is( $c->z, $r->x * $q->y - $r->y * $q->x, "v3 b2Cross" );
+}
+
+{
+	my $c = $q x $r;
+	is( $c->x, $q->y * $r->z - $q->z * $r->y, "v3 a x b" );
+	is( $c->y, $q->z * $r->x - $q->x * $r->z, "v3 a x b" );
+	is( $c->z, $q->x * $r->y - $q->y * $r->x, "v3 a x b" );
 }
 
 is( Box2D::b2Abs(1.0),  1.0, "b2Abs" );

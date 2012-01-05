@@ -29,6 +29,7 @@ use constant {
 };
 
 use Box2D::b2Vec2;
+use Box2D::b2Vec3;
 
 BEGIN {
 	*Box2D::b2World::SetContactListener = sub {

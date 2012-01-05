@@ -34,9 +34,6 @@ sub _subtract {
 	}
 }
 
-# Multiplication is defined between a vector and scalar. Multiplying two
-# vectors is ambiguous because either cross product or dot product may
-# be intended. Use b2CrossV2V2 or b2DotV2V2 for those operations.
 sub _multiply {
 	my ( $self, $other ) = @_;
 

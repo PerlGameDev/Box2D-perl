@@ -1,0 +1,68 @@
+%{
+
+#include <Box2D/Box2D.h>
+
+%}
+
+%module{Box2D};
+
+%name{Box2D::b2Vec3} class b2Vec3
+{
+
+b2Vec3( float32 x, float32 y, float32 z );
+
+void SetZero();
+
+void Set( float32 x_, float32 y_, float32 z_ );
+
+%{
+
+float32
+b2Vec3::x( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->x = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->x;
+	OUTPUT:
+		RETVAL
+
+float32
+b2Vec3::y( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->y = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->y;
+	OUTPUT:
+		RETVAL
+
+float32
+b2Vec3::z( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->z = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->z;
+	OUTPUT:
+		RETVAL
+
+b2Vec3*
+b2Vec3::_negate()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec3";
+	CODE:
+		RETVAL = new b2Vec3(-*THIS);
+	OUTPUT:
+		RETVAL
+
+%}
+
+/* +=, -= and *= would be here,
+but it's better to let Perl autogenerate them */
+
+};
+
