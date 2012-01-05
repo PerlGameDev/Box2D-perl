@@ -1,0 +1,118 @@
+
+=head1 NAME
+
+Box2D::b2Vec2 - A 2D column vector with 3 elements
+
+=head1 SYNOPSIS
+
+ # create a new 3 element vector
+ my $vector = Box2D::b2Vec3->new( 0, 20, -4 );
+
+=head1 DESCRIPTION
+
+C<Box2D::b2Vec3> holds all of Box2D's 3 parameter lists.
+It also provides some methods and overloaded operators
+for manipulating vectors.
+There are more functions that operate on C<b2Vec3>s found in L<Box2D::b2Math>.
+
+=head1 METHODS
+
+=head2 new
+
+ my $vec = Box2D::b2Vec3->new( $x, $y, $z );
+
+Returns a new C<Box2D::b2Vec3> with the specifed C<x>, C<y> and C<z> components.
+
+=head2 x
+
+ my $x = $vec->x();
+ $vec->x( $x );
+
+Returns the vector's C<x> component.
+Specify a single numeric value to modify it.
+
+=head2 y
+
+ my $y = $vec->y();
+ $vec->y( $y );
+
+Returns the vector's C<y> component.
+Specify a single numeric value to modify it.
+
+=head2 z
+
+ my $z = $vec->z();
+ $vec->z( $z );
+
+Returns the vector's C<z> component.
+Specify a single numeric value to modify it.
+
+=head2 Set
+
+ $vec->Set( $x, $y, $z );
+
+Sets the vector's components to those specified.
+
+=head2 SetZero()
+
+ $vec->SetZero();
+
+Sets all of the vector's components to zero.
+
+=head1 OVERLOADED OPERATORS
+
+=head2 +
+
+=head2 +=
+
+Vector addition of two vectors.
+
+=head2 -
+
+=head2 -=
+
+Vector subtraction of two vectors.
+
+=head2 unary -
+
+Negation of the components of a vector.
+
+=head2 *
+
+=head2 *=
+
+Scalar multiplication of a vector.
+
+=head2 .
+
+=head2 .=
+
+Dot product of two vectors.
+
+=head2 x
+
+=head2 x=
+
+Cross product of two vectors.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D::b2Math>
+
+=back
+
+=head1 BUGS
+
+See L<Box2D/BUGS>
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut
