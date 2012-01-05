@@ -1,6 +1,7 @@
 Revision history for Box2D
 
 0.06
+        Implemented b2PolygonShape::Set [FROGGS]
         Updated documentation [jtpalmer]
         Added radar example [jtpalmer]
         Replaced use of 'parent' with 'base' [jtpalmer]
