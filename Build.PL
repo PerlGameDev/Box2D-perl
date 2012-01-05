@@ -7,6 +7,7 @@ push @INC, "build";
 
 my $builder = Module::Build::WithXSpp->new(
     module_name         => 'Box2D',
+    dist_abstract       => '2D Physics Library',
     license             => 'perl',
     dist_author         => q{Kartik Thakore <kthakore@CPAN.org>},
     dist_version_from   => 'lib/Box2D.pm',
