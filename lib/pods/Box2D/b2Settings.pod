@@ -1,0 +1,155 @@
+
+=head1 NAME
+
+Box2D::b2Settings - Global constants based on meters-kilograms-seconds (MKS) units
+
+=head1 SYNOPSIS
+
+ # get the maximum number of vertices on a convex polygon.
+ my $max_polygon_vertices = Box2D::b2Settings::maxPolygonVertices;
+
+ # get libBox2D's version
+ my $version = Box2D::b2Settings::b2_version;
+
+=head1 DESCRIPTION
+
+These methods are compile-time values of the C++ library Box2D. They can not be changed.
+
+=head1 METHODS
+
+=head2 b2_maxFloat
+
+The value of this is the maximum number representable in type float. It is supposed to be
+at least 1E+37. The value has type float. The smallest representable number is - FLT_MAX.
+
+=head2 b2_epsilon
+
+This is the minimum positive floating point number of type float such that 1.0 + FLT_EPSILON
+!= 1.0 is true. It's supposed to be no greater than 1E-5.
+
+=head2 b2_pi
+
+Gives you the value of pi.
+
+=head2 b2_maxManifoldPoints
+
+The maximum number of contact points between two convex shapes.
+
+=head2 b2_maxPolygonVertices
+
+The maximum number of vertices on a convex polygon.
+
+=head2 b2_aabbExtension
+
+This is used to fatten AABBs in the dynamic tree. This allows proxies
+to move by a small amount without triggering a tree adjustment.
+This is in meters.
+
+=head2 b2_aabbMultiplier
+
+This is used to fatten AABBs in the dynamic tree. This is used to predict
+the future position based on the current displacement.
+This is a dimensionless multiplier.
+
+=head2 b2_linearSlop
+
+A small length used as a collision and constraint tolerance. Usually it is
+chosen to be numerically significant, but visually insignificant.
+
+=head2 b2_angularSlop
+
+A small angle used as a collision and constraint tolerance. Usually it is
+chosen to be numerically significant, but visually insignificant.
+
+=head2 b2_polygonRadius
+
+The radius of the polygon/edge shape skin.
+
+=head2 b2_maxSubSteps
+
+Maximum number of sub-steps per contact in continuous physics simulation.
+
+=head2 b2_maxTOIContacts
+
+Maximum number of contacts to be handled to solve a TOI impact.
+
+=head2 b2_velocityThreshold
+
+A velocity threshold for elastic collisions. Any collision with a relative linear
+velocity below this threshold will be treated as inelastic.
+
+=head2 b2_maxLinearCorrection
+
+The maximum linear position correction used when solving constraints. This helps to
+prevent overshoot.
+
+=head2 b2_maxAngularCorrection
+
+The maximum angular position correction used when solving constraints. This helps to
+prevent overshoot.
+
+=head2 b2_maxTranslation
+
+=head2 b2_maxTranslationSquared
+
+The maximum linear velocity of a body. This limit is very large and is used
+to prevent numerical problems.
+
+=head2 b2_maxRotation
+
+=head2 b2_maxRotationSquared
+
+The maximum angular velocity of a body. This limit is very large and is used
+to prevent numerical problems.
+
+=head2 b2_baumgarte
+
+=head2 b2_toiBaugarte
+
+This scale factor controls how fast overlap is resolved.
+
+=head2 b2_timeToSleep
+
+The time that a body must be still before it will go to sleep.
+
+=head2 b2_linearSleepTolerance
+
+A body cannot sleep if its linear velocity is above this tolerance.
+
+=head2 b2_angularSleepTolerance
+
+A body cannot sleep if its angular velocity is above this tolerance.
+
+=head2 b2_version
+
+ my $version = Box2D::b2Settings::b2_version;
+
+ # will print something like "2.2.1"
+ printf( "%d.%d.%d\n", $version->major, $version->minor, $version->revision );
+
+Returns a L<Box2D::b2Version> object holding the current C++ library Box2D version.
+
+B<Note:> This is not the Box2D-perl version.
+This is found in C<$Box2D::VERSION>.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D>
+
+=back
+
+=head1 BUGS
+
+See L<Box2D/BUGS>
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

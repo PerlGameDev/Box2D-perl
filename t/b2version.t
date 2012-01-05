@@ -15,8 +15,6 @@ is( $version->major,      9, "version->major is 9");
 is( $version->minor,     88, "version->major is 88");
 is( $version->revision, 777, "version->major is 777");
 
-# testing of b2_version will be moved to t/b2Settings.t
-
 pass("cleanup");
 
 done_testing;

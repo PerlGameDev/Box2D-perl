@@ -10,12 +10,191 @@
 %name{Box2D::b2Settings} class b2Settings
 {
 
+/*void* b2Alloc(int32 size);
+void b2Free(void* mem);
+void b2Log(const char* string, ...);*/
+
 %{
 
-void
-b2Settings::new( )
+float32
+b2_pi( )
 	CODE:
-		warn("This is a stub for b2Settings");
+		RETVAL = b2_pi;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_maxFloat( )
+	CODE:
+		RETVAL = b2_maxFloat;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_epsilon( )
+	CODE:
+		RETVAL = b2_epsilon;
+	OUTPUT:
+		RETVAL
+
+int
+b2_maxManifoldPoints( )
+	CODE:
+		RETVAL = b2_maxManifoldPoints;
+	OUTPUT:
+		RETVAL
+
+int
+b2_maxPolygonVertices( )
+	CODE:
+		RETVAL = b2_maxPolygonVertices;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_aabbExtension( )
+	CODE:
+		RETVAL = b2_aabbExtension;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_aabbMultiplier( )
+	CODE:
+		RETVAL = b2_aabbMultiplier;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_linearSlop( )
+	CODE:
+		RETVAL = b2_linearSlop;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_angularSlop( )
+	CODE:
+		RETVAL = b2_angularSlop;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_polygonRadius( )
+	CODE:
+		RETVAL = b2_polygonRadius;
+	OUTPUT:
+		RETVAL
+
+int
+b2_maxSubSteps( )
+	CODE:
+		RETVAL = b2_maxSubSteps;
+	OUTPUT:
+		RETVAL
+
+int
+b2_maxTOIContacts( )
+	CODE:
+		RETVAL = b2_maxTOIContacts;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_velocityThreshold( )
+	CODE:
+		RETVAL = b2_velocityThreshold;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_maxLinearCorrection( )
+	CODE:
+		RETVAL = b2_maxLinearCorrection;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_maxAngularCorrection( )
+	CODE:
+		RETVAL = b2_maxAngularCorrection;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_maxTranslation( )
+	CODE:
+		RETVAL = b2_maxTranslation;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_maxTranslationSquared( )
+	CODE:
+		RETVAL = b2_maxTranslationSquared;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_maxRotation( )
+	CODE:
+		RETVAL = b2_maxRotation;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_maxRotationSquared( )
+	CODE:
+		RETVAL = b2_maxRotationSquared;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_baumgarte( )
+	CODE:
+		RETVAL = b2_baumgarte;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_toiBaugarte( )
+	CODE:
+		RETVAL = b2_toiBaugarte;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_timeToSleep( )
+	CODE:
+		RETVAL = b2_timeToSleep;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_linearSleepTolerance( )
+	CODE:
+		RETVAL = b2_linearSleepTolerance;
+	OUTPUT:
+		RETVAL
+
+float32
+b2_angularSleepTolerance( )
+	CODE:
+		RETVAL = b2_angularSleepTolerance;
+	OUTPUT:
+		RETVAL
+
+b2Version *
+b2_version( )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Version";
+	CODE:
+		RETVAL           = (b2Version *)safemalloc(sizeof(b2Version));
+		RETVAL->major    = b2_version.major;
+		RETVAL->minor    = b2_version.minor;
+		RETVAL->revision = b2_version.revision;
+	OUTPUT:
+		RETVAL
 
 %}
 
