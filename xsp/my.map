@@ -27,6 +27,7 @@ b2LineJointDef *       O_OBJECT
 b2Manifold *           O_OBJECT
 b2MassData *           O_OBJECT
 b2Mat22 *              O_OBJECT
+b2Mat33 *              O_OBJECT
 b2MouseJoint *         O_OBJECT
 b2MouseJointDef *      O_OBJECT
 b2PolygonShape *       O_OBJECT

@@ -28,6 +28,7 @@ my $s = 9;
 my $t = 10;
 my $q = Box2D::b2Vec3->new( 11, 12, 13 );
 my $r = Box2D::b2Vec3->new( 14, 15, 16 );
+my $n = Box2D::b2Mat22->new( 17, 18, 19, 20 );
 
 {
     my $c = Box2D::b2Dot( $a, $b );
@@ -173,6 +174,32 @@ my $r = Box2D::b2Vec3->new( 14, 15, 16 );
 	is( $c->x, $q->y * $r->z - $q->z * $r->y, "v3 a x b" );
 	is( $c->y, $q->z * $r->x - $q->x * $r->z, "v3 a x b" );
 	is( $c->z, $q->x * $r->y - $q->y * $r->x, "v3 a x b" );
+}
+
+{
+	my $c = $m + $n;
+	is( $c->ex->x, $m->ex->x + $n->ex->x, "m22 a + b" );
+	is( $c->ey->x, $m->ey->x + $n->ey->x, "m22 a + b" );
+	is( $c->ex->y, $m->ex->y + $n->ex->y, "m22 a + b" );
+	is( $c->ey->y, $m->ey->y + $n->ey->y, "m22 a + b" );
+}
+
+{
+	my $c = Box2D::b2Mul($m, $n);
+	my $d = Box2D::b2Mul($m, $n->ex);
+	my $e = Box2D::b2Mul($m, $n->ey);
+	is( $c->ex->x, $d->x, "m22 b2Mul" );
+	is( $c->ey->x, $e->x, "m22 b2Mul" );
+	is( $c->ex->y, $d->y, "m22 b2Mul" );
+	is( $c->ey->y, $e->y, "m22 b2Mul" );
+}
+
+{
+	my $c = Box2D::b2MulT($m, $n);
+	is( $c->ex->x, Box2D::b2Dot($m->ex, $n->ex), "m22 b2MulT" );
+	is( $c->ey->x, Box2D::b2Dot($m->ex, $n->ey), "m22 b2MulT" );
+	is( $c->ex->y, Box2D::b2Dot($m->ey, $n->ex), "m22 b2MulT" );
+	is( $c->ey->y, Box2D::b2Dot($m->ey, $n->ey), "m22 b2MulT" );
 }
 
 is( Box2D::b2Abs(1.0),  1.0, "b2Abs" );

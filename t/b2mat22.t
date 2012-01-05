@@ -13,7 +13,6 @@ my $eyb = Box2D::b2Vec2->new( $b12, $b22 );
 
 my $matrix = Box2D::b2Mat22->new( $a11, $a12, $a21, $a22 );
 
-ok( $matrix, "new" );
 isa_ok( $matrix, "Box2D::b2Mat22" );
 
 is( $matrix->ex->x, $a11, "Get ex->x" );
@@ -51,5 +50,25 @@ is( $matrix->ex->x, $b11, "ex x" );
 is( $matrix->ey->x, $b12, "ey x" );
 is( $matrix->ex->y, $b21, "ex y" );
 is( $matrix->ey->y, $b22, "ey y" );
+
+$matrix = Box2D::b2Mat22->new( $eyb, $exa );
+
+isa_ok( $matrix, "Box2D::b2Mat22" );
+
+is( $matrix->ex->x, $b12, "new v2, v2 a11" );
+is( $matrix->ey->x, $a11, "new v2, v2 a12" );
+is( $matrix->ex->y, $b22, "new v2, v2 a21" );
+is( $matrix->ey->y, $a21, "new v2, v2 a22" );
+
+# TODO: GetInverse()
+
+{
+	# Solve for x: A * x = b, where b is a column vector arg
+	my $A = $matrix;
+	my $b = Box2D::b2Mul($A, $exa);
+	my $x = $A->Solve( $b );
+	is( $x->x, $exa->x, "Solve" );
+	is( $x->y, $exa->y, "Solve" );
+}
 
 done_testing;

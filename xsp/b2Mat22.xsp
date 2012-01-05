@@ -10,28 +10,40 @@
 %name{Box2D::b2Mat22} class b2Mat22
 {
 
-b2Mat22(float32 a11 = 0.0, float32 a12 = 0.0, float32 a21 = 0.0, float32 a22 = 0.0);
-
 void SetIdentity();
 
 void SetZero();
 
 %{
 
-void
-b2Mat22::Set( col1, col2 )
-	b2Vec2* col1
-	b2Vec2* col2
+b2Mat22*
+b2Mat22::new( ... )
 	CODE:
-		THIS->Set( *col1, *col2 );
+		if(items == 3) {
+			RETVAL = new b2Mat22( *(b2Vec2 *)stack_to_object(ST(1)), *(b2Vec2 *)stack_to_object(ST(2)) );
+		}
+		else if(items == 5) {
+			RETVAL = new b2Mat22( (float32)SvNV(ST(1)), (float32)SvNV(ST(2)), (float32)SvNV(ST(3)), (float32)SvNV(ST(4)) );
+		}
+		else {
+			croak_xs_usage(cv,  "THIS, (c1, c2)||(a11, a12, a21, a22)");
+		}
+	OUTPUT:
+		RETVAL
+
+void
+b2Mat22::Set( c1, c2 )
+	b2Vec2* c1
+	b2Vec2* c2
+	CODE:
+		THIS->Set( *c1, *c2 );
 
 b2Mat22*
 b2Mat22::GetInverse()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Mat22";
 	CODE:
-		b2Mat22 bm = THIS->GetInverse();
-		RETVAL = new b2Mat22(bm);
+		RETVAL = new b2Mat22(THIS->GetInverse());
 	OUTPUT:
 		RETVAL
 
@@ -41,8 +53,7 @@ b2Mat22::Solve( b )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		b2Vec2 bv = THIS->Solve( *b );
-		RETVAL = new b2Vec2(bv);
+		RETVAL = new b2Vec2(THIS->Solve(*b));
 	OUTPUT:
 		RETVAL
 
@@ -53,8 +64,7 @@ b2Mat22::ex( ... )
 	CODE:
 		if( items > 1 )
 		{
-			b2Vec2* v = (b2Vec2 *)stack_to_object( ST(1) );
-			THIS->ex = *v;
+			THIS->ex = *(b2Vec2 *)stack_to_object(ST(1));
 		}
 		RETVAL = &(THIS->ex);
 	OUTPUT:
@@ -67,8 +77,7 @@ b2Mat22::ey( ... )
 	CODE:
 		if( items > 1 )
 		{
-			b2Vec2* v = (b2Vec2 *)stack_to_object( ST(1) );
-			THIS->ey = *v;
+			THIS->ey = *(b2Vec2 *)stack_to_object(ST(1));
 		}
 		RETVAL = &(THIS->ey);
 	OUTPUT:

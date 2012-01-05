@@ -12,8 +12,10 @@ examples/pulley.pl
 examples/radar.pl
 lib/Box2D.pm
 lib/Box2D/b2ContactListener.pm
+lib/Box2D/b2Mat22.pm
 lib/Box2D/b2RayCastCallback.pm
 lib/Box2D/b2Vec2.pm
+lib/Box2D/b2Vec3.pm
 lib/pods/Box2D.pod
 lib/pods/Box2D/b2AABB.pod
 lib/pods/Box2D/b2Body.pod
@@ -54,6 +56,7 @@ lib/pods/Box2D/b2RevoluteJointDef.pod
 lib/pods/Box2D/b2Shape.pod
 lib/pods/Box2D/b2Transform.pod
 lib/pods/Box2D/b2Vec2.pod
+lib/pods/Box2D/b2Vec3.pod
 lib/pods/Box2D/b2Version.pod
 lib/pods/Box2D/b2WeldJoint.pod
 lib/pods/Box2D/b2WeldJointDef.pod
@@ -89,6 +92,7 @@ t/b2revolutejoint.t
 t/b2timer.t
 t/b2transform.t
 t/b2vec2.t
+t/b2vec3.t
 t/b2version.t
 t/b2weldjoint.t
 t/b2world.t
@@ -164,6 +168,7 @@ xsp/b2TimeOfImpact.xsp
 xsp/b2Timer.xsp
 xsp/b2Transform.xsp
 xsp/b2Vec2.xsp
+xsp/b2Vec3.xsp
 xsp/b2Version.xsp
 xsp/b2WeldJoint.xsp
 xsp/b2WeldJointDef.xsp
