@@ -1,8 +1,4 @@
 Build.PL
-buildtmp/Box2D.c
-buildtmp/Box2D.o
-buildtmp/main.xs
-buildtmp/typemap
 Changes
 examples/breakable.pl
 examples/clock.pl
