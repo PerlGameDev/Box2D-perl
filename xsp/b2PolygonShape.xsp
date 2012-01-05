@@ -15,6 +15,18 @@ b2PolygonShape::new( )
 		RETVAL 
 
 void
+b2PolygonShape::Set( ... )
+	CODE:
+		b2Vec2 vertices[b2_maxPolygonVertices];
+		int i;
+		int count = (items - 1);
+		if( count > b2_maxPolygonVertices )
+			count = b2_maxPolygonVertices;
+		for(i = 0; i < count; i++)
+			vertices[i] = *(b2Vec2*)stack_to_object( ST(i + 1) );
+		THIS->Set( vertices, count );
+
+void
 b2PolygonShape::SetAsBox( x, y, ... )
 	float32 x
 	float32 y

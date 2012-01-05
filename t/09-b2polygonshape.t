@@ -3,6 +3,29 @@ use warnings;
 use Box2D;
 use Test::More;
 
+my $poly = Box2D::b2PolygonShape->new();
+$poly->Set(
+    Box2D::b2Vec2->new( 0.0, 0.0 ),
+    Box2D::b2Vec2->new( 1.0, 0.0 ),
+    Box2D::b2Vec2->new( 0.0, 1.0 )
+);
+pass("Set");
+
+is( $poly->GetVertexCount, 3, "GetVertexCount" );
+
+my $vertex = $poly->GetVertex( 0 );
+isa_ok( $vertex, "Box2D::b2Vec2" );
+is( $vertex->x, 0 );
+is( $vertex->y, 0 );
+$vertex = $poly->GetVertex( 1 );
+isa_ok( $vertex, "Box2D::b2Vec2" );
+is( $vertex->x, 1 );
+is( $vertex->y, 0 );
+$vertex = $poly->GetVertex( 2 );
+isa_ok( $vertex, "Box2D::b2Vec2" );
+is( $vertex->x, 0 );
+is( $vertex->y, 1 );
+
 my ( $w, $h ) = ( 10.0, 12.0 );
 my $rect = Box2D::b2PolygonShape->new();
 $rect->SetAsBox( $w / 2.0, $h / 2.0 );
@@ -11,7 +34,7 @@ pass("SetAsBox");
 is( $rect->GetVertexCount, 4, "GetVertexCount" );
 
 foreach ( 0 .. 3 ) {
-    my $vertex = $rect->GetVertex($_);
+    $vertex = $rect->GetVertex($_);
     isa_ok( $vertex, "Box2D::b2Vec2" );
     is( abs( $vertex->x ), $w / 2 );
     is( abs( $vertex->y ), $h / 2 );
@@ -23,7 +46,7 @@ $rect2->SetAsBox( $w, $h, Box2D::b2Vec2->new( $x, $y), $angle );
 pass("SetAsBox");
 is( $rect2->GetVertexCount, 4, "GetVertexCount" );
 foreach ( 0 .. 3 ) {
-    my $vertex = $rect2->GetVertex($_);
+    $vertex = $rect2->GetVertex($_);
     isa_ok( $vertex, "Box2D::b2Vec2" );
     is( abs( $vertex->x - $x ), $w );
     is( abs( $vertex->y - $y ), $h );
