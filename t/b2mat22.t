@@ -67,8 +67,8 @@ is( $matrix->ey->y, $a21, "new v2, v2 a22" );
 	my $A = $matrix;
 	my $b = Box2D::b2Mul($A, $exa);
 	my $x = $A->Solve( $b );
-	cmp_ok( $x->x - $exa->x, "<=", 0.000001, "Solve" );
-	cmp_ok( $x->y - $exa->y, "<=", 0.000001, "Solve" );
+	cmp_ok( abs($x->x - $exa->x), "<=", 0.000001, "Solve" );
+	cmp_ok( abs($x->y - $exa->y), "<=", 0.000001, "Solve" );
 }
 
 done_testing;

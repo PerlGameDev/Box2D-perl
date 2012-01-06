@@ -5,8 +5,8 @@ Box2D::b2Mat22 - A 2-by-2 matrix. Stored in column-major order
 
 =head1 SYNOPSIS
 
- my ( $a11, $a21 ) = (  4, 0 );
- my ( $a12, $a22 ) = ( -2, 3 );
+ my ( $a11, $a12 ) = (  4, 0 );
+ my ( $a21, $a22 ) = ( -2, 3 );
 
  # Construct matrix with numbers
  my $matrix = Box2D::b2Mat22->new( $a11, $a12, $a21, $a22 );
@@ -93,6 +93,10 @@ See L<Box2D::b2Math::b2Mul|Box2D::b2Math/b2Mul>. This is more efficient than com
 =head2 +=
 
 Matrix addition of two matrices.
+
+=head2 abs
+
+Absolute values of the all the elements of a matrix.
 
 =head1 SEE ALSO
 

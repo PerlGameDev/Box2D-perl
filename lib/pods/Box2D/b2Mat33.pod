@@ -5,13 +5,13 @@ Box2D::b2Mat22 - A 3-by-3 matrix. Stored in column-major order
 
 =head1 SYNOPSIS
 
- my ( $a11, $a21, $a31 ) = (  4,  0,  5 );
- my ( $a12, $a22, $a32 ) = ( -2,  3,  7 );
- my ( $a12, $a22, $a33 ) = (  0, -9, -3 );
+ my ( $a11, $a12, $a13 ) = (  4,  0,  5 );
+ my ( $a21, $a22, $a23 ) = ( -2,  3,  7 );
+ my ( $a21, $a22, $a33 ) = (  0, -9, -3 );
  
- my $c1 = Box2D::b2Vec3->new( $a11, $a12, $a13 );
- my $c2 = Box2D::b2Vec3->new( $a21, $a22, $a23 );
- my $c3 = Box2D::b2Vec3->new( $a21, $a22, $a33 );
+ my $c1 = Box2D::b2Vec3->new( $a11, $a21, $a31 );
+ my $c2 = Box2D::b2Vec3->new( $a12, $a22, $a32 );
+ my $c3 = Box2D::b2Vec3->new( $a13, $a23, $a33 );
  
  # Construct matrix with the columns
  my $matrix = Box2D::b2Mat22->new( $c1, $c2, $c3 );

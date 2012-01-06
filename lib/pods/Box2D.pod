@@ -16,8 +16,10 @@ Perl 5.
 =head1 OVERVIEW
 
 Currently this module is a 1 to 1 binding.
-This is still a WIP and so far here are the completed classes:
+This is still a WIP and so far here are the completed bindings:
 
+ b2Mat22
+ b2Mat33
  b2Settings
  b2TreeNode
  b2Vec2

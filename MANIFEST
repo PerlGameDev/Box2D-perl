@@ -41,6 +41,7 @@ lib/pods/Box2D/b2LineJointDef.pod
 lib/pods/Box2D/b2Manifold.pod
 lib/pods/Box2D/b2MassData.pod
 lib/pods/Box2D/b2Mat22.pod
+lib/pods/Box2D/b2Mat33.pod
 lib/pods/Box2D/b2Math.pod
 lib/pods/Box2D/b2MouseJoint.pod
 lib/pods/Box2D/b2MouseJointDef.pod
@@ -85,6 +86,7 @@ t/b2gearjoint.t
 t/b2linejoint.t_
 t/b2massdata.t
 t/b2mat22.t
+t/b2mat33.t
 t/b2math.t
 t/b2mousejoint.t
 t/b2polygonshape.t
@@ -150,6 +152,7 @@ xsp/b2LineJointDef.xsp_
 xsp/b2Manifold.xsp
 xsp/b2MassData.xsp
 xsp/b2Mat22.xsp
+xsp/b2Mat33.xsp
 xsp/b2Math.xsp
 xsp/b2MouseJoint.xsp
 xsp/b2MouseJointDef.xsp
