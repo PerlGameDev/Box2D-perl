@@ -46,15 +46,15 @@ Get the second ground anchor.
 
 Returns a C<Box2D::b2Vec2>
 
-=head2 GetLength1()
+=head2 GetLengthA()
 
-Get the current length of the segment attached to body1.
+Get the current length of the segment attached to bodyA.
 
 Returns a C<float32>
 
-=head2 GetLength2()
+=head2 GetLengthB()
 
-Get the current length of the segment attached to body2.
+Get the current length of the segment attached to bodyB.
 
 Returns a C<float32>
 
@@ -66,7 +66,7 @@ Returns a C<float32>
 
 =head2 GetReactionForce( $inv_dt )
 
-Get the reaction force on body2 at the joint anchor in Newtons.
+Get the reaction force on bodyB at the joint anchor in Newtons.
 Implements C<Box2D::b2Joint>.
 
 Parameters:
@@ -81,7 +81,7 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 GetReactionTorque( $inv_dt )
 
-Get the reaction torque on body2 in N*m. Implements C<Box2D::b2Joint>.
+Get the reaction torque on bodyB in N*m. Implements C<Box2D::b2Joint>.
 
 Parameters:
 
