@@ -55,6 +55,7 @@ lib/pods/Box2D/b2RayCastInput.pod
 lib/pods/Box2D/b2RayCastOutput.pod
 lib/pods/Box2D/b2RevoluteJoint.pod
 lib/pods/Box2D/b2RevoluteJointDef.pod
+lib/pods/Box2D/b2Rot.pod
 lib/pods/Box2D/b2Settings.pod
 lib/pods/Box2D/b2Shape.pod
 lib/pods/Box2D/b2Transform.pod
@@ -96,6 +97,7 @@ t/b2raycastcallback.t
 t/b2raycastinput.t
 t/b2raycastoutput.t
 t/b2revolutejoint.t
+t/b2rot.t
 t/b2settings.t
 t/b2timer.t
 t/b2transform.t
