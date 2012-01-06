@@ -38,6 +38,8 @@ my $c3 = Box2D::b2Vec3->new( 21, 22, 23 );
 my $M = Box2D::b2Mat33->new( $c1, $c2, $c3 );
 my $r1 = Box2D::b2Rot->new( 2.2 );
 my $r2 = Box2D::b2Rot->new( 4.7 );
+my $T1 = Box2D::b2Transform->new( $a, $r1 );
+my $T2 = Box2D::b2Transform->new( $b, $r2 );
 
 {
     my $c = Box2D::b2Dot( $a, $b );
@@ -248,6 +250,38 @@ my $r2 = Box2D::b2Rot->new( 4.7 );
 	my $c = Box2D::b2MulT( $r1, $a );
 	cmp_ok( abs($c->x - ($r1->c * $a->x + $r1->s * $a->y)), "<=", 0.000001, "r v2 b2MulT" );
 	cmp_ok( abs($c->y - (-$r1->s * $a->x + $r1->c * $a->y)), "<=", 0.000001, "r v2 b2MulT" );
+}
+
+{
+	my $c = Box2D::b2Mul( $T1, $b );
+	cmp_ok( abs($c->x - ($T1->q->c * $b->x - $T1->q->s * $b->y + $T1->p->x)), "<=", 0.000001, "t v2 b2Mul" );
+	cmp_ok( abs($c->y - ($T1->q->s * $b->x + $T1->q->c * $b->y + $T1->p->y)), "<=", 0.000001, "t v2 b2Mul" );
+}
+
+{
+	my $c = Box2D::b2MulT( $T2, $a );
+	my $px = $a->x - $T2->p->x;
+	my $py = $a->y - $T2->p->y;
+	cmp_ok( abs($c->x - ( $T2->q->c * $px + $T2->q->s * $py)), "<=", 0.000001, "t v2 b2MulT" );
+	cmp_ok( abs($c->y - (-$T2->q->s * $px + $T2->q->c * $py)), "<=", 0.000001, "t v2 b2MulT" );
+}
+
+{
+	my $c = Box2D::b2Mul( $T1, $T2 );
+	my $q = Box2D::b2Mul( $T1->q, $T2->q );
+	my $p = Box2D::b2Mul( $T1->q, $T2->p) + $T1->p;
+	cmp_ok( abs($c->q->GetAngle() - $q->GetAngle()), "<=", 0.000001, "t v2 b2MulT" );	
+	cmp_ok( abs($c->p->x - $p->x), "<=", 0.000001, "t t b2Mul" );
+	cmp_ok( abs($c->p->y - $p->y), "<=", 0.000001, "t t b2Mul" );	
+}
+
+{
+	my $c = Box2D::b2MulT( $T1, $T2 );
+	my $q = Box2D::b2MulT( $T1->q, $T2->q );
+	my $p = Box2D::b2MulT( $T1->q, $T2->p - $T1->p );
+	cmp_ok( abs($c->q->GetAngle() - $q->GetAngle()), "<=", 0.000001, "t v2 b2MulT" );	
+	cmp_ok( abs($c->p->x - $p->x), "<=", 0.000001, "t t b2MulT" );
+	cmp_ok( abs($c->p->y - $p->y), "<=", 0.000001, "t t b2MulT" );	
 }
 
 is( Box2D::b2Abs(1.0),  1.0, "b2Abs" );
