@@ -76,20 +76,6 @@ coordinates.
 
 =back
 
-=head2 SetAsEdge( $v1, $v2 )
-
-Set this as a single edge.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$v1>
-
-=item * C<Box2D::b2Vec2> C<$v2>
-
-=back
-
 =head1 SEE ALSO
 
 =over 4

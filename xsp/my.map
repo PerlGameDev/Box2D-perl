@@ -13,6 +13,7 @@ b2Contact *            O_OBJECT
 b2ContactImpulse *     O_OBJECT
 b2DistanceJoint *      O_OBJECT
 b2DistanceJointDef *   O_OBJECT
+b2EdgeShape *          O_OBJECT
 b2Filter *             O_OBJECT
 b2FixtureDef *         O_OBJECT
 b2Fixture *            O_OBJECT
