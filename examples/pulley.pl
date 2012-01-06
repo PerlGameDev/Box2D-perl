@@ -62,8 +62,6 @@ my $joint = make_pulley_joint(
     anchorA       => $platformA->{body}->GetWorldCenter(),
     anchorB       => $platformB->{body}->GetWorldCenter(),
     ratio         => 1.0,
-    maxLengthA    => s2w( $height * 0.8 ),
-    maxLengthB    => s2w( $height * 0.8 ),
 );
 
 my $app = SDLx::App->new(
@@ -259,8 +257,6 @@ sub make_pulley_joint {
             qw( bodyA bodyB groundAnchorA groundAnchorB anchorA anchorB ratio )
             }
     );
-    $jointDef->maxLengthA( $options{maxLengthA} );
-    $jointDef->maxLengthB( $options{maxLengthB} );
     return $world->CreateJoint($jointDef);
 }
 

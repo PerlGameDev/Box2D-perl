@@ -197,10 +197,10 @@ sub Break {
     my $center1 = $body1->GetWorldCenter();
     my $center2 = $body2->GetWorldCenter();
 
-    my $velocity1 = Box2D::b2Math::b2CrossSV2( $self->angularVelocity,
-        $center1 - $center );
-    my $velocity2 = Box2D::b2Math::b2CrossSV2( $self->angularVelocity,
-        $center2 - $center );
+    my $velocity1
+        = Box2D::b2Cross( $self->angularVelocity, $center1 - $center );
+    my $velocity2
+        = Box2D::b2Cross( $self->angularVelocity, $center2 - $center );
 
     $body1->SetAngularVelocity( $self->angularVelocity );
     $body1->SetLinearVelocity($velocity1);
