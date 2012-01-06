@@ -64,6 +64,8 @@ lib/pods/Box2D/b2WeldJointDef.pod
 lib/pods/Box2D/b2World.pod
 LICENSE
 MANIFEST			This list of files
+META.json
+META.yml
 README
 src/helper.h
 src/PerlContactListener.h
