@@ -15,6 +15,7 @@ void b2Log(const char* string, ...);*/
 %{
 
 BOOT:
+{
 	HV* stash = gv_stashpv( "Box2D", TRUE );
 	
 	newCONSTSUB( stash, "b2_pi",                    newSVnv(b2_pi) );
@@ -41,6 +42,7 @@ BOOT:
 	newCONSTSUB( stash, "b2_timeToSleep",           newSVnv(b2_timeToSleep) );
 	newCONSTSUB( stash, "b2_linearSleepTolerance",  newSVnv(b2_linearSleepTolerance) );
 	newCONSTSUB( stash, "b2_angularSleepTolerance", newSVnv(b2_angularSleepTolerance) );
+}
 
 b2Version *
 b2_version( )

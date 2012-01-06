@@ -9,6 +9,14 @@
 
 %{
 
+BOOT:
+{
+	HV* stash = gv_stashpv( "Box2D", TRUE );
+	SV* zero = newSV(0);
+	sv_setref_pv( zero, "Box2D::b2Vec2", (void*)&b2Vec2_zero );
+	newCONSTSUB( stash, "b2Vec2_zero", zero );
+}
+
 bool
 b2IsValid( x )
 	float32 x
