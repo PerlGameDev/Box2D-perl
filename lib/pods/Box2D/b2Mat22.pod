@@ -10,10 +10,10 @@ Box2D::b2Mat22 - A 2-by-2 matrix. Stored in column-major order
 
  # Construct matrix with numbers
  my $matrix = Box2D::b2Mat22->new( $a11, $a12, $a21, $a22 );
- 
+
  my $c1 = Box2D::b2Vec2->new( $a11, $a12 );
  my $c2 = Box2D::b2Vec2->new( $a21, $a22 );
- 
+
  # Construct the equivalent matrix with columns
  my $matrix2 = Box2D::b2Mat22->new( $c1, $c2 );
 
@@ -78,7 +78,7 @@ Sets the matrix's parameters all to zero.
  my $inverse = $mat->GetInverse();
 
 Computes the inverse of the matrix, returning it in a new C<Box2D::Mat22>.
- 
+
 =head2 Solve
 
  my $x = $mat->Solve( $b );

@@ -1,94 +1,69 @@
 
 =head1 NAME
 
-Box2D::b2Transform - Contains translation and rotation.
+Box2D::b2Transform - Contains translation and rotation
 
 =head1 SYNOPSIS
 
-  my $transform = Box2D::b2Transform->new( $postiion, $rotation );
+ my $position = Box2D::b2Vec2->new( 4, -2 );
+ my $rotation = Box2D::b2Rot->new( 0 );
+
+ # create a new transform
+ my $transform = Box2D::b2Transform->new( $postiion, $rotation );
 
 =head1 DESCRIPTION
 
-A transform contains translation and rotation. It is used to represent
-the position and orientation of rigid frames.
+This class contains information for translation and rotation. It is used to represent
+the position and orientation of rigid frames. It provides some methods for manipulating
+transforms, and more are found in L<Box2D::b2Math>.
 
 =head1 METHODS
 
-=head2 new( $position, $R )
+=head2 new
 
-Initialize using a position vector and a rotation matrix.
+ my $transform = Box2D::b2Transform->new( $position, $rotation );
 
-Parameters:
+Returns the new transform object, with a L<Box2D::b2Vec2> position vector
+and L<Box2D::b2Rot> rotation.
 
-=over 4
+=head2 p
 
-=item * C<Box2D::b2Vec2> C<$position>
+ my $position = $transform->p;
+ $transform->p( $position );
 
-=item * C<Box2D::b2Mat22> C<$R>
+Returns the transform's L<Box2D::b2Vec2> position vector.
+Specify a vector to modify it.
 
-=back
+=head2 q
 
-Returns a C<Box2D::b2Transform>
+ my $rotation = $transform->q;
+ $transform->q( $q );
 
-=head2 GetAngle()
-
-Calculate the angle that the rotation matrix represents.
-
-Returns a C<float32>
-
-=head2 Set( $p, $angle )
-
-Set this based on the position and angle.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$p>
-
-=item * C<float32> C<$angle>
-
-=back
+Returns the transform's L<Box2D::b2Rot> rotation.
+Specify a rotation to modify it.
 
 =head2 SetIdentity()
 
-Set this to the identity transform.
+ $transform->SetIdentity();
 
-=head2 position()
+Sets the object to the identity transform: position = (0, 0) and angle = 0.
 
-=head2 position( $position )
+=head2 Set
 
-Parameters:
+ $transform->Set( $position, $rotation );
 
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$position> (optional)
-
-=back
-
-Returns a C<Box2D::b2Vec2>
-
-=head2 R()
-
-=head2 R( $rotation )
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Mat22> C<$rotation> (optional) - rotation matrix
-
-=back
-
-Returns a C<Box2D::b2Mat22>
+Sets the transform's position and rotation to the specified
+L<Box2D::b2Vec2> and L<Box2D::b2Rot>.
 
 =head1 SEE ALSO
 
 =over 4
 
-=item * L<Box2D>
+=item * L<Box2D::b2Math>
 
-=item * L<Box2D::b2Mat22>
+=item * L<Box2D::b2Vec2>
+
+=item * L<Box2D::b2Rot>
 
 =back
 

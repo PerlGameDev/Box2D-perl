@@ -8,11 +8,11 @@ Box2D::b2Mat22 - A 3-by-3 matrix. Stored in column-major order
  my ( $a11, $a12, $a13 ) = (  4,  0,  5 );
  my ( $a21, $a22, $a23 ) = ( -2,  3,  7 );
  my ( $a31, $a32, $a33 ) = (  0, -9, -3 );
- 
+
  my $c1 = Box2D::b2Vec3->new( $a11, $a21, $a31 );
  my $c2 = Box2D::b2Vec3->new( $a12, $a22, $a32 );
  my $c3 = Box2D::b2Vec3->new( $a13, $a23, $a33 );
- 
+
  # Construct matrix with the columns
  my $matrix = Box2D::b2Mat22->new( $c1, $c2, $c3 );
 
@@ -61,7 +61,7 @@ Specify a single vector to modify it.
  $mat->SetZero();
 
 Sets the matrix's parameters all to zero.
- 
+
 =head2 Solve33
 
  my $x = $mat->Solve33( $b );
@@ -84,7 +84,7 @@ Solves only the upper 2-by-2 matrix equation.
 Computes the inverse of the matrix as a 2-by-2.
 Instead of returning, it modifies the specified C<Box2D::b2Mat33> C<$M> to the result.
 This will be the zero matrix if singular.
- 
+
 =head2 GetSymInverse33
 
  $mat->GetSymInverse33( $M );
