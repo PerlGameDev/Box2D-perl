@@ -10,33 +10,22 @@
 %name{Box2D::b2Rot} class b2Rot
 {
 
+b2Rot( float32 angle );
+
+void Set( float32 angle );
+
 void SetIdentity();
 
 float32 GetAngle();
 
 %{
 
-b2Rot*
-b2Rot::new( angle )
-	float32 angle
-	CODE:
-		RETVAL = new b2Rot( angle );
-	OUTPUT:
-		RETVAL
-
-void
-b2Rot::Set( angle )
-	float32 angle
-	CODE:
-		THIS->Set( angle );
-
 b2Vec2*
 b2Rot::GetXAxis( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		b2Vec2* ret = new b2Vec2(THIS->GetXAxis());
-		RETVAL      = ret;
+		RETVAL = new b2Vec2(THIS->GetXAxis());
 	OUTPUT:
 		RETVAL
 
@@ -45,21 +34,28 @@ b2Rot::GetYAxis( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		b2Vec2* ret = new b2Vec2(THIS->GetYAxis());
-		RETVAL      = ret;
+		RETVAL = new b2Vec2(THIS->GetYAxis());
 	OUTPUT:
 		RETVAL
 
 float32
-b2Rot::s( )
+b2Rot::s( ... )
 	CODE:
+		if ( items > 1 )
+		{
+			THIS->s = (float32)SvNV( ST(1) );
+		}
 		RETVAL = THIS->s;
 	OUTPUT:
 		RETVAL
 
 float32
-b2Rot::c( )
+b2Rot::c( ... )
 	CODE:
+		if ( items > 1 )
+		{
+			THIS->c = (float32)SvNV( ST(1) );
+		}
 		RETVAL = THIS->c;
 	OUTPUT:
 		RETVAL

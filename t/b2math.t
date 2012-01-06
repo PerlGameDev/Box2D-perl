@@ -36,6 +36,8 @@ my $c2 = Box2D::b2Vec3->new( 14, 15, 16 );
 my $n = Box2D::b2Mat22->new( -17, -18, -19, -20 );
 my $c3 = Box2D::b2Vec3->new( 21, 22, 23 );
 my $M = Box2D::b2Mat33->new( $c1, $c2, $c3 );
+my $r1 = Box2D::b2Rot->new( 2.2 );
+my $r2 = Box2D::b2Rot->new( 4.7 );
 
 {
     my $c = Box2D::b2Dot( $a, $b );
@@ -222,6 +224,30 @@ my $M = Box2D::b2Mat33->new( $c1, $c2, $c3 );
 	my $d = Box2D::b2Vec2->new($M->ex->x * $b->x + $M->ey->x * $b->y, $M->ex->y * $b->x + $M->ey->y * $b->y);
 	is( $c->x, $d->x, "m33 v3 b2Mul" );
 	is( $c->y, $d->y, "m33 v3 b2Mul" );
+}
+
+{
+	my $c = Box2D::b2Mul( $r1, $r2 );
+	cmp_ok( abs($c->s - ($r1->s * $r2->c + $r1->c * $r2->s)), "<=", 0.000001, "r r b2Mul" );
+	cmp_ok( abs($c->c - ($r1->c * $r2->c - $r1->s * $r2->s)), "<=", 0.000001, "r r b2Mul" );
+}
+
+{
+	my $c = Box2D::b2MulT( $r1, $r2 );
+	cmp_ok( abs($c->s - ($r1->c * $r2->s - $r1->s * $r2->c)), "<=", 0.000001, "r r b2MulT" );
+	cmp_ok( abs($c->c - ($r1->c * $r2->c + $r1->s * $r2->s)), "<=", 0.000001, "r r b2MulT" );
+}
+
+{
+	my $c = Box2D::b2Mul( $r1, $a );
+	cmp_ok( abs($c->x - ($r1->c * $a->x - $r1->s * $a->y)), "<=", 0.000001, "r v2 b2Mul" );
+	cmp_ok( abs($c->y - ($r1->s * $a->x + $r1->c * $a->y)), "<=", 0.000001, "r v2 b2Mul" );
+}
+
+{
+	my $c = Box2D::b2MulT( $r1, $a );
+	cmp_ok( abs($c->x - ($r1->c * $a->x + $r1->s * $a->y)), "<=", 0.000001, "r v2 b2MulT" );
+	cmp_ok( abs($c->y - (-$r1->s * $a->x + $r1->c * $a->y)), "<=", 0.000001, "r v2 b2MulT" );
 }
 
 is( Box2D::b2Abs(1.0),  1.0, "b2Abs" );
