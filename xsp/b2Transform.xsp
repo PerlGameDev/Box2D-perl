@@ -37,8 +37,7 @@ b2Transform::p( ... )
 	CODE:
 		if( items > 1 )
 		{
-			b2Vec2* position = (b2Vec2 *)stack_to_object( ST(1) );
-			THIS->p = *position;
+			THIS->p = *(b2Vec2*)stack_to_object( ST(1) );
 		}
 		RETVAL = &(THIS->p);
 	OUTPUT:
@@ -51,8 +50,7 @@ b2Transform::q( ... )
 	CODE:
 		if( items > 1 )
 		{
-			b2Rot* rotation = (b2Rot *)stack_to_object( ST(1) );
-			THIS->q = *rotation;
+			THIS->q = *(b2Rot*)stack_to_object( ST(1) );
 		}
 		RETVAL = &(THIS->q);
 	OUTPUT:

@@ -46,7 +46,7 @@ Specify a rotation to modify it.
 
  $transform->SetIdentity();
 
-Sets the object to the identity transform: position = (0, 0) and angle = 0.
+Sets the object to the identity transform: position = [0, 0] and angle = 0.
 
 =head2 Set
 
