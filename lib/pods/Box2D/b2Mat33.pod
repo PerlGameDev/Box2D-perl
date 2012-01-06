@@ -7,7 +7,7 @@ Box2D::b2Mat22 - A 3-by-3 matrix. Stored in column-major order
 
  my ( $a11, $a12, $a13 ) = (  4,  0,  5 );
  my ( $a21, $a22, $a23 ) = ( -2,  3,  7 );
- my ( $a21, $a22, $a33 ) = (  0, -9, -3 );
+ my ( $a31, $a32, $a33 ) = (  0, -9, -3 );
  
  my $c1 = Box2D::b2Vec3->new( $a11, $a21, $a31 );
  my $c2 = Box2D::b2Vec3->new( $a12, $a22, $a32 );

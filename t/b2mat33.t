@@ -78,6 +78,6 @@ TODO: {
 
 # TODO: GetInverse22( M )
 
-# TODO: GetInverse33( M )
+# TODO: GetSymInverse33( M )
 
 done_testing;
