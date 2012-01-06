@@ -1,0 +1,120 @@
+
+=head1 NAME
+
+Box2D::b2Mat22 - A 3-by-3 matrix. Stored in column-major order
+
+=head1 SYNOPSIS
+
+ my ( $a11, $a21, $a31 ) = (  4,  0,  5 );
+ my ( $a12, $a22, $a32 ) = ( -2,  3,  7 );
+ my ( $a12, $a22, $a33 ) = (  0, -9, -3 );
+ 
+ my $c1 = Box2D::b2Vec3->new( $a11, $a12, $a13 );
+ my $c2 = Box2D::b2Vec3->new( $a21, $a22, $a23 );
+ my $c3 = Box2D::b2Vec3->new( $a21, $a22, $a33 );
+ 
+ # Construct matrix with the columns
+ my $matrix = Box2D::b2Mat22->new( $c1, $c2, $c3 );
+
+=head1 DESCRIPTION
+
+A class to store 3-by-3 matrices. It is made up of three columns, each being a L<Box2D::b2Vec3>,
+stored in column-major order. The L</SYNOPSIS> shows how the matrix is arranged.
+The class also provides some methods for matrix manipulation.
+Also see L<Box2D::b2Math> for more.
+
+=head1 METHODS
+
+=head2 new
+
+ my $mat = Box2D::b2Mat33->new( $c1, $c2, $c3 );
+
+Returns the new matrix with the specified three L<Box2D::b2Vec3> columns.
+The L</SYNOPSIS> shows this in more detail.
+
+=head2 ex
+
+ my $c1 = $mat->ex;
+ $mat->ex( $c1 );
+
+Returns the first column vector of the matrix.
+Specify a single vector to modify it.
+
+=head2 ey
+
+ my $c2 = $mat->ey;
+ $mat->ey( $c2 );
+
+Returns the second column vector of the matrix.
+Specify a single vector to modify it.
+
+=head2 ez
+
+ my $c3 = $mat->ez;
+ $mat->ez( $c3 );
+
+Returns the third column vector of the matrix.
+Specify a single vector to modify it.
+
+=head2 SetZero
+
+ $mat->SetZero();
+
+Sets the matrix's parameters all to zero.
+ 
+=head2 Solve33
+
+ my $x = $mat->Solve33( $b );
+
+Given a L<Box2D::b2Vec3> C<$b>, solves for vector C<$x> where C<Box2D::b2Mul($mat, $x) == $b>.
+See L<Box2D::b2Math::b2Mul|Box2D::b2Math/b2Mul>. This is more efficient than computing the inverse in one-shot cases.
+
+=head2 Solve22
+
+ my $x = $mat->Solve22( $b );
+
+Given a L<Box2D::b2Vec2> C<$b>, solves for vector C<$x> where C<Box2D::b2Mul($mat, $x) == $b>.
+See L<Box2D::b2Math::b2Mul|Box2D::b2Math/b2Mul>. This is more efficient than computing the inverse in one-shot cases.
+Solves only the upper 2-by-2 matrix equation.
+
+=head2 GetInverse22
+
+ $mat->GetInverse22( $M );
+
+Computes the inverse of the matrix as a 2-by-2.
+Instead of returning, it modifies the specified C<Box2D::b2Mat33> C<$M> to the result.
+This will be the zero matrix if singular.
+ 
+=head2 GetSymInverse33
+
+ $mat->GetSymInverse33( $M );
+
+Computes the symmetric inverse of the matrix as a 3-by-3.
+Instead of returning, it modifies the specified C<Box2D::b2Mat33> C<$M> to the result.
+This will be the zero matrix if singular.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D::b2Math>
+
+=item * L<Box2D::b2Vec3>
+
+=item * L<Box2D::b2Vec2>
+
+=back
+
+=head1 BUGS
+
+See L<Box2D/BUGS>
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

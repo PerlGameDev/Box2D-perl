@@ -1,31 +1,26 @@
 
 =head1 NAME
 
-Box2D::b2Mat22 - A 2-by-2 matrix
+Box2D::b2Mat22 - A 2-by-2 matrix. Stored in column-major order
 
 =head1 SYNOPSIS
 
- my ($a11, $a12, $a21, $a22) = (4, 0, -2, 3);
+ my ( $a11, $a21 ) = (  4, 0 );
+ my ( $a12, $a22 ) = ( -2, 3 );
 
  # Construct matrix with numbers
- my $matrix = Box2D::b2Matrix->new( $a11, $a12, $a21, $a22 );
+ my $matrix = Box2D::b2Mat22->new( $a11, $a12, $a21, $a22 );
  
- my $c1 = Box2D::b2Matrix->new( $a11, $a12 );
- my $c2 = Box2D::b2Matrix->new( $a21, $a22 );
+ my $c1 = Box2D::b2Vec2->new( $a11, $a12 );
+ my $c2 = Box2D::b2Vec2->new( $a21, $a22 );
  
  # Construct the equivalent matrix with columns
  my $matrix2 = Box2D::b2Mat22->new( $c1, $c2 );
- 
- # The following are now true:
- $matrix->ex->x == $a11;
- $matrix->ex->y == $a12;
- $matrix->ey->x == $a21;
- $matrix->ey->y == $a22;
 
 =head1 DESCRIPTION
 
 A class to store 2-by-2 matrices. It is made up of two columns, each being a L<Box2D::b2Vec2>,
-stored in column-major order. The L</SYNOPSIS> shows exactly how the matrix is arranged.
+stored in column-major order. The L</SYNOPSIS> shows how the matrix is arranged.
 The class also provides some methods for matrix manipulation.
 Also see L<Box2D::b2Math> for more.
 
@@ -39,7 +34,7 @@ Also see L<Box2D::b2Math> for more.
 Returns the new matrix with the specified 4 values.
 If 2 items are specified, C<$c1> and C<$c2> should be L<Box2D::b2Vec2>s representing column 1 and column 2 respectively.
 If 4 items are specified, C<$a11>, C<$a12>, C<$a21> and C<$a22> should be numbers representing the corresponding cell.
-The L</SYNOPSIS> shows exactly how the matrix is arranged.
+The L</SYNOPSIS> shows this in more detail.
 
 =head2 Set
 
@@ -57,8 +52,8 @@ Specify a single vector to modify it.
 
 =head2 ey
 
- my $c1 = $mat->ey;
- $mat->ey( $c1 );
+ my $c2 = $mat->ey;
+ $mat->ey( $c2 );
 
 Returns the second column vector of the matrix.
 Specify a single vector to modify it.
@@ -103,9 +98,9 @@ Matrix addition of two matrices.
 
 =over 4
 
-=item * L<Box2D::b2Vec2>
-
 =item * L<Box2D::b2Math>
+
+=item * L<Box2D::b2Vec2>
 
 =back
 
