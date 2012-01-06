@@ -27,7 +27,7 @@ my $vIters = 30;
 my $pIters = 30;
 
 my $gravity = make_vec2( 0, 9.8 );
-my $world = Box2D::b2World->new( $gravity, 1 );
+my $world = Box2D::b2World->new($gravity);
 
 my $ground = make_ground();
 
@@ -209,8 +209,8 @@ sub make_ball {
 # shapes
 sub make_edge {
     my ( $p1, $p2 ) = @_;
-    my $edge = Box2D::b2PolygonShape->new();
-    $edge->SetAsEdge( make_vec2(@$p1), make_vec2(@$p2) );
+    my $edge = Box2D::b2EdgeShape->new();
+    $edge->Set( make_vec2(@$p1), make_vec2(@$p2) );
     return $edge;
 }
 

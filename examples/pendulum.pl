@@ -35,7 +35,7 @@ my $pIters = 8;
 my $gravity = Box2D::b2Vec2->new( 0, -8.0 / $precision**2 );
 
 # no sleep. don't lose energy.
-my $world = Box2D::b2World->new( $gravity, 0 );
+my $world = Box2D::b2World->new($gravity);
 
 my $rodColor  = 0x00CC70FF;
 my $pathColor = 0xFFFFCFFF;

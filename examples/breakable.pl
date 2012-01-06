@@ -250,7 +250,7 @@ my $vIters = 10;
 my $pIters = 10;
 
 my $gravity = Box2D::b2Vec2->new( 0, 9.8 );
-my $world = Box2D::b2World->new( $gravity, 1 );
+my $world = Box2D::b2World->new($gravity);
 
 my $ground = make_ground();
 
@@ -313,9 +313,9 @@ sub make_breakable {
 sub make_ground {
     my $bodyDef = Box2D::b2BodyDef->new();
     my $ground  = $world->CreateBody($bodyDef);
-    my $shape   = Box2D::b2PolygonShape->new();
+    my $shape   = Box2D::b2EdgeShape->new();
 
-    $shape->SetAsEdge(
+    $shape->Set(
         Box2D::b2Vec2->new( 0.0,         s2w($height) ),
         Box2D::b2Vec2->new( s2w($width), s2w($height) ),
     );

@@ -32,7 +32,7 @@ my $vIters = 10;
 my $pIters = 10;
 
 my $gravity = Box2D::b2Vec2->new( 0, -10.0 );
-my $world = Box2D::b2World->new( $gravity, 1 );
+my $world = Box2D::b2World->new($gravity);
 
 my $pivot = {
     x0     => s2w( $width / 2 ),

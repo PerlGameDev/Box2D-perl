@@ -8,7 +8,7 @@ use SDLx::App;
 my $app = SDLx::App->new( width => 300, height => 300, flags => SDL_DOUBLEBUF | SDL_HWSURFACE, eoq => 1 );
 
 my $vec = Box2D::b2Vec2->new(2.5,-10);
-my $world = Box2D::b2World->new($vec, 1);
+my $world = Box2D::b2World->new($vec);
 
 my $body_def = Box2D::b2BodyDef->new();
 

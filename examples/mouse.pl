@@ -27,7 +27,7 @@ my $vIters = 30;
 my $pIters = 30;
 
 my $gravity = make_vec2( 0.0, 10.0 );
-my $world = Box2D::b2World->new( $gravity, 1 );
+my $world = Box2D::b2World->new($gravity);
 
 my $ground = make_ground();
 
