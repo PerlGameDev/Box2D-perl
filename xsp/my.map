@@ -43,7 +43,6 @@ b2RevoluteJoint *      O_OBJECT
 b2RevoluteJointDef *   O_OBJECT
 b2Rot *                O_OBJECT
 b2Shape *              O_OBJECT
-b2Sweep *              O_OBJECT
 b2Timer *              O_OBJECT
 b2Transform *          O_OBJECT
 b2Vec2 *               O_OBJECT
