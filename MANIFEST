@@ -26,6 +26,7 @@ lib/pods/Box2D/b2ContactImpulse.pod
 lib/pods/Box2D/b2ContactListener.pod
 lib/pods/Box2D/b2DistanceJoint.pod
 lib/pods/Box2D/b2DistanceJointDef.pod
+lib/pods/Box2D/b2EdgeShape.pod
 lib/pods/Box2D/b2Filter.pod
 lib/pods/Box2D/b2Fixture.pod
 lib/pods/Box2D/b2FixtureDef.pod
@@ -76,6 +77,7 @@ t/b2aabb.t
 t/b2body.t
 t/b2circle.t
 t/b2distancejoint.t
+t/b2edgeshape.t
 t/b2filter.t
 t/b2fixturedef.t
 t/b2frictionjoint.t
