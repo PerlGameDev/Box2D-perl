@@ -33,7 +33,7 @@ is( $transform->position->x, $x2, "Set position->x" );
 is( $transform->position->y, $y2, "Set position->y" );
 
 cmp_ok( abs( $transform->GetAngle() - $angle2 ),
-    "<=", 0.00000001, "Set angle" );
+    "<=", 0.0000001, "Set angle" );
 
 $transform->SetIdentity();
 
@@ -50,6 +50,6 @@ is( $transform->position->y, $y2, "Set position y" );
 
 $transform->R($R2);
 cmp_ok( abs( $transform->GetAngle() - $angle2 ),
-    "<=", 0.00000001, "Set R angle" );
+    "<=", 0.0000001, "Set R angle" );
 
 done_testing;
