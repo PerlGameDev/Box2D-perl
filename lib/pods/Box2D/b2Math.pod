@@ -1,261 +1,176 @@
 
 =head1 NAME
 
-Box2D::b2Math - Vector and matrix functions.
+Box2D::b2Math - Vector, matrix and other math functions
 
 =head1 SYNOPSIS
 
-  my $dot_product = Box2D::b2Math::b2DotV2V2( $a, $b );
-  my cross_product = Box2D::b2Math::b2CrossV2V2( $a, $b );
-  my $distance = Box2D::b2Math::b2Distance( $a, $b );
+ my $a = Box2D::b2Vec2->new( 2, 0 );
+ my $b = Box2D::b2Vec2->new( -4, 7 );
+
+ my $dot_product = Box2D::b2Math::b2Dot( $a, $b );
+ my cross_product = Box2D::b2Math::b2Cross( $a, $b );
+ my $distance = Box2D::b2Math::b2Distance( $a, $b );
 
 =head1 DESCRIPTION
 
-C<Box2D> includes a simple small vector and matrix module. This has
-been designed to suit the internal needs of C<Box2D> and the API. Some
-the members are exposed, so you may use them freely in your application.
+Box2D includes a simple small vector and matrix module.
+This has been designed to suit the internal needs of Box2D and the API.
+All the members are exposed, so you may use them freely in your application.
 
 =head1 METHODS
 
-=head2 b2IsValid( $x )
+=head2 b2IsValid
 
-Parameters:
+ my $is_valid = Box2D::b2IsValid( $x );
 
-=over 4
+Returns true if the number specified is finite and not a NaN. False otherwise.
 
-=item * C<float32> C<$x>
+=head2 b2InvSqrt
 
-=back
+ my $inv_sqrt = Box2D::b2InvSqrt( $x );
 
-Returns a C<bool>
+Returns the inverse square-root of the provided number. It is an approximate yet fast function.
 
-=head2 b2InvSqrt( $x )
+=head2 b2Sqrt
 
-Compute the inverse square-root of a scalar. Approximate yet fast.
+ my $sqrt = Box2D::b2Sqrt( $x );
 
-Parameters:
+Performs C<sqrt> on the provided number. You should use Perl's equivalent function instead of this.
 
-=over 4
+=head2 b2Atan2
 
-=item * C<float32> C<$x>
+ my $atan2 = Box2D::b2Atan2( $y, $x );
 
-=back
+Performs C<atan2> on the provided numbers. You should use Perl's equivalent function instead of this.
 
-Returns a C<float32>
+=head2 b2Vec2_zero
 
-=head2 b2Abs( $x )
+ my $zero = Box2D::b2Vec2_zero;
 
-Parameters:
+A useful constant holding the vector [0, 0].
 
-=over 4
+=head2 b2Dot
 
-=item * C<float32> C<$x>
+ my $s = Box2D::b2Dot( $vec2_a, $vec2_b );
+ my $s = Box2D::b2Dot( $vec3_a, $vec3_b );
 
-=back
+Perform the dot product on two 2D or 3D vectors. Returns a scalar in both cases.
 
-Returns a C<float32>
+=head2 b2Cross
 
-=head2 b2DotV2V2( $a, $b )
+ my $s    = Box2D::b2Cross( $vec2_a, $vec2_b );
+ my $vec2 = Box2D::b2Cross( $vec2_a, $s );
+ my $vec2 = Box2D::b2Cross( $s, $vec2_a );
+ my $vec3 = Box2D::b2Cross( $vec3_a, $vec3_b );
 
-Compute the dot product of two vectors.
+Performs the cross product with the arguments shown above. Returns the shown values.
 
-Parameters:
+=head2 b2Mul
 
-=over 4
+ my $vec2       = Box2D::b2Mul( $mat22_A, $vec2_v );
+ my $mat22      = Box2D::b2Mul( $mat22_A, $mat22_B );
+ my $vec3       = Box2D::b2Mul( $mat33_A, $vec3_v );
+ my $rot        = Box2D::b2Mul( $rot_q, $rot_r );
+ my $vec2       = Box2D::b2Mul( $rot_q, $vec2_v );
+ my $vec2       = Box2D::b2Mul( $transform_T, $vec2_v );
+ my $transform  = Box2D::b2Mul( $transform_A, $transform_B );
 
-=item * C<Box2D::b2Vec2> C<$a>
+Performs multiplication with the arguments shown above.
+With a rotation and a vector, performs rotation on the vector.
+Returns the shown values.
 
-=item * C<Box2D::b2Vec2> C<$b>
+=head2 b2MulT
 
-=back
+ my $vec2       = Box2D::b2MulT( $mat22_A, $vec2_v );
+ my $mat22      = Box2D::b2MulT( $mat22_A, $mat22_B );
+ my $rot        = Box2D::b2MulT( $rot_q, $rot_r );
+ my $vec2       = Box2D::b2MulT( $rot_q, $vec2_v );
+ my $vec2       = Box2D::b2MulT( $transform_T, $vec2_v );
+ my $transform  = Box2D::b2MulT( $transform_A, $transform_B );
 
-Returns a C<float32>
+Performs transpose multiplication with the arguments shown above.
+With a rotation and a vector, inverse rotates the vector.
+Returns the shown values.
 
-=head2 b2CrossV2V2( $a, $b )
+=head2 b2Mul22
 
-Compute the cross product of two vectors.
+ my $vec2 = Box2D::b2Mul22( $mat33_A, $vec2_v );
 
-Parameters:
+Performs multiplication of a matrix with a vector. Returns a vector.
 
-=over 4
+=head2 b2Distance
 
-=item * C<Box2D::b2Vec2> C<$a>
+ my $distance = Box2D::b2Distance( $a, $b );
 
-=item * C<Box2D::b2Vec2> C<$b>
+Returns the distance between two vectors.
 
-=back
+=head2 b2DistanceSquared
 
-Returns a C<float32>
+ my $distance_squared = Box2D::b2DistanceSquared( $a, $b );
 
-=head2 b2CrossV2S( $v, $s )
+Returns the square of the distance between two vectors.
+For performance, use this instead of L</b2Distance> (if possible).
 
-Compute the cross product of a vector and a scalar.
+=head2 b2Abs
 
-Parameters:
+my $s     = Box2D::b2Abs( $a );
+my $vec2  = Box2D::b2Abs( $vec2_a );
+my $mat22 = Box2D::b2Abs( $mat22_a );
 
-=over 4
+Gets the absolute value of a number, or of all parameters of a vector or matrix.
+Returns the shown values.
 
-=item * C<Box2D::b2Vec2> C<$v>
+=head2 b2Min
 
-=item * C<float32> C<$s>
+ my $s    = Box2D::b2Min( $a, $b );
+ my $vec2 = Box2D::b2Min( $vec2_a, $vec2_b );
 
-=back
+Returns the minimum of two numbers, or a new vector with both parameters being the minimum of what was passed in.
 
-Returns a C<Box2D::b2Vec2>
+=head2 b2Max
 
-=head2 b2CrossSV2( $s, $v )
+ my $s    = Box2D::b2Max( $a, $b );
+ my $vec2 = Box2D::b2Max( $vec2_a, $vec2_b );
 
-Compute the cross product of a scalar and a vector.
+Returns the maximum of two numbers, or a new vector with both parameters being the maximum of what was passed in.
 
-Parameters:
+=head2 b2Clamp
 
-=over 4
+ my $s    = Box2D::b2Clamp( $a, $low, $high );
+ my $vec2 = Box2D::b2Clamp( $vec2_a, $vec2_low, $vec2_high );
 
-=item * C<float32> C<$s>
+Returns the C<a> value passed in with none of its values lower than C<low> and none higher than C<high>.
 
-=item * C<Box2D::b2Vec2> C<$v>
+=head2 b2NextPowerOfTwo
 
-=back
+ my $next_power_of_two = Box2D::b2NextPowerOfTwo( $x );
 
-Returns a C<Box2D::b2Vec2>
+Returns the smallest power of two greater than the supplied positive integer.
 
-=head2 b2MulM22V2( $M, $v )
+=head2 b2IsPowerOfTwo
 
-Multiply a matrix and a vector.
+ my $is_power_of_two = Box2D::b2IsPowerOfTwo( $x );
 
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Mat22> C<$M>
-
-=item * C<Box2D::b2Vec2> C<$v>
-
-=back
-
-Returns a C<Box2D::b2Vec2>
-
-=head2 b2MulTM22V2( $M, $v )
-
-Multiply a matrix transpose and a vector.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Mat22> C<$M>
-
-=item * C<Box2D::b2Vec2> C<$v>
-
-=back
-
-Returns a C<Box2D::b2Vec2>
-
-=head2 b2AddV2V2( $a, $b )
-
-Add two vectors.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$a>
-
-=item * C<Box2D::b2Vec2> C<$b>
-
-=back
-
-Returns a C<Box2D::b2Vec2>
-
-=head2 b2SubV2V2( $a, $b )
-
-Subtract one vector from another.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$a>
-
-=item * C<Box2D::b2Vec2> C<$b>
-
-=back
-
-Returns a C<Box2D::b2Vec2>
-
-=head2 b2MulSV2( $s, $v )
-
-Multiply a scalar and a vector.
-
-Parameters:
-
-=over 4
-
-=item * C<float32> C<$s>
-
-=item * C<Box2D::b2Vec2> C<$v>
-
-=back
-
-Returns a C<Box2D::b2Vec2>
-
-=head2 b2EqlV2V2( $a, $b )
-
-Are these vectors equal?
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$a>
-
-=item * C<Box2D::b2Vec2> C<$b>
-
-=back
-
-Returns a C<bool>
-
-=head2 b2Distance( $a, $b )
-
-Compute the distance between two vectors.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$a>
-
-=item * C<Box2D::b2Vec2> C<$b>
-
-=back
-
-Returns a C<float32>
-
-=head2 b2DistanceSquared( $a, $b )
-
-Compute the square of the distance between two vectors.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$a>
-
-=item * C<Box2D::b2Vec2> C<$b>
-
-=back
-
-Returns a C<float32>
+Returns true if the supplied positive integer is a power of two. False otherwise.
 
 =head1 SEE ALSO
 
 =over 4
 
-=item * L<Box2D>
-
 =item * L<Box2D::b2Vec2>
 
+=item * L<Box2D::b2Vec3>
+
 =item * L<Box2D::b2Mat22>
+
+=item * L<Box2D::b2Mat33>
+
+=item * L<Box2D::b2Rot>
+
+=item * L<Box2D::b2Transform>
+
+=item * L<Box2D::b2Sweep>
 
 =back
 

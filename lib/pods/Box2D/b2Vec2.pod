@@ -122,6 +122,12 @@ Dot product of two vectors.
 
 Cross product of vector-vector, scalar-vector or vector-scalar.
 
+=head2 ==
+
+=head2 !=
+
+Vector equality.
+
 =head2 abs
 
 Absolute values of the compenents of a vector.
