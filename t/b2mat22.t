@@ -34,7 +34,9 @@ is( $matrix->ey->x, 0, "SetIdentity a12" );
 is( $matrix->ex->y, 0, "SetIdentity a21" );
 is( $matrix->ey->y, 1, "SetIdentity a22" );
 
-$matrix->Set( $exb, $eyb );
+$matrix = Box2D::b2Mat22->new();
+
+isa_ok( $matrix, "Box2D::b2Mat22" );
 
 $matrix->SetZero();
 

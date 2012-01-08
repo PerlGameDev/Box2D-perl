@@ -21,6 +21,10 @@ $rot->SetIdentity();
 is( $rot->s, 0, "Get s" );
 is( $rot->c, 1, "Get c" );
 
+$rot = Box2D::b2Rot->new();
+
+isa_ok( $rot, "Box2D::b2Rot" );
+
 $rot->s(1);
 $rot->c(0);
 

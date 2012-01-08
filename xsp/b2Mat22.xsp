@@ -19,15 +19,14 @@ void SetZero();
 b2Mat22*
 b2Mat22::new( ... )
 	CODE:
-		if(items == 3) {
-			RETVAL = new b2Mat22( *(b2Vec2 *)stack_to_object(ST(1)), *(b2Vec2 *)stack_to_object(ST(2)) );
-		}
-		else if(items == 5) {
+		if(items == 3)
+			RETVAL = new b2Mat22( *(b2Vec2*)stack_to_object(ST(1)), *(b2Vec2*)stack_to_object(ST(2)) );
+		else if(items == 5)
 			RETVAL = new b2Mat22( (float32)SvNV(ST(1)), (float32)SvNV(ST(2)), (float32)SvNV(ST(3)), (float32)SvNV(ST(4)) );
-		}
-		else {
-			croak_xs_usage(cv,  "THIS, (c1, c2)||(a11, a12, a21, a22)");
-		}
+		else if(items == 1)
+			RETVAL = new b2Mat22;
+		else
+			croak_xs_usage(cv,  "THIS, ()||(c1, c2)||(a11, a12, a21, a22)");
 	OUTPUT:
 		RETVAL
 

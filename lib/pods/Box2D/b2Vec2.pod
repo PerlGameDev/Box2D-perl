@@ -22,9 +22,10 @@ There are more functions that operate on C<b2Vec2>s found in L<Box2D::b2Math>.
 
 =head2 new
 
+ my $vec = Box2D::b2Vec2->new();
  my $vec = Box2D::b2Vec2->new( $x, $y );
 
-Returns a new C<Box2D::b2Vec2> with the specifed C<x> and C<y> components.
+Returns a new C<Box2D::b2Vec2> with or without the specifed C<x> and C<y> components.
 
 =head2 x
 

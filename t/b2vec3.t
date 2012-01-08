@@ -19,6 +19,10 @@ is( $vec->x, 3, "Set x" );
 is( $vec->y, 4, "Set y" );
 is( $vec->z, 5, "Set z" );
 
+$vec = Box2D::b2Vec3->new();
+
+isa_ok( $vec, "Box2D::b2Vec3" );
+
 $vec->Set( 6, 7, 8 );
 
 is( $vec->x, 6, "Set" );

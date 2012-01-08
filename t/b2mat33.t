@@ -39,6 +39,10 @@ is( $matrix->ex->z, 0, "SetZero a31" );
 is( $matrix->ey->z, 0, "SetZero a32" );
 is( $matrix->ez->z, 0, "SetZero a33" );
 
+$matrix = Box2D::b2Mat33->new();
+
+isa_ok( $matrix, "Box2D::b2Mat33" );
+
 $matrix->ex($exb);
 $matrix->ey($eyb);
 $matrix->ez($ezb);

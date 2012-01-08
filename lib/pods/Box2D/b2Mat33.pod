@@ -27,9 +27,10 @@ Also see L<Box2D::b2Math> for more.
 
 =head2 new
 
+ my $mat = Box2D::b2Mat33->new();
  my $mat = Box2D::b2Mat33->new( $c1, $c2, $c3 );
 
-Returns the new matrix with the specified three L<Box2D::b2Vec3> columns.
+Returns the new matrix with or without the specified three L<Box2D::b2Vec3> columns.
 The L</SYNOPSIS> shows this in more detail.
 
 =head2 ex

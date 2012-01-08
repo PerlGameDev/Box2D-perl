@@ -21,9 +21,10 @@ L<Box2D::b2Math>.
 
 =head2 new
 
+ my $rot = Box2D::b2Rot->new();
  my $rot = Box2D::b2Rot->new( $angle );
 
-Returns the new rotation object, setting its angle in radians to the number specified.
+Returns the new rotation object, setting its angle in radians to a number if specified.
 
 =head2 s
 

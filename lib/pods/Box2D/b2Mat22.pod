@@ -28,10 +28,11 @@ Also see L<Box2D::b2Math> for more.
 
 =head2 new
 
+ my $mat = Box2D::b2Mat22->new();
  my $mat = Box2D::b2Mat22->new( $c1, $c2 );
  my $mat = Box2D::b2Mat22->new( $a11, $a12, $a21, $a22 );
 
-Returns the new matrix with the specified 4 values.
+Returns the new matrix.
 If 2 items are specified, C<$c1> and C<$c2> should be L<Box2D::b2Vec2>s representing column 1 and column 2 respectively.
 If 4 items are specified, C<$a11>, C<$a12>, C<$a21> and C<$a22> should be numbers representing the corresponding cell.
 The L</SYNOPSIS> shows this in more detail.

@@ -10,8 +10,6 @@
 %name{Box2D::b2Rot} class b2Rot
 {
 
-b2Rot( float32 angle );
-
 void Set( float32 angle );
 
 void SetIdentity();
@@ -19,6 +17,18 @@ void SetIdentity();
 float32 GetAngle();
 
 %{
+
+b2Rot*
+b2Rot::new( ... )
+	CODE:
+		if(items == 2)
+			RETVAL = new b2Rot( (float32)SvNV(ST(1)) );
+		else if(items == 1)
+			RETVAL = new b2Rot;
+		else
+			croak_xs_usage(cv, "THIS, ()||(angle)");
+	OUTPUT:
+		RETVAL
 
 b2Vec2*
 b2Rot::GetXAxis( )
