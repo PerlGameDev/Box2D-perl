@@ -13,6 +13,7 @@ b2Contact *            O_OBJECT
 b2ContactImpulse *     O_OBJECT
 b2DistanceJoint *      O_OBJECT
 b2DistanceJointDef *   O_OBJECT
+b2Draw *               O_OBJECT
 b2Filter *             O_OBJECT
 b2FixtureDef *         O_OBJECT
 b2Fixture *            O_OBJECT
@@ -22,6 +23,7 @@ b2GearJoint *          O_OBJECT
 b2GearJointDef *       O_OBJECT
 b2Joint *              O_OBJECT
 b2JointDef *           O_OBJECT
+b2LimitState *         O_OBJECT
 b2LineJoint *          O_OBJECT
 b2LineJointDef *       O_OBJECT
 b2Manifold *           O_OBJECT
@@ -39,6 +41,10 @@ b2RayCastInput *       O_OBJECT
 b2RayCastOutput *      O_OBJECT
 b2RevoluteJoint *      O_OBJECT
 b2RevoluteJointDef *   O_OBJECT
+b2Rope *               O_OBJECT
+b2RopeDef *            O_OBJECT
+b2RopeJoint *          O_OBJECT
+b2RopeJointDef *       O_OBJECT
 b2Rot *                O_OBJECT
 b2Shape *              O_OBJECT
 b2Timer *              O_OBJECT
