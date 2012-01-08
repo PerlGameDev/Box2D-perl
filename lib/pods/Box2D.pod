@@ -20,8 +20,10 @@ This is still a WIP and so far here are the completed bindings:
 
  b2Mat22
  b2Mat33
+ b2Math
  b2Rot
  b2Settings
+ b2Sweep
  b2Transform
  b2TreeNode
  b2Vec2
