@@ -1,0 +1,118 @@
+
+=head1 NAME
+
+Box2D::b2Sweep - Describes the motion of a body/shape for TOI computation
+
+=head1 SYNOPSIS
+
+ # create a new sweep
+ my $sweep = Box2D::b2Sweep->new();
+
+=head1 DESCRIPTION
+
+This describes the motion of a body/shape for TOI computation.
+Shapes are defined with respect to the body origin, which may
+no coincide with the center of mass. However, to support dynamics
+we must interpolate the center of mass position.
+
+=head1 METHODS
+
+=head2 new
+
+ my $sweep = Box2D::b2Sweep->new();
+
+=head2 localCenter
+
+ my $local_center = $sweep->localCenter;
+ $sweep->localCenter( $local_center );
+
+Returns the sweep's L<Box2D::b2Vec2> local center of mass position vector.
+Specify a vector to modify it.
+
+=head2 c0
+
+ my $c0 = $sweep->c0;
+ $sweep->c0( $c0 );
+
+Returns the sweep's L<Box2D::b2Vec2> C<c0> center world position vector.
+Specify a vector to modify it.
+
+=head2 c
+
+ my $c = $sweep->c;
+ $sweep->c( $c );
+
+Returns the sweep's L<Box2D::b2Vec2> C<c> center world position vector.
+Specify a vector to modify it.
+
+=head2 a0
+
+ my $a0 = $sweep->a0;
+ $sweep->a0( $a0 );
+
+Returns the sweep's C<a0> world angle number value.
+Specify a number to modify it.
+
+=head2 a
+
+ my $a = $sweep->a;
+ $sweep->a( $a );
+
+Returns the sweep's C<a> world angle number value.
+Specify a number to modify it.
+
+=head2 alpha0
+
+ my $alpha0 = $sweep->alpha0;
+ $sweep->alpha0( $alpha0 );
+
+Returns the sweep's C<alpha0> fraction of the current time step value.
+Specify a fraction in the range [0, 1] to modify it.
+L</c0> and L</a0> are the positions at C<alpha0>.
+
+=head2 GetTransform
+
+ $sweep->GetTransform( $xfb, $beta );
+
+Arguments are L<Box2D::b2Transform> C<$xfb> and fraction in the range [0, 1] C<$beta> where 0 indicates L</alpha0>.
+Gets the interpolated transform at the specific time.
+Returns nothing, but supplies the result by modifying C<$xfb>.
+
+=head2 Advance
+
+ $sweep->Advance( $alpha );
+
+Advances the sweep forward to the new time C<$alpha>, yielding a new initial state.
+C<$alpha> should be a value in the range [0, 1].
+
+=head2 Normalize
+
+ $sweep->Normalize();
+
+Normalizes the angles of the sweep to be between -pi and pi.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D::b2Math>
+
+=item * L<Box2D::b2Transform>
+
+=item * L<Box2D::b2Vec2>
+
+=back
+
+=head1 BUGS
+
+See L<Box2D/BUGS>
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

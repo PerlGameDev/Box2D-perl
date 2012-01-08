@@ -4,7 +4,7 @@ use warnings;
 use strict;
 our @ISA = qw(Exporter);
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 require XSLoader;
 XSLoader::load( 'Box2D', $VERSION );
@@ -28,6 +28,7 @@ use constant {
 
 };
 
+use Box2D::b2Mat22;
 use Box2D::b2Vec2;
 use Box2D::b2Vec3;
 

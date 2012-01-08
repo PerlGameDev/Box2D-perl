@@ -14,6 +14,7 @@ b2ContactImpulse *     O_OBJECT
 b2DistanceJoint *      O_OBJECT
 b2DistanceJointDef *   O_OBJECT
 b2Draw *               O_OBJECT
+b2EdgeShape *          O_OBJECT
 b2Filter *             O_OBJECT
 b2FixtureDef *         O_OBJECT
 b2Fixture *            O_OBJECT
@@ -29,6 +30,7 @@ b2LineJointDef *       O_OBJECT
 b2Manifold *           O_OBJECT
 b2MassData *           O_OBJECT
 b2Mat22 *              O_OBJECT
+b2Mat33 *              O_OBJECT
 b2MouseJoint *         O_OBJECT
 b2MouseJointDef *      O_OBJECT
 b2PolygonShape *       O_OBJECT
@@ -47,6 +49,7 @@ b2RopeJoint *          O_OBJECT
 b2RopeJointDef *       O_OBJECT
 b2Rot *                O_OBJECT
 b2Shape *              O_OBJECT
+b2Sweep *              O_OBJECT
 b2Timer *              O_OBJECT
 b2Transform *          O_OBJECT
 b2Vec2 *               O_OBJECT

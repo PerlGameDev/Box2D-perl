@@ -1,0 +1,46 @@
+%{
+
+#include <Box2D/Box2D.h>
+#include <Box2D/Rope/b2Rope.h>
+#include <Box2D/Dynamics/Joints/b2RopeJoint.h>
+#include <helper.h>
+
+%}
+
+%module{Box2D};
+
+%name{Box2D::b2RopeJointDef} class b2RopeJointDef : public %name{Box2D::b2JointDef} b2JointDef
+{
+
+b2RopeJointDef();
+
+%{
+
+b2Vec2 *
+b2RopeJointDef::localAnchorA( )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(THIS->localAnchorA);
+	OUTPUT:
+		RETVAL
+
+b2Vec2 *
+b2RopeJointDef::localAnchorB( )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(THIS->localAnchorB);
+	OUTPUT:
+		RETVAL
+
+float32
+b2RopeJointDef::maxLength( )
+	CODE:
+		RETVAL = THIS->maxLength;
+	OUTPUT:
+		RETVAL
+
+%}
+
+};

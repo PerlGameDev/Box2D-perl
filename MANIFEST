@@ -12,8 +12,10 @@ examples/pulley.pl
 examples/radar.pl
 lib/Box2D.pm
 lib/Box2D/b2ContactListener.pm
+lib/Box2D/b2Mat22.pm
 lib/Box2D/b2RayCastCallback.pm
 lib/Box2D/b2Vec2.pm
+lib/Box2D/b2Vec3.pm
 lib/pods/Box2D.pod
 lib/pods/Box2D/b2AABB.pod
 lib/pods/Box2D/b2Body.pod
@@ -24,6 +26,7 @@ lib/pods/Box2D/b2ContactImpulse.pod
 lib/pods/Box2D/b2ContactListener.pod
 lib/pods/Box2D/b2DistanceJoint.pod
 lib/pods/Box2D/b2DistanceJointDef.pod
+lib/pods/Box2D/b2EdgeShape.pod
 lib/pods/Box2D/b2Filter.pod
 lib/pods/Box2D/b2Fixture.pod
 lib/pods/Box2D/b2FixtureDef.pod
@@ -38,6 +41,7 @@ lib/pods/Box2D/b2LineJointDef.pod
 lib/pods/Box2D/b2Manifold.pod
 lib/pods/Box2D/b2MassData.pod
 lib/pods/Box2D/b2Mat22.pod
+lib/pods/Box2D/b2Mat33.pod
 lib/pods/Box2D/b2Math.pod
 lib/pods/Box2D/b2MouseJoint.pod
 lib/pods/Box2D/b2MouseJointDef.pod
@@ -51,15 +55,21 @@ lib/pods/Box2D/b2RayCastInput.pod
 lib/pods/Box2D/b2RayCastOutput.pod
 lib/pods/Box2D/b2RevoluteJoint.pod
 lib/pods/Box2D/b2RevoluteJointDef.pod
+lib/pods/Box2D/b2Rot.pod
+lib/pods/Box2D/b2Settings.pod
 lib/pods/Box2D/b2Shape.pod
+lib/pods/Box2D/b2Sweep.pod
 lib/pods/Box2D/b2Transform.pod
 lib/pods/Box2D/b2Vec2.pod
+lib/pods/Box2D/b2Vec3.pod
 lib/pods/Box2D/b2Version.pod
 lib/pods/Box2D/b2WeldJoint.pod
 lib/pods/Box2D/b2WeldJointDef.pod
 lib/pods/Box2D/b2World.pod
 LICENSE
 MANIFEST			This list of files
+META.json
+META.yml
 README
 src/helper.h
 src/PerlContactListener.h
@@ -70,6 +80,7 @@ t/b2aabb.t
 t/b2body.t
 t/b2circle.t
 t/b2distancejoint.t
+t/b2edgeshape.t
 t/b2filter.t
 t/b2fixturedef.t
 t/b2frictionjoint.t
@@ -77,6 +88,7 @@ t/b2gearjoint.t
 t/b2linejoint.t_
 t/b2massdata.t
 t/b2mat22.t
+t/b2mat33.t
 t/b2math.t
 t/b2mousejoint.t
 t/b2polygonshape.t
@@ -86,9 +98,13 @@ t/b2raycastcallback.t
 t/b2raycastinput.t
 t/b2raycastoutput.t
 t/b2revolutejoint.t
+t/b2rot.t
+t/b2settings.t
+t/b2sweep.t
 t/b2timer.t
 t/b2transform.t
 t/b2vec2.t
+t/b2vec3.t
 t/b2version.t
 t/b2weldjoint.t
 t/b2world.t
@@ -140,6 +156,7 @@ xsp/b2LineJointDef.xsp_
 xsp/b2Manifold.xsp
 xsp/b2MassData.xsp
 xsp/b2Mat22.xsp
+xsp/b2Mat33.xsp
 xsp/b2Math.xsp
 xsp/b2MouseJoint.xsp
 xsp/b2MouseJointDef.xsp
@@ -160,10 +177,12 @@ xsp/b2Rot.xsp
 xsp/b2Settings.xsp
 xsp/b2Shape.xsp
 xsp/b2StackAllocator.xsp
+xsp/b2Sweep.xsp
 xsp/b2TimeOfImpact.xsp
 xsp/b2Timer.xsp
 xsp/b2Transform.xsp
 xsp/b2Vec2.xsp
+xsp/b2Vec3.xsp
 xsp/b2Version.xsp
 xsp/b2WeldJoint.xsp
 xsp/b2WeldJointDef.xsp

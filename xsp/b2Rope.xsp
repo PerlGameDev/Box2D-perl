@@ -1,6 +1,7 @@
 %{
 
 #include <Box2D/Box2D.h>
+#include <Box2D/Rope/b2Rope.h>
 #include <helper.h>
 
 %}
@@ -10,12 +11,37 @@
 %name{Box2D::b2Rope} class b2Rope
 {
 
+b2Rope();
+~b2Rope();
+
+void Step(float32 timeStep, int32 iterations);
+
+int32 GetVertexCount();
+
+void SetAngle(float32 angle);
+
 %{
 
 void
-b2Rope::new( )
+b2Rope::Initialize( def )
+	b2RopeDef *def
 	CODE:
-		warn("This is a stub for b2Rope");
+		THIS->Initialize( def );
+
+b2Vec2 *
+b2Rope::GetVertices( )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = (b2Vec2 *)THIS->GetVertices();
+	OUTPUT:
+		RETVAL
+
+void
+b2Rope::Draw( draw )
+	b2Draw *draw
+	CODE:
+		THIS->Draw(draw);
 
 %}
 

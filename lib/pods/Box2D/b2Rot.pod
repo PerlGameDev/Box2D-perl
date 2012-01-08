@@ -1,0 +1,97 @@
+
+=head1 NAME
+
+Box2D::b2Rot - Rotation
+
+=head1 SYNOPSIS
+
+ # angles are in radians
+ my $angle = 0;
+
+ # create a new rotation
+ my $rotation = Box2D::b2Rot->new( $angle );
+
+=head1 DESCRIPTION
+
+This class describes a rotation, defining it in terms of the sine and cosine of an angle.
+It provides some methods for manipulating rotations, and more are found in
+L<Box2D::b2Math>.
+
+=head1 METHODS
+
+=head2 new
+
+ my $rot = Box2D::b2Rot->new();
+ my $rot = Box2D::b2Rot->new( $angle );
+
+Returns the new rotation object, setting its angle in radians to a number if specified.
+
+=head2 s
+
+ my $s = $rot->s;
+ $rot->s( $s );
+
+Returns the sine of the rotation's angle.
+Specify a single numeric value to modify it.
+
+=head2 c
+
+ my $c = $rot->c;
+ $rot->c( $c );
+
+Returns the cosine of the rotation's angle.
+Specify a single numeric value to modify it.
+
+=head2 Set
+
+ $rot->Set( $angle );
+
+=head2 SetIdentity
+
+ $rot->SetIdentity();
+
+Sets the rotation to the identity rotation: 0 radians.
+
+=head2 GetAngle
+
+ my $angle = $rot->GetAngle();
+
+Returns the angle of the rotation in radians.
+
+=head2 GetXAxis
+
+ my $x_axis = $rot->GetXAxis();
+
+Returns a L<Box2D::b2Vec2> of the rotation's x-axis.
+
+=head2 GetYAxis
+
+ my $y_axis = $rot->GetYAxis();
+
+Returns a L<Box2D::b2Vec2> of the rotation's y-axis.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D::b2Math>
+
+=item * L<Box2D::b2Vec2>
+
+=item * L<Box2D::b2Transform>
+
+=back
+
+=head1 BUGS
+
+See L<Box2D/BUGS>
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

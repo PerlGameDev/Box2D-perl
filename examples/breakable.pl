@@ -197,10 +197,10 @@ sub Break {
     my $center1 = $body1->GetWorldCenter();
     my $center2 = $body2->GetWorldCenter();
 
-    my $velocity1 = Box2D::b2Math::b2CrossSV2( $self->angularVelocity,
-        $center1 - $center );
-    my $velocity2 = Box2D::b2Math::b2CrossSV2( $self->angularVelocity,
-        $center2 - $center );
+    my $velocity1
+        = Box2D::b2Cross( $self->angularVelocity, $center1 - $center );
+    my $velocity2
+        = Box2D::b2Cross( $self->angularVelocity, $center2 - $center );
 
     $body1->SetAngularVelocity( $self->angularVelocity );
     $body1->SetLinearVelocity($velocity1);
@@ -250,7 +250,7 @@ my $vIters = 10;
 my $pIters = 10;
 
 my $gravity = Box2D::b2Vec2->new( 0, 9.8 );
-my $world = Box2D::b2World->new( $gravity, 1 );
+my $world = Box2D::b2World->new($gravity);
 
 my $ground = make_ground();
 
@@ -313,9 +313,9 @@ sub make_breakable {
 sub make_ground {
     my $bodyDef = Box2D::b2BodyDef->new();
     my $ground  = $world->CreateBody($bodyDef);
-    my $shape   = Box2D::b2PolygonShape->new();
+    my $shape   = Box2D::b2EdgeShape->new();
 
-    $shape->SetAsEdge(
+    $shape->Set(
         Box2D::b2Vec2->new( 0.0,         s2w($height) ),
         Box2D::b2Vec2->new( s2w($width), s2w($height) ),
     );

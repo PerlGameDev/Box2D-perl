@@ -41,6 +41,19 @@ Get the vertex count.
 
 Returns a C<int32>
 
+=head2 Set( @vertices )
+
+Copy vertices. This assumes the vertices define a convex polygon. It is assumed
+that the exterior is the the right of each edge.
+
+Parameters:
+
+=over 4
+
+=item * C<array> C<@vertices>
+
+=back
+
 =head2 SetAsBox( $hx, $hy )
 
 =head2 SetAsBox( $hx, $hy, $center, $angle )
@@ -60,20 +73,6 @@ coordinates.
 
 =item * C<float32> C<$angle> (optional) - the rotation of the box in local
 coordinates.
-
-=back
-
-=head2 SetAsEdge( $v1, $v2 )
-
-Set this as a single edge.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$v1>
-
-=item * C<Box2D::b2Vec2> C<$v2>
 
 =back
 

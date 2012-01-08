@@ -27,7 +27,7 @@ my $vIters = 30;
 my $pIters = 30;
 
 my $gravity = make_vec2( 0, 9.8 );
-my $world = Box2D::b2World->new( $gravity, 1 );
+my $world = Box2D::b2World->new($gravity);
 
 my $ground = make_ground();
 
@@ -62,8 +62,6 @@ my $joint = make_pulley_joint(
     anchorA       => $platformA->{body}->GetWorldCenter(),
     anchorB       => $platformB->{body}->GetWorldCenter(),
     ratio         => 1.0,
-    maxLengthA    => s2w( $height * 0.8 ),
-    maxLengthB    => s2w( $height * 0.8 ),
 );
 
 my $app = SDLx::App->new(
@@ -209,8 +207,8 @@ sub make_ball {
 # shapes
 sub make_edge {
     my ( $p1, $p2 ) = @_;
-    my $edge = Box2D::b2PolygonShape->new();
-    $edge->SetAsEdge( make_vec2(@$p1), make_vec2(@$p2) );
+    my $edge = Box2D::b2EdgeShape->new();
+    $edge->Set( make_vec2(@$p1), make_vec2(@$p2) );
     return $edge;
 }
 
@@ -259,8 +257,6 @@ sub make_pulley_joint {
             qw( bodyA bodyB groundAnchorA groundAnchorB anchorA anchorB ratio )
             }
     );
-    $jointDef->maxLengthA( $options{maxLengthA} );
-    $jointDef->maxLengthB( $options{maxLengthB} );
     return $world->CreateJoint($jointDef);
 }
 

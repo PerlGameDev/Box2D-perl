@@ -1,0 +1,103 @@
+%{
+
+#include <Box2D/Box2D.h>
+#include <helper.h>
+
+%}
+
+%module{Box2D};
+
+%name{Box2D::b2Mat33} class b2Mat33
+{
+
+void SetZero();
+
+%{
+
+b2Mat33*
+b2Mat33::new( ... )
+	CODE:
+		if(items == 4)
+			RETVAL = new b2Mat33( *(b2Vec3*)stack_to_object(ST(1)), *(b2Vec3*)stack_to_object(ST(2)), *(b2Vec3*)stack_to_object(ST(3)) );
+		else if(items == 1)
+			RETVAL = new b2Mat33;
+		else
+			croak_xs_usage(cv,  "THIS, ()||(c1, c2, c3)");
+	OUTPUT:
+		RETVAL
+
+
+b2Vec3*
+b2Mat33::Solve33( b )
+	b2Vec3* b
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec3";
+	CODE:
+		RETVAL = new b2Vec3(THIS->Solve33(*b));
+	OUTPUT:
+		RETVAL
+		
+b2Vec2*
+b2Mat33::Solve22( b )
+	b2Vec2* b
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(THIS->Solve22(*b));
+	OUTPUT:
+		RETVAL
+		
+void
+b2Mat33::GetInverse22( M )
+	b2Mat33* M
+	CODE:
+		THIS->GetInverse22(M);
+		
+void
+b2Mat33::GetSymInverse33( M )
+	b2Mat33* M
+	CODE:
+		THIS->GetSymInverse33(M);
+
+b2Vec3*
+b2Mat33::ex( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec3";
+	CODE:
+		if( items > 1 )
+		{
+			THIS->ex = *(b2Vec3 *)stack_to_object(ST(1));
+		}
+		RETVAL = &(THIS->ex);
+	OUTPUT:
+		RETVAL
+
+b2Vec3*
+b2Mat33::ey( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec3";
+	CODE:
+		if( items > 1 )
+		{
+			THIS->ey = *(b2Vec3 *)stack_to_object(ST(1));
+		}
+		RETVAL = &(THIS->ey);
+	OUTPUT:
+		RETVAL
+		
+b2Vec3*
+b2Mat33::ez( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec3";
+	CODE:
+		if( items > 1 )
+		{
+			THIS->ez = *(b2Vec3 *)stack_to_object(ST(1));
+		}
+		RETVAL = &(THIS->ez);
+	OUTPUT:
+		RETVAL
+
+%}
+
+};

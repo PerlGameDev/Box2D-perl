@@ -6,16 +6,28 @@ Box2D::b2Settings - Global constants based on meters-kilograms-seconds (MKS) uni
 =head1 SYNOPSIS
 
  # get the maximum number of vertices on a convex polygon.
- my $max_polygon_vertices = Box2D::b2Settings::maxPolygonVertices;
+ my $max_polygon_vertices = Box2D::maxPolygonVertices;
 
  # get libBox2D's version
- my $version = Box2D::b2Settings::b2_version;
+ my $version = Box2D::b2_version;
 
 =head1 DESCRIPTION
 
 These methods are compile-time values of the C++ library Box2D. They can not be changed.
 
 =head1 METHODS
+
+=head2 b2_version
+
+ my $version = Box2D::b2Settings::b2_version;
+
+ # will print something like "2.2.1"
+ printf( "%d.%d.%d", $version->major, $version->minor, $version->revision );
+
+Returns a L<Box2D::b2Version> object holding the current C++ library Box2D version.
+
+B<Note:> This is not the Box2D-perl version.
+This is found in C<$Box2D::VERSION>.
 
 =head2 b2_maxFloat
 
@@ -119,18 +131,6 @@ A body cannot sleep if its linear velocity is above this tolerance.
 =head2 b2_angularSleepTolerance
 
 A body cannot sleep if its angular velocity is above this tolerance.
-
-=head2 b2_version
-
- my $version = Box2D::b2Settings::b2_version;
-
- # will print something like "2.2.1"
- printf( "%d.%d.%d\n", $version->major, $version->minor, $version->revision );
-
-Returns a L<Box2D::b2Version> object holding the current C++ library Box2D version.
-
-B<Note:> This is not the Box2D-perl version.
-This is found in C<$Box2D::VERSION>.
 
 =head1 SEE ALSO
 

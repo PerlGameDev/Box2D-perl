@@ -33,7 +33,7 @@ $bodySurface->update();
 my $vec = Box2D::b2Vec2->new(0,-10);
 
 # start the world
-my $world = Box2D::b2World->new($vec, 1);
+my $world = Box2D::b2World->new($vec);
 
 # update the app
 $app->update();

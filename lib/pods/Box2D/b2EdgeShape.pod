@@ -1,0 +1,59 @@
+
+=head1 NAME
+
+Box2D::b2EdgeShape - A line segment (edge) shape.
+
+=head1 SYNOPSIS
+
+  my $edge = Box2D::b2Edge->new();
+  $edge->Set( $v1, $v2 );
+
+=head1 DESCRIPTION
+
+A line segment (edge) shape. These can be connected in chains or loops
+to other edge shapes. The connectivity information is used to ensure
+correct contact normals.
+
+=head1 METHODS
+
+=head2 new()
+
+Default constructor.
+
+Returns a C<Box2D::b2EdgeShape>
+
+=head2 Set( $v1, $v2 )
+
+Parameters:
+
+=over 4
+
+=item * C<Box2D::b2Vec2> C<$v1>
+
+=item * C<Box2D::b2Vec2> C<$v2>
+
+=back
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Box2D>
+
+=item * L<Box2D::b2Shape>
+
+=back
+
+=head1 BUGS
+
+See L<Box2D/BUGS>
+
+=head1 AUTHORS
+
+See L<Box2D/AUTHORS>
+
+=head1 COPYRIGHT & LICENSE
+
+See L<Box2D/"COPYRIGHT & LICENSE">
+
+=cut

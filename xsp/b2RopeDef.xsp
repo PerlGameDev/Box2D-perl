@@ -1,0 +1,91 @@
+%{
+
+#include <Box2D/Box2D.h>
+#include <Box2D/Rope/b2Rope.h>
+#include <helper.h>
+
+%}
+
+%module{Box2D};
+
+%name{Box2D::b2RopeDef} class b2RopeDef
+{
+
+b2RopeDef();
+
+%{
+
+b2Vec2 *
+b2RopeDef::vertices( )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = THIS->vertices;
+	OUTPUT:
+		RETVAL
+
+float32
+b2RopeDef::masses( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			float32 masses = (float32)SvNV( ST(1) );
+			THIS->masses = &masses;
+		}
+		if ( !THIS->masses )
+			RETVAL = 0;
+		else
+			RETVAL = *(THIS->masses);
+	OUTPUT:
+		RETVAL
+
+b2Vec2 *
+b2RopeDef::gravity( )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if ( items > 1 )
+			THIS->gravity = *(b2Vec2 *)stack_to_object( ST(1) );
+		RETVAL = new b2Vec2(THIS->gravity);
+	OUTPUT:
+		RETVAL
+
+float32
+b2RopeDef::damping( )
+	CODE:
+		if ( items > 1 )
+			THIS->damping = (float32)SvNV( ST(1) );
+		RETVAL = THIS->damping;
+	OUTPUT:
+		RETVAL
+
+float32
+b2RopeDef::k2( )
+	CODE:
+		if ( items > 1 )
+			THIS->k2 = (float32)SvNV( ST(1) );
+		RETVAL = THIS->k2;
+	OUTPUT:
+		RETVAL
+
+float32
+b2RopeDef::k3( )
+	CODE:
+		if ( items > 1 )
+			THIS->k3 = (float32)SvNV( ST(1) );
+		RETVAL = THIS->k3;
+	OUTPUT:
+		RETVAL
+
+int32
+b2RopeDef::count( )
+	CODE:
+		if ( items > 1 )
+			THIS->count = (int32)SvNV( ST(1) );
+		RETVAL = THIS->count;
+	OUTPUT:
+		RETVAL
+
+%}
+
+};

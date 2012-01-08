@@ -7,7 +7,7 @@ Box2D::b2Vec2 - A 2D column vector
 
  # create a new vector representing the gravity
  my $gravity = Box2D::b2Vec2->new( 0, -10 );
- 
+
  my $world = Box2D::b2World->new( $gravity, 1 );
 
 =head1 DESCRIPTION
@@ -22,9 +22,10 @@ There are more functions that operate on C<b2Vec2>s found in L<Box2D::b2Math>.
 
 =head2 new
 
+ my $vec = Box2D::b2Vec2->new();
  my $vec = Box2D::b2Vec2->new( $x, $y );
 
-Returns a new C<Box2D::b2Vec2> with the specifed C<x> and C<y> components.
+Returns a new C<Box2D::b2Vec2> with or without the specifed C<x> and C<y> components.
 
 =head2 x
 
@@ -83,7 +84,7 @@ Returns the length of the new vector.
 =head2 Skew
 
  my $skew = $vec->Skew();
- 
+
 Returns the skew vector such that C<dot($skew, $other) == cross($vec, $other)>
 
 =head1 OVERLOADED OPERATORS
@@ -121,6 +122,12 @@ Dot product of two vectors.
 =head2 x=
 
 Cross product of vector-vector, scalar-vector or vector-scalar.
+
+=head2 ==
+
+=head2 !=
+
+Vector equality.
 
 =head2 abs
 

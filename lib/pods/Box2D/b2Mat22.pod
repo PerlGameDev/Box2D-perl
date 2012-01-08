@@ -1,101 +1,111 @@
 
 =head1 NAME
 
-Box2D::b2Mat22 - A 2-by-2 matrix.
+Box2D::b2Mat22 - A 2-by-2 matrix. Stored in column-major order
 
 =head1 SYNOPSIS
 
-  my $matrix = Box2D::b2Mat22->new( $a11, $a12, $a21, $a22 );
+ my ( $a11, $a12 ) = (  4, 0 );
+ my ( $a21, $a22 ) = ( -2, 3 );
+
+ # Construct matrix with numbers
+ my $matrix = Box2D::b2Mat22->new( $a11, $a12, $a21, $a22 );
+
+ my $c1 = Box2D::b2Vec2->new( $a11, $a12 );
+ my $c2 = Box2D::b2Vec2->new( $a21, $a22 );
+
+ # Construct the equivalent matrix with columns
+ my $matrix2 = Box2D::b2Mat22->new( $c1, $c2 );
 
 =head1 DESCRIPTION
 
-A 2-by-2 matrix. Stored in column-major order.
+A class to store 2-by-2 matrices. It is made up of two columns, each being a L<Box2D::b2Vec2>,
+stored in column-major order. The L</SYNOPSIS> shows how the matrix is arranged.
+The class also provides some methods for matrix manipulation.
+Also see L<Box2D::b2Math> for more.
 
 =head1 METHODS
 
-=head2 new( $a11, $a12, $a21, $a22 )
+=head2 new
 
-Construct this matrix using scalars.
+ my $mat = Box2D::b2Mat22->new();
+ my $mat = Box2D::b2Mat22->new( $c1, $c2 );
+ my $mat = Box2D::b2Mat22->new( $a11, $a12, $a21, $a22 );
 
-Parameters:
+Returns the new matrix.
+If 2 items are specified, C<$c1> and C<$c2> should be L<Box2D::b2Vec2>s representing column 1 and column 2 respectively.
+If 4 items are specified, C<$a11>, C<$a12>, C<$a21> and C<$a22> should be numbers representing the corresponding cell.
+The L</SYNOPSIS> shows this in more detail.
 
-=over 4
+=head2 Set
 
-=item * C<float32> C<$a11>
+ $mat->Set( $c1, $c2 );
 
-=item * C<float32> C<$a12>
+Set the matrix's columns to the specified vectors. Works like the first form of L</new>.
 
-=item * C<float32> C<$a21>
+=head2 ex
 
-=item * C<float32> C<$a22>
+ my $c1 = $mat->ex;
+ $mat->ex( $c1 );
 
-=back
+Returns the first column vector of the matrix.
+Specify a single vector to modify it.
 
-=head2 GetAngle()
+=head2 ey
 
-Extract the angle from this matrix (assumed to be a rotation matrix).
+ my $c2 = $mat->ey;
+ $mat->ey( $c2 );
 
-Returns a C<float32>
+Returns the second column vector of the matrix.
+Specify a single vector to modify it.
 
-=head2 GetInverse()
+=head2 SetIdentity
 
-Returns a C<Box2D::b2Mat22>
+ $mat->SetIdentity();
 
-=head2 Set( $c1, $c2 )
+Sets the matrix to the identity matrix, that is:
 
-Initialize this matrix using columns.
+ [ 1 0
+   0 1 ]
 
-Parameters:
+=head2 SetZero
 
-=over 4
+ $mat->SetZero();
 
-=item * C<Box2D::b2Vec2> C<$c1>
+Sets the matrix's parameters all to zero.
 
-=item * C<Box2D::b2Vec2> C<$c2>
+=head2 GetInverse
 
-=back
+ my $inverse = $mat->GetInverse();
 
-=head2 SetIdentity()
+Computes the inverse of the matrix, returning it in a new C<Box2D::Mat22>.
 
-Set this to the identity matrix.
+=head2 Solve
 
-=head2 SetZero()
+ my $x = $mat->Solve( $b );
 
-Set this matrix to all zeros.
+Given a L<Box2D::b2Vec2> C<$b>, solves for vector C<$x> where C<Box2D::b2Mul($mat, $x) == $b>.
+See L<Box2D::b2Math::b2Mul|Box2D::b2Math/b2Mul>. This is more efficient than computing the inverse in one-shot cases.
 
-=head2 col1()
+=head1 OVERLOADED OPERATORS
 
-=head2 col1( $col1 )
+=head2 +
 
-Parameters:
+=head2 +=
 
-=over 4
+Matrix addition of two matrices.
 
-=item * C<Box2D::b2Vec2> C<$col1> (optional)
+=head2 abs
 
-=back
-
-Returns a C<Box2D::b2Vec2>
-
-=head2 col2()
-
-=head2 col2( $col2 )
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$col2> (optional)
-
-=back
-
-Returns a C<Box2D::b2Vec2>
+Absolute values of the all the elements of a matrix.
 
 =head1 SEE ALSO
 
 =over 4
 
-=item * L<Box2D>
+=item * L<Box2D::b2Math>
+
+=item * L<Box2D::b2Vec2>
 
 =back
 
