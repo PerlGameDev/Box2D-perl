@@ -1,0 +1,102 @@
+%{
+
+#include <Box2D/Box2D.h>
+#include <helper.h>
+
+%}
+
+%module{Box2D};
+
+%name{Box2D::b2Sweep} class b2Sweep
+{
+
+b2Sweep();
+
+void Advance( float32 alpha );
+
+void Normalize();
+
+%{
+
+void
+b2Sweep::GetTransform( xfb, beta );
+	b2Transform* xfb
+	float32 beta
+	CODE:
+		THIS->GetTransform( xfb, beta );
+
+b2Vec2*
+b2Sweep::localCenter( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if( items > 1 )
+		{
+			THIS->localCenter = *(b2Vec2 *)stack_to_object(ST(1));
+		}
+		RETVAL = &(THIS->localCenter);
+	OUTPUT:
+		RETVAL
+		
+b2Vec2*
+b2Sweep::c0( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if( items > 1 )
+		{
+			THIS->c0 = *(b2Vec2 *)stack_to_object(ST(1));
+		}
+		RETVAL = &(THIS->c0);
+	OUTPUT:
+		RETVAL
+		
+b2Vec2*
+b2Sweep::c( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if( items > 1 )
+		{
+			THIS->c = *(b2Vec2 *)stack_to_object(ST(1));
+		}
+		RETVAL = &(THIS->c);
+	OUTPUT:
+		RETVAL
+
+float32
+b2Sweep::a0( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->a0 = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->a0;
+	OUTPUT:
+		RETVAL
+
+float32
+b2Sweep::a( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->a = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->a;
+	OUTPUT:
+		RETVAL
+		
+float32
+b2Sweep::alpha0( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->alpha0 = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->alpha0;
+	OUTPUT:
+		RETVAL
+
+%}
+
+};

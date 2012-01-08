@@ -15,11 +15,14 @@ void SetIdentity();
 %{
 
 b2Transform*
-b2Transform::new( position, rotation )
-	b2Vec2* position
-	b2Rot* rotation
+b2Transform::new( ... )
 	CODE:
-		RETVAL = new b2Transform( *position, *rotation );
+		if(items == 1)
+			RETVAL = new b2Transform;
+		else if(items == 3)
+			RETVAL = new b2Transform( *(b2Vec2*)stack_to_object( ST(1) ), *(b2Rot*)stack_to_object( ST(2) ) );
+		else
+			croak_xs_usage(cv, "THIS, ()||(position, rotation)");
 	OUTPUT:
 		RETVAL
 

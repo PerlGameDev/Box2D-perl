@@ -58,6 +58,7 @@ lib/pods/Box2D/b2RevoluteJointDef.pod
 lib/pods/Box2D/b2Rot.pod
 lib/pods/Box2D/b2Settings.pod
 lib/pods/Box2D/b2Shape.pod
+lib/pods/Box2D/b2Sweep.pod
 lib/pods/Box2D/b2Transform.pod
 lib/pods/Box2D/b2Vec2.pod
 lib/pods/Box2D/b2Vec3.pod
@@ -99,6 +100,7 @@ t/b2raycastoutput.t
 t/b2revolutejoint.t
 t/b2rot.t
 t/b2settings.t
+t/b2sweep.t
 t/b2timer.t
 t/b2transform.t
 t/b2vec2.t
@@ -175,6 +177,7 @@ xsp/b2Rot.xsp
 xsp/b2Settings.xsp
 xsp/b2Shape.xsp
 xsp/b2StackAllocator.xsp
+xsp/b2Sweep.xsp
 xsp/b2TimeOfImpact.xsp
 xsp/b2Timer.xsp
 xsp/b2Transform.xsp

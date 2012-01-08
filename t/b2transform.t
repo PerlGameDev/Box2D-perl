@@ -21,6 +21,10 @@ is( $transform->p->y, $y, "Get p->y" );
 
 cmp_ok( abs($transform->q->GetAngle() - $angle), "<=", 0.00000001, "angle" );
 
+$transform = Box2D::b2Transform->new;
+
+isa_ok( $transform, "Box2D::b2Transform" );
+
 $transform->Set( $position2, $angle2 );
 
 is( $transform->p->x, $x2, "Set p->x" );

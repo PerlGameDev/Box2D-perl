@@ -21,10 +21,11 @@ transforms, and more are found in L<Box2D::b2Math>.
 
 =head2 new
 
+ my $transform = Box2D::b2Transform->new();
  my $transform = Box2D::b2Transform->new( $position, $rotation );
 
 Returns the new transform object, with a L<Box2D::b2Vec2> position vector
-and L<Box2D::b2Rot> rotation.
+and L<Box2D::b2Rot> rotation if specified.
 
 =head2 p
 
@@ -42,7 +43,7 @@ Specify a vector to modify it.
 Returns the transform's L<Box2D::b2Rot> rotation.
 Specify a rotation to modify it.
 
-=head2 SetIdentity()
+=head2 SetIdentity
 
  $transform->SetIdentity();
 
