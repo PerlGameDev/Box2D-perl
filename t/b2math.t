@@ -14,7 +14,7 @@ SKIP: {
 	ok( !Box2D::b2IsValid($nan), "!b2IsValid" );
 }
 
-cmp_ok( abs( Box2D::b2InvSqrt(4.0) - 0.5 ), "<=", 1e-5, "b2InvSqrt" );
+cmp_ok( abs( Box2D::b2InvSqrt(4.0) - 0.5 ), "<=", 1e-3, "b2InvSqrt" );
 
 cmp_ok( abs( Box2D::b2Sqrt(94) - sqrt(94) ), "<=", 1e-5, "b2Sqrt" );
 cmp_ok( abs( Box2D::b2Sqrt(7.3) - sqrt(7.3) ), "<=", 1e-5, "b2Sqrt" );
