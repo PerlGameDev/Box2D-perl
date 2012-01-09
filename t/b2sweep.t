@@ -10,7 +10,7 @@ isa_ok( $sweep, "Box2D::b2Sweep" );
 my $a = Box2D::b2Vec2->new( 1, 2 );
 my $b = Box2D::b2Vec2->new( 3, 4 );
 my $c = Box2D::b2Vec2->new( 5, 6 );
-my ($d, $e, $f) = (7, 8, 9);
+my ($d, $e, $f) = (7, 8, 0.9);
 
 $sweep->localCenter( $a );
 $sweep->c0( $b );
@@ -27,7 +27,7 @@ is( $sweep->c->x, $c->x, "Set and Get c" );
 is( $sweep->c->y, $c->y, "Set and Get c" );
 is( $sweep->a0, $d, "Set and Get a0" );
 is( $sweep->a, $e, "Set and Get a" );
-is( $sweep->alpha0, $f, "Set and Get alpha0" );
+cmp_ok( abs($sweep->alpha0 - $f), "<=", 1e-5, "Set and Get alpha0" ); #yep, we lose precision here
 
 {
 	my $xf = Box2D::b2Transform->new;
@@ -38,9 +38,9 @@ is( $sweep->alpha0, $f, "Set and Get alpha0" );
 	my $p = (1.0 - $beta) * $sweep->c0 + $beta * $sweep->c;
 	$p -= Box2D::b2Mul( $q, $sweep->localCenter );
 	
-	cmp_ok( abs($xf->p->x - $p->x), "<=", 0.0000001, "GetTransform" );
-	cmp_ok( abs($xf->p->y - $p->y), "<=", 0.0000001, "GetTransform" );
-	cmp_ok( abs($xf->q->GetAngle - $q->GetAngle), "<=", 0.0000001, "GetTransform" );
+	cmp_ok( abs($xf->p->x - $p->x), "<=", 1e-5, "GetTransform" );
+	cmp_ok( abs($xf->p->y - $p->y), "<=", 1e-5, "GetTransform" );
+	cmp_ok( abs($xf->q->GetAngle - $q->GetAngle), "<=", 1e-5, "GetTransform" );
 }
 
 {
@@ -50,9 +50,9 @@ is( $sweep->alpha0, $f, "Set and Get alpha0" );
 	my $a0 = (1.0 - $beta) * $sweep->a0 + $beta * $sweep->a;
 	$sweep->Advance( $alpha );
 
-	cmp_ok( abs($sweep->c0->x - $c0->x), "<=", 0.0000001, "Advance" );
-	cmp_ok( abs($sweep->c0->y - $c0->y), "<=", 0.0000001, "Advance" );
-	cmp_ok( abs($sweep->a0 - $a0), "<=", 0.0000001, "Advance" );
+	cmp_ok( abs($sweep->c0->x - $c0->x), "<=", 1e-5, "Advance" );
+	cmp_ok( abs($sweep->c0->y - $c0->y), "<=", 1e-5, "Advance" );
+	cmp_ok( abs($sweep->a0 - $a0), "<=", 1e-5, "Advance" );
 }
 
 {
@@ -62,8 +62,8 @@ is( $sweep->alpha0, $f, "Set and Get alpha0" );
 	my $a = $sweep->a - $d;
 	$sweep->Normalize();
 	
-	cmp_ok( abs($sweep->a0 - $a0), "<=", 0.0000001, "Normalize" );
-	cmp_ok( abs($sweep->a - $a), "<=", 0.0000001, "Normalize" );
+	cmp_ok( abs($sweep->a0 - $a0), "<=", 1e-5, "Normalize" );
+	cmp_ok( abs($sweep->a - $a), "<=", 1e-5, "Normalize" );
 }
 
 done_testing;

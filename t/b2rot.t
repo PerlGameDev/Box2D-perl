@@ -13,8 +13,8 @@ is( $rot->GetAngle(), 0, "GetAngle" );
 
 $rot->Set( Box2D::b2_pi / 2 );
 
-cmp_ok( abs($rot->s - 1), "<=", 0.0000001, "Set" );
-cmp_ok( abs($rot->c - 0), "<=", 0.0000001, "Set" );
+cmp_ok( abs($rot->s - 1), "<=", 1e-5, "Set" );
+cmp_ok( abs($rot->c - 0), "<=", 1e-5, "Set" );
 
 $rot->SetIdentity();
 
@@ -30,12 +30,12 @@ $rot->c(0);
 
 is( $rot->s, 1, "Set s" );
 is( $rot->c, 0, "Set c" );
-cmp_ok( abs($rot->GetAngle() - Box2D::b2_pi / 2), "<=", 0.0000001, "GetAngle" );
+cmp_ok( abs($rot->GetAngle() - Box2D::b2_pi / 2), "<=", 1e-5, "GetAngle" );
 
 $rot->Set( 1.5 );
 
-cmp_ok( abs($rot->s - sin 1.5), "<=", 0.0000001, "Set" );
-cmp_ok( abs($rot->c - cos 1.5), "<=", 0.0000001, "Set" );
+cmp_ok( abs($rot->s - sin 1.5), "<=", 1e-5, "Set" );
+cmp_ok( abs($rot->c - cos 1.5), "<=", 1e-5, "Set" );
 
 {
 	my $x = $rot->GetXAxis();

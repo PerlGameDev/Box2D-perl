@@ -42,10 +42,10 @@ _is_nearly( Box2D::b2_angularSleepTolerance, (2.0 / 180.0 * $b2_pi), "Box2D::b2_
 # void b2Log(const char* string, ...);
 
 my $version = Box2D::b2_version();
-isa_ok( $version,                                                                "Box2D::b2Version", "Box2D::b2_version()" );
-like( $version->major,                                   qr/^\d+$/,              "version->major is a number" );
-like( $version->minor,                                   qr/^\d+$/,              "version->minor is a number" );
-like( $version->revision,                                qr/^\d+$/,              "version->revision is a number" );
+isa_ok( $version,                                                    "Box2D::b2Version", "Box2D::b2_version()" );
+like( $version->major,                       qr/^\d+$/,              "version->major is a number" );
+like( $version->minor,                       qr/^\d+$/,              "version->minor is a number" );
+like( $version->revision,                    qr/^\d+$/,              "version->revision is a number" );
 diag( sprintf("%s.%s.%s", $version->major, $version->minor, $version->revision) );
 
 pass("cleanup");

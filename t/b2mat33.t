@@ -64,9 +64,9 @@ TODO: {
 	my $A = $matrix;
 	my $b = Box2D::b2Mul($A, $exa);
 	my $x = $A->Solve33( $b );
-	cmp_ok( abs($x->x - $exa->x), "<=", 0.000001, "Solve33" );
-	cmp_ok( abs($x->y - $exa->y), "<=", 0.000001, "Solve33" );
-	cmp_ok( abs($x->z - $exa->z), "<=", 0.000001, "Solve33" );
+	cmp_ok( abs($x->x - $exa->x), "<=", 1e-5, "Solve33" );
+	cmp_ok( abs($x->y - $exa->y), "<=", 1e-5, "Solve33" );
+	cmp_ok( abs($x->z - $exa->z), "<=", 1e-5, "Solve33" );
 }
 
 {
@@ -76,8 +76,8 @@ TODO: {
 	my $ex = Box2D::b2Vec2->new(3, -5);
 	my $b = Box2D::b2Mul22($A, $ex);
 	my $x = $A->Solve22( $b );
-	cmp_ok( abs($x->x - $ex->x), "<=", 0.000001, "Solve22" );
-	cmp_ok( abs($x->y - $ex->y), "<=", 0.000001, "Solve22" );
+	cmp_ok( abs($x->x - $ex->x), "<=", 1e-5, "Solve22" );
+	cmp_ok( abs($x->y - $ex->y), "<=", 1e-5, "Solve22" );
 }
 
 # TODO: GetInverse22( M )

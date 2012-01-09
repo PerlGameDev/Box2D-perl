@@ -5,14 +5,16 @@
 %}
 
 %module{Box2D};
+%package{Box2D};
 
-enum Type
-{
-	e_unknown = -1,
-	e_circle = 0,
-	e_polygon = 1,
-	e_typeCount = 2,
-};
+// enum Type
+// {
+	// e_circle = 0,
+	// e_edge = 1,
+	// e_polygon = 2,
+	// e_chain = 3,
+	// e_typeCount = 4
+// };
 
 %name{Box2D::b2Shape} class b2Shape
 {
@@ -66,7 +68,7 @@ b2Shape::m_type( ... )
 	CODE:
 		if ( items > 1 )
 		{
-			THIS->m_type = (b2Shape::Type)SvUV( ST(1) );
+			THIS->m_type = (b2Shape::Type)SvIV( ST(1) );
 		}
 		RETVAL = (int)THIS->m_type;
 	OUTPUT:

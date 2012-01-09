@@ -27,16 +27,15 @@ is( $vec->y, 6, "Set" );
 
 $vec->y(5);
 
-cmp_ok( abs( $vec->Length() - 7.07106781005859 ), '<', 0.00000001, "Length" );
+cmp_ok( abs( $vec->Length() - 7.07106781005859 ), '<=', 1e-5, "Length" );
 
 is( $vec->LengthSquared(), 50, "LengthSquared" );
 
-cmp_ok( abs( $vec->Normalize() - 7.07106781005859 ),
-    '<', 0.00000001, "Normalize" );
+cmp_ok( abs( $vec->Normalize() - 7.07106781005859 ), '<=', 1e-5, "Normalize" );
 
 ok( $vec->IsValid(), "IsValid" );
 
-$vec->Set( -1e1000**1e1000, 2 );
+$vec->Set( 1e1000**1e1000, 2 );
 ok( !$vec->IsValid(), "IsValid" );
 
 $vec->Set( 4, -1e1000**1e1000 );
@@ -69,7 +68,7 @@ is( $vec->y, -1, "a -= b" );
 	# Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
 	my $skew = $vec->Skew();
 	my $other = Box2D::b2Vec2->new(3, -7);
-	is( $skew . $other, $vec x $other, "Skew()" );
+	cmp_ok( abs($skew . $other - $vec x $other), "<=", 1e-5, "Skew" );
 }
 
 done_testing;
