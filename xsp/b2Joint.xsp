@@ -32,6 +32,12 @@ enum b2LimitState
 %name{Box2D::b2Joint} class b2Joint
 {
 
+float32 GetReactionTorque(float32 inv_dt);
+
+bool IsActive();
+
+bool GetCollideConnected();
+
 %{
 
 int
@@ -58,6 +64,16 @@ b2Joint::GetBodyB()
 		RETVAL = THIS->GetBodyB();
 	OUTPUT:
 		RETVAL
+
+b2Vec2*
+b2Joint::GetReactionForce(inv_dt)
+        float32 inv_dt
+        PREINIT:
+                const char* CLASS = "Box2D::b2Vec2";
+        CODE:
+                RETVAL = new b2Vec2(THIS->GetReactionForce(inv_dt));
+        OUTPUT:
+                RETVAL
 
 %}
 
