@@ -94,6 +94,21 @@ b2Joint::GetReactionForce(inv_dt)
         OUTPUT:
                 RETVAL
 
+SV*
+b2Joint::GetUserData( )
+	PPCODE:
+		void* userData = THIS->GetUserData();
+		if (!userData)
+			XSRETURN_EMPTY;
+		ST(0) = (SV *)userData;
+		XSRETURN(1);
+
+void
+b2Joint::SetUserData( ... )
+	PPCODE:
+		if ( items > 1)
+			THIS->SetUserData( (void *)new_data( ST(1) ) );
+
 %}
 
 };
