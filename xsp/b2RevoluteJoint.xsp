@@ -9,6 +9,7 @@
 %name{Box2D::b2RevoluteJoint} class b2RevoluteJoint : public %name{Box2D::b2Joint} b2Joint
 {
 
+float32 GetReferenceAngle();
 
 float32 GetJointAngle();
 
