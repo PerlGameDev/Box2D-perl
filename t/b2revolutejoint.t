@@ -127,4 +127,8 @@ $joint->SetMotorSpeed($speed);
 pass("SetMotorSpeed");
 is( $joint->GetMotorSpeed(), $speed, "GetMotorSpeed" );
 
+$maxMotorTorque++;
+$joint->SetMaxMotorTorque($maxMotorTorque);
+is( $joint->GetMaxMotorTorque(), $maxMotorTorque, "GetMaxMotorTorque" );
+
 done_testing;

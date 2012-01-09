@@ -8,10 +8,6 @@ use SDLx::App;
 
 my $segments = $ARGV[0] || 2;
 
-# The number of steps to apply to each frame,
-# This seems to make joint correction lose less energy.
-my $precision = 40;
-
 # pixels
 my $width  = 450;
 my $height = 450;
@@ -32,7 +28,7 @@ my $vIters = 8;
 # position iterations
 my $pIters = 8;
 
-my $gravity = Box2D::b2Vec2->new( 0, -8.0 / $precision**2 );
+my $gravity = Box2D::b2Vec2->new( 0, -10 );
 
 # no sleep. don't lose energy.
 my $world = Box2D::b2World->new($gravity);
@@ -97,11 +93,9 @@ my $prev_path_pos;
 
 $app->add_show_handler(
     sub {
-        for (1..$precision){
-            $world->Step( $timestep, $vIters, $pIters );
-            $world->ClearForces();
-        }
-        
+        $world->Step( $timestep, $vIters, $pIters );
+        $world->ClearForces();
+
         my $endpoint = $bobs[$#bobs]{body}->GetPosition();
         my $current_path_pos
             = [ w2s( $endpoint->x ), w2s( s2w($height) - $endpoint->y ) ];
