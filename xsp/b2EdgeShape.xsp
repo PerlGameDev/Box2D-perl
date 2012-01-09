@@ -26,6 +26,80 @@ b2EdgeShape::Set( v1, v2 )
 	CODE:
 		THIS->Set( *v1, *v2 );
 
+b2Vec2*
+b2EdgeShape::m_vertex0( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->m_vertex0 = *(b2Vec2*)stack_to_object( ST(1) );
+		}
+		RETVAL = &(THIS->m_vertex0);
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2EdgeShape::m_vertex1( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->m_vertex1 = *(b2Vec2*)stack_to_object( ST(1) );
+		}
+		RETVAL = &(THIS->m_vertex1);
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2EdgeShape::m_vertex2( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->m_vertex2 = *(b2Vec2*)stack_to_object( ST(1) );
+		}
+		RETVAL = &(THIS->m_vertex2);
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2EdgeShape::m_vertex3( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->m_vertex3 = *(b2Vec2*)stack_to_object( ST(1) );
+		}
+		RETVAL = &(THIS->m_vertex3);
+	OUTPUT:
+		RETVAL
+
+bool
+b2EdgeShape::m_hasVertex0( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->m_hasVertex0 = (bool)SvNV( ST(1) );
+		}
+		RETVAL = THIS->m_hasVertex0;
+	OUTPUT:
+		RETVAL
+
+bool
+b2EdgeShape::m_hasVertex3( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->m_hasVertex3 = (bool)SvNV( ST(1) );
+		}
+		RETVAL = THIS->m_hasVertex3;
+	OUTPUT:
+		RETVAL
+
 %}
 
 };

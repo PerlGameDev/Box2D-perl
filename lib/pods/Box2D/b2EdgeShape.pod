@@ -14,6 +14,8 @@ A line segment (edge) shape. These can be connected in chains or loops
 to other edge shapes. The connectivity information is used to ensure
 correct contact normals.
 
+Supports ghost vertices to prevent internal collisions.
+
 =head1 METHODS
 
 =head2 new()
@@ -31,6 +33,90 @@ Parameters:
 =item * C<Box2D::b2Vec2> C<$v1>
 
 =item * C<Box2D::b2Vec2> C<$v2>
+
+=back
+
+=head2 m_vertex1()
+
+=head2 m_vertex1( $v1 )
+
+The first vertex.
+
+Parameters:
+
+=over 4
+
+=item * C<Box2D::b2Vec2> C<$v1> (optional)
+
+=back
+
+=head2 m_vertex2()
+
+=head2 m_vertex2( $v2 )
+
+The second vertex.
+
+Parameters:
+
+=over 4
+
+=item * C<Box2D::b2Vec2> C<$v2> (optional)
+
+=back
+
+=head2 m_vertex0()
+
+=head2 m_vertex0( $v0 )
+
+Ghost vertex.
+
+Parameters:
+
+=over 4
+
+=item * C<Box2D::b2Vec2> C<$v0> (optional)
+
+=back
+
+=head2 m_vertex3()
+
+=head2 m_vertex3( $v3 )
+
+Ghost vertex.
+
+Parameters:
+
+=over 4
+
+=item * C<Box2D::b2Vec2> C<$v3> (optional)
+
+=back
+
+=head2 m_hasVertex0()
+
+=head2 m_hasVertex0( $hasVertex )
+
+Does the edge have ghost vertex 0?
+
+Parameters:
+
+=over 4
+
+=item * C<bool> C<$hasVertex> (optional)
+
+=back
+
+=head2 m_hasVertex3()
+
+=head2 m_hasVertex3( $hasVertex )
+
+Does the edge have ghost vertex 3?
+
+Parameters:
+
+=over 4
+
+=item * C<bool> C<$hasVertex> (optional)
 
 =back
 
