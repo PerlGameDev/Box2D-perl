@@ -35,27 +35,5 @@ void SetMaxMotorForce(float32 torque);
 
 float32 GetMotorForce(float32 inv_dt);
 
-%{
-
-b2Vec2*
-b2PrismaticJoint::GetAnchorA()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorA());
-	OUTPUT:
-		RETVAL
-
-b2Vec2*
-b2PrismaticJoint::GetAnchorB()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorB());
-	OUTPUT:
-		RETVAL
-
-%}
-
 };
 

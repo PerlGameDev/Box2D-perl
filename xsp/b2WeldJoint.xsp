@@ -9,27 +9,5 @@
 %name{Box2D::b2WeldJoint} class b2WeldJoint : public %name{Box2D::b2Joint} b2Joint
 {
 
-%{
-
-b2Vec2*
-b2WeldJoint::GetAnchorA()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorA());
-	OUTPUT:
-		RETVAL
-
-b2Vec2*
-b2WeldJoint::GetAnchorB()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorB());
-	OUTPUT:
-		RETVAL
-
-%}
-
 };
 

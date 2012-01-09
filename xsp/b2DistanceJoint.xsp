@@ -21,27 +21,5 @@ void SetDampingRatio(float32 ratio);
 
 float32 GetDampingRatio();
 
-%{
-
-b2Vec2*
-b2DistanceJoint::GetAnchorA()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorA());
-	OUTPUT:
-		RETVAL
-
-b2Vec2*
-b2DistanceJoint::GetAnchorB()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorB());
-	OUTPUT:
-		RETVAL
-
-%}
-
 };
 

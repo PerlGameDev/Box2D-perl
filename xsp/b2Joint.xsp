@@ -65,6 +65,25 @@ b2Joint::GetBodyB()
 	OUTPUT:
 		RETVAL
 
+
+b2Vec2*
+b2Joint::GetAnchorA()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(THIS->GetAnchorA());
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2Joint::GetAnchorB()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(THIS->GetAnchorB());
+	OUTPUT:
+		RETVAL
+
 b2Vec2*
 b2Joint::GetReactionForce(inv_dt)
         float32 inv_dt

@@ -23,24 +23,6 @@ float32 GetDampingRatio();
 
 %{
 
-b2Vec2*
-b2MouseJoint::GetAnchorA()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorA());
-	OUTPUT:
-		RETVAL
-
-b2Vec2*
-b2MouseJoint::GetAnchorB()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorB());
-	OUTPUT:
-		RETVAL
-
 void
 b2MouseJoint::SetTarget(target)
 	b2Vec2* target

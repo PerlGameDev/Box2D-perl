@@ -18,24 +18,6 @@ float32 GetRatio();
 %{
 
 b2Vec2*
-b2PulleyJoint::GetAnchorA()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorA());
-	OUTPUT:
-		RETVAL
-
-b2Vec2*
-b2PulleyJoint::GetAnchorB()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorB());
-	OUTPUT:
-		RETVAL
-
-b2Vec2*
 b2PulleyJoint::GetGroundAnchorA()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

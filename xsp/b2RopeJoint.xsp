@@ -23,24 +23,6 @@ void Dump();
 %{
 
 b2Vec2 *
-b2RopeJoint::GetAnchorA( )
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorA());
-	OUTPUT:
-		RETVAL
-
-b2Vec2 *
-b2RopeJoint::GetAnchorB( )
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorB());
-	OUTPUT:
-		RETVAL
-
-b2Vec2 *
 b2RopeJoint::GetLocalAnchorA( inv_dt )
 	float32 inv_dt
 	PREINIT:

@@ -34,29 +34,9 @@ float32 GetMotorSpeed();
 
 void SetMaxMotorTorque(float32 torque);
 
+float32 GetMaxMotorTorque();
+
 float32 GetMotorTorque(float32 inv_dt);
-
-%{
-
-b2Vec2*
-b2RevoluteJoint::GetAnchorA()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorA());
-	OUTPUT:
-		RETVAL
-
-b2Vec2*
-b2RevoluteJoint::GetAnchorB()
-	PREINIT:
-		const char* CLASS = "Box2D::b2Vec2";
-	CODE:
-		RETVAL = new b2Vec2(THIS->GetAnchorB());
-	OUTPUT:
-		RETVAL
-
-%}
 
 };
 
