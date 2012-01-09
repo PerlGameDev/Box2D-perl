@@ -1,12 +1,14 @@
 int16    T_IV
-uint16   T_IV
+uint16   T_UV
 int32    T_IV
-uint32   T_IV
+uint32   T_UV
 float32  T_NV
 b2AABB *               O_OBJECT
+b2BlockAllocator *     O_OBJECT
 b2Body *               O_OBJECT
 b2BodyDef *            O_OBJECT
 b2BroadPhase *         O_OBJECT
+b2ChainShape *         O_OBJECT
 b2CircleShape *        O_OBJECT
 b2ContactListener *    O_OBJECT
 b2Contact *            O_OBJECT

@@ -3,16 +3,11 @@
 %name{Box2D::b2PolygonShape} class b2PolygonShape : public %name{Box2D::b2Shape} b2Shape
 {
 
+b2PolygonShape();
+
 int32 GetVertexCount();
 
 %{
-
-b2PolygonShape *
-b2PolygonShape::new( )
-	CODE:
-		RETVAL= new b2PolygonShape();
-	OUTPUT:
-		RETVAL
 
 void
 b2PolygonShape::Set( ... )

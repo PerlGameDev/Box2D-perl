@@ -7,16 +7,9 @@
 
 %module{Box2D};
 
-%name{Box2D::b2ChainShape} class b2ChainShape
+%name{Box2D::b2ChainShape} class b2ChainShape : public %name{Box2D::b2Shape} b2Shape
 {
 
-%{
-
-void
-b2ChainShape::new( )
-	CODE:
-		warn("This is a stub for b2ChainShape");
-
-%}
+b2ChainShape();
 
 };

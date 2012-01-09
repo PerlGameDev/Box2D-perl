@@ -20,12 +20,6 @@ use constant {
 	b2_kinematicBody => 1,
 	b2_dynamicBody   => 2,
 
-	#b2Shape Type
-	e_unknown   => -1,
-	e_circle    => 0,
-	e_polygon   => 1,
-	e_typeCount => 2,
-
 };
 
 use Box2D::b2Mat22;

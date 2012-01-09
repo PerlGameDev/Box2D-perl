@@ -1,30 +1,44 @@
 %{
 
 #include <Box2D/Box2D.h>
+#include <Box2D/Collision/Shapes/b2Shape.h>
 
 %}
 
 %module{Box2D};
-%package{Box2D};
-
-// enum Type
-// {
-	// e_circle = 0,
-	// e_edge = 1,
-	// e_polygon = 2,
-	// e_chain = 3,
-	// e_typeCount = 4
-// };
 
 %name{Box2D::b2Shape} class b2Shape
 {
 
+int32 GetChildCount();
+
 %{
 
-int
+BOOT:
+{
+	HV* stash = gv_stashpv( "Box2D::b2Shape", TRUE );
+
+	newCONSTSUB( stash, "e_circle",    newSVuv((UV) b2Shape::e_circle) );
+	newCONSTSUB( stash, "e_edge",      newSVuv((UV) b2Shape::e_edge) );
+	newCONSTSUB( stash, "e_polygon",   newSVuv((UV) b2Shape::e_polygon) );
+	newCONSTSUB( stash, "e_chain",     newSVuv((UV) b2Shape::e_chain) );
+	newCONSTSUB( stash, "e_typeCount", newSVuv((UV) b2Shape::e_typeCount) );
+}
+
+b2Shape*
+b2Shape::Clone( allocator )
+	b2BlockAllocator* allocator
+	PREINIT:
+		const char* CLASS = "Box2D::b2Shape";
+	CODE:
+		RETVAL = THIS->Clone( allocator );
+	OUTPUT:
+		RETVAL
+
+unsigned int
 b2Shape::GetType( )
 	CODE:
-		RETVAL = (int)THIS->GetType();
+		RETVAL = (unsigned int)THIS->GetType();
 	OUTPUT:
 		RETVAL
 
@@ -38,23 +52,23 @@ b2Shape::TestPoint( xf, p )
 		RETVAL
 
 bool
-b2Shape::RayCast( output, input, transform, index )
+b2Shape::RayCast( output, input, transform, childIndex )
 	b2RayCastOutput* output
 	b2RayCastInput* input
 	b2Transform* transform
-	int32 index
+	int32 childIndex
 	CODE:
-		RETVAL = THIS->RayCast( output, *input, *transform, index );
+		RETVAL = THIS->RayCast( output, *input, *transform, childIndex );
 	OUTPUT:
 		RETVAL
 
 void
-b2Shape::ComputeAABB( aabb, xf, index )
+b2Shape::ComputeAABB( aabb, xf, childIndex )
 	b2AABB* aabb
 	b2Transform* xf
-	int32 index
+	int32 childIndex
 	CODE:
-		THIS->ComputeAABB( aabb, *xf, index );
+		THIS->ComputeAABB( aabb, *xf, childIndex );
 
 void
 b2Shape::ComputeMass( massData, density )
@@ -63,14 +77,14 @@ b2Shape::ComputeMass( massData, density )
 	CODE:
 		THIS->ComputeMass( massData, density );
 
-int
+unsigned int
 b2Shape::m_type( ... )
 	CODE:
 		if ( items > 1 )
 		{
 			THIS->m_type = (b2Shape::Type)SvIV( ST(1) );
 		}
-		RETVAL = (int)THIS->m_type;
+		RETVAL = (unsigned int)THIS->m_type;
 	OUTPUT:
 		RETVAL
 
@@ -88,4 +102,3 @@ b2Shape::m_radius( ... )
 %}
 
 };
-

@@ -10,14 +10,9 @@
 %name{Box2D::b2EdgeShape} class b2EdgeShape : public %name{Box2D::b2Shape} b2Shape
 {
 
-%{
+b2EdgeShape();
 
-b2EdgeShape*
-b2EdgeShape::new( )
-	CODE:
-		RETVAL = new b2EdgeShape();
-	OUTPUT:
-		RETVAL
+%{
 
 void
 b2EdgeShape::Set( v1, v2 )

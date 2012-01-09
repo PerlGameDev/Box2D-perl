@@ -3,16 +3,7 @@
 %name{Box2D::b2CircleShape} class b2CircleShape : public %name{Box2D::b2Shape} b2Shape
 {
 
-%{
-
-b2CircleShape *
-b2CircleShape::new( )
-	CODE:
-		RETVAL = new b2CircleShape();
-	OUTPUT:
-		RETVAL
-
-%}
+b2CircleShape();
 
 };
 
