@@ -27,11 +27,11 @@ Parameters:
 
 =over 4
 
-=item * C<Box2D::b2Body*> C<$bodyA> (optional)
+=item * C<Box2D::b2Body> C<$bodyA> (optional)
 
 =back
 
-Returns a C<Box2D::b2Body*>
+Returns a C<Box2D::b2Body>
 
 =head2 bodyB()
 
@@ -43,11 +43,11 @@ Parameters:
 
 =over 4
 
-=item * C<Box2D::b2Body*> C<$bodyB> (optional)
+=item * C<Box2D::b2Body> C<$bodyB> (optional)
 
 =back
 
-Returns a C<Box2D::b2Body*>
+Returns a C<Box2D::b2Body>
 
 =head2 collideConnected()
 
@@ -111,8 +111,6 @@ Returns a C<scalar>
 
 =item * L<Box2D::b2GearJointDef>
 
-=item * L<Box2D::b2LineJointDef>
-
 =item * L<Box2D::b2MouseJointDef>
 
 =item * L<Box2D::b2PrismaticJointDef>
@@ -121,7 +119,11 @@ Returns a C<scalar>
 
 =item * L<Box2D::b2RevoluteJointDef>
 
+=item * L<Box2D::b2RopeJointDef>
+
 =item * L<Box2D::b2WeldJointDef>
+
+=item * L<Box2D::b2WheelJointDef>
 
 =back
 

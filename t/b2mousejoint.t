@@ -27,6 +27,8 @@ my $jointDef = Box2D::b2MouseJointDef->new();
 ok( $jointDef, "new" );
 isa_ok( $jointDef, "Box2D::b2MouseJointDef" );
 
+is( $jointDef->type, Box2D::e_mouseJoint, "type" );
+
 $jointDef->bodyA($bodyA);
 $jointDef->bodyB($bodyB);
 

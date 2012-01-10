@@ -29,6 +29,8 @@ my $jointDef = Box2D::b2RevoluteJointDef->new();
 ok( $jointDef, "new" );
 isa_ok( $jointDef, "Box2D::b2RevoluteJointDef" );
 
+is( $jointDef->type, Box2D::e_revoluteJoint, "type" );
+
 $jointDef->Initialize( $bodyA, $bodyB, $anchor );
 pass("Initialize");
 
