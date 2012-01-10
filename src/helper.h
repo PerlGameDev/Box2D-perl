@@ -11,9 +11,9 @@ void* stack_to_object( SV* arg )
 	return NULL;
 }
 
-SV* object_to_stack( int size_ptr, void* obj, const char* CLASS )
+SV* object_to_stack( void* obj, const char* CLASS )
 {
-	SV* objref = newSV( size_ptr );
+	SV* objref = sv_newmortal();
 	sv_setref_pv( objref, CLASS, obj );
 	return objref;
 }

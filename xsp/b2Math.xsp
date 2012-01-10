@@ -42,7 +42,7 @@ b2Atan2( y, x )
 	OUTPUT:
 		RETVAL
 		
-b2Vec2*
+void*
 b2Vec2_zero()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -75,50 +75,47 @@ b2Dot( a, b )
 	OUTPUT:
 		RETVAL
 
-void
+void*
 b2Cross( x, y )
 	SV* x
 	SV* y
 	PREINIT:
-		void* RETVAL;
-	PPCODE:
+		const char* CLASS;
+	CODE:
 		if(sv_isobject(x) && sv_derived_from(x, "Box2D::b2Vec2")) {
 			if(sv_isobject(y) && sv_derived_from(y, "Box2D::b2Vec2")) {
 				XSRETURN_NV((NV)b2Cross(*(b2Vec2*)SvIV(SvRV(x)), *(b2Vec2*)SvIV(SvRV(y))));
 			}
 			else {
-				ST(0) = sv_newmortal();
 				RETVAL = new b2Vec2(b2Cross(*(b2Vec2*)SvIV(SvRV(x)), (float32)SvNV(y)));
-				sv_setref_pv(ST(0), "Box2D::b2Vec2", RETVAL);
+				CLASS = "Box2D::b2Vec2";
 			}
 		}
 		else if(sv_isobject(y)) {
 			if(sv_derived_from(y, "Box2D::b2Vec2")) {
-				ST(0) = sv_newmortal();
 				RETVAL = new b2Vec2(b2Cross((float32)SvNV(x), *(b2Vec2*)SvIV(SvRV(y))));
-				sv_setref_pv(ST(0), "Box2D::b2Vec2", RETVAL);
+				CLASS = "Box2D::b2Vec2";
 			}
 			else if(sv_isobject(x) && sv_derived_from(x, "Box2D::b2Vec3") && sv_derived_from(y, "Box2D::b2Vec3")) {
-				ST(0) = sv_newmortal();
 				RETVAL = new b2Vec3(b2Cross(*(b2Vec3*)SvIV(SvRV(x)), *(b2Vec3*)SvIV(SvRV(y))));
-				sv_setref_pv(ST(0), "Box2D::b2Vec3", RETVAL);
+				CLASS = "Box2D::b2Vec3";
 			}
 			else XSRETURN_UNDEF;
 		}
 		else XSRETURN_UNDEF;
-		XSRETURN(1);
+	OUTPUT:
+		RETVAL
 
-void
+void*
 b2Mul( x, y )
 	SV* x
 	SV* y
 	PREINIT:
-		void* RETVAL;
-	PPCODE:
+		const char* CLASS;
+	CODE:
 		if(!sv_isobject(x) || !sv_isobject(y))
 			XSRETURN_UNDEF;
 
-		ST(0) = sv_newmortal();
 		if(sv_derived_from(y, "Box2D::b2Vec2")) {
 			if(sv_derived_from(x, "Box2D::b2Mat22"))
 				RETVAL = new b2Vec2(b2Mul( *(b2Mat22*)SvIV(SvRV(x)), *(b2Vec2*)SvIV(SvRV(y)) ));
@@ -132,40 +129,39 @@ b2Mul( x, y )
 			else
 				XSRETURN_UNDEF;
 				
-			sv_setref_pv(ST(0), "Box2D::b2Vec2", RETVAL);
+			CLASS = "Box2D::b2Vec2";
 		}
 		else if(sv_derived_from(x, "Box2D::b2Mat22") && sv_derived_from(y, "Box2D::b2Mat22")) {
 			RETVAL = new b2Mat22(b2Mul( *(b2Mat22*)SvIV(SvRV(x)), *(b2Mat22*)SvIV(SvRV(y)) ));
-			sv_setref_pv(ST(0), "Box2D::b2Mat22", RETVAL);
+			CLASS = "Box2D::b2Mat22";
 		}
 		else if(sv_derived_from(x, "Box2D::b2Mat33") && sv_derived_from(y, "Box2D::b2Vec3")) {
 			RETVAL = new b2Vec3(b2Mul( *(b2Mat33*)SvIV(SvRV(x)), *(b2Vec3*)SvIV(SvRV(y)) ));
-			sv_setref_pv(ST(0), "Box2D::b2Vec3", RETVAL);
+			CLASS = "Box2D::b2Vec3";
 		}
 		else if(sv_derived_from(x, "Box2D::b2Rot") && sv_derived_from(y, "Box2D::b2Rot")) {
 			RETVAL = new b2Rot(b2Mul( *(b2Rot*)SvIV(SvRV(x)), *(b2Rot*)SvIV(SvRV(y)) ));
-			sv_setref_pv(ST(0), "Box2D::b2Rot", RETVAL);
+			CLASS = "Box2D::b2Rot";
 		}
 		else if(sv_derived_from(x, "Box2D::b2Transform") && sv_derived_from(y, "Box2D::b2Transform")) {
 			RETVAL = new b2Transform(b2Mul( *(b2Transform*)SvIV(SvRV(x)), *(b2Transform*)SvIV(SvRV(y)) ));
-			sv_setref_pv(ST(0), "Box2D::b2Transform", RETVAL);
+			CLASS = "Box2D::b2Transform";
 		}
 		else
 			XSRETURN_UNDEF;
+	OUTPUT:
+		RETVAL
 
-		XSRETURN(1);
-
-void
+void*
 b2MulT( x, y )
 	SV* x
 	SV* y
 	PREINIT:
-		void* RETVAL;
-	PPCODE:
+		const char* CLASS;
+	CODE:
 		if(!sv_isobject(x) || !sv_isobject(y))
 			XSRETURN_UNDEF;
 
-		ST(0) = sv_newmortal();
 		if(sv_derived_from(y, "Box2D::b2Vec2")) {
 			if(sv_derived_from(x, "Box2D::b2Mat22"))
 				RETVAL = new b2Vec2(b2MulT( *(b2Mat22*)SvIV(SvRV(x)), *(b2Vec2*)SvIV(SvRV(y)) ));
@@ -179,26 +175,26 @@ b2MulT( x, y )
 			else
 				XSRETURN_UNDEF;
 				
-			sv_setref_pv(ST(0), "Box2D::b2Vec2", RETVAL);
+			CLASS = "Box2D::b2Vec2";
 		}
 		else if(sv_derived_from(x, "Box2D::b2Mat22") && sv_derived_from(y, "Box2D::b2Mat22")) {
 			RETVAL = new b2Mat22(b2MulT( *(b2Mat22*)SvIV(SvRV(x)), *(b2Mat22*)SvIV(SvRV(y)) ));
-			sv_setref_pv(ST(0), "Box2D::b2Mat22", RETVAL);
+			CLASS = "Box2D::b2Mat22";
 		}
 		else if(sv_derived_from(x, "Box2D::b2Rot") && sv_derived_from(y, "Box2D::b2Rot")) {
 			RETVAL = new b2Rot(b2MulT( *(b2Rot*)SvIV(SvRV(x)), *(b2Rot*)SvIV(SvRV(y)) ));
-			sv_setref_pv(ST(0), "Box2D::b2Rot", RETVAL);
+			CLASS = "Box2D::b2Rot";
 		}
 		else if(sv_derived_from(x, "Box2D::b2Transform") && sv_derived_from(y, "Box2D::b2Transform")) {
 			RETVAL = new b2Transform(b2MulT( *(b2Transform*)SvIV(SvRV(x)), *(b2Transform*)SvIV(SvRV(y)) ));
-			sv_setref_pv(ST(0), "Box2D::b2Transform", RETVAL);
+			CLASS = "Box2D::b2Transform";
 		}
 		else
 			XSRETURN_UNDEF;
+	OUTPUT:
+		RETVAL
 
-		XSRETURN(1);
-
-b2Vec2*
+void*
 _vec2_add( a, b )
 	b2Vec2* a
 	b2Vec2* b
@@ -209,7 +205,7 @@ _vec2_add( a, b )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 _vec2_subtract( a, b )
 	b2Vec2* a
 	b2Vec2* b
@@ -220,7 +216,7 @@ _vec2_subtract( a, b )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 _vec2_multiply( s, a )
 	float32 s
 	b2Vec2* a
@@ -258,7 +254,7 @@ b2DistanceSquared( a, b )
 	OUTPUT:
 		RETVAL
 
-b2Vec3*
+void*
 _vec3_multiply( s, a )
 	float32 s
 	b2Vec3* a
@@ -269,7 +265,7 @@ _vec3_multiply( s, a )
 	OUTPUT:
 		RETVAL
 
-b2Vec3*
+void*
 _vec3_add( a, b )
 	b2Vec3* a
 	b2Vec3* b
@@ -280,7 +276,7 @@ _vec3_add( a, b )
 	OUTPUT:
 		RETVAL
 
-b2Vec3*
+void*
 _vec3_subtract( a, b )
 	b2Vec3* a
 	b2Vec3* b
@@ -291,7 +287,7 @@ _vec3_subtract( a, b )
 	OUTPUT:
 		RETVAL
 
-b2Mat22*
+void*
 _mat22_add( A, B )
 	b2Mat22* A
 	b2Mat22* B
@@ -302,7 +298,7 @@ _mat22_add( A, B )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2Mul22( A, v )
 	b2Mat33* A
 	b2Vec2* v
@@ -313,77 +309,78 @@ b2Mul22( A, v )
 	OUTPUT:
 		RETVAL
 		
-void
+void*
 b2Abs( x )
 	SV* x
 	PREINIT:
-		void* RETVAL;
-	PPCODE:
+		const char* CLASS;
+	CODE:
 		if(sv_isobject(x)) {
 			if(sv_derived_from(x, "Box2D::b2Vec2")) {
-				ST(0) = sv_newmortal();
 				RETVAL = new b2Vec2(b2Abs(*(b2Vec2*)SvIV(SvRV(x))));
-				sv_setref_pv(ST(0), "Box2D::b2Vec2", RETVAL);
-				XSRETURN(1);
+				CLASS = "Box2D::b2Vec2";
 			}
 			else if(sv_derived_from(x, "Box2D::b2Mat22")) {
-				ST(0) = sv_newmortal();
 				RETVAL = new b2Mat22(b2Abs(*(b2Mat22*)SvIV(SvRV(x))));
-				sv_setref_pv(ST(0), "Box2D::b2Mat22", RETVAL);
-				XSRETURN(1);
+				CLASS = "Box2D::b2Mat22";
 			}
+			else
+				XSRETURN_NV(b2Abs(SvNV(x)));
 		}
-		XSRETURN_NV(b2Abs(SvNV(x)));
+		else
+			XSRETURN_NV(b2Abs(SvNV(x)));
+	OUTPUT:
+		RETVAL
 
-void
+void*
 b2Min( a, b )
 	SV* a
 	SV* b
 	PREINIT:
-		void* RETVAL;
-	PPCODE:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
 		if(sv_isobject(a) && sv_derived_from(a, "Box2D::b2Vec2")
 		&& sv_isobject(b) && sv_derived_from(b, "Box2D::b2Vec2")) {
-			ST(0) = sv_newmortal();
 			RETVAL = new b2Vec2(b2Min(*(b2Vec2*)SvIV(SvRV(a)), *(b2Vec2*)SvIV(SvRV(b))));
-			sv_setref_pv(ST(0), "Box2D::b2Vec2", RETVAL);
-			XSRETURN(1);
 		}
-		XSRETURN_NV(b2Min(SvNV(a), SvNV(b)));
+		else
+			XSRETURN_NV(b2Min(SvNV(a), SvNV(b)));
+	OUTPUT:
+		RETVAL
 
-void
+void*
 b2Max( a, b )
 	SV* a
 	SV* b
 	PREINIT:
-		void* RETVAL;
-	PPCODE:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
 		if(sv_isobject(a) && sv_derived_from(a, "Box2D::b2Vec2")
 		&& sv_isobject(b) && sv_derived_from(b, "Box2D::b2Vec2")) {
-			ST(0) = sv_newmortal();
 			RETVAL = new b2Vec2(b2Max(*(b2Vec2*)SvIV(SvRV(a)), *(b2Vec2*)SvIV(SvRV(b))));
-			sv_setref_pv(ST(0), "Box2D::b2Vec2", RETVAL);
-			XSRETURN(1);
 		}
-		XSRETURN_NV(b2Max(SvNV(a), SvNV(b)));
+		else
+			XSRETURN_NV(b2Max(SvNV(a), SvNV(b)));
+	OUTPUT:
+		RETVAL
 
-void
+void*
 b2Clamp( a, low, high )
 	SV* a
 	SV* low
 	SV* high
 	PREINIT:
-		void* RETVAL;
-	PPCODE:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
 		if(sv_isobject(a   ) && sv_derived_from(a,    "Box2D::b2Vec2")
 		&& sv_isobject(low ) && sv_derived_from(low,  "Box2D::b2Vec2")
 		&& sv_isobject(high) && sv_derived_from(high, "Box2D::b2Vec2")) {
-			ST(0) = sv_newmortal();
 			RETVAL = new b2Vec2(b2Clamp(*(b2Vec2*)SvIV(SvRV(a)), *(b2Vec2*)SvIV(SvRV(low)), *(b2Vec2*)SvIV(SvRV(high))));
-			sv_setref_pv(ST(0), "Box2D::b2Vec2", RETVAL);
-			XSRETURN(1);
 		}
-		XSRETURN_NV(b2Clamp(SvNV(a), SvNV(low), SvNV(high)));
+		else
+			XSRETURN_NV(b2Clamp(SvNV(a), SvNV(low), SvNV(high)));
+	OUTPUT:
+		RETVAL
 
 void
 b2Swap( a, b )

@@ -3,6 +3,7 @@ uint16   T_UV
 int32    T_IV
 uint32   T_UV
 float32  T_NV
+void*                  O_OBJECT
 b2AABB *               O_OBJECT
 b2BlockAllocator *     O_OBJECT
 b2Body *               O_OBJECT
