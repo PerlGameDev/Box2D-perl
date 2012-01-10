@@ -29,6 +29,8 @@ my $jointDef = Box2D::b2FrictionJointDef->new();
 ok( $jointDef, "new" );
 isa_ok( $jointDef, "Box2D::b2FrictionJointDef" );
 
+is( $jointDef->type, Box2D::e_frictionJoint, "type" );
+
 $jointDef->Initialize( $bodyA, $bodyB, $anchor );
 pass("Initialize");
 

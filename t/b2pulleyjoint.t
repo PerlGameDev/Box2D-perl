@@ -42,6 +42,8 @@ my $jointDef = Box2D::b2PulleyJointDef->new();
 ok( $jointDef, "Box2D::b2PulleyJointDef->new" );
 isa_ok( $jointDef, "Box2D::b2PulleyJointDef" );
 
+is( $jointDef->type, Box2D::e_pulleyJoint, "type" );
+
 $jointDef->Initialize( $bodyA, $bodyB, $groundAnchorA, $groundAnchorB,
     $anchorA, $anchorB, $ratio );
 pass("Initialize");

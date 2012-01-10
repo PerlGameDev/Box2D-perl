@@ -32,6 +32,8 @@ my $jointDef = Box2D::b2DistanceJointDef->new();
 ok( $jointDef, "new" );
 isa_ok( $jointDef, "Box2D::b2DistanceJointDef" );
 
+is( $jointDef->type, Box2D::e_distanceJoint, "type" );
+
 $jointDef->Initialize( $bodyA, $bodyB, $anchorA, $anchorB );
 pass( "Initialize" );
 

@@ -48,6 +48,8 @@ my $jointDef = Box2D::b2GearJointDef->new();
 ok($jointDef);
 isa_ok( $jointDef, "Box2D::b2GearJointDef" );
 
+is( $jointDef->type, Box2D::e_gearJoint, "type" );
+
 $jointDef->bodyA($bodyB1);
 pass("Set bodyA");
 

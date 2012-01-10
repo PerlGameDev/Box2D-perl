@@ -29,6 +29,8 @@ my $jointDef = Box2D::b2WeldJointDef->new();
 ok( $jointDef, "new" );
 isa_ok( $jointDef, "Box2D::b2WeldJointDef" );
 
+is( $jointDef->type, Box2D::e_weldJoint, "type" );
+
 $jointDef->Initialize( $bodyA, $bodyB, $anchor );
 pass("Initialize");
 

@@ -30,6 +30,8 @@ my $jointDef = Box2D::b2PrismaticJointDef->new();
 ok( $jointDef, "new" );
 isa_ok( $jointDef, "Box2D::b2PrismaticJointDef" );
 
+is( $jointDef->type, Box2D::e_prismaticJoint, "type" );
+
 $jointDef->Initialize( $bodyA, $bodyB, $anchor, $axis );
 pass("Initialize");
 
