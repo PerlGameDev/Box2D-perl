@@ -16,11 +16,11 @@ my $v3 = Box2D::b2Vec2->new( 1.0, 2.0 );
 $edge->Set( $v1, $v2 );
 pass('Set');
 
-ok( ! $edge->m_hasVertex0, 'm_hasVertex0' );
 is( $edge->m_vertex1->x, $v1->x, 'm_vertex1 x' );
 is( $edge->m_vertex1->y, $v1->y, 'm_vertex1 y' );
 is( $edge->m_vertex2->x, $v2->x, 'm_vertex2 x' );
 is( $edge->m_vertex2->y, $v2->y, 'm_vertex2 y' );
+ok( ! $edge->m_hasVertex0, 'm_hasVertex0' );
 ok( ! $edge->m_hasVertex3, 'm_hasVertex3' );
 
 $edge->m_vertex0( $v0 );

@@ -78,7 +78,7 @@ b2EdgeShape::m_hasVertex0( ... )
 	CODE:
 		if ( items > 1 )
 		{
-			THIS->m_hasVertex0 = (bool)SvNV( ST(1) );
+			THIS->m_hasVertex0 = (bool)SvTRUE( ST(1) );
 		}
 		RETVAL = THIS->m_hasVertex0;
 	OUTPUT:
@@ -89,7 +89,7 @@ b2EdgeShape::m_hasVertex3( ... )
 	CODE:
 		if ( items > 1 )
 		{
-			THIS->m_hasVertex3 = (bool)SvNV( ST(1) );
+			THIS->m_hasVertex3 = (bool)SvTRUE( ST(1) );
 		}
 		RETVAL = THIS->m_hasVertex3;
 	OUTPUT:

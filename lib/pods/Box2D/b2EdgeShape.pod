@@ -1,132 +1,96 @@
 
 =head1 NAME
 
-Box2D::b2EdgeShape - A line segment (edge) shape.
+Box2D::b2EdgeShape - A line segment (edge) shape
 
 =head1 SYNOPSIS
 
-  my $edge = Box2D::b2Edge->new();
-  $edge->Set( $v1, $v2 );
+ my $edge = Box2D::b2Edge->new();
+ $edge->Set( $v1, $v2 );
+ 
+ # give it ghost vertices
+ $edge->m_vertex0( $v0 );
+ $edge->m_hasVertex0( 1 );
+ 
+ $edge->m_vertex3( $v3 );
+ $edge->m_hasVertex3( 1 );
 
 =head1 DESCRIPTION
 
 A line segment (edge) shape. These can be connected in chains or loops
 to other edge shapes. The connectivity information is used to ensure
-correct contact normals.
-
-Supports ghost vertices to prevent internal collisions.
+correct contact normals. Supports ghost vertices to prevent internal collisions.
+This class also inherits all the methods from L<Box2D::b2Shape>.
 
 =head1 METHODS
 
-=head2 new()
+=head2 new
 
-Default constructor.
+ my $edge = Box2D::b2EdgeShape->new();
 
-Returns a C<Box2D::b2EdgeShape>
+Returns the new edge shape.
 
-=head2 Set( $v1, $v2 )
+=head2 Set
 
-Parameters:
+ $edge->Set( $v1, $v2 );
 
-=over 4
+Sets the edge's vertices to the supplied L<Box2D::b2Vec2>s.
 
-=item * C<Box2D::b2Vec2> C<$v1>
+=head2 m_vertex1
 
-=item * C<Box2D::b2Vec2> C<$v2>
+ $edge->m_vertex1();
+ $edge->m_vertex1( $v1 );
 
-=back
+Returns a L<Box2D::b2Vec2> of the edge's first vertex.
+Specify a vector to modify it.
 
-=head2 m_vertex1()
+=head2 m_vertex2
 
-=head2 m_vertex1( $v1 )
+ $edge->m_vertex2();
+ $edge->m_vertex2( $v2 );
 
-The first vertex.
+Returns a L<Box2D::b2Vec2> of the edge's second vertex.
+Specify a vector to modify it.
 
-Parameters:
+=head2 m_vertex0
 
-=over 4
+ $edge->m_vertex0();
+ $edge->m_vertex0( $v0 );
 
-=item * C<Box2D::b2Vec2> C<$v1> (optional)
+Returns a L<Box2D::b2Vec2> of the edge's ghost vertex 0.
+Specify a vector to modify it.
 
-=back
+=head2 m_vertex3
 
-=head2 m_vertex2()
+ $edge->m_vertex3();
+ $edge->m_vertex3( $v3 );
 
-=head2 m_vertex2( $v2 )
+Returns a L<Box2D::b2Vec2> of the edge's ghost vertex 3.
+Specify a vector to modify it.
 
-The second vertex.
+=head2 m_hasVertex0
 
-Parameters:
+ $edge->m_hasVertex0();
+ $edge->m_hasVertex0( $has0 );
 
-=over 4
+Returns the bool used to specify that the edge has a vertex 0.
+Specify a true or false value to modify it.
 
-=item * C<Box2D::b2Vec2> C<$v2> (optional)
+=head2 m_hasVertex3
 
-=back
+ $edge->m_hasVertex3();
+ $edge->m_hasVertex3( $has3 );
 
-=head2 m_vertex0()
-
-=head2 m_vertex0( $v0 )
-
-Ghost vertex.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$v0> (optional)
-
-=back
-
-=head2 m_vertex3()
-
-=head2 m_vertex3( $v3 )
-
-Ghost vertex.
-
-Parameters:
-
-=over 4
-
-=item * C<Box2D::b2Vec2> C<$v3> (optional)
-
-=back
-
-=head2 m_hasVertex0()
-
-=head2 m_hasVertex0( $hasVertex )
-
-Does the edge have ghost vertex 0?
-
-Parameters:
-
-=over 4
-
-=item * C<bool> C<$hasVertex> (optional)
-
-=back
-
-=head2 m_hasVertex3()
-
-=head2 m_hasVertex3( $hasVertex )
-
-Does the edge have ghost vertex 3?
-
-Parameters:
-
-=over 4
-
-=item * C<bool> C<$hasVertex> (optional)
-
-=back
+Returns the bool used to specify that the edge has a vertex 3.
+Specify a true or false value to modify it.
 
 =head1 SEE ALSO
 
 =over 4
 
-=item * L<Box2D>
-
 =item * L<Box2D::b2Shape>
+
+=item * L<Box2D::b2Vec2>
 
 =back
 
