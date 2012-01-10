@@ -5,6 +5,8 @@
 
 b2ChainShape();
 
+~b2ChainShape();
+
 %{
 
 void

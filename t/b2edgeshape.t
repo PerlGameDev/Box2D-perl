@@ -37,4 +37,9 @@ ok( $edge->m_hasVertex3, 'm_hasVertex3' );
 is( $edge->m_vertex3->x, $v3->x, 'm_vertex3 x' );
 is( $edge->m_vertex3->y, $v3->y, 'm_vertex3 y' );
 
+$edge->m_hasVertex0(0);
+$edge->m_hasVertex3(0);
+ok( !$edge->m_hasVertex0, 'm_hasVertex0 false' );
+ok( !$edge->m_hasVertex3, 'm_hasVertex3 false' );
+
 done_testing;
