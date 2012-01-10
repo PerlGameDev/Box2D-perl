@@ -46,9 +46,11 @@ Performs C<atan2> on the provided numbers. You should use Perl's equivalent func
 
 =head2 b2Vec2_zero
 
- my $zero = Box2D::b2Vec2_zero;
+ my $zero = Box2D::b2Vec2_zero();
 
 A useful constant holding the vector [0, 0].
+It actually isn't a constant, because it has to return a new vector object every time.
+For this reason, you can use it and modify it at will without worry.
 
 =head2 b2Dot
 

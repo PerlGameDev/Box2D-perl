@@ -21,10 +21,16 @@ cmp_ok( abs( Box2D::b2Sqrt(7.3) - sqrt(7.3) ), "<=", 1e-5, "b2Sqrt" );
 
 cmp_ok( abs( Box2D::b2Atan2(35, 5.4) - atan2(35, 5.4) ), "<=", 1e-5, "b2Atan2" );
 
-my $zero = Box2D::b2Vec2_zero;
-is( $zero->x, 0, "b2Vec2_zero" );
-is( $zero->y, 0, "b2Vec2_zero" );
-is( $zero, Box2D::b2Vec2_zero, "b2Vec2_zero" );
+{
+	my $zero = Box2D::b2Vec2_zero;
+	is( $zero->x, 0, "b2Vec2_zero" );
+	is( $zero->y, 0, "b2Vec2_zero" );
+	$zero->x(1);
+	$zero->y(2);
+	my $zero2 = Box2D::b2Vec2_zero;
+	is( $zero2->x, 0, "b2Vec2_zero different" );
+	is( $zero2->y, 0, "b2Vec2_zero different" );
+}
 
 my $a = Box2D::b2Vec2->new( 1, 2 );
 my $b = Box2D::b2Vec2->new( 3, 4 );

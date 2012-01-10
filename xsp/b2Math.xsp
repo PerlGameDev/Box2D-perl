@@ -9,14 +9,6 @@
 
 %{
 
-BOOT:
-{
-	HV* stash = gv_stashpv( "Box2D", TRUE );
-	SV* zero = newSV(0);
-	sv_setref_pv( zero, "Box2D::b2Vec2", (void*)&b2Vec2_zero );
-	newCONSTSUB( stash, "b2Vec2_zero", zero );
-}
-
 bool
 b2IsValid( x )
 	float32 x
@@ -47,6 +39,15 @@ b2Atan2( y, x )
 	float32 x
 	CODE:
 		RETVAL = b2Atan2( y, x );
+	OUTPUT:
+		RETVAL
+		
+b2Vec2*
+b2Vec2_zero()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(b2Vec2_zero);
 	OUTPUT:
 		RETVAL
 
