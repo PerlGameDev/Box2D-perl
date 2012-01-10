@@ -50,7 +50,7 @@ b2ChainShape::GetChildEdge( edge, index )
 	CODE:
 		THIS->GetChildEdge( edge, index );
 
-b2Vec2*
+void*
 b2ChainShape::m_vertices( index, ... )
 	int index;
 	PREINIT:
@@ -75,7 +75,7 @@ b2ChainShape::m_count( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2ChainShape::m_prevVertex( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -88,7 +88,7 @@ b2ChainShape::m_prevVertex( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2ChainShape::m_nextVertex( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

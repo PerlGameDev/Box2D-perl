@@ -13,7 +13,7 @@
 
 %{
 
-b2Shape *
+void*
 b2Fixture::GetShape()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Shape";
@@ -36,7 +36,7 @@ b2Fixture::IsSensor()
 		RETVAL
 
 
-b2Body *
+void*
 b2Fixture::GetBody()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Body";
@@ -46,7 +46,7 @@ b2Fixture::GetBody()
 		RETVAL
 
 
-b2Fixture *
+void*
 b2Fixture::GetNext()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Fixture";

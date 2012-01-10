@@ -52,7 +52,7 @@ PerlContactListener::SetPostSolveSub(name)
 
 
 
-b2Contact *
+void*
 PerlContactListener::ourContact( c )
         b2Contact * c
 	PREINIT:
@@ -62,7 +62,7 @@ PerlContactListener::ourContact( c )
 	OUTPUT:
 		RETVAL
 
-b2Manifold *
+void*
 PerlContactListener::ourManifold( c )
         b2Manifold * c
 	PREINIT:
@@ -72,7 +72,7 @@ PerlContactListener::ourManifold( c )
 	OUTPUT:
 		RETVAL
 
-b2ContactImpulse *
+void*
 PerlContactListener::ourContactImpulse( c )
         b2ContactImpulse * c
 	PREINIT:

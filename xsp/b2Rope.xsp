@@ -28,7 +28,7 @@ b2Rope::Initialize( def )
 	CODE:
 		THIS->Initialize( def );
 
-b2Vec2 *
+void*
 b2Rope::GetVertices( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

@@ -22,7 +22,7 @@ b2LineJointDef::Initialize( bodyA, bodyB, anchor, axis )
 	CODE:
 		THIS->Initialize( bodyA, bodyB, *anchor, *axis );
 
-b2Vec2*
+void*
 b2LineJointDef::localAnchorA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -35,7 +35,7 @@ b2LineJointDef::localAnchorA( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2LineJointDef::localAnchorB( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -48,7 +48,7 @@ b2LineJointDef::localAnchorB( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2LineJointDef::localAxisA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

@@ -23,7 +23,7 @@ bool IsValid();
 
 %{
 
-b2Vec2*
+void*
 b2Vec2::new( ... )
 	CODE:
 		if(items == 3)
@@ -57,7 +57,7 @@ b2Vec2::y( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2Vec2::_negate()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -66,7 +66,7 @@ b2Vec2::_negate()
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2Vec2::Skew()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

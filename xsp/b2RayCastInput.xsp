@@ -13,7 +13,7 @@ b2RayCastInput();
 
 %{
 
-b2Vec2*
+void*
 b2RayCastInput::p1( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -26,7 +26,7 @@ b2RayCastInput::p1( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2RayCastInput::p2( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

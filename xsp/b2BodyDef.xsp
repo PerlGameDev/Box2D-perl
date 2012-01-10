@@ -20,7 +20,7 @@ enum b2BodyType
 
 %{
 
-b2BodyDef*
+void*
 b2BodyDef::new( )
 	CODE:
 		RETVAL = new b2BodyDef();
@@ -39,7 +39,7 @@ b2BodyDef::type( ... )
 		RETVAL
 
 
-b2Vec2* 
+void*
 b2BodyDef::position()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -59,7 +59,7 @@ b2BodyDef::angle( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2* 
+void*
 b2BodyDef::linearVelocity()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -158,13 +158,14 @@ b2BodyDef::active( ... )
 
 SV*
 b2BodyDef::userData ( ... )
-	PPCODE: 
-		if ( items > 1)
-			THIS->userData = (void *)new_data( ST(1) ); 
-		 if (!THIS->userData)
-		  XSRETURN_EMPTY;
-		  ST(0) = (SV *)THIS->userData;
-		  XSRETURN(1);
+	CODE:
+		if ( items > 1 )
+			THIS->userData = (void *)new_data( ST(1) );
+		else if ( !THIS->userData )
+			XSRETURN_EMPTY;
+		RETVAL = (SV *)THIS->userData;
+	OUTPUT:
+		RETVAL
 
 
 %}

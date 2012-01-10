@@ -21,7 +21,7 @@ b2WheelJointDef::Initialize( bodyA, bodyB, anchor, axis )
 	CODE:
 		THIS->Initialize( bodyA, bodyB, *anchor, *axis );
 
-b2Vec2*
+void*
 b2WheelJointDef::localAnchorA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -34,7 +34,7 @@ b2WheelJointDef::localAnchorA( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2WheelJointDef::localAnchorB( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -47,7 +47,7 @@ b2WheelJointDef::localAnchorB( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2WheelJointDef::localAxisA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

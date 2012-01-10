@@ -24,7 +24,7 @@ b2MassData::mass( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2MassData::center( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

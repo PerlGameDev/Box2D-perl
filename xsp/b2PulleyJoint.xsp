@@ -17,7 +17,7 @@ float32 GetRatio();
 
 %{
 
-b2Vec2*
+void*
 b2PulleyJoint::GetGroundAnchorA()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -26,7 +26,7 @@ b2PulleyJoint::GetGroundAnchorA()
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2PulleyJoint::GetGroundAnchorB()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

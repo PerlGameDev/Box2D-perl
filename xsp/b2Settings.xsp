@@ -44,7 +44,7 @@ BOOT:
 	newCONSTSUB( stash, "b2_angularSleepTolerance", newSVnv(b2_angularSleepTolerance) );
 }
 
-b2Version *
+void*
 b2_version( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Version";

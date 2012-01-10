@@ -25,7 +25,7 @@ b2PulleyJointDef::Initialize( bodyA, bodyB, groundAnchorA, groundAnchorB, anchor
 	CODE:
 		THIS->Initialize( bodyA, bodyB, *groundAnchorA, *groundAnchorB, *anchorA, *anchorB, ratio );
 
-b2Vec2*
+void*
 b2PulleyJointDef::groundAnchorA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -38,7 +38,7 @@ b2PulleyJointDef::groundAnchorA( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2PulleyJointDef::groundAnchorB( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -51,7 +51,7 @@ b2PulleyJointDef::groundAnchorB( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2PulleyJointDef::localAnchorA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -64,7 +64,7 @@ b2PulleyJointDef::localAnchorA( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2PulleyJointDef::localAnchorB( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

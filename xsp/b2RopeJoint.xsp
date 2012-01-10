@@ -22,7 +22,7 @@ void Dump();
 
 %{
 
-b2Vec2 *
+void*
 b2RopeJoint::GetLocalAnchorA( inv_dt )
 	float32 inv_dt
 	PREINIT:
@@ -32,7 +32,7 @@ b2RopeJoint::GetLocalAnchorA( inv_dt )
 	OUTPUT:
 		RETVAL
 
-b2Vec2 *
+void*
 b2RopeJoint::GetLocalAnchorB( inv_dt )
 	float32 inv_dt
 	PREINIT:
@@ -42,7 +42,7 @@ b2RopeJoint::GetLocalAnchorB( inv_dt )
 	OUTPUT:
 		RETVAL
 
-b2LimitState *
+void*
 b2RopeJoint::GetLimitState( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2LimitState";

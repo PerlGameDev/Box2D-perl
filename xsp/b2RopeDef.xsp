@@ -15,7 +15,7 @@ b2RopeDef();
 
 %{
 
-b2Vec2 *
+void*
 b2RopeDef::vertices( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -39,7 +39,7 @@ b2RopeDef::masses( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2 *
+void*
 b2RopeDef::gravity( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

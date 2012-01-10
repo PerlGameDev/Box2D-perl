@@ -25,7 +25,7 @@ b2Sweep::GetTransform( xfb, beta );
 	CODE:
 		THIS->GetTransform( xfb, beta );
 
-b2Vec2*
+void*
 b2Sweep::localCenter( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -38,7 +38,7 @@ b2Sweep::localCenter( ... )
 	OUTPUT:
 		RETVAL
 		
-b2Vec2*
+void*
 b2Sweep::c0( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -51,7 +51,7 @@ b2Sweep::c0( ... )
 	OUTPUT:
 		RETVAL
 		
-b2Vec2*
+void*
 b2Sweep::c( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

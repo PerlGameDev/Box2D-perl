@@ -7,20 +7,14 @@
 
 %module{Box2D};
 
-
 %name{Box2D::b2FixtureDef} class b2FixtureDef
 {
 
+b2FixtureDef();
+
 %{
 
-b2FixtureDef*
-b2FixtureDef::new( )
-	CODE:
-		RETVAL = new b2FixtureDef();
-	OUTPUT:
-		RETVAL
-
-b2Shape *
+void*
 b2FixtureDef::shape( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Shape";
@@ -70,7 +64,7 @@ b2FixtureDef::restitution( ... )
 	OUTPUT:
 		RETVAL
 
-b2Filter*
+void*
 b2FixtureDef::filter( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Filter";

@@ -17,7 +17,7 @@ b2CircleShape::GetSupport( d )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2CircleShape::GetSupportVertex( d )
 	b2Vec2* d
 	PREINIT:
@@ -27,7 +27,7 @@ b2CircleShape::GetSupportVertex( d )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2CircleShape::GetVertex( index )
 	int32 index
 	PREINIT:
@@ -37,7 +37,7 @@ b2CircleShape::GetVertex( index )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2CircleShape::m_p( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

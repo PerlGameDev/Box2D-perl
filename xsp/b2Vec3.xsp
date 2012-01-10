@@ -15,7 +15,7 @@ void Set( float32 x_, float32 y_, float32 z_ );
 
 %{
 
-b2Vec3*
+void*
 b2Vec3::new( ... )
 	CODE:
 		if(items == 4)
@@ -60,7 +60,7 @@ b2Vec3::z( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec3*
+void*
 b2Vec3::_negate()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec3";

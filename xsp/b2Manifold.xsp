@@ -13,7 +13,7 @@ b2Manifold();
 
 %{
 
-b2Vec2*
+void*
 b2Manifold::localNormal()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -26,7 +26,7 @@ b2Manifold::localNormal()
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2Manifold::localPoint()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

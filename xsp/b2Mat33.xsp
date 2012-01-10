@@ -14,7 +14,7 @@ void SetZero();
 
 %{
 
-b2Mat33*
+void*
 b2Mat33::new( ... )
 	CODE:
 		if(items == 4)
@@ -27,7 +27,7 @@ b2Mat33::new( ... )
 		RETVAL
 
 
-b2Vec3*
+void*
 b2Mat33::Solve33( b )
 	b2Vec3* b
 	PREINIT:
@@ -37,7 +37,7 @@ b2Mat33::Solve33( b )
 	OUTPUT:
 		RETVAL
 		
-b2Vec2*
+void*
 b2Mat33::Solve22( b )
 	b2Vec2* b
 	PREINIT:
@@ -59,7 +59,7 @@ b2Mat33::GetSymInverse33( M )
 	CODE:
 		THIS->GetSymInverse33(M);
 
-b2Vec3*
+void*
 b2Mat33::ex( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec3";
@@ -72,7 +72,7 @@ b2Mat33::ex( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec3*
+void*
 b2Mat33::ey( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec3";
@@ -85,7 +85,7 @@ b2Mat33::ey( ... )
 	OUTPUT:
 		RETVAL
 		
-b2Vec3*
+void*
 b2Mat33::ez( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec3";

@@ -22,7 +22,7 @@ b2PrismaticJointDef::Initialize( bodyA, bodyB, anchor, axis )
 	CODE:
 		THIS->Initialize( bodyA, bodyB, *anchor, *axis );
 
-b2Vec2*
+void*
 b2PrismaticJointDef::localAnchorA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -35,7 +35,7 @@ b2PrismaticJointDef::localAnchorA( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2PrismaticJointDef::localAnchorB( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -48,7 +48,7 @@ b2PrismaticJointDef::localAnchorB( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2PrismaticJointDef::localAxisA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

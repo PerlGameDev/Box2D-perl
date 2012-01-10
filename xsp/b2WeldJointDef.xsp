@@ -21,7 +21,7 @@ b2WeldJointDef::Initialize( bodyA, bodyB, anchor )
 	CODE:
 		THIS->Initialize( bodyA, bodyB, *anchor );
 
-b2Vec2*
+void*
 b2WeldJointDef::localAnchorA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -34,7 +34,7 @@ b2WeldJointDef::localAnchorA( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2WeldJointDef::localAnchorB( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

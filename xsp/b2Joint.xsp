@@ -25,7 +25,7 @@ b2Joint::GetType()
 	OUTPUT:
 		RETVAL
 
-b2Body*
+void*
 b2Joint::GetBodyA()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Body";
@@ -34,7 +34,7 @@ b2Joint::GetBodyA()
 	OUTPUT:
 		RETVAL
 
-b2Body*
+void*
 b2Joint::GetBodyB()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Body";
@@ -44,7 +44,7 @@ b2Joint::GetBodyB()
 		RETVAL
 
 
-b2Vec2*
+void*
 b2Joint::GetAnchorA()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -53,7 +53,7 @@ b2Joint::GetAnchorA()
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2Joint::GetAnchorB()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -62,15 +62,15 @@ b2Joint::GetAnchorB()
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2Joint::GetReactionForce(inv_dt)
-        float32 inv_dt
-        PREINIT:
-                const char* CLASS = "Box2D::b2Vec2";
-        CODE:
-                RETVAL = new b2Vec2(THIS->GetReactionForce(inv_dt));
-        OUTPUT:
-                RETVAL
+	float32 inv_dt
+	PREINIT:
+			const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+			RETVAL = new b2Vec2(THIS->GetReactionForce(inv_dt));
+	OUTPUT:
+			RETVAL
 
 SV*
 b2Joint::GetUserData( )

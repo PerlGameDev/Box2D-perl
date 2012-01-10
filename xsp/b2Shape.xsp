@@ -25,7 +25,7 @@ BOOT:
 	newCONSTSUB( stash, "e_typeCount", newSVuv((UV) b2Shape::e_typeCount) );
 }
 
-b2Shape*
+void*
 b2Shape::Clone( allocator )
 	b2BlockAllocator* allocator
 	PREINIT:

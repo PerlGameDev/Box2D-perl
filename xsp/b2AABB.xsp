@@ -15,7 +15,7 @@ bool IsValid();
 
 %{
 
-b2Vec2*
+void*
 b2AABB::GetCenter( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -24,7 +24,7 @@ b2AABB::GetCenter( )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2AABB::GetExtents( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -57,7 +57,7 @@ b2AABB::RayCast( output, input )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2AABB::lowerBound( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -70,7 +70,7 @@ b2AABB::lowerBound( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2AABB::upperBound( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

@@ -16,7 +16,7 @@ b2RopeJointDef();
 
 %{
 
-b2Vec2 *
+void*
 b2RopeJointDef::localAnchorA( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -25,7 +25,7 @@ b2RopeJointDef::localAnchorA( )
 	OUTPUT:
 		RETVAL
 
-b2Vec2 *
+void*
 b2RopeJointDef::localAnchorB( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

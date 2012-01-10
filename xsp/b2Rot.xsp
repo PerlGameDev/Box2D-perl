@@ -18,7 +18,7 @@ float32 GetAngle();
 
 %{
 
-b2Rot*
+void*
 b2Rot::new( ... )
 	CODE:
 		if(items == 2)
@@ -30,7 +30,7 @@ b2Rot::new( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2Rot::GetXAxis( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -39,7 +39,7 @@ b2Rot::GetXAxis( )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2Rot::GetYAxis( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

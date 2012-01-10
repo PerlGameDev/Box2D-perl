@@ -13,7 +13,7 @@ b2GearJointDef();
 
 %{
 
-b2Joint*
+void*
 b2GearJointDef::joint1( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Joint";
@@ -26,7 +26,7 @@ b2GearJointDef::joint1( ... )
 	OUTPUT:
 		RETVAL
 
-b2Joint*
+void*
 b2GearJointDef::joint2( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Joint";

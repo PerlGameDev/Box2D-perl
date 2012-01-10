@@ -16,7 +16,7 @@ void SetZero();
 
 %{
 
-b2Mat22*
+void*
 b2Mat22::new( ... )
 	CODE:
 		if(items == 3)
@@ -37,7 +37,7 @@ b2Mat22::Set( c1, c2 )
 	CODE:
 		THIS->Set( *c1, *c2 );
 
-b2Mat22*
+void*
 b2Mat22::GetInverse()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Mat22";
@@ -46,7 +46,7 @@ b2Mat22::GetInverse()
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2Mat22::Solve( b )
 	b2Vec2* b
 	PREINIT:
@@ -56,7 +56,7 @@ b2Mat22::Solve( b )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2Mat22::ex( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -69,7 +69,7 @@ b2Mat22::ex( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2Mat22::ey( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

@@ -27,16 +27,17 @@ b2JointDef::type( ... )
 
 
 SV*
-b2BodyDef::userData ( ... )
-        PPCODE:
+b2JointDef::userData ( ... )
+	CODE:
 		if ( items > 1 )
 			THIS->userData = (void *)new_data( ST(1) );
-		if ( !THIS->userData )
+		else if ( !THIS->userData )
 			XSRETURN_EMPTY;
-		ST(0) = (SV *)THIS->userData;
-		XSRETURN(1);
+		RETVAL = (SV *)THIS->userData;
+	OUTPUT:
+		RETVAL
 
-b2Body*
+void*
 b2JointDef::bodyA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Body";
@@ -49,7 +50,7 @@ b2JointDef::bodyA( ... )
 	OUTPUT:
 		RETVAL
 
-b2Body*
+void*
 b2JointDef::bodyB( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Body";

@@ -13,7 +13,7 @@ void ClearForces();
 
 %{
 
-b2World*
+void*
 b2World::new( gravity )
 	b2Vec2* gravity
 	CODE:
@@ -29,7 +29,7 @@ b2World::SetGravity( gravity )
 
 
 
-b2Vec2*
+void*
 b2World::GetGravity()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -48,7 +48,7 @@ b2World::Step( timeStep, velocityIterations, positionIterations )
 	CODE:
 		THIS->Step( timeStep, velocityIterations, positionIterations );
 
-b2Body*
+void*
 b2World::CreateBody( body_def )
 	b2BodyDef* body_def
 	PREINIT:
@@ -58,7 +58,7 @@ b2World::CreateBody( body_def )
 	OUTPUT:
 		RETVAL
 
-b2Joint*
+void*
 b2World::CreateJoint( joint_def )
 	b2JointDef* joint_def
 	PREINIT:

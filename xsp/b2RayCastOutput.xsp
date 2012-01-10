@@ -13,7 +13,7 @@ b2RayCastOutput();
 
 %{
 
-b2Vec2*
+void*
 b2RayCastOutput::normal( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

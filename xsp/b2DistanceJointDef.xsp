@@ -22,7 +22,7 @@ b2DistanceJointDef::Initialize( bodyA, bodyB, anchorA, anchorB )
 	CODE:
 		THIS->Initialize( bodyA, bodyB, *anchorA, *anchorB );
 
-b2Vec2*
+void*
 b2DistanceJointDef::localAnchorA( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -35,7 +35,7 @@ b2DistanceJointDef::localAnchorA( ... )
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2DistanceJointDef::localAnchorB( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

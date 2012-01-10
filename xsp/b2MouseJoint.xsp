@@ -30,7 +30,7 @@ b2MouseJoint::SetTarget(target)
 		THIS->SetTarget(*target);
 
 
-b2Vec2*
+void*
 b2MouseJoint::GetTarget()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";

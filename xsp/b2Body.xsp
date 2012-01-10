@@ -19,7 +19,7 @@ b2Body::new( )
 		warn("Do nothing");
 
 
-b2Fixture *
+void*
 b2Body::CreateFixtureDef(fixtureDef)
 	b2FixtureDef* fixtureDef
 	PREINIT:
@@ -29,7 +29,7 @@ b2Body::CreateFixtureDef(fixtureDef)
 	OUTPUT:
 		RETVAL
 
-b2Fixture *
+void*
 b2Body::CreateFixture(shape, density)
 	b2Shape * shape
 	float32 density
@@ -54,7 +54,7 @@ b2Body::SetTransform( position, angle )
 		THIS->SetTransform( *position, angle );
 
 
-b2Transform*
+void*
 b2Body::GetTransform( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Transform";
@@ -64,7 +64,7 @@ b2Body::GetTransform( )
 		RETVAL
 
 
-b2Vec2 *
+void*
 b2Body::GetPosition()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -80,7 +80,7 @@ b2Body::GetAngle()
 	OUTPUT:
 		RETVAL
 
-b2Vec2 *
+void*
 b2Body::GetWorldCenter()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -89,7 +89,7 @@ b2Body::GetWorldCenter()
 	OUTPUT:
 		RETVAL 
 
-b2Vec2 *
+void*
 b2Body::GetLocalCenter()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -106,7 +106,7 @@ b2Body::SetLinearVelocity( v )
 		THIS->SetLinearVelocity( *v );
 
 
-b2Vec2 *
+void*
 b2Body::GetLinearVelocity()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -178,7 +178,7 @@ b2Body::GetInertia()
 
 
 
-b2Vec2 *
+void*
 b2Body::GetWorldPoint(localPoint)
 	b2Vec2* localPoint
 	PREINIT:
@@ -190,7 +190,7 @@ b2Body::GetWorldPoint(localPoint)
 		RETVAL 
 
 
-b2Vec2 *
+void*
 b2Body::GetWorldVector(localVector)
 	b2Vec2* localVector
 	PREINIT:
@@ -201,7 +201,7 @@ b2Body::GetWorldVector(localVector)
 	OUTPUT:
 		RETVAL 
 
-b2Vec2 *
+void*
 b2Body::GetLocalPoint(worldPoint)
 	b2Vec2* worldPoint
 	PREINIT:
@@ -213,7 +213,7 @@ b2Body::GetLocalPoint(worldPoint)
 		RETVAL 
 
 
-b2Vec2 *
+void*
 b2Body::GetLocalVector(worldVector)
 	b2Vec2* worldVector
 	PREINIT:
@@ -224,7 +224,7 @@ b2Body::GetLocalVector(worldVector)
 	OUTPUT:
 		RETVAL 
 
-b2Vec2 *
+void*
 b2Body::GetLinearVelocityFromWorldPoint(worldPoint)
 	b2Vec2* worldPoint
 	PREINIT:
@@ -235,7 +235,7 @@ b2Body::GetLinearVelocityFromWorldPoint(worldPoint)
 	OUTPUT:
 		RETVAL 
 
-b2Vec2 *
+void*
 b2Body::GetLinearVelocityFromLocalPoint(localPoint)
 	b2Vec2* localPoint
 	PREINIT:
@@ -370,7 +370,7 @@ b2Body::IsFixedRotation()
 		RETVAL
 
 
-b2Body*
+void*
 b2Body::GetNext()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Body";
@@ -380,7 +380,7 @@ b2Body::GetNext()
 		RETVAL
 
 
-b2World*
+void*
 b2Body::GetWorld()
 	PREINIT:
 		const char* CLASS = "Box2D::b2World";

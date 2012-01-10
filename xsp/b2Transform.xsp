@@ -14,7 +14,7 @@ void SetIdentity();
 
 %{
 
-b2Transform*
+void*
 b2Transform::new( ... )
 	CODE:
 		if(items == 3)
@@ -33,7 +33,7 @@ b2Transform::Set( position, angle )
 	CODE:
 		THIS->Set( *position, angle );
 
-b2Vec2*
+void*
 b2Transform::p( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -46,7 +46,7 @@ b2Transform::p( ... )
 	OUTPUT:
 		RETVAL
 
-b2Rot*
+void*
 b2Transform::q( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Rot";

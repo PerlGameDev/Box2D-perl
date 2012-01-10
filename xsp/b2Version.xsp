@@ -11,7 +11,7 @@
 
 %{
 
-b2Version *
+void*
 b2Version::new( )
 	CODE:
 		RETVAL             = (b2Version *)safemalloc(sizeof(b2Version));

@@ -10,15 +10,15 @@
 %name{Box2D::b2Contact} class b2Contact
 { 
 
-        bool IsTouching() const;
+bool IsTouching() const;
 
-        void SetEnabled(bool flag);
+void SetEnabled(bool flag);
 
-        bool IsEnabled() const;
+bool IsEnabled() const;
 
 %{
 
-b2Manifold *
+void*
 b2Contact::GetManifold()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Manifold";
@@ -27,7 +27,7 @@ b2Contact::GetManifold()
 	OUTPUT:
 		RETVAL
 
-b2Contact * 
+void*
 b2Contact::GetNext()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Contact";
@@ -38,7 +38,7 @@ b2Contact::GetNext()
 
 
 
-b2Fixture * 
+void*
 b2Contact::GetFixtureA()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Fixture";
@@ -48,7 +48,7 @@ b2Contact::GetFixtureA()
 		RETVAL
 
 
-b2Fixture * 
+void*
 b2Contact::GetFixtureB()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Fixture";

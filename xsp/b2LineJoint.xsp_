@@ -39,7 +39,7 @@ float32 GetMotorForce();
 
 %{
 
-b2Vec2*
+void*
 b2LineJoint::GetAnchorA()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -48,7 +48,7 @@ b2LineJoint::GetAnchorA()
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2LineJoint::GetAnchorB()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -57,7 +57,7 @@ b2LineJoint::GetAnchorB()
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2LineJoint::GetReactionForce(inv_dt)
 	float32 inv_dt
 	PREINIT:

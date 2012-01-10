@@ -13,7 +13,7 @@ b2MouseJointDef();
 
 %{
 
-b2Vec2*
+void*
 b2MouseJointDef::target( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
