@@ -1,15 +1,128 @@
-%{
-
-#include <Box2D/Box2D.h>
-#include <helper.h>
-
-%}
-
 %module{Box2D};
 
 %name{Box2D::b2ChainShape} class b2ChainShape : public %name{Box2D::b2Shape} b2Shape
 {
 
 b2ChainShape();
+
+%{
+
+void
+b2ChainShape::CreateLoop( ... )
+	CODE:
+		int i;
+		int count = items - 1;
+		b2Vec2* vertices = (b2Vec2*)safemalloc(sizeof(b2Vec2) * count);
+		for(i = 0; i < count; i++)
+			vertices[i] = *(b2Vec2*)stack_to_object( ST(i + 1) );
+		THIS->CreateLoop( vertices, count );
+		/* CreateLoop does memcpy of vertices */
+		safefree( vertices );
+
+void
+b2ChainShape::CreateChain( ... )
+	CODE:
+		int i;
+		int count = items - 1;
+		b2Vec2* vertices = (b2Vec2*)safemalloc(sizeof(b2Vec2) * count);
+		for(i = 0; i < count; i++)
+			vertices[i] = *(b2Vec2*)stack_to_object( ST(i + 1) );
+		THIS->CreateChain( vertices, count );
+		/* CreateChain does memcpy of vertices */
+		safefree( vertices );
+
+void
+b2ChainShape::SetPrevVertex( prevVertex )
+	b2Vec2* prevVertex
+	CODE:
+		THIS->SetPrevVertex( *prevVertex );
+
+void
+b2ChainShape::SetNextVertex( nextVertex )
+	b2Vec2* nextVertex
+	CODE:
+		THIS->SetNextVertex( *nextVertex );
+
+void
+b2ChainShape::GetChildEdge( edge, index )
+	b2EdgeShape* edge
+	int32 index
+	CODE:
+		THIS->GetChildEdge( edge, index );
+
+b2Vec2*
+b2ChainShape::m_vertices( index, ... )
+	int index;
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if( items > 2 )
+		{
+			THIS->m_vertices[index] = *(b2Vec2 *)stack_to_object(ST(2));
+		}
+		RETVAL = &(THIS->m_vertices[index]);
+	OUTPUT:
+		RETVAL
+
+int32
+b2ChainShape::m_count( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->m_count = (int32)SvIV( ST(1) );
+		}
+		RETVAL = THIS->m_count;
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2ChainShape::m_prevVertex( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if( items > 1 )
+		{
+			THIS->m_prevVertex = *(b2Vec2 *)stack_to_object(ST(1));
+		}
+		RETVAL = &(THIS->m_prevVertex);
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2ChainShape::m_nextVertex( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if( items > 1 )
+		{
+			THIS->m_nextVertex = *(b2Vec2 *)stack_to_object(ST(1));
+		}
+		RETVAL = &(THIS->m_nextVertex);
+	OUTPUT:
+		RETVAL
+
+bool
+b2ChainShape::m_hasPrevVertex( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->m_hasPrevVertex = (bool)SvTRUE( ST(1) );
+		}
+		RETVAL = THIS->m_hasPrevVertex;
+	OUTPUT:
+		RETVAL
+
+bool
+b2ChainShape::m_hasNextVertex( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->m_hasNextVertex = (bool)SvTRUE( ST(1) );
+		}
+		RETVAL = THIS->m_hasNextVertex;
+	OUTPUT:
+		RETVAL
+		
+%}
 
 };

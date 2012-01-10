@@ -14,7 +14,7 @@ b2PolygonShape::Set( ... )
 	CODE:
 		b2Vec2 vertices[b2_maxPolygonVertices];
 		int i;
-		int count = (items - 1);
+		int count = items - 1;
 		if( count > b2_maxPolygonVertices )
 			count = b2_maxPolygonVertices;
 		for(i = 0; i < count; i++)
@@ -27,13 +27,11 @@ b2PolygonShape::SetAsBox( x, y, ... )
 	float32 y
 	CODE:
 		if ( items == 3 )
-		{
 			THIS->SetAsBox( x, y );
-		}
 		else if ( items == 5 )
-		{
 			THIS->SetAsBox( x, y, *(b2Vec2*)stack_to_object( ST(3) ), (float32)SvNV( ST(4) ) );
-		}
+		else
+			croak_xs_usage( cv, "THIS, x, y, ()||(center, angle)" );
 
 b2Vec2*
 b2PolygonShape::GetVertex( index )
@@ -41,11 +39,62 @@ b2PolygonShape::GetVertex( index )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		RETVAL = (b2Vec2*)&(THIS->GetVertex(index));
+		RETVAL = new b2Vec2(THIS->GetVertex(index));
 	OUTPUT:
 		RETVAL
 
-
+b2Vec2*
+b2PolygonShape::m_centroid( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if( items > 1 )
+		{
+			THIS->m_centroid = *(b2Vec2 *)stack_to_object(ST(1));
+		}
+		RETVAL = &(THIS->m_centroid);
+	OUTPUT:
+		RETVAL
+		
+b2Vec2*
+b2PolygonShape::m_vertices( index, ... )
+	int index;
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if( items > 2 )
+		{
+			THIS->m_vertices[index] = *(b2Vec2 *)stack_to_object(ST(2));
+		}
+		RETVAL = &(THIS->m_vertices[index]);
+	OUTPUT:
+		RETVAL
+		
+b2Vec2*
+b2PolygonShape::m_normals( index, ... )
+	int index;
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if( items > 2 )
+		{
+			THIS->m_normals[index] = *(b2Vec2 *)stack_to_object(ST(2));
+		}
+		RETVAL = &(THIS->m_normals[index]);
+	OUTPUT:
+		RETVAL
+		
+int32
+b2PolygonShape::m_vertexCount( ... )
+	CODE:
+		if ( items > 1 )
+		{
+			THIS->m_vertexCount = (int32)SvIV( ST(1) );
+		}
+		RETVAL = THIS->m_vertexCount;
+	OUTPUT:
+		RETVAL
+		
 %}
 
 };

@@ -5,5 +5,51 @@
 
 b2CircleShape();
 
-};
+int32 GetVertexCount();
 
+%{
+
+int32
+b2CircleShape::GetSupport( d )
+	b2Vec2* d
+	CODE:
+		RETVAL = THIS->GetSupport( *d );
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2CircleShape::GetSupportVertex( d )
+	b2Vec2* d
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(THIS->GetSupportVertex( *d ));
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2CircleShape::GetVertex( index )
+	int32 index
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(THIS->GetVertex( index ));
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2CircleShape::m_p( ... )
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		if( items > 1 )
+		{
+			THIS->m_p = *(b2Vec2 *)stack_to_object(ST(1));
+		}
+		RETVAL = &(THIS->m_p);
+	OUTPUT:
+		RETVAL
+		
+%}
+
+};
