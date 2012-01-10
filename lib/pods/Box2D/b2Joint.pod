@@ -16,21 +16,13 @@ in various fashions. Some joints also feature limits and motors.
 
 =head2 GetAnchorA()
 
-Get the anchor point on bodyA in world coordinates. Implemented in
-C<Box2D::b2DistanceJoint>, C<Box2D::b2FrictionJoint>,
-C<Box2D::b2GearJoint>, C<Box2D::b2LineJoint>, C<Box2D::b2MouseJoint>,
-C<Box2D::b2PrismaticJoint>, C<Box2D::b2PulleyJoint>,
-C<Box2D::b2RevoluteJoint>, and C<Box2D::b2WeldJoint>.
+Get the anchor point on bodyA in world coordinates.
 
 Returns a C<Box2D::b2Vec2>
 
 =head2 GetAnchorB()
 
-Get the anchor point on bodyB in world coordinates. Implemented in
-C<Box2D::b2DistanceJoint>, C<Box2D::b2FrictionJoint>,
-C<Box2D::b2GearJoint>, C<Box2D::b2LineJoint>, C<Box2D::b2MouseJoint>,
-C<Box2D::b2PrismaticJoint>, C<Box2D::b2PulleyJoint>,
-C<Box2D::b2RevoluteJoint>, and C<Box2D::b2WeldJoint>.
+Get the anchor point on bodyB in world coordinates.
 
 Returns a C<Box2D::b2Vec2>
 
@@ -46,6 +38,15 @@ Get the second body attached to this joint.
 
 Returns a C<Box2D::b2Body>
 
+=head2 GetCollideConnected()
+
+Get collide connected.
+
+Note: modifying the collide connect flag won't work correctly because
+the flag is only checked when fixture AABBs begin to overlap.
+
+Returns a C<bool>
+
 =head2 GetNext()
 
 Get the next joint the world joint list.
@@ -55,10 +56,6 @@ Returns a C<Box2D::b2Joint>
 =head2 GetReactionForce( $inv_dt )
 
 Get the reaction force on body2 at the joint anchor in Newtons.
-Implemented in C<Box2D::b2DistanceJoint>, C<Box2D::b2FrictionJoint>,
-C<Box2D::b2GearJoint>, C<Box2D::b2LineJoint>, C<Box2D::b2MouseJoint>,
-C<Box2D::b2PrismaticJoint>, C<Box2D::b2PulleyJoint>,
-C<Box2D::b2RevoluteJoint>, and C<Box2D::b2WeldJoint>.
 
 Parameters:
 
@@ -72,11 +69,7 @@ Returns a C<Box2D::b2Vec2>
 
 =head2 GetReactionTorque( $inv_dt )
 
-Get the reaction torque on body2 in N*m. Implemented in
-C<Box2D::b2DistanceJoint>, C<Box2D::b2FrictionJoint>,
-C<Box2D::b2GearJoint>, C<Box2D::b2LineJoint>, C<Box2D::b2MouseJoint>,
-C<Box2D::b2PrismaticJoint>, C<Box2D::b2PulleyJoint>,
-C<Box2D::b2RevoluteJoint>, and C<Box2D::b2WeldJoint>.
+Get the reaction torque on body2 in N*m.
 
 Parameters:
 
@@ -97,6 +90,8 @@ Returns a C<Box2D::b2JointType>
 =head2 GetUserData()
 
 Get the user data pointer.
+
+Returns a C<scalar>
 
 =head2 IsActive()
 
@@ -130,8 +125,6 @@ Parameters:
 
 =item * L<Box2D::b2GearJoint>
 
-=item * L<Box2D::b2LineJoint>
-
 =item * L<Box2D::b2MouseJoint>
 
 =item * L<Box2D::b2PrismaticJoint>
@@ -140,7 +133,11 @@ Parameters:
 
 =item * L<Box2D::b2RevoluteJoint>
 
+=item * L<Box2D::b2RopeJoint>
+
 =item * L<Box2D::b2WeldJoint>
+
+=item * L<Box2D::b2WheelJoint>
 
 =back
 
