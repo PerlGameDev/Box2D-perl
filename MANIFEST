@@ -78,7 +78,8 @@ src/ppport.h
 t/00-load.t
 t/b2aabb.t
 t/b2body.t
-t/b2circle.t
+t/b2chainshape.t
+t/b2circleshape.t
 t/b2distancejoint.t
 t/b2edgeshape.t
 t/b2filter.t
@@ -98,8 +99,10 @@ t/b2raycastcallback.t
 t/b2raycastinput.t
 t/b2raycastoutput.t
 t/b2revolutejoint.t
+t/b2rope.t
 t/b2rot.t
 t/b2settings.t
+t/b2shape.t
 t/b2sweep.t
 t/b2timer.t
 t/b2transform.t
@@ -172,7 +175,9 @@ xsp/b2RayCastOutput.xsp
 xsp/b2RevoluteJoint.xsp
 xsp/b2RevoluteJointDef.xsp
 xsp/b2Rope.xsp
+xsp/b2RopeDef.xsp
 xsp/b2RopeJoint.xsp
+xsp/b2RopeJointDef.xsp
 xsp/b2Rot.xsp
 xsp/b2Settings.xsp
 xsp/b2Shape.xsp
