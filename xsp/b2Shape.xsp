@@ -83,7 +83,7 @@ b2Shape::m_type( ... )
 	CODE:
 		if ( items > 1 )
 		{
-			THIS->m_type = (b2Shape::Type)SvIV( ST(1) );
+			THIS->m_type = (b2Shape::Type)SvUV( ST(1) );
 		}
 		RETVAL = (unsigned int)THIS->m_type;
 	OUTPUT:
