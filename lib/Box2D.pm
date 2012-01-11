@@ -10,8 +10,12 @@ require XSLoader;
 XSLoader::load( 'Box2D', $VERSION );
 require Exporter;
 
-our @EXPORT_OK   = ();
-our %EXPORT_TAGS = ();
+our %EXPORT_TAGS;
+our @EXPORT_OK;
+BEGIN {
+	%EXPORT_TAGS = ();
+	@EXPORT_OK   = ();
+}
 
 use Box2D::b2Mat22;
 use Box2D::b2Vec2;
