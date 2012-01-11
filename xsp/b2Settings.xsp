@@ -44,12 +44,13 @@ BOOT:
 	newCONSTSUB( stash, "b2_angularSleepTolerance", newSVnv(b2_angularSleepTolerance) );
 }
 
-void*
+b2Version*
 b2_version( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Version";
 	CODE:
-		RETVAL = &b2_version;
+		RETVAL = new b2Version();
+		*RETVAL = b2_version;
 	OUTPUT:
 		RETVAL
 

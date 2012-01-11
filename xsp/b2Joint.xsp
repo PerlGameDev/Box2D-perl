@@ -18,6 +18,30 @@ bool GetCollideConnected();
 
 %{
 
+BOOT:
+{
+	HV* stash = gv_stashpv( "Box2D", TRUE );
+
+	/* enum b2JointType */
+	newCONSTSUB( stash, "e_unknownJoint",   newSVuv((UV) e_unknownJoint  ) );
+	newCONSTSUB( stash, "e_revoluteJoint",  newSVuv((UV) e_revoluteJoint ) );
+	newCONSTSUB( stash, "e_prismaticJoint", newSVuv((UV) e_prismaticJoint) );
+	newCONSTSUB( stash, "e_distanceJoint",  newSVuv((UV) e_distanceJoint ) );
+	newCONSTSUB( stash, "e_pulleyJoint",    newSVuv((UV) e_pulleyJoint   ) );
+	newCONSTSUB( stash, "e_mouseJoint",     newSVuv((UV) e_mouseJoint    ) );
+	newCONSTSUB( stash, "e_gearJoint",      newSVuv((UV) e_gearJoint     ) );
+	newCONSTSUB( stash, "e_wheelJoint",     newSVuv((UV) e_wheelJoint    ) );
+	newCONSTSUB( stash, "e_weldJoint",      newSVuv((UV) e_weldJoint     ) );
+	newCONSTSUB( stash, "e_frictionJoint",  newSVuv((UV) e_frictionJoint ) );
+	newCONSTSUB( stash, "e_ropeJoint",      newSVuv((UV) e_ropeJoint     ) );
+
+	/* enum b2LimitState */
+	newCONSTSUB( stash, "e_inactiveLimit", newSVuv((UV) e_inactiveLimit) );
+	newCONSTSUB( stash, "e_atLowerLimit",  newSVuv((UV) e_atLowerLimit ) );
+	newCONSTSUB( stash, "e_atUpperLimit",  newSVuv((UV) e_atUpperLimit ) );
+	newCONSTSUB( stash, "e_equalLimits",   newSVuv((UV) e_equalLimits  ) );
+}
+
 int
 b2Joint::GetType()
 	CODE:

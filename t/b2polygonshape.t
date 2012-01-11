@@ -30,7 +30,7 @@ is( $poly->m_vertexCount, 4, "m_vertexCount" );
 	cmp_ok( abs($cen->x - 1/3), "<=", 1e-5, "m_centroid" );
 	cmp_ok( abs($cen->y - 1/3), "<=", 1e-5, "m_centroid" );
 	$poly->m_centroid( $v2 );
-	my $cen = $poly->m_centroid;
+	$cen = $poly->m_centroid;
 	is( $cen->x, $v2->x, "m_centroid" );
 	is( $cen->y, $v2->y, "m_centroid" );
 }

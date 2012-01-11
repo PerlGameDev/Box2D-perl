@@ -5,13 +5,22 @@
 
 %}
 
-
 %module{Box2D};
 
 %name{Box2D::b2Body} class b2Body 
 {
 
 %{
+
+BOOT:
+{
+	HV* stash = gv_stashpv( "Box2D", TRUE );
+
+	/* enum b2BodyType */
+	newCONSTSUB( stash, "b2_staticBody",    newSVuv((UV) b2_staticBody   ) );
+	newCONSTSUB( stash, "b2_kinematicBody", newSVuv((UV) b2_kinematicBody) );
+	newCONSTSUB( stash, "b2_dynamicBody",   newSVuv((UV) b2_dynamicBody  ) );
+}
 
 void
 b2Body::new( )
