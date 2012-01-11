@@ -94,4 +94,8 @@ ok( !$chain  ->TestPoint( $transform, $v0                             ), "TestPo
 $circle->m_type( 10 );
 is( $circle->m_type, 10, "Set m_type" );
 
+use Data::Dumper;
+diag( Data::Dumper->Dump([\@Box2D::EXPORT_OK], [qq(...; \@Box2D::EXPORT_OK)]) );
+diag( Data::Dumper->Dump([\%Box2D::EXPORT_TAGS], [qq(...; \%Box2D::EXPORT_TAGS)]) );
+
 done_testing;
