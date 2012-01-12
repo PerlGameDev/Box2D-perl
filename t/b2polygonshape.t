@@ -68,7 +68,7 @@ is( $poly->m_vertexCount, 4, "m_vertexCount" );
 	is( $vertex->y, $v2->y, "m_vertices 2" );
 	$vertex = $poly->m_normals( 2 );
 	is( $vertex->x, -1, "m_normals 2" );
-	is( $vertex->y, 0, "m_normals 2" );
+	cmp_ok( $vertex->y, '<=', 1e-5, "m_normals 2" );
 }
 
 {
