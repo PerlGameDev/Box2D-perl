@@ -51,7 +51,7 @@ void constsub_exporting( HV* stash, const char* name, SV* sv, const char* tag )
 	av_push( export_ok, export_name );
 	
 	HV* export_tags = get_hv( "Box2D::EXPORT_TAGS", GV_ADD );
-	_exporting_tag( export_tags, export_name, ":constants" );
+	_exporting_tag( export_tags, export_name, "constants" );
 	_exporting_tag( export_tags, export_name, tag );
 }
 

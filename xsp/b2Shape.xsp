@@ -19,11 +19,11 @@ BOOT:
 	HV* stash = gv_stashpv( "Box2D::b2Shape", TRUE );
 
 	/* enum b2Shape::Type */
-	constsub_exporting( stash, "e_circle",    newSVuv((UV) b2Shape::e_circle   ), ":shape" );
-	constsub_exporting( stash, "e_edge",      newSVuv((UV) b2Shape::e_edge     ), ":shape" );
-	constsub_exporting( stash, "e_polygon",   newSVuv((UV) b2Shape::e_polygon  ), ":shape" );
-	constsub_exporting( stash, "e_chain",     newSVuv((UV) b2Shape::e_chain    ), ":shape" );
-	constsub_exporting( stash, "e_typeCount", newSVuv((UV) b2Shape::e_typeCount), ":shape" );
+	constsub_exporting( stash, "e_circle",    newSVuv((UV) b2Shape::e_circle   ), "shape" );
+	constsub_exporting( stash, "e_edge",      newSVuv((UV) b2Shape::e_edge     ), "shape" );
+	constsub_exporting( stash, "e_polygon",   newSVuv((UV) b2Shape::e_polygon  ), "shape" );
+	constsub_exporting( stash, "e_chain",     newSVuv((UV) b2Shape::e_chain    ), "shape" );
+	constsub_exporting( stash, "e_typeCount", newSVuv((UV) b2Shape::e_typeCount), "shape" );
 }
 
 void*

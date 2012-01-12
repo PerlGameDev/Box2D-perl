@@ -18,30 +18,30 @@ BOOT:
 {
 	HV* stash = gv_stashpv( "Box2D", TRUE );
 	
-	newCONSTSUB( stash, "b2_pi",                    newSVnv(b2_pi) );
-	newCONSTSUB( stash, "b2_maxFloat",              newSVnv(b2_maxFloat) );
-	newCONSTSUB( stash, "b2_epsilon",               newSVnv(b2_epsilon) );
-	newCONSTSUB( stash, "b2_maxManifoldPoints",     newSViv(b2_maxManifoldPoints) );
-	newCONSTSUB( stash, "b2_maxPolygonVertices",    newSViv(b2_maxPolygonVertices) );
-	newCONSTSUB( stash, "b2_aabbExtension",         newSVnv(b2_aabbExtension) );
-	newCONSTSUB( stash, "b2_aabbMultiplier",        newSVnv(b2_aabbMultiplier) );
-	newCONSTSUB( stash, "b2_linearSlop",            newSVnv(b2_linearSlop) );
-	newCONSTSUB( stash, "b2_angularSlop",           newSVnv(b2_angularSlop) );
-	newCONSTSUB( stash, "b2_polygonRadius",         newSVnv(b2_polygonRadius) );
-	newCONSTSUB( stash, "b2_maxSubSteps",           newSViv(b2_maxSubSteps) );
-	newCONSTSUB( stash, "b2_maxTOIContacts",        newSViv(b2_maxTOIContacts) );
-	newCONSTSUB( stash, "b2_velocityThreshold",     newSVnv(b2_velocityThreshold) );
-	newCONSTSUB( stash, "b2_maxLinearCorrection",   newSVnv(b2_maxLinearCorrection) );
-	newCONSTSUB( stash, "b2_maxAngularCorrection",  newSVnv(b2_maxAngularCorrection) );
-	newCONSTSUB( stash, "b2_maxTranslation",        newSVnv(b2_maxTranslation) );
-	newCONSTSUB( stash, "b2_maxTranslationSquared", newSVnv(b2_maxTranslationSquared) );
-	newCONSTSUB( stash, "b2_maxRotation",           newSVnv(b2_maxRotation) );
-	newCONSTSUB( stash, "b2_maxRotationSquared",    newSVnv(b2_maxRotationSquared) );
-	newCONSTSUB( stash, "b2_baumgarte",             newSVnv(b2_baumgarte) );
-	newCONSTSUB( stash, "b2_toiBaugarte",           newSVnv(b2_toiBaugarte) );
-	newCONSTSUB( stash, "b2_timeToSleep",           newSVnv(b2_timeToSleep) );
-	newCONSTSUB( stash, "b2_linearSleepTolerance",  newSVnv(b2_linearSleepTolerance) );
-	newCONSTSUB( stash, "b2_angularSleepTolerance", newSVnv(b2_angularSleepTolerance) );
+	constsub_exporting( stash, "b2_pi",                    newSVnv(b2_pi)                   , "settings" );
+	constsub_exporting( stash, "b2_maxFloat",              newSVnv(b2_maxFloat)             , "settings" );
+	constsub_exporting( stash, "b2_epsilon",               newSVnv(b2_epsilon)              , "settings" );
+	constsub_exporting( stash, "b2_maxManifoldPoints",     newSViv(b2_maxManifoldPoints)    , "settings" );
+	constsub_exporting( stash, "b2_maxPolygonVertices",    newSViv(b2_maxPolygonVertices)   , "settings" );
+	constsub_exporting( stash, "b2_aabbExtension",         newSVnv(b2_aabbExtension)        , "settings" );
+	constsub_exporting( stash, "b2_aabbMultiplier",        newSVnv(b2_aabbMultiplier)       , "settings" );
+	constsub_exporting( stash, "b2_linearSlop",            newSVnv(b2_linearSlop)           , "settings" );
+	constsub_exporting( stash, "b2_angularSlop",           newSVnv(b2_angularSlop)          , "settings" );
+	constsub_exporting( stash, "b2_polygonRadius",         newSVnv(b2_polygonRadius)        , "settings" );
+	constsub_exporting( stash, "b2_maxSubSteps",           newSViv(b2_maxSubSteps)          , "settings" );
+	constsub_exporting( stash, "b2_maxTOIContacts",        newSViv(b2_maxTOIContacts)       , "settings" );
+	constsub_exporting( stash, "b2_velocityThreshold",     newSVnv(b2_velocityThreshold)    , "settings" );
+	constsub_exporting( stash, "b2_maxLinearCorrection",   newSVnv(b2_maxLinearCorrection)  , "settings" );
+	constsub_exporting( stash, "b2_maxAngularCorrection",  newSVnv(b2_maxAngularCorrection) , "settings" );
+	constsub_exporting( stash, "b2_maxTranslation",        newSVnv(b2_maxTranslation)       , "settings" );
+	constsub_exporting( stash, "b2_maxTranslationSquared", newSVnv(b2_maxTranslationSquared), "settings" );
+	constsub_exporting( stash, "b2_maxRotation",           newSVnv(b2_maxRotation)          , "settings" );
+	constsub_exporting( stash, "b2_maxRotationSquared",    newSVnv(b2_maxRotationSquared)   , "settings" );
+	constsub_exporting( stash, "b2_baumgarte",             newSVnv(b2_baumgarte)            , "settings" );
+	constsub_exporting( stash, "b2_toiBaugarte",           newSVnv(b2_toiBaugarte)          , "settings" );
+	constsub_exporting( stash, "b2_timeToSleep",           newSVnv(b2_timeToSleep)          , "settings" );
+	constsub_exporting( stash, "b2_linearSleepTolerance",  newSVnv(b2_linearSleepTolerance) , "settings" );
+	constsub_exporting( stash, "b2_angularSleepTolerance", newSVnv(b2_angularSleepTolerance), "settings" );
 }
 
 b2Version*

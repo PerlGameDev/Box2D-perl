@@ -17,9 +17,9 @@ BOOT:
 	HV* stash = gv_stashpv( "Box2D", TRUE );
 
 	/* enum b2BodyType */
-	newCONSTSUB( stash, "b2_staticBody",    newSVuv((UV) b2_staticBody   ) );
-	newCONSTSUB( stash, "b2_kinematicBody", newSVuv((UV) b2_kinematicBody) );
-	newCONSTSUB( stash, "b2_dynamicBody",   newSVuv((UV) b2_dynamicBody  ) );
+	constsub_exporting( stash, "b2_staticBody",    newSVuv((UV) b2_staticBody   ), "body" );
+	constsub_exporting( stash, "b2_kinematicBody", newSVuv((UV) b2_kinematicBody), "body" );
+	constsub_exporting( stash, "b2_dynamicBody",   newSVuv((UV) b2_dynamicBody  ), "body" );
 }
 
 void
