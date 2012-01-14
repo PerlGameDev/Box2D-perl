@@ -1,6 +1,7 @@
 %{
 
 #include <Box2D/Box2D.h>
+#include <helper.h>
 
 %}
 
@@ -12,6 +13,8 @@
 b2AABB();
 
 bool IsValid();
+
+float32 GetPerimeter();
 
 %{
 
@@ -34,11 +37,15 @@ b2AABB::GetExtents( )
 		RETVAL
 
 void
-b2AABB::Combine( aabb1, aabb2 )
-	b2AABB* aabb1
-	b2AABB* aabb2
+b2AABB::Combine( aabb, ... )
+	b2AABB* aabb
 	CODE:
-		THIS->Combine( *aabb1, *aabb2 );
+		if( items == 3 )
+			THIS->Combine( *aabb, *(b2AABB*)stack_to_object(ST(2)) );
+		else if( items == 2 )
+			THIS->Combine( *aabb );
+		else
+			croak_xs_usage(cv,  "THIS, (aabb)||(aabb1, aabb2)");
 
 bool
 b2AABB::Contains( aabb )
