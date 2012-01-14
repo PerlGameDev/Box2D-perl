@@ -10,12 +10,60 @@
 %name{Box2D::b2WheelJoint} class b2WheelJoint : public %name{Box2D::b2Joint} b2Joint
 {
 
+float32 GetJointTranslation();
+
+float32 GetJointSpeed();
+
+bool IsMotorEnabled();
+
+void EnableMotor(bool flag);
+
+void SetMotorSpeed(float32 speed);
+
+float32 GetMotorSpeed();
+
+void SetMaxMotorTorque(float32 torque);
+
+float32 GetMaxMotorTorque();
+
+float32 GetMotorTorque(float32 inv_dt);
+
+void SetSpringFrequencyHz(float32 hz);
+
+float32 GetSpringFrequencyHz();
+
+void SetSpringDampingRatio(float32 ratio);
+
+float32 GetSpringDampingRatio();
+
 %{
 
-void
-b2WheelJoint::new( )
+b2Vec2*
+b2WheelJoint::GetLocalAnchorA()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		warn("This is a stub for b2WheelJoint");
+		RETVAL = new b2Vec2(THIS->GetLocalAnchorA());
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2WheelJoint::GetLocalAnchorB()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(THIS->GetLocalAnchorB());
+	OUTPUT:
+		RETVAL
+
+b2Vec2*
+b2WheelJoint::GetLocalAxisA()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Vec2";
+	CODE:
+		RETVAL = new b2Vec2(THIS->GetLocalAxisA());
+	OUTPUT:
+		RETVAL
 
 %}
 

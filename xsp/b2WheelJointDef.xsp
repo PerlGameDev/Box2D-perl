@@ -10,6 +10,8 @@
 %name{Box2D::b2WheelJointDef} class b2WheelJointDef : public %name{Box2D::b2JointDef} b2JointDef
 {
 
+b2WheelJointDef();
+
 %{
 
 void

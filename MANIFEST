@@ -110,6 +110,7 @@ t/b2vec2.t
 t/b2vec3.t
 t/b2version.t
 t/b2weldjoint.t
+t/b2wheeljoint.t
 t/b2world.t
 t/boilerplate.t
 t/box2d.t
