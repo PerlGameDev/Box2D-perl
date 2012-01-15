@@ -60,35 +60,67 @@ ok( !$chain  ->TestPoint( $transform, $v0                             ), "TestPo
 {
 	my $aabb = Box2D::b2AABB->new();
 	$circle->ComputeAABB( $aabb, $transform, 0 );
+	is( $aabb->lowerBound->x, -$r, "ComputeAABB cirle lowerBound" );
+	is( $aabb->lowerBound->y, -$r, "ComputeAABB cirle lowerBound" );
+	is( $aabb->upperBound->x,  $r, "ComputeAABB circle upperBound" );
+	is( $aabb->upperBound->y,  $r, "ComputeAABB circle upperBound" );
 }
 {
 	my $aabb = Box2D::b2AABB->new();
 	$edge->ComputeAABB( $aabb, $transform, 0 );
+	cmp_ok( $aabb->lowerBound->x, "<=", 0, "ComputeAABB edge lowerBound" );
+	cmp_ok( $aabb->lowerBound->y, "<=", 0, "ComputeAABB edge lowerBound" );
+	cmp_ok( $aabb->upperBound->x, ">=", 1, "ComputeAABB edge upperBound" );
+	cmp_ok( $aabb->upperBound->y, ">=", 1, "ComputeAABB edge upperBound" );
 }
 {
 	my $aabb = Box2D::b2AABB->new();
 	$polygon->ComputeAABB( $aabb, $transform, 0 );
+	cmp_ok( $aabb->lowerBound->x, "<=", 0, "ComputeAABB polygon lowerBound" );
+	cmp_ok( $aabb->lowerBound->y, "<=", 0, "ComputeAABB polygon lowerBound" );
+	cmp_ok( $aabb->upperBound->x, ">=", 1, "ComputeAABB polygon upperBound" );
+	cmp_ok( $aabb->upperBound->y, ">=", 1, "ComputeAABB polygon upperBound" );
 }
 {
 	my $aabb = Box2D::b2AABB->new();
 	$chain->ComputeAABB( $aabb, $transform, 0 );
+	cmp_ok( $aabb->lowerBound->x, "<=", 0, "ComputeAABB chain lowerBound" );
+	cmp_ok( $aabb->lowerBound->y, "<=", 0, "ComputeAABB chain lowerBound" );
+	cmp_ok( $aabb->upperBound->x, ">=", 1, "ComputeAABB chain upperBound" );
+	cmp_ok( $aabb->upperBound->y, ">=", 1, "ComputeAABB chain upperBound" );
 }
 
 {
-	my $mass = Box2D::b2MassData->new();
-	$circle->ComputeMass( $mass, 1 );
+	my $data = Box2D::b2MassData->new();
+	$circle->ComputeMass( $data, 1 );
+	cmp_ok( abs($data->mass - Box2D::b2_pi * $r ** 2), "<=", 1e-5, "b2MassData circle mass" );
+	is( $data->center->x, 0, "b2MassData circle center" );
+	is( $data->center->y, 0, "b2MassData circle center" );
+	cmp_ok( abs($data->I - $data->mass * (0.5 * $r * $r)), "<=", 1e-4, "b2MassData circle I" );
 }
 {
-	my $mass = Box2D::b2MassData->new();
-	$edge->ComputeMass( $mass, 1 );
+	my $data = Box2D::b2MassData->new();
+	$edge->ComputeMass( $data, 1 );
+	is( $data->mass, 0, "b2MassData edge mass" );
+	is( $data->center->x, 0.5, "b2MassData edge center" );
+	is( $data->center->y, 0.5, "b2MassData edge center" );
+	is( $data->I, 0, "b2MassData edge I" );
 }
 {
-	my $mass = Box2D::b2MassData->new();
-	$polygon->ComputeMass( $mass, 1 );
+	my $data = Box2D::b2MassData->new();
+	$polygon->ComputeMass( $data, 1 );
+	is( $data->mass, 0.5, "b2MassData polygon mass" );
+	cmp_ok( abs($data->center->x - 1/3), "<=", 1e-5, "b2MassData polygon center" );
+	cmp_ok( abs($data->center->y - 1/3), "<=", 1e-5, "b2MassData polygon center" );
+	cmp_ok( abs($data->I - 1/6), "<=", 1e-5, "b2MassData polygon I" );
 }
 {
-	my $mass = Box2D::b2MassData->new();
-	$chain->ComputeMass( $mass, 1 );
+	my $data = Box2D::b2MassData->new();
+	$chain->ComputeMass( $data, 1 );
+	is( $data->mass, 0, "b2MassData chain mass" );
+	is( $data->center->x, 0, "b2MassData chain center" );
+	is( $data->center->y, 0, "b2MassData chain center" );
+	is( $data->I, 0, "b2MassData chain I" );
 }
 
 $circle->m_type( 10 );
