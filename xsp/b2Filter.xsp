@@ -18,7 +18,7 @@ b2Filter::categoryBits( ... )
 	CODE:
 		if ( items > 1 )
 		{
-			THIS->categoryBits = (uint16)SvNV( ST(1) );
+			THIS->categoryBits = (uint16)SvUV( ST(1) );
 		}
 		RETVAL = THIS->categoryBits;
 	OUTPUT:
@@ -29,7 +29,7 @@ b2Filter::maskBits( ... )
 	CODE:
 		if ( items > 1 )
 		{
-			THIS->maskBits = (uint16)SvNV( ST(1) );
+			THIS->maskBits = (uint16)SvUV( ST(1) );
 		}
 		RETVAL = THIS->maskBits;
 	OUTPUT:
@@ -40,7 +40,7 @@ b2Filter::groupIndex( ... )
 	CODE:
 		if ( items > 1 )
 		{
-			THIS->groupIndex = (int16)SvNV( ST(1) );
+			THIS->groupIndex = (int16)SvIV( ST(1) );
 		}
 		RETVAL = THIS->groupIndex;
 	OUTPUT:
