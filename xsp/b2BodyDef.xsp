@@ -7,7 +7,6 @@
 
 %module{Box2D};
 
-
 enum b2BodyType
 {
 	b2_staticBody = 0,
@@ -15,8 +14,8 @@ enum b2BodyType
 	b2_dynamicBody,
 };
 
-%name{Box2D::b2BodyDef} class b2BodyDef 
-{ 
+%name{Box2D::b2BodyDef} class b2BodyDef
+{
 
 %{
 
@@ -33,18 +32,17 @@ b2BodyDef::type( ... )
 		if( items > 1 )
 		{
 			THIS->type = (b2BodyType)SvUV( ST(1) );
-		}	
+		}
 		RETVAL = (int)THIS->type;
 	OUTPUT:
 		RETVAL
-
 
 void*
 b2BodyDef::position()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		RETVAL = &(THIS->position);	
+		RETVAL = &(THIS->position);
 	OUTPUT:
 		RETVAL
 
@@ -64,7 +62,7 @@ b2BodyDef::linearVelocity()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		RETVAL = &(THIS->linearVelocity);	
+		RETVAL = &(THIS->linearVelocity);
 	OUTPUT:
 		RETVAL
 
