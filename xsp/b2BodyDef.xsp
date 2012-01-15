@@ -157,18 +157,16 @@ b2BodyDef::active( ... )
 		RETVAL
 
 SV*
-b2BodyDef::userData ( ... )
-	CODE:
+b2BodyDef::userData( ... )
+	PPCODE:
 		if ( items > 1 )
 			THIS->userData = (void *)new_data( ST(1) );
-		else if ( !THIS->userData )
+		if ( !THIS->userData )
 			XSRETURN_EMPTY;
-		RETVAL = (SV *)THIS->userData;
-	OUTPUT:
-		RETVAL
-
+		ST(0) = (SV *)THIS->userData;
+		XSRETURN(1);
 
 %}
-	
+
 };
 
