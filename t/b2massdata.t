@@ -4,6 +4,7 @@ use Box2D;
 use Test::More;
 
 my $data = Box2D::b2MassData->new();
+isa_ok( $data, "Box2D::b2MassData" );
 
 my $mass = 11.0;
 my $center = Box2D::b2Vec2->new( 1.0, 2.0 );
