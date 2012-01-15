@@ -7,9 +7,8 @@
 
 %module{Box2D};
 
-
-%name{Box2D::b2Fixture} class b2Fixture 
-{ 
+%name{Box2D::b2Fixture} class b2Fixture
+{
 
 %{
 
@@ -26,7 +25,7 @@ void
 b2Fixture::SetSensor( sensor )
 	bool sensor
 	CODE:
-		THIS->SetSensor( sensor ); 
+		THIS->SetSensor( sensor );
 
 bool
 b2Fixture::IsSensor()
@@ -34,7 +33,6 @@ b2Fixture::IsSensor()
 		RETVAL = THIS->IsSensor();
 	OUTPUT:
 		RETVAL
-
 
 void*
 b2Fixture::GetBody()
@@ -45,7 +43,6 @@ b2Fixture::GetBody()
 	OUTPUT:
 		RETVAL
 
-
 void*
 b2Fixture::GetNext()
 	PREINIT:
@@ -55,20 +52,19 @@ b2Fixture::GetNext()
 	OUTPUT:
 		RETVAL
 
-
 SV*
-b2Fixture::GetUserData ( )
-	PPCODE: 
-		 void* userData = THIS->GetUserData();
-		 if (!userData)
-		  XSRETURN_EMPTY;
-		  ST(0) = (SV *)userData;
-		  XSRETURN(1);
+b2Fixture::GetUserData()
+	PPCODE:
+		void* userData = THIS->GetUserData();
+		if ( !userData )
+			XSRETURN_EMPTY;
+		ST(0) = (SV *)userData;
+		XSRETURN(1);
 
 void
-b2Fixture::SetUserData ( ... )
-	PPCODE: 
-		if ( items > 1)
+b2Fixture::SetUserData( ... )
+	PPCODE:
+		if ( items > 1 )
 			THIS->SetUserData( (void *)new_data( ST(1) ) );
 
 bool
@@ -79,9 +75,8 @@ b2Fixture::TestPoint( p )
 	OUTPUT:
 		RETVAL
 
-
 float32
-b2Fixture::GetDensity( )
+b2Fixture::GetDensity()
 	CODE:
 		RETVAL = THIS->GetDensity();
 	OUTPUT:
@@ -89,13 +84,12 @@ b2Fixture::GetDensity( )
 
 void
 b2Fixture::SetDensity( val )
-	float32 val 
+	float32 val
 	CODE:
 		THIS->SetDensity( val );
 
-
 float32
-b2Fixture::GetFriction( )
+b2Fixture::GetFriction()
 	CODE:
 		RETVAL = THIS->GetFriction();
 	OUTPUT:
@@ -103,13 +97,12 @@ b2Fixture::GetFriction( )
 
 void
 b2Fixture::SetFriction( val )
-	float32 val 
+	float32 val
 	CODE:
 		THIS->SetFriction( val );
 
-
 float32
-b2Fixture::GetRestitution( )
+b2Fixture::GetRestitution()
 	CODE:
 		RETVAL = THIS->GetRestitution();
 	OUTPUT:
@@ -117,12 +110,11 @@ b2Fixture::GetRestitution( )
 
 void
 b2Fixture::SetRestitution( val )
-	float32 val 
+	float32 val
 	CODE:
 		THIS->SetRestitution( val );
 
-
 %}
-	
+
 };
 
