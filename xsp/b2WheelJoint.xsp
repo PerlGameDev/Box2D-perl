@@ -38,7 +38,7 @@ float32 GetSpringDampingRatio();
 
 %{
 
-b2Vec2*
+void*
 b2WheelJoint::GetLocalAnchorA()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -47,7 +47,7 @@ b2WheelJoint::GetLocalAnchorA()
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2WheelJoint::GetLocalAnchorB()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
@@ -56,7 +56,7 @@ b2WheelJoint::GetLocalAnchorB()
 	OUTPUT:
 		RETVAL
 
-b2Vec2*
+void*
 b2WheelJoint::GetLocalAxisA()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
