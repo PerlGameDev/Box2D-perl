@@ -42,7 +42,7 @@ b2Filter::groupIndex( ... )
 		{
 			THIS->groupIndex = (int16)SvNV( ST(1) );
 		}
-		RETVAL = (int16)THIS->groupIndex;
+		RETVAL = THIS->groupIndex;
 	OUTPUT:
 		RETVAL
 
