@@ -31,7 +31,7 @@ void
 b2FixtureDef::userData( ... )
 	PPCODE:
 		if ( items > 1 )
-			THIS->userData = (void *) SvREFCNT_inc( ST(1) );
+			THIS->userData = (void *) newSVsv( ST(1) );
 		if ( THIS->userData == NULL )
 			XSRETURN_UNDEF;
 		ST(0) = (SV*) THIS->userData;

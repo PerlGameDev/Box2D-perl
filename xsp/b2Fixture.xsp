@@ -10,27 +10,67 @@
 %name{Box2D::b2Fixture} class b2Fixture
 {
 
+void SetSensor( bool sensor );
+
+bool IsSensor();
+
+void Refilter();
+
+void SetDensity( float32 density );
+
+float32 GetDensity();
+
+float32 GetFriction();
+
+void SetFriction( float32 friction );
+
+float32 GetRestitution();
+
+void SetRestitution( float32 restitution );
+
+void Dump( int32 bodyIndex );
+
 %{
+
+unsigned int
+b2Fixture::GetType()
+	CODE:
+		RETVAL = (unsigned int) THIS->GetType();
+	OUTPUT:
+		RETVAL
 
 void*
 b2Fixture::GetShape()
 	PREINIT:
-		const char* CLASS = "Box2D::b2Shape";
+		const char* CLASS;
 	CODE:
+		b2Shape::Type type = THIS->GetType();
+		if( type == b2Shape::e_circle )
+			CLASS = "Box2D::b2CircleShape";
+		else if( type == b2Shape::e_edge )
+			CLASS = "Box2D::b2EdgeShape";
+		else if( type == b2Shape::e_polygon )
+			CLASS = "Box2D::b2PolygonShape";
+		else if( type == b2Shape::e_chain )
+			CLASS = "Box2D::b2ChainShape";
+		else
+			croak( "b2Fixture shape has invalid Type: %d", (int) type );
 		RETVAL = THIS->GetShape();
 	OUTPUT:
 		RETVAL
 
 void
-b2Fixture::SetSensor( sensor )
-	bool sensor
+b2Fixture::SetFilterData( filter )
+	b2Filter* filter
 	CODE:
-		THIS->SetSensor( sensor );
+		THIS->SetFilterData( *filter );
 
-bool
-b2Fixture::IsSensor()
+void*
+b2Fixture::GetFilterData()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Filter";
 	CODE:
-		RETVAL = THIS->IsSensor();
+		RETVAL = (b2Filter*) &(THIS->GetFilterData());
 	OUTPUT:
 		RETVAL
 
@@ -52,67 +92,54 @@ b2Fixture::GetNext()
 	OUTPUT:
 		RETVAL
 
-SV*
+void
 b2Fixture::GetUserData()
 	PPCODE:
-		void* userData = THIS->GetUserData();
-		if ( !userData )
+		void* data = THIS->GetUserData();
+		if ( data == NULL )
 			XSRETURN_UNDEF;
-		ST(0) = (SV *)userData;
+		ST(0) = (SV*) data;
 		XSRETURN(1);
 
 void
-b2Fixture::SetUserData( ... )
-	PPCODE:
-		if ( items > 1 )
-			THIS->SetUserData( (void *)SvREFCNT_inc( ST(1) ) );
+b2Fixture::SetUserData( data )
+	SV* data
+	CODE:
+		THIS->SetUserData( (void*) newSVsv( data ) );
 
 bool
 b2Fixture::TestPoint( p )
-	b2Vec2 * p
+	b2Vec2* p
 	CODE:
 		RETVAL = THIS->TestPoint( *p );
 	OUTPUT:
 		RETVAL
 
-float32
-b2Fixture::GetDensity()
+bool
+b2Fixture::RayCast( output, input, childIndex )
+	b2RayCastOutput* output
+	b2RayCastInput* input
+	int32 childIndex
 	CODE:
-		RETVAL = THIS->GetDensity();
+		RETVAL = THIS->RayCast( output, *input, childIndex );
 	OUTPUT:
 		RETVAL
 
 void
-b2Fixture::SetDensity( val )
-	float32 val
+b2Fixture::GetMassData( massData )
+	b2MassData* massData
 	CODE:
-		THIS->SetDensity( val );
+		THIS->GetMassData( massData );
 
-float32
-b2Fixture::GetFriction()
+void*
+b2Fixture::GetAABB( childIndex )
+	int32 childIndex
+	PREINIT:
+		const char* CLASS = "Box2D::b2AABB";
 	CODE:
-		RETVAL = THIS->GetFriction();
+		RETVAL = (b2AABB*) &(THIS->GetAABB( childIndex ));
 	OUTPUT:
 		RETVAL
-
-void
-b2Fixture::SetFriction( val )
-	float32 val
-	CODE:
-		THIS->SetFriction( val );
-
-float32
-b2Fixture::GetRestitution()
-	CODE:
-		RETVAL = THIS->GetRestitution();
-	OUTPUT:
-		RETVAL
-
-void
-b2Fixture::SetRestitution( val )
-	float32 val
-	CODE:
-		THIS->SetRestitution( val );
 
 %}
 

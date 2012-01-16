@@ -83,6 +83,7 @@ t/b2circleshape.t
 t/b2distancejoint.t
 t/b2edgeshape.t
 t/b2filter.t
+t/b2fixture.t
 t/b2fixturedef.t
 t/b2frictionjoint.t
 t/b2gearjoint.t

@@ -26,7 +26,6 @@ This is still a WIP and so far here are the completed bindings:
  b2Settings
  b2Sweep
  b2Transform
- b2TreeNode
  b2Vec2
  b2Vec3
  b2Version

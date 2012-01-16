@@ -5,7 +5,9 @@
 
 b2ChainShape();
 
-~b2ChainShape();
+// this line causes an exception when a b2Fixture uses GetShape to get a b2ChainShape
+// are we gonna get memory leaks without this line?
+// ~b2ChainShape();
 
 %{
 
@@ -124,7 +126,7 @@ b2ChainShape::m_hasNextVertex( ... )
 		RETVAL = THIS->m_hasNextVertex;
 	OUTPUT:
 		RETVAL
-		
+
 %}
 
 };

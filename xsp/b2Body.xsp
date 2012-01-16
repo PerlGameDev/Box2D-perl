@@ -22,12 +22,6 @@ BOOT:
 	constsub_exporting( stash, "b2_dynamicBody",   newSVuv((UV) b2_dynamicBody  ), "body" );
 }
 
-void
-b2Body::new( )
-	CODE:
-		warn("Do nothing");
-
-
 void*
 b2Body::CreateFixtureDef(fixtureDef)
 	b2FixtureDef* fixtureDef
@@ -39,13 +33,16 @@ b2Body::CreateFixtureDef(fixtureDef)
 		RETVAL
 
 void*
-b2Body::CreateFixture(shape, density)
-	b2Shape * shape
-	float32 density
+b2Body::CreateFixture( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Fixture";
 	CODE:
-		RETVAL = THIS->CreateFixture( (const b2Shape *) shape, density );
+		if( items == 3 )
+			RETVAL = THIS->CreateFixture( (const b2Shape*) stack_to_object( ST(1) ), SvNV( ST(2) ) );
+		else if( items == 2 )
+			RETVAL = THIS->CreateFixture( (const b2FixtureDef*) stack_to_object( ST(1) ) );
+		else
+			croak_xs_usage(cv,  "THIS, (def)||(shape, density)");
 	OUTPUT:
 		RETVAL
 
@@ -399,20 +396,20 @@ b2Body::GetWorld()
 		RETVAL
 
 
-SV*
+void
 b2Body::GetUserData()
 	PPCODE:
-		void* userData = THIS->GetUserData();
-		if ( !userData )
+		void* data = THIS->GetUserData();
+		if ( data == NULL )
 			XSRETURN_UNDEF;
-		ST(0) = (SV *)userData;
+		ST(0) = (SV*) data;
 		XSRETURN(1);
 
 void
-b2Body::SetUserData( ... )
-	PPCODE:
-		if ( items > 1 )
-			THIS->SetUserData( (void *)SvREFCNT_inc( ST(1) ) );
+b2Body::SetUserData( data )
+	SV* data
+	CODE:
+		THIS->SetUserData( (void*) newSVsv( data ) );
 
 %}
 
