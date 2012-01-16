@@ -97,19 +97,20 @@ b2Joint::GetReactionForce(inv_dt)
 			RETVAL
 
 SV*
-b2Joint::GetUserData( )
-	PPCODE:
+b2Joint::GetUserData()
+	CODE:
 		void* userData = THIS->GetUserData();
-		if (!userData)
-			XSRETURN_EMPTY;
-		ST(0) = (SV *)userData;
-		XSRETURN(1);
+		if ( userData == NULL )
+			XSRETURN_UNDEF;
+		RETVAL = (SV*) userData;
+	OUTPUT:
+		RETVAL
 
 void
-b2Joint::SetUserData( ... )
-	PPCODE:
-		if ( items > 1)
-			THIS->SetUserData( (void *)new_data( ST(1) ) );
+b2Joint::SetUserData( userData )
+	SV* userData
+	CODE:
+		THIS->SetUserData( SvREFCNT_inc( userData ) );
 
 %}
 

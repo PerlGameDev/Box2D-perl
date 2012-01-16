@@ -4,37 +4,42 @@ use Box2D;
 use Test::More;
 
 my $fixtureDef = Box2D::b2FixtureDef->new();
-pass("Create b2FixtureDef");
+isa_ok( $fixtureDef, "Box2D::b2FixtureDef" );
+
+cmp_ok( abs($fixtureDef->friction - 0.2), "<=", 1e-5, "initial friction" );
+is( $fixtureDef->restitution, 0, "initial restitution" );
+is( $fixtureDef->density    , 0, "initial density" );
+ok( !$fixtureDef->isSensor, "initial isSensor" );
 
 my $shape = Box2D::b2PolygonShape->new();
 $fixtureDef->shape($shape);
-pass("set shape");
-my $shape_ = $fixtureDef->shape;
-pass("get shape");
-is( $shape_->GetType, $shape->GetType, "shape GetType" );
-is( $shape_->m_radius, $shape->m_radius, "shape m_radius" );
+is( $fixtureDef->shape->GetType, $shape->GetType, "shape" );
+is( $fixtureDef->shape->m_radius, $shape->m_radius, "shape" );
 
-my $density = 0.5;
-$fixtureDef->density($density);
-pass("set density");
-is( $fixtureDef->density, $density, "get density" );
+my $userData = 'something';
+$fixtureDef->userData($userData);
+is( $fixtureDef->userData, $userData, "userData" );
+# my $userDatam = \0;
+# $fixtureDef->userData($userDatam);
+# is( $fixtureDef->userData, $userDatam, "userData" );
 
-my $friction = 0.5;
+my $friction = 0.6;
 $fixtureDef->friction($friction);
-pass("set friction");
-is( $fixtureDef->friction, $friction, "get friction" );
+cmp_ok( abs($fixtureDef->friction - $friction), "<=", 1e-5, "set friction" );
 
-my $restitution = 0.5;
+my $restitution = 0.7;
 $fixtureDef->restitution($restitution);
-pass("set restitution");
-is( $fixtureDef->restitution, $restitution, "get restitution" );
+cmp_ok( abs($fixtureDef->restitution - $restitution), "<=", 1e-5, "set restitution" );
 
-my ( $categoryBits, $maskBits, $groupIndex ) = ( 0x2, 0x5, -3 );
-$fixtureDef->filter->categoryBits($categoryBits);
-$fixtureDef->filter->maskBits($maskBits);
-$fixtureDef->filter->groupIndex($groupIndex);
-is( $fixtureDef->filter->categoryBits, $categoryBits, "get filter->categoryBits" );
-is( $fixtureDef->filter->maskBits,     $maskBits,     "get filter->maskBits" );
-is( $fixtureDef->filter->groupIndex,   $groupIndex,   "get filter->groupIndex" );
+my $density = 0.8;
+$fixtureDef->density($density);
+cmp_ok( abs($fixtureDef->density - $density), "<=", 1e-5, "set density" );
+
+$fixtureDef->isSensor(1);
+ok( $fixtureDef->isSensor, "set isSensor" );
+$fixtureDef->isSensor(0);
+ok( !$fixtureDef->isSensor, "set isSensor" );
+
+isa_ok( $fixtureDef->filter, "Box2D::b2Filter" );
 
 done_testing;

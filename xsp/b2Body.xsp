@@ -7,7 +7,7 @@
 
 %module{Box2D};
 
-%name{Box2D::b2Body} class b2Body 
+%name{Box2D::b2Body} class b2Body
 {
 
 %{
@@ -80,7 +80,7 @@ b2Body::GetPosition()
 	CODE:
 		RETVAL = (b2Vec2 *)&(THIS->GetPosition());
 	OUTPUT:
-		RETVAL 
+		RETVAL
 
 float32
 b2Body::GetAngle()
@@ -96,7 +96,7 @@ b2Body::GetWorldCenter()
 	CODE:
 		RETVAL = (b2Vec2 *)&(THIS->GetWorldCenter());
 	OUTPUT:
-		RETVAL 
+		RETVAL
 
 void*
 b2Body::GetLocalCenter()
@@ -105,7 +105,7 @@ b2Body::GetLocalCenter()
 	CODE:
 		RETVAL = (b2Vec2 *)&(THIS->GetLocalCenter());
 	OUTPUT:
-		RETVAL 
+		RETVAL
 
 
 void
@@ -123,15 +123,15 @@ b2Body::GetLinearVelocity()
 		b2Vec2 lv = THIS->GetLinearVelocity();
 		RETVAL = new b2Vec2(lv);
 	OUTPUT:
-		RETVAL 
+		RETVAL
 
-void 
+void
 b2Body::SetAngularVelocity(omega)
 	float32 omega
 	CODE:
 		THIS->SetAngularVelocity( omega );
 
-float32 
+float32
 b2Body::GetAngularVelocity()
 	CODE:
 		RETVAL = THIS->GetAngularVelocity();
@@ -148,7 +148,7 @@ b2Body::ApplyForce( force, point )
 
 
 
-void 
+void
 b2Body::ApplyTorque(torque)
 	float32 torque
 	CODE:
@@ -163,14 +163,14 @@ b2Body::ApplyLinearImpulse( impulse, point )
 		THIS->ApplyLinearImpulse( *impulse, *point );
 
 
-void 
+void
 b2Body::ApplyAngularImpulse(impulse)
 	float32 impulse
 	CODE:
 		THIS->ApplyAngularImpulse( impulse );
 
 
-float32 
+float32
 b2Body::GetMass()
 	CODE:
 		RETVAL = THIS->GetMass();
@@ -178,7 +178,7 @@ b2Body::GetMass()
 		RETVAL
 
 
-float32 
+float32
 b2Body::GetInertia()
 	CODE:
 		RETVAL = THIS->GetInertia();
@@ -196,7 +196,7 @@ b2Body::GetWorldPoint(localPoint)
 		b2Vec2 lv = THIS->GetWorldPoint(*localPoint);
 		RETVAL =  new b2Vec2(lv);
 	OUTPUT:
-		RETVAL 
+		RETVAL
 
 
 void*
@@ -208,7 +208,7 @@ b2Body::GetWorldVector(localVector)
 		b2Vec2 lv = THIS->GetWorldVector(*localVector);
 		RETVAL =  &lv;
 	OUTPUT:
-		RETVAL 
+		RETVAL
 
 void*
 b2Body::GetLocalPoint(worldPoint)
@@ -219,7 +219,7 @@ b2Body::GetLocalPoint(worldPoint)
 		b2Vec2 lv = THIS->GetLocalPoint(*worldPoint);
 		RETVAL =  &lv;
 	OUTPUT:
-		RETVAL 
+		RETVAL
 
 
 void*
@@ -231,7 +231,7 @@ b2Body::GetLocalVector(worldVector)
 		b2Vec2 lv = THIS->GetLocalVector(*worldVector);
 		RETVAL =  &lv;
 	OUTPUT:
-		RETVAL 
+		RETVAL
 
 void*
 b2Body::GetLinearVelocityFromWorldPoint(worldPoint)
@@ -242,7 +242,7 @@ b2Body::GetLinearVelocityFromWorldPoint(worldPoint)
 		b2Vec2 lv = THIS->GetLinearVelocityFromWorldPoint(*worldPoint);
 		RETVAL =  &lv;
 	OUTPUT:
-		RETVAL 
+		RETVAL
 
 void*
 b2Body::GetLinearVelocityFromLocalPoint(localPoint)
@@ -253,7 +253,7 @@ b2Body::GetLinearVelocityFromLocalPoint(localPoint)
 		b2Vec2 lv = THIS->GetLinearVelocityFromLocalPoint(*localPoint);
 		RETVAL =  &lv;
 	OUTPUT:
-		RETVAL 
+		RETVAL
 
 float32
 b2Body::GetLinearDamping()
@@ -265,7 +265,7 @@ b2Body::GetLinearDamping()
 
 void
 b2Body::SetLinearDamping( linearDamping )
-	float32 linearDamping 
+	float32 linearDamping
 	CODE:
 		THIS->SetLinearDamping( linearDamping );
 
@@ -279,14 +279,14 @@ b2Body::GetAngularDamping()
 
 void
 b2Body::SetAngularDamping( angularDamping )
-	float32 angularDamping 
+	float32 angularDamping
 	CODE:
 		THIS->SetAngularDamping( angularDamping );
 
 
 void
 b2Body::SetType(type)
-	int type 
+	int type
 	CODE:
 		THIS->SetType( (b2BodyType)type );
 
@@ -301,7 +301,7 @@ b2Body::GetType()
 
 void
 b2Body::SetBullet(flag)
-	bool flag 
+	bool flag
 	CODE:
 		THIS->SetBullet( flag );
 
@@ -317,7 +317,7 @@ b2Body::IsBullet()
 
 void
 b2Body::SetSleepingAllowed(flag)
-	bool flag 
+	bool flag
 	CODE:
 		THIS->SetSleepingAllowed( flag );
 
@@ -333,7 +333,7 @@ b2Body::IsSleepingAllowed()
 
 void
 b2Body::SetAwake(flag)
-	bool flag 
+	bool flag
 	CODE:
 		 THIS->SetAwake( flag );
 
@@ -349,7 +349,7 @@ b2Body::IsAwake()
 
 void
 b2Body::SetActive(flag)
-	bool flag 
+	bool flag
 	CODE:
 		THIS->SetActive( flag );
 
@@ -365,7 +365,7 @@ b2Body::IsActive()
 
 void
 b2Body::SetFixedRotation(flag)
-	bool flag 
+	bool flag
 	CODE:
 		THIS->SetFixedRotation( flag );
 
@@ -400,26 +400,24 @@ b2Body::GetWorld()
 
 
 SV*
-b2Body::GetUserData ( )
-	PPCODE: 
-		 void* userData = THIS->GetUserData();
-		 if (!userData)
-		  XSRETURN_EMPTY;
-		  ST(0) = (SV *)userData;
-		  XSRETURN(1);
+b2Body::GetUserData()
+	CODE:
+		void* userData = THIS->GetUserData();
+		if ( userData == NULL )
+			XSRETURN_UNDEF;
+		RETVAL = (SV*) userData;
+	OUTPUT:
+		RETVAL
 
 void
-b2Body::SetUserData ( ... )
-	PPCODE: 
-		if ( items > 1)
-			THIS->SetUserData( (void *)new_data( ST(1) ) );
-
-
-
+b2Body::SetUserData( userData )
+	SV* userData
+	CODE:
+		THIS->SetUserData( SvREFCNT_inc( userData ) );
 
 %}
 
 void ResetMassData();
-	
+
 };
 

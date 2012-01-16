@@ -21,14 +21,21 @@ b2FixtureDef::shape( ... )
 	CODE:
 		if( items > 1 )
 		{
-
 			THIS->shape = (b2Shape *) stack_to_object( ST(1) );
-
 		}
-
-		RETVAL = (b2Shape *)THIS->shape;
+		RETVAL = (void*) THIS->shape;
 	OUTPUT:
 		RETVAL
+
+SV*
+b2FixtureDef::userData( ... )
+	PPCODE:
+		if ( items > 1 )
+			THIS->userData = (void *)new_data( ST(1) );
+		if ( !THIS->userData )
+			XSRETURN_EMPTY;
+		ST(0) = (SV *)THIS->userData;
+		XSRETURN(1);
 
 float32
 b2FixtureDef::density( ... )
@@ -40,7 +47,6 @@ b2FixtureDef::density( ... )
 		RETVAL = THIS->density;
 	OUTPUT:
 		RETVAL
-
 
 float32
 b2FixtureDef::friction( ... )
@@ -77,7 +83,17 @@ b2FixtureDef::filter( ... )
 	OUTPUT:
 		RETVAL
 
+bool
+b2FixtureDef::isSensor( ... )
+	CODE:
+		if( items > 1 )
+		{
+			THIS->isSensor = (bool)SvTRUE( ST(1) );
+		}
+		RETVAL = THIS->isSensor;
+	OUTPUT:
+		RETVAL
+
 %}
 
 };
-
