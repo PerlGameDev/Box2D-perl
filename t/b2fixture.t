@@ -74,6 +74,8 @@ is( $fixture->GetFilterData()->groupIndex, $fixture_def->filter->groupIndex, "Ge
 	is( $fixture->GetFilterData()->maskBits, $filter->maskBits, "SetFilterData" );
 }
 
+#Refilter
+
 $body->SetBullet(1);
 isa_ok( $fixture->GetBody(), "Box2D::b2Body", "GetBody" );
 is( $fixture->GetBody()->IsBullet(), 1, "GetBody" );
