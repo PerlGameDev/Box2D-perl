@@ -8,6 +8,42 @@ my $world = Box2D::b2World->new( $vec );
 
 my $body_def = Box2D::b2BodyDef->new();
 
+{
+    my $data = 1;
+    $body_def->userData($data);
+}
+is( $body_def->userData, 1, 'userData with scalar' );
+
+{
+    my $data = 1;
+    $body_def->userData(\$data);
+}
+isa_ok( $body_def->userData, 'SCALAR', 'userData with scalarref' );
+is( ${ $body_def->userData }, 1, 'userData with scalarref' );
+
+{
+    my $data = sub { 'test' };
+    $body_def->userData($data);
+}
+isa_ok( $body_def->userData, 'CODE', 'userData with coderef' );
+is( $body_def->userData->(), 'test', 'userData with coderef' );
+
+{
+    #my $data = { a => 'test' };
+    #$body_def->userData($data);
+    my %data = ( a => 'test' );
+    $body_def->userData(\%data);
+}
+isa_ok( $body_def->userData, 'HASH', 'userData with hashref' );
+is( $body_def->userData->{a}, 'test', 'userData with hashref' );
+
+{
+    my $data = ['test'];
+    $body_def->userData($data);
+}
+isa_ok( $body_def->userData, 'ARRAY', 'userData with arrayref' );
+is( $body_def->userData->[0], 'test', 'userData with arrayref' );
+
 my $type0 = Box2D::b2_dynamicBody;
 $body_def->type($type0);
 
@@ -19,6 +55,9 @@ $body_def->angle($angle0);
 
 my $body = $world->CreateBody($body_def);
 isa_ok( $body, "Box2D::b2Body" );
+
+isa_ok( $body->GetUserData(), 'ARRAY', 'GetUserData' );
+is( $body->GetUserData()->[0], 'test', 'GetUserData' );
 
 my $position = $body->GetPosition();
 pass("GetPosition");

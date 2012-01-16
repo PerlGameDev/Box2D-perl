@@ -109,7 +109,7 @@ ok( !$chain  ->TestPoint( $transform, $v0                             ), "TestPo
 {
 	my $data = Box2D::b2MassData->new();
 	$polygon->ComputeMass( $data, 1 );
-	is( $data->mass, 0.5, "b2MassData polygon mass" );
+	cmp_ok( abs($data->mass - 0.5), '<=', 1e-5, "b2MassData polygon mass" );
 	cmp_ok( abs($data->center->x - 1/3), "<=", 1e-5, "b2MassData polygon center" );
 	cmp_ok( abs($data->center->y - 1/3), "<=", 1e-5, "b2MassData polygon center" );
 	cmp_ok( abs($data->I - 1/6), "<=", 1e-5, "b2MassData polygon I" );

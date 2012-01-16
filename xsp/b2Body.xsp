@@ -401,19 +401,18 @@ b2Body::GetWorld()
 
 SV*
 b2Body::GetUserData()
-	CODE:
+	PPCODE:
 		void* userData = THIS->GetUserData();
-		if ( userData == NULL )
-			XSRETURN_UNDEF;
-		RETVAL = (SV*) userData;
-	OUTPUT:
-		RETVAL
+		if ( !userData )
+			XSRETURN_EMPTY;
+		ST(0) = (SV *)userData;
+		XSRETURN(1);
 
 void
-b2Body::SetUserData( userData )
-	SV* userData
-	CODE:
-		THIS->SetUserData( SvREFCNT_inc( userData ) );
+b2Body::SetUserData( ... )
+	PPCODE:
+		if ( items > 1 )
+			THIS->SetUserData( (void *)new_data( ST(1) ) );
 
 %}
 
