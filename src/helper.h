@@ -18,15 +18,6 @@ SV* object_to_stack( void* obj, const char* CLASS )
 	return objref;
 }
 
-SV* new_data( SV* thing )
-{
-	if ( SvROK(thing) ) {
-		return newRV_inc( SvRV(thing) );
-	} else {
-		return SvREFCNT_inc(thing);
-	}
-}
-
 void _exporting_tag( HV* export_tags, SV* export_name, const char* tag )
 {
 	SV** tag_ref = hv_fetch( export_tags, tag, strlen(tag), 1);

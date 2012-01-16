@@ -16,12 +16,18 @@ $fixtureDef->shape($shape);
 is( $fixtureDef->shape->GetType, $shape->GetType, "shape" );
 is( $fixtureDef->shape->m_radius, $shape->m_radius, "shape" );
 
-my $userData = 'something';
-$fixtureDef->userData($userData);
-is( $fixtureDef->userData, $userData, "userData" );
-# my $userDatam = \0;
-# $fixtureDef->userData($userDatam);
-# is( $fixtureDef->userData, $userDatam, "userData" );
+{
+	my $string = 'something';
+	$fixtureDef->userData($string);
+	is( $fixtureDef->userData, $string, "userData with string" );
+}
+{
+	my $ref = \2;
+	$fixtureDef->userData($ref);
+	isa_ok( $fixtureDef->userData, 'SCALAR', "userData with ref" );
+	is( ${$fixtureDef->userData}, $$ref, "userData with ref" );
+	is( $fixtureDef->userData, $ref, "userData with ref" );
+}
 
 my $friction = 0.6;
 $fixtureDef->friction($friction);

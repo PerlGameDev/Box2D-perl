@@ -404,7 +404,7 @@ b2Body::GetUserData()
 	PPCODE:
 		void* userData = THIS->GetUserData();
 		if ( !userData )
-			XSRETURN_EMPTY;
+			XSRETURN_UNDEF;
 		ST(0) = (SV *)userData;
 		XSRETURN(1);
 
@@ -412,7 +412,7 @@ void
 b2Body::SetUserData( ... )
 	PPCODE:
 		if ( items > 1 )
-			THIS->SetUserData( (void *)new_data( ST(1) ) );
+			THIS->SetUserData( (void *)SvREFCNT_inc( ST(1) ) );
 
 %}
 

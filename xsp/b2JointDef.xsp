@@ -25,15 +25,14 @@ b2JointDef::type( ... )
 	OUTPUT:
 		RETVAL
 
-
-SV*
+void
 b2JointDef::userData( ... )
 	PPCODE:
 		if ( items > 1 )
-			THIS->userData = (void *)new_data( ST(1) );
-		if ( !THIS->userData )
-			XSRETURN_EMPTY;
-		ST(0) = (SV *)THIS->userData;
+			THIS->userData = (void *) SvREFCNT_inc( ST(1) );
+		if ( THIS->userData == NULL )
+			XSRETURN_UNDEF;
+		ST(0) = (SV*) THIS->userData;
 		XSRETURN(1);
 
 void*

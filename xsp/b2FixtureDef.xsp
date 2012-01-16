@@ -21,20 +21,20 @@ b2FixtureDef::shape( ... )
 	CODE:
 		if( items > 1 )
 		{
-			THIS->shape = (b2Shape *) stack_to_object( ST(1) );
+			THIS->shape = (b2Shape*) stack_to_object( ST(1) );
 		}
 		RETVAL = (void*) THIS->shape;
 	OUTPUT:
 		RETVAL
 
-SV*
+void
 b2FixtureDef::userData( ... )
 	PPCODE:
 		if ( items > 1 )
-			THIS->userData = (void *)new_data( ST(1) );
-		if ( !THIS->userData )
-			XSRETURN_EMPTY;
-		ST(0) = (SV *)THIS->userData;
+			THIS->userData = (void *) SvREFCNT_inc( ST(1) );
+		if ( THIS->userData == NULL )
+			XSRETURN_UNDEF;
+		ST(0) = (SV*) THIS->userData;
 		XSRETURN(1);
 
 float32

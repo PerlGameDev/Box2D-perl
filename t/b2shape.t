@@ -68,26 +68,26 @@ ok( !$chain  ->TestPoint( $transform, $v0                             ), "TestPo
 {
 	my $aabb = Box2D::b2AABB->new();
 	$edge->ComputeAABB( $aabb, $transform, 0 );
-	cmp_ok( $aabb->lowerBound->x, "<=", 0, "ComputeAABB edge lowerBound" );
-	cmp_ok( $aabb->lowerBound->y, "<=", 0, "ComputeAABB edge lowerBound" );
-	cmp_ok( $aabb->upperBound->x, ">=", 1, "ComputeAABB edge upperBound" );
-	cmp_ok( $aabb->upperBound->y, ">=", 1, "ComputeAABB edge upperBound" );
+	cmp_ok( abs($aabb->lowerBound->x - (  - $edge->m_radius)), "<=", 1e-5, "ComputeAABB edge lowerBound" );
+	cmp_ok( abs($aabb->lowerBound->y - (  - $edge->m_radius)), "<=", 1e-5, "ComputeAABB edge lowerBound" );
+	cmp_ok( abs($aabb->upperBound->x - (1 + $edge->m_radius)), "<=", 1e-5, "ComputeAABB edge upperBound" );
+	cmp_ok( abs($aabb->upperBound->y - (1 + $edge->m_radius)), "<=", 1e-5, "ComputeAABB edge upperBound" );
 }
 {
 	my $aabb = Box2D::b2AABB->new();
 	$polygon->ComputeAABB( $aabb, $transform, 0 );
-	cmp_ok( $aabb->lowerBound->x, "<=", 0, "ComputeAABB polygon lowerBound" );
-	cmp_ok( $aabb->lowerBound->y, "<=", 0, "ComputeAABB polygon lowerBound" );
-	cmp_ok( $aabb->upperBound->x, ">=", 1, "ComputeAABB polygon upperBound" );
-	cmp_ok( $aabb->upperBound->y, ">=", 1, "ComputeAABB polygon upperBound" );
+	cmp_ok( abs($aabb->lowerBound->x - (  - Box2D::b2_polygonRadius)), "<=", 1e-5, "ComputeAABB polygon lowerBound" );
+	cmp_ok( abs($aabb->lowerBound->y - (  - Box2D::b2_polygonRadius)), "<=", 1e-5, "ComputeAABB polygon lowerBound" );
+	cmp_ok( abs($aabb->upperBound->x - (1 + Box2D::b2_polygonRadius)), "<=", 1e-5, "ComputeAABB polygon upperBound" );
+	cmp_ok( abs($aabb->upperBound->y - (1 + Box2D::b2_polygonRadius)), "<=", 1e-5, "ComputeAABB polygon upperBound" );
 }
 {
 	my $aabb = Box2D::b2AABB->new();
 	$chain->ComputeAABB( $aabb, $transform, 0 );
-	cmp_ok( $aabb->lowerBound->x, "<=", 0, "ComputeAABB chain lowerBound" );
-	cmp_ok( $aabb->lowerBound->y, "<=", 0, "ComputeAABB chain lowerBound" );
-	cmp_ok( $aabb->upperBound->x, ">=", 1, "ComputeAABB chain upperBound" );
-	cmp_ok( $aabb->upperBound->y, ">=", 1, "ComputeAABB chain upperBound" );
+	is( $aabb->lowerBound->x, 0, "ComputeAABB chain lowerBound" );
+	is( $aabb->lowerBound->y, 0, "ComputeAABB chain lowerBound" );
+	is( $aabb->upperBound->x, 1, "ComputeAABB chain upperBound" );
+	is( $aabb->upperBound->y, 1, "ComputeAABB chain upperBound" );
 }
 
 {
