@@ -2,6 +2,7 @@ use strict;
 use warnings;
 use Box2D;
 use Test::More;
+use File::Temp;
 
 my $gravity = Box2D::b2Vec2->new( 0, -10 );
 my $world = Box2D::b2World->new( $gravity );
@@ -97,7 +98,20 @@ is( $fixture->GetUserData(), $fixture_def->userData, "GetUserData" );
 	is( $fixture->GetUserData(), $data, "SetUserData with ref" );
 }
 
-#TestPoint
+my $transform = Box2D::b2Transform->new();
+$transform->p->SetZero();
+$transform->q->SetIdentity();
+{
+	my $v0 = Box2D::b2Vec2->new(0, 0);
+	my $v1 = Box2D::b2Vec2->new(2, 3);
+	my $v2 = Box2D::b2Vec2->new(4, 6);
+	my $v3 = Box2D::b2Vec2->new(10, 0);
+	
+	is( $fixture->TestPoint( $v0 ), $shape->TestPoint( $transform, $v0 ), "TestPoint" );
+	is( $fixture->TestPoint( $v1 ), $shape->TestPoint( $transform, $v1 ), "TestPoint" );
+	is( $fixture->TestPoint( $v2 ), $shape->TestPoint( $transform, $v2 ), "TestPoint" );
+	is( $fixture->TestPoint( $v3 ), $shape->TestPoint( $transform, $v3 ), "TestPoint" );
+}
 
 #RayCast
 
@@ -118,19 +132,28 @@ is( $fixture->GetDensity(), $fixture_def->density, "GetDensity" );
 
 is( $fixture->GetFriction(), $fixture_def->friction, "GetFriction" );
 {
-	my $friction = 44;
+	my $friction = 45;
 	$fixture->SetFriction( $friction );
 	is( $fixture->GetFriction(), $friction, "SetFriction" );
 }
 
 is( $fixture->GetRestitution(), $fixture_def->restitution, "GetRestitution" );
 {
-	my $restitution = 44;
+	my $restitution = 46;
 	$fixture->SetRestitution( $restitution );
 	is( $fixture->GetRestitution(), $restitution, "SetRestitution" );
 }
 
-#GetAABB
+{
+	my $shape_aabb = Box2D::b2AABB->new;
+	$shape->ComputeAABB( $shape_aabb, $transform, 0 );
+	my $fixture_aabb = $fixture->GetAABB( 0 );
+	
+	is( $fixture_aabb->lowerBound->x, $shape_aabb->lowerBound->x, "GetAABB lowerBound" );
+	is( $fixture_aabb->lowerBound->y, $shape_aabb->lowerBound->y, "GetAABB lowerBound" );
+	is( $fixture_aabb->upperBound->x, $shape_aabb->upperBound->x, "GetAABB upperBound" );
+	is( $fixture_aabb->upperBound->y, $shape_aabb->upperBound->y, "GetAABB upperBound" );
+}
 
 #Dump
 
