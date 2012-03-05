@@ -32,10 +32,10 @@ void Dump( int32 bodyIndex );
 
 %{
 
-unsigned int
+int
 b2Fixture::GetType()
 	CODE:
-		RETVAL = (unsigned int) THIS->GetType();
+		RETVAL = (int) THIS->GetType();
 	OUTPUT:
 		RETVAL
 

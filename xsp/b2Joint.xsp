@@ -23,23 +23,23 @@ BOOT:
 	HV* stash = gv_stashpv( "Box2D", TRUE );
 
 	/* enum b2JointType */
-	constsub_exporting( stash, "e_unknownJoint",   newSVuv((UV) e_unknownJoint  ), "joint" );
-	constsub_exporting( stash, "e_revoluteJoint",  newSVuv((UV) e_revoluteJoint ), "joint" );
-	constsub_exporting( stash, "e_prismaticJoint", newSVuv((UV) e_prismaticJoint), "joint" );
-	constsub_exporting( stash, "e_distanceJoint",  newSVuv((UV) e_distanceJoint ), "joint" );
-	constsub_exporting( stash, "e_pulleyJoint",    newSVuv((UV) e_pulleyJoint   ), "joint" );
-	constsub_exporting( stash, "e_mouseJoint",     newSVuv((UV) e_mouseJoint    ), "joint" );
-	constsub_exporting( stash, "e_gearJoint",      newSVuv((UV) e_gearJoint     ), "joint" );
-	constsub_exporting( stash, "e_wheelJoint",     newSVuv((UV) e_wheelJoint    ), "joint" );
-	constsub_exporting( stash, "e_weldJoint",      newSVuv((UV) e_weldJoint     ), "joint" );
-	constsub_exporting( stash, "e_frictionJoint",  newSVuv((UV) e_frictionJoint ), "joint" );
-	constsub_exporting( stash, "e_ropeJoint",      newSVuv((UV) e_ropeJoint     ), "joint" );
+	constsub_exporting( stash, "e_unknownJoint",   newSViv((IV) e_unknownJoint  ), "joint" );
+	constsub_exporting( stash, "e_revoluteJoint",  newSViv((IV) e_revoluteJoint ), "joint" );
+	constsub_exporting( stash, "e_prismaticJoint", newSViv((IV) e_prismaticJoint), "joint" );
+	constsub_exporting( stash, "e_distanceJoint",  newSViv((IV) e_distanceJoint ), "joint" );
+	constsub_exporting( stash, "e_pulleyJoint",    newSViv((IV) e_pulleyJoint   ), "joint" );
+	constsub_exporting( stash, "e_mouseJoint",     newSViv((IV) e_mouseJoint    ), "joint" );
+	constsub_exporting( stash, "e_gearJoint",      newSViv((IV) e_gearJoint     ), "joint" );
+	constsub_exporting( stash, "e_wheelJoint",     newSViv((IV) e_wheelJoint    ), "joint" );
+	constsub_exporting( stash, "e_weldJoint",      newSViv((IV) e_weldJoint     ), "joint" );
+	constsub_exporting( stash, "e_frictionJoint",  newSViv((IV) e_frictionJoint ), "joint" );
+	constsub_exporting( stash, "e_ropeJoint",      newSViv((IV) e_ropeJoint     ), "joint" );
 
 	/* enum b2LimitState */
-	constsub_exporting( stash, "e_inactiveLimit", newSVuv((UV) e_inactiveLimit), "joint" );
-	constsub_exporting( stash, "e_atLowerLimit",  newSVuv((UV) e_atLowerLimit ), "joint" );
-	constsub_exporting( stash, "e_atUpperLimit",  newSVuv((UV) e_atUpperLimit ), "joint" );
-	constsub_exporting( stash, "e_equalLimits",   newSVuv((UV) e_equalLimits  ), "joint" );
+	constsub_exporting( stash, "e_inactiveLimit", newSViv((IV) e_inactiveLimit), "joint" );
+	constsub_exporting( stash, "e_atLowerLimit",  newSViv((IV) e_atLowerLimit ), "joint" );
+	constsub_exporting( stash, "e_atUpperLimit",  newSViv((IV) e_atUpperLimit ), "joint" );
+	constsub_exporting( stash, "e_equalLimits",   newSViv((IV) e_equalLimits  ), "joint" );
 }
 
 int

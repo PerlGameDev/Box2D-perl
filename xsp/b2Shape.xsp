@@ -19,11 +19,11 @@ BOOT:
 	HV* stash = gv_stashpv( "Box2D::b2Shape", TRUE );
 
 	/* enum b2Shape::Type */
-	constsub_exporting( stash, "e_circle",    newSVuv((UV) b2Shape::e_circle   ), "shape" );
-	constsub_exporting( stash, "e_edge",      newSVuv((UV) b2Shape::e_edge     ), "shape" );
-	constsub_exporting( stash, "e_polygon",   newSVuv((UV) b2Shape::e_polygon  ), "shape" );
-	constsub_exporting( stash, "e_chain",     newSVuv((UV) b2Shape::e_chain    ), "shape" );
-	constsub_exporting( stash, "e_typeCount", newSVuv((UV) b2Shape::e_typeCount), "shape" );
+	constsub_exporting( stash, "e_circle",    newSViv((IV) b2Shape::e_circle   ), "shape" );
+	constsub_exporting( stash, "e_edge",      newSViv((IV) b2Shape::e_edge     ), "shape" );
+	constsub_exporting( stash, "e_polygon",   newSViv((IV) b2Shape::e_polygon  ), "shape" );
+	constsub_exporting( stash, "e_chain",     newSViv((IV) b2Shape::e_chain    ), "shape" );
+	constsub_exporting( stash, "e_typeCount", newSViv((IV) b2Shape::e_typeCount), "shape" );
 }
 
 void*
@@ -36,10 +36,10 @@ b2Shape::Clone( allocator )
 	OUTPUT:
 		RETVAL
 
-unsigned int
+int
 b2Shape::GetType( )
 	CODE:
-		RETVAL = (unsigned int)THIS->GetType();
+		RETVAL = (int)THIS->GetType();
 	OUTPUT:
 		RETVAL
 
@@ -78,14 +78,14 @@ b2Shape::ComputeMass( massData, density )
 	CODE:
 		THIS->ComputeMass( massData, density );
 
-unsigned int
+int
 b2Shape::m_type( ... )
 	CODE:
 		if ( items > 1 )
 		{
-			THIS->m_type = (b2Shape::Type)SvUV( ST(1) );
+			THIS->m_type = (b2Shape::Type)SvIV( ST(1) );
 		}
-		RETVAL = (unsigned int)THIS->m_type;
+		RETVAL = (int)THIS->m_type;
 	OUTPUT:
 		RETVAL
 
