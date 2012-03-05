@@ -7,13 +7,6 @@
 
 %module{Box2D};
 
-enum b2BodyType
-{
-	b2_staticBody = 0,
-	b2_kinematicBody,
-	b2_dynamicBody,
-};
-
 %name{Box2D::b2BodyDef} class b2BodyDef
 {
 
@@ -26,17 +19,21 @@ b2BodyDef::type( ... )
 	CODE:
 		if( items > 1 )
 		{
-			THIS->type = (b2BodyType)SvUV( ST(1) );
+			THIS->type = (b2BodyType)SvIV( ST(1) );
 		}
 		RETVAL = (int)THIS->type;
 	OUTPUT:
 		RETVAL
 
 void*
-b2BodyDef::position()
+b2BodyDef::position( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
+		if( items > 1 )
+		{
+			THIS->position = *(b2Vec2 *)stack_to_object(ST(1));
+		}
 		RETVAL = &(THIS->position);
 	OUTPUT:
 		RETVAL
@@ -53,10 +50,14 @@ b2BodyDef::angle( ... )
 		RETVAL
 
 void*
-b2BodyDef::linearVelocity()
+b2BodyDef::linearVelocity( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
+		if( items > 1 )
+		{
+			THIS->linearVelocity = *(b2Vec2 *)stack_to_object(ST(1));
+		}
 		RETVAL = &(THIS->linearVelocity);
 	OUTPUT:
 		RETVAL
@@ -99,7 +100,7 @@ b2BodyDef::allowSleep( ... )
 	CODE:
 		if( items > 1 )
 		{
-			THIS->allowSleep = (bool)SvNV( ST(1) );
+			THIS->allowSleep = (bool)SvTRUE( ST(1) );
 		}
 		RETVAL = THIS->allowSleep;
 	OUTPUT:
@@ -110,7 +111,7 @@ b2BodyDef::awake( ... )
 	CODE:
 		if( items > 1 )
 		{
-			THIS->awake = (bool)SvNV( ST(1) );
+			THIS->awake = (bool)SvTRUE( ST(1) );
 		}
 		RETVAL = THIS->awake;
 	OUTPUT:
@@ -121,7 +122,7 @@ b2BodyDef::fixedRotation( ... )
 	CODE:
 		if( items > 1 )
 		{
-			THIS->fixedRotation = (bool)SvNV( ST(1) );
+			THIS->fixedRotation = (bool)SvTRUE( ST(1) );
 		}
 		RETVAL = THIS->fixedRotation;
 	OUTPUT:
@@ -158,6 +159,17 @@ b2BodyDef::userData( ... )
 			XSRETURN_UNDEF;
 		ST(0) = (SV*) THIS->userData;
 		XSRETURN(1);
+
+float32
+b2BodyDef::gravityScale( ... )
+	CODE:
+		if( items > 1 )
+		{
+			THIS->gravityScale = (float32)SvNV( ST(1) );
+		}
+		RETVAL = THIS->gravityScale;
+	OUTPUT:
+		RETVAL
 
 %}
 
