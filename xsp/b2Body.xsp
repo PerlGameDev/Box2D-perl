@@ -10,6 +10,54 @@
 %name{Box2D::b2Body} class b2Body
 {
 
+float32 GetAngle();
+
+void SetAngularVelocity( float32 omega );
+
+float32 GetAngularVelocity();
+
+void ApplyTorque( float32 torque );
+
+void ApplyAngularImpulse( float32 impulse );
+
+float32 GetMass();
+
+float32 GetInertia();
+
+void ResetMassData();
+
+float32 GetLinearDamping();
+
+void SetLinearDamping( float32 linearDamping );
+
+float32 GetAngularDamping();
+
+void SetAngularDamping( float32 angularDamping );
+
+float32 GetGravityScale();
+
+void SetGravityScale( float32 scale );
+
+void SetBullet( bool flag );
+
+bool IsBullet();
+
+void SetSleepingAllowed( bool flag );
+
+bool IsSleepingAllowed();
+
+void SetAwake( bool flag );
+
+bool IsAwake();
+
+void SetActive( bool flag );
+
+bool IsActive();
+
+void SetFixedRotation( bool flag );
+
+bool IsFixedRotation();
+
 %{
 
 BOOT:
@@ -17,9 +65,9 @@ BOOT:
 	HV* stash = gv_stashpv( "Box2D", TRUE );
 
 	/* enum b2BodyType */
-	constsub_exporting( stash, "b2_staticBody",    newSVuv((UV) b2_staticBody   ), "body" );
-	constsub_exporting( stash, "b2_kinematicBody", newSVuv((UV) b2_kinematicBody), "body" );
-	constsub_exporting( stash, "b2_dynamicBody",   newSVuv((UV) b2_dynamicBody  ), "body" );
+	constsub_exporting( stash, "b2_staticBody",    newSViv((IV) b2_staticBody   ), "body" );
+	constsub_exporting( stash, "b2_kinematicBody", newSViv((IV) b2_kinematicBody), "body" );
+	constsub_exporting( stash, "b2_dynamicBody",   newSViv((IV) b2_dynamicBody  ), "body" );
 }
 
 void*
@@ -69,20 +117,12 @@ b2Body::GetTransform( )
 	OUTPUT:
 		RETVAL
 
-
 void*
 b2Body::GetPosition()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		RETVAL = (b2Vec2 *)&(THIS->GetPosition());
-	OUTPUT:
-		RETVAL
-
-float32
-b2Body::GetAngle()
-	CODE:
-		RETVAL = THIS->GetAngle();
+		RETVAL = (b2Vec2*)&(THIS->GetPosition());
 	OUTPUT:
 		RETVAL
 
@@ -91,7 +131,7 @@ b2Body::GetWorldCenter()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		RETVAL = (b2Vec2 *)&(THIS->GetWorldCenter());
+		RETVAL = (b2Vec2*)&(THIS->GetWorldCenter());
 	OUTPUT:
 		RETVAL
 
@@ -100,193 +140,122 @@ b2Body::GetLocalCenter()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		RETVAL = (b2Vec2 *)&(THIS->GetLocalCenter());
+		RETVAL = (b2Vec2*)&(THIS->GetLocalCenter());
 	OUTPUT:
 		RETVAL
 
-
 void
 b2Body::SetLinearVelocity( v )
-	b2Vec2 * v
+	b2Vec2* v
 	CODE:
 		THIS->SetLinearVelocity( *v );
-
 
 void*
 b2Body::GetLinearVelocity()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		b2Vec2 lv = THIS->GetLinearVelocity();
-		RETVAL = new b2Vec2(lv);
+		RETVAL = new b2Vec2(THIS->GetLinearVelocity());
 	OUTPUT:
 		RETVAL
-
-void
-b2Body::SetAngularVelocity(omega)
-	float32 omega
-	CODE:
-		THIS->SetAngularVelocity( omega );
-
-float32
-b2Body::GetAngularVelocity()
-	CODE:
-		RETVAL = THIS->GetAngularVelocity();
-	OUTPUT:
-		RETVAL
-
 
 void
 b2Body::ApplyForce( force, point )
-	b2Vec2 * force
-	b2Vec2 * point
+	b2Vec2* force
+	b2Vec2* point
 	CODE:
 		THIS->ApplyForce( *force, *point );
 
-
-
 void
-b2Body::ApplyTorque(torque)
-	float32 torque
+b2Body::ApplyForceToCenter( force )
+	b2Vec2* force
 	CODE:
-		THIS->ApplyTorque( torque );
-
+		THIS->ApplyForceToCenter( *force );
 
 void
 b2Body::ApplyLinearImpulse( impulse, point )
-	b2Vec2 * impulse
-	b2Vec2 * point
+	b2Vec2* impulse
+	b2Vec2* point
 	CODE:
 		THIS->ApplyLinearImpulse( *impulse, *point );
 
+void
+b2Body::GetMassData( data )
+	b2MassData* data
+	CODE:
+		THIS->GetMassData( data );
 
 void
-b2Body::ApplyAngularImpulse(impulse)
-	float32 impulse
+b2Body::SetMassData( data )
+	b2MassData* data
 	CODE:
-		THIS->ApplyAngularImpulse( impulse );
-
-
-float32
-b2Body::GetMass()
-	CODE:
-		RETVAL = THIS->GetMass();
-	OUTPUT:
-		RETVAL
-
-
-float32
-b2Body::GetInertia()
-	CODE:
-		RETVAL = THIS->GetInertia();
-	OUTPUT:
-		RETVAL
-
-
+		THIS->SetMassData( data );
 
 void*
-b2Body::GetWorldPoint(localPoint)
+b2Body::GetWorldPoint( localPoint )
 	b2Vec2* localPoint
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		b2Vec2 lv = THIS->GetWorldPoint(*localPoint);
-		RETVAL =  new b2Vec2(lv);
+		RETVAL =  new b2Vec2(THIS->GetWorldPoint( *localPoint ));
 	OUTPUT:
 		RETVAL
 
-
 void*
-b2Body::GetWorldVector(localVector)
+b2Body::GetWorldVector( localVector )
 	b2Vec2* localVector
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		b2Vec2 lv = THIS->GetWorldVector(*localVector);
-		RETVAL =  &lv;
+		RETVAL = new b2Vec2(THIS->GetWorldVector( *localVector ));
 	OUTPUT:
 		RETVAL
 
 void*
-b2Body::GetLocalPoint(worldPoint)
+b2Body::GetLocalPoint( worldPoint )
 	b2Vec2* worldPoint
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		b2Vec2 lv = THIS->GetLocalPoint(*worldPoint);
-		RETVAL =  &lv;
+		RETVAL = new b2Vec2(THIS->GetLocalPoint( *worldPoint ));
 	OUTPUT:
 		RETVAL
 
-
 void*
-b2Body::GetLocalVector(worldVector)
+b2Body::GetLocalVector( worldVector )
 	b2Vec2* worldVector
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		b2Vec2 lv = THIS->GetLocalVector(*worldVector);
-		RETVAL =  &lv;
+		RETVAL = new b2Vec2(THIS->GetLocalVector( *worldVector ));
 	OUTPUT:
 		RETVAL
 
 void*
-b2Body::GetLinearVelocityFromWorldPoint(worldPoint)
+b2Body::GetLinearVelocityFromWorldPoint( worldPoint )
 	b2Vec2* worldPoint
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		b2Vec2 lv = THIS->GetLinearVelocityFromWorldPoint(*worldPoint);
-		RETVAL =  &lv;
+		RETVAL = new b2Vec2(THIS->GetLinearVelocityFromWorldPoint( *worldPoint ));
 	OUTPUT:
 		RETVAL
 
 void*
-b2Body::GetLinearVelocityFromLocalPoint(localPoint)
+b2Body::GetLinearVelocityFromLocalPoint( localPoint )
 	b2Vec2* localPoint
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		b2Vec2 lv = THIS->GetLinearVelocityFromLocalPoint(*localPoint);
-		RETVAL =  &lv;
+		RETVAL = new b2Vec2(THIS->GetLinearVelocityFromLocalPoint( *localPoint ));
 	OUTPUT:
 		RETVAL
-
-float32
-b2Body::GetLinearDamping()
-	CODE:
-		RETVAL = THIS->GetLinearDamping();
-	OUTPUT:
-		RETVAL
-
-
-void
-b2Body::SetLinearDamping( linearDamping )
-	float32 linearDamping
-	CODE:
-		THIS->SetLinearDamping( linearDamping );
-
-float32
-b2Body::GetAngularDamping()
-	CODE:
-		RETVAL = THIS->GetAngularDamping();
-	OUTPUT:
-		RETVAL
-
-
-void
-b2Body::SetAngularDamping( angularDamping )
-	float32 angularDamping
-	CODE:
-		THIS->SetAngularDamping( angularDamping );
-
 
 void
 b2Body::SetType(type)
 	int type
 	CODE:
 		THIS->SetType( (b2BodyType)type );
-
 
 int
 b2Body::GetType()
@@ -295,85 +264,6 @@ b2Body::GetType()
 	OUTPUT:
 		RETVAL
 
-
-void
-b2Body::SetBullet(flag)
-	bool flag
-	CODE:
-		THIS->SetBullet( flag );
-
-
-
-bool
-b2Body::IsBullet()
-	CODE:
-		RETVAL = THIS->IsBullet();
-	OUTPUT:
-		RETVAL
-
-
-void
-b2Body::SetSleepingAllowed(flag)
-	bool flag
-	CODE:
-		THIS->SetSleepingAllowed( flag );
-
-
-
-bool
-b2Body::IsSleepingAllowed()
-	CODE:
-		RETVAL = THIS->IsSleepingAllowed();
-	OUTPUT:
-		RETVAL
-
-
-void
-b2Body::SetAwake(flag)
-	bool flag
-	CODE:
-		 THIS->SetAwake( flag );
-
-
-
-bool
-b2Body::IsAwake()
-	CODE:
-		RETVAL = THIS->IsAwake();
-	OUTPUT:
-		RETVAL
-
-
-void
-b2Body::SetActive(flag)
-	bool flag
-	CODE:
-		THIS->SetActive( flag );
-
-
-
-bool
-b2Body::IsActive()
-	CODE:
-		RETVAL = THIS->IsActive();
-	OUTPUT:
-		RETVAL
-
-
-void
-b2Body::SetFixedRotation(flag)
-	bool flag
-	CODE:
-		THIS->SetFixedRotation( flag );
-
-
-
-bool
-b2Body::IsFixedRotation()
-	CODE:
-		RETVAL = THIS->IsFixedRotation();
-	OUTPUT:
-		RETVAL
 
 
 void*
@@ -384,17 +274,6 @@ b2Body::GetNext()
 		RETVAL = THIS->GetNext();
 	OUTPUT:
 		RETVAL
-
-
-void*
-b2Body::GetWorld()
-	PREINIT:
-		const char* CLASS = "Box2D::b2World";
-	CODE:
-		RETVAL = THIS->GetWorld();
-	OUTPUT:
-		RETVAL
-
 
 void
 b2Body::GetUserData()
@@ -411,9 +290,16 @@ b2Body::SetUserData( data )
 	CODE:
 		THIS->SetUserData( (void*) newSVsv( data ) );
 
-%}
+void*
+b2Body::GetWorld()
+	PREINIT:
+		const char* CLASS = "Box2D::b2World";
+	CODE:
+		RETVAL = THIS->GetWorld();
+	OUTPUT:
+		RETVAL
 
-void ResetMassData();
+%}
 
 };
 
