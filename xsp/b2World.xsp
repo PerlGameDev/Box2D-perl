@@ -88,14 +88,6 @@ b2World::RayCastXS( callback, point1, point2 )
 	CODE:
 		THIS->RayCast( callback, *point1, *point2 );
 
-void
-b2World::DESTROY()
-	CODE:
-		if ( THIS != NULL )
-		{
-			delete THIS;
-		}
-
 %}
 
 };

@@ -38,7 +38,7 @@ $fixtureDef->density(1.0);
 $fixtureDef->friction(0.3);
 
 
-isa_ok( $body->CreateFixtureDef($fixtureDef), "Box2D::b2Fixture" );
+isa_ok( $body->CreateFixture($fixtureDef), "Box2D::b2Fixture" );
 
 pass( "Create fixture Def" );
 my $timeStep = 1.0/60.0;

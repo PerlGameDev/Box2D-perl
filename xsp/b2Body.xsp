@@ -71,24 +71,14 @@ BOOT:
 }
 
 void*
-b2Body::CreateFixtureDef(fixtureDef)
-	b2FixtureDef* fixtureDef
-	PREINIT:
-		const char* CLASS = "Box2D::b2Fixture";
-	CODE:
-		RETVAL = THIS->CreateFixture( (const b2FixtureDef*)fixtureDef );
-	OUTPUT:
-		RETVAL
-
-void*
 b2Body::CreateFixture( ... )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Fixture";
 	CODE:
-		if( items == 3 )
-			RETVAL = THIS->CreateFixture( (const b2Shape*) stack_to_object( ST(1) ), SvNV( ST(2) ) );
-		else if( items == 2 )
+		if( items == 2 )
 			RETVAL = THIS->CreateFixture( (const b2FixtureDef*) stack_to_object( ST(1) ) );
+		else if( items == 3 )
+			RETVAL = THIS->CreateFixture( (const b2Shape*) stack_to_object( ST(1) ), SvNV( ST(2) ) );
 		else
 			croak_xs_usage(cv,  "THIS, (def)||(shape, density)");
 	OUTPUT:
@@ -96,9 +86,10 @@ b2Body::CreateFixture( ... )
 
 void
 b2Body::DestroyFixture( fixture )
-	b2Fixture* fixture
+	SV* fixture
 	CODE:
-		THIS->DestroyFixture( fixture );
+		THIS->DestroyFixture( (b2Fixture*) stack_to_object(fixture) );
+		*(SvRV(fixture)) = PL_sv_undef;
 
 void
 b2Body::SetTransform( position, angle )
@@ -113,7 +104,7 @@ b2Body::GetTransform( )
 	PREINIT:
 		const char* CLASS = "Box2D::b2Transform";
 	CODE:
-		RETVAL = (b2Transform*)&(THIS->GetTransform());
+		RETVAL = (b2Transform*) &(THIS->GetTransform());
 	OUTPUT:
 		RETVAL
 
@@ -122,7 +113,7 @@ b2Body::GetPosition()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		RETVAL = (b2Vec2*)&(THIS->GetPosition());
+		RETVAL = (b2Vec2*) &(THIS->GetPosition());
 	OUTPUT:
 		RETVAL
 
@@ -131,7 +122,7 @@ b2Body::GetWorldCenter()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		RETVAL = (b2Vec2*)&(THIS->GetWorldCenter());
+		RETVAL = (b2Vec2*) &(THIS->GetWorldCenter());
 	OUTPUT:
 		RETVAL
 
@@ -140,7 +131,7 @@ b2Body::GetLocalCenter()
 	PREINIT:
 		const char* CLASS = "Box2D::b2Vec2";
 	CODE:
-		RETVAL = (b2Vec2*)&(THIS->GetLocalCenter());
+		RETVAL = (b2Vec2*) &(THIS->GetLocalCenter());
 	OUTPUT:
 		RETVAL
 
@@ -260,11 +251,36 @@ b2Body::SetType(type)
 int
 b2Body::GetType()
 	CODE:
-		RETVAL = (int)THIS->GetType();
+		RETVAL = (int) THIS->GetType();
 	OUTPUT:
 		RETVAL
 
+void*
+b2Body::GetFixtureList()
+	PREINIT:
+		const char* CLASS = "Box2D::b2Fixture";
+	CODE:
+		RETVAL = THIS->GetFixtureList();
+	OUTPUT:
+		RETVAL
 
+void*
+b2Body::GetJointList()
+	PREINIT:
+		const char* CLASS = "Box2D::b2JointEdge";
+	CODE:
+		RETVAL = THIS->GetJointList();
+	OUTPUT:
+		RETVAL
+
+void*
+b2Body::GetContactList()
+	PREINIT:
+		const char* CLASS = "Box2D::b2ContactEdge";
+	CODE:
+		RETVAL = THIS->GetContactList();
+	OUTPUT:
+		RETVAL
 
 void*
 b2Body::GetNext()
@@ -298,6 +314,11 @@ b2Body::GetWorld()
 		RETVAL = THIS->GetWorld();
 	OUTPUT:
 		RETVAL
+
+void
+b2Body::Dump()
+	CODE:
+		THIS->Dump();
 
 %}
 

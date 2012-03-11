@@ -5,6 +5,8 @@ use Test::More;
 
 my $body_def = Box2D::b2BodyDef->new();
 
+isa_ok( $body_def, "Box2D::b2BodyDef" );
+
 is( $body_def->position->x,       0,                    "initial position" );
 is( $body_def->position->y,       0,                    "initial position" );
 is( $body_def->angle,             0,                    "initial angle" );

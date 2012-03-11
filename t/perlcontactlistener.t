@@ -41,7 +41,7 @@ for my $listenerType ("normal","TestContactListener") {
     $fixtureDef->friction(0.3);
 
 
-    $body->CreateFixtureDef($fixtureDef);
+    $body->CreateFixture($fixtureDef);
 
     pass( "Create fixture Def" );
     my $timeStep = 1.0/60.0;
